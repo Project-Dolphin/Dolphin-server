@@ -1,0 +1,31 @@
+{
+  "name": "dolphin-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Project-Dolphin/Dolphin-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Project-Dolphin/Dolphin-server/issues"
+  },
+  "homepage": "https://github.com/Project-Dolphin/Dolphin-server#readme",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.76",
+    "@typescript-eslint/eslint-plugin": "^4.23.0",
+    "@typescript-eslint/parser": "^4.23.0",
+    "eslint": "^7.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.0",
+    "serverless-offline": "^7.0.0",
+    "serverless-plugin-typescript": "^1.1.9",
+    "typescript": "^4.2.4"
+  }
+}
