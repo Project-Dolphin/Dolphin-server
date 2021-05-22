@@ -1,10 +1,25 @@
 {
-    "editor.formatOnSave": true,
+  
+    "editor.formatOnSave": false,
+    "eslint.format.enable": true,
+    "prettier.singleQuote": true,
+    // Set the default
+    // Enable per-language
     "[typescript]": {
-      "editor.codeActionsOnSave": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
+    },
+    "eslint.validate": [
+        "typescript",
+      ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll.prettier": true,
         "source.fixAll.eslint": true
-      },
-      "editor.formatOnSave": true,
-      "editor.formatOnPaste": true
-    } 
-  }
+    },
+    "eslint.probe": [
+        "javascript",
+        "typescript",
+        "html",
+        "markdown",
+    ],
+}
