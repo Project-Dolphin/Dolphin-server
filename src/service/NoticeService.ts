@@ -10,9 +10,13 @@ import got from 'got';
 //   viewCount: number;
 // }
 
+interface Column {
+  data: string;
+}
+
 export class NoticeService {
   private readonly libraryUrl = 'https://library.kmou.ac.kr/bbs/list/1';
-  async getLibraryNotices(): Promise<void> {
+  async getLibraryNotices(): Promise<Column[]> {
     const result = await got.get(this.libraryUrl);
     // fs.writeFileSync('library.html', result.body.toString());
     const rawBody = result.body;
@@ -20,7 +24,8 @@ export class NoticeService {
     const rows = this.parseRows(noticeTable);
     console.log(rows[5]);
     const column = this.parseColumns(rows[5]);
-    console.log(column);
+    console.log('column: ', column);
+    return column;
   }
   private parseTable(rawBody: string): string {
     const start = rawBody.indexOf('<tbody');
@@ -35,18 +40,17 @@ export class NoticeService {
     return rows;
   }
 
-  private parseColumns(row: string): string[] {
+  private parseColumns(row: string): Column[] {
     const columns = row.split('</td>').filter((column) => column.includes('td'));
     console.log(columns);
     const parsedColumns = columns.map((column) => {
       const data = column.replace(/<(“[^”]*”|'[^’]*’|[^'”>])*>/g, '');
-
       return {
         data: data,
       };
     });
 
     console.log(parsedColumns);
-    return columns;
+    return parsedColumns;
   }
 }
