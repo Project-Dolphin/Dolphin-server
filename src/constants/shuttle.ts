@@ -1,4 +1,4 @@
-export const academicCalendar = [
+export const shuttleBus = [
     {
         type : 'normal', time: '0730'
     },
