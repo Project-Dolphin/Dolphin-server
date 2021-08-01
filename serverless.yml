@@ -37,10 +37,13 @@ provider:
     TZ: Asia/Seoul
 
 functions:
-  hello:
+  dolphin:
     handler: src/handler.dolphin
     events:
       - http:
-          path: dolphin
+          path: calendar
+          method: get
+      - http:
+          path: notice
           method: get
       
