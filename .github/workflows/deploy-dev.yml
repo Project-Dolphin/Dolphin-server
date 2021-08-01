@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - master
+      - dev
 
 # Specify what jobs to run
 jobs:
