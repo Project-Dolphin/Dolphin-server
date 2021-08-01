@@ -13,24 +13,31 @@
 
 service: dolphin-server
 
-frameworkVersion: '2'
+frameworkVersion: '^1'
 
 plugins:
   - serverless-plugin-typescript
   - serverless-offline
+
+custom:
+  stages:
+    - prod
+    - dev
+  NODE_ENV:
+    prod: production
+    dev: development
+
 provider:
   name: aws
   runtime: nodejs12.x
-  stage: dev
-#  lambdaHashingVersion: 20201221
+  stage: ${opt:stage, 'dev'}
   region: ap-northeast-2
-
-# you can overwrite defaults here
-#  stage: dev
-#  region: us-east-1
+  environment:
+    NODE_ENV: ${self:custom.NODE_ENV.${self:provider.stage}}
+    TZ: Asia/Seoul
 
 functions:
-  hello:
+  dolphin:
     handler: src/handler.dolphin
     events:
       - http:
