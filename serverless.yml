@@ -20,20 +20,21 @@ plugins:
   - serverless-offline
 
 custom:
-  defaultStage: dev
-  environment: ${file(env.yml):${self:provider.stage}, file(env.yml):default}
+  stages:
+    - prod
+    - dev
+  NODE_ENV:
+    prod: production
+    dev: development
 
 provider:
   name: aws
   runtime: nodejs12.x
-  stage: ${opt:stage, self:custom.defaultStage}
-#  lambdaHashingVersion: 20201221
+  stage: ${opt:stage, 'dev'}
   region: ap-northeast-2
   environment:
-    appName: ${self:custom.environment.appName}
-# you can overwrite defaults here
-#  stage: dev
-#  region: us-east-1
+    NODE_ENV: ${self:custom.NODE_ENV.${self:provider.stage}}
+    TZ: Asia/Seoul
 
 functions:
   hello:
