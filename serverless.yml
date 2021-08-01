@@ -13,7 +13,7 @@
 
 service: dolphin-server
 
-frameworkVersion: '^1'
+frameworkVersion: '2'
 
 plugins:
   - serverless-plugin-typescript
