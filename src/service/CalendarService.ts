@@ -2,6 +2,7 @@ import { academicCalendar, calendar } from '../constants/calendar';
 
 interface Calendar {
   term: Term;
+  mainPlan?: boolean;
   content: string;
 }
 
@@ -45,6 +46,7 @@ export class CalendarService {
             startedAt: startedAt,
             endedAt: endedAt,
           },
+          mainPlan: true,
           content: detail[1],
         };
       })

@@ -1,5 +1,4 @@
 import { CalendarService } from '../src/service/CalendarService';
-
 const calendarService = new CalendarService();
 
 describe('calendar test', () => {
