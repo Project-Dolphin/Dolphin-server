@@ -17,10 +17,10 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
     steps:
-      - uses: actions/checkout
+      - uses: actions/checkout@v1
       - name: npm install dependencies
         run: npm install
       - name: Serverless
-        uses: serverless/github-action
+        uses: serverless/github-action@master
         with:
           args: deploy
