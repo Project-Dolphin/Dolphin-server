@@ -13,7 +13,7 @@
 
 service: dolphin-server
 
-frameworkVersion: '2'
+frameworkVersion: '^1'
 
 plugins:
   - serverless-plugin-typescript
@@ -42,8 +42,5 @@ functions:
     events:
       - http:
           path: calendar
-          method: get
-      - http:
-          path: notice
           method: get
       
