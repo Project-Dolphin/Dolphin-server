@@ -1,0 +1,2628 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="description" content="해양대학교 도서관">
+	<meta name="keyword" content="해양대학교 해양대 도서관, 해양대학교 도서관">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="initial-scale=1, width=device-width, user-scalable=0">
+	<meta name="format-detection" content="telephone=no"><!-- 아이폰 전화번호 스타일 초기화 -->
+	<meta property="og:title" content="해양대학교">
+	<meta property="og:description" content="해양대학교">
+	<title>
+		일반공지 | 한국해양대학교 도서관</title>
+	<link rel="shortcut icon" href="/image/ko/local/favicon.ico">
+	<link rel="apple-touch-icon" href="/image/ko/local/apple-touch-icon.png">
+	<link rel="stylesheet" type="text/css" href="/style/ko/standard/common.css">
+	<link rel="stylesheet" href="/style/ko/theme/pc/sub.css">
+	<link rel="stylesheet" href="/style/ko/theme/tablet/sub.css" media="screen and (min-width:768px) and (max-width:1024px)">
+	<link rel="stylesheet" href="/style/ko/theme/mobile/sub.css" media="screen and (max-width:767px)">
+	<script src="/script/jquery-1.8.3.min.js"></script>
+	<script src="/script/jquery.easing.1.3.js"></script>
+	<script src="/script/jquery.dotdotdot.js"></script><!--말줄임표-->
+	<link rel="stylesheet" href="/style/ui/jquery.mThumbnailScroller.css">
+	<script type="text/javascript" src="/script/sub.js"></script>
+	<script src="/script/mainFunction.js"></script>
+	<script type="text/javascript" src="/script/jquery.mThumbnailScroller.js"></script>
+	<!--[if lt IE 9]>
+		<script type="text/javascript" src="/script/css3-mediaqueries.js"></script>
+	<![endif]-->
+	<script src="/script/jquery.placeholder.min.js"></script>
+	<script src="/script/footable.js"></script>
+	<script type="text/javascript" src="/js/common/util.js" ></script>
+	<script type="text/javascript">
+		var mainYn = "N";
+	</script>
+	<link rel="stylesheet" href="/style/ko/theme/mobile/mobiletable.css" media="screen and (max-width:767px)">
+    <link rel="stylesheet" type="text/css" href="/style/ko/standard/list.css">
+    <link rel="stylesheet" type="text/css" href="/style/ko/svp/bbs/list.css">
+    <link rel="stylesheet" type="text/css" href="/style/ui/jquery.ui.custom.css">
+    <script  src="/js/common/ui.core.js"></script>
+    <script  src="/js/common/ui.datepicker.js"></script>
+    <script  src="/js/common/Checkbox.js"></script>
+    <script  src="/script/jquery.placeholder.min.js"></script>
+    <script  src="/script/list.js"></script></head>
+<body>
+
+<div id="divAccessibility">
+	<ul>
+		<li><a href="#divTopMenu">메뉴 바로가기</a></li>
+		<li><a href="#divContents">본문 바로가기(skip to content)</a></li>
+		<li><a href="#divSearch">검색 바로가기</a></li>
+		<li><a href="#divFooter">도서관정보 바로가기</a></li>
+	</ul>
+</div>
+
+<div id="divWrapper">
+	<!-- divHeader-->
+	<div id="divHeader">
+		<!--header-->
+		<!--header-->
+<div class="header"> 
+	<div class="header1">
+		<div id="globalMenu"> 
+			<ul>
+			<!-- 로그인 -->
+			<li class="login"><a href="/login" title="LOGIN">LOGIN</a></li>
+				<li class="language">
+				<a href="#" title="KOR"><span>KOR</span></a>
+						<ul class="lang">
+							<li><a href="/en" title="ENG"><span>ENG</span></a></li>
+						</ul>
+					</li>
+				<li class="access">
+					<a href="/webcontent/info/25">
+						<span>교외접속</span>
+						<img src="/image/ko/local/accessOff.png" alt="교외접속 OFF"></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="header2">
+		<div>
+			<h1 class="logo"><a href="/"><img src="/image/ko/local/mainOn.png" alt="NATIONAL KOREA MARITIME & OCEAN UNIVERSITY LIBRARY"></a></h1>
+			<div id="divTopMenu"> 
+				<h2 class="skip">로컬네비게이션</h2>
+				<ul>
+				<li class="topMenu">
+						<a href="/searchTotal" title="자료검색" target="_self">자료검색</a>
+						<div>
+							<div class="menuTit">
+								<span>자료검색</span>
+								<p>도서관 소장자료, 전자자료, 도서관 구축 원문 콘텐츠에 대한 검색과 이용방법을 제공합니다.</p>
+							</div>
+							<ul>
+								<li>
+									<a href="/searchTotal" title="통합검색" target="_self"> 통합검색</a>
+									<div class="menuList">
+										<ul>
+											<li>
+														<a href="/searchTotal" target="_self"  title="통합검색">통합검색</a>
+													</li>
+												<li>
+														<a href="/search/tot" target="_self"  title="소장자료">소장자료</a>
+													</li>
+												<li>
+														<a href="/eds/advanced" target="_self"  title="전자자료">전자자료</a>
+													</li>
+												<li>
+														<a href="/searchWeb" target="_self"  title="외부기관검색(Open-API)">외부기관검색(Open-API)</a>
+													</li>
+												</ul>
+									</div>
+								</li>
+								<li>
+									<a href="/search/caz" title="소장자료" target="_self"> 소장자료</a>
+									<div class="menuList">
+										<ul>
+											<li>
+														<a href="/search/caz" target="_self"  title="단행본">단행본</a>
+													</li>
+												<li>
+														<a href="/search/sez" target="_self"  title="연속간행물">연속간행물</a>
+													</li>
+												<li>
+														<a href="/search/arz" target="_self"  title="기사">기사</a>
+													</li>
+												<li>
+														<a href="/search/saz" target="_self"  title="학위논문">학위논문</a>
+													</li>
+												<li>
+														<a href="/search/maz" target="_self"  title="멀티미디어/비도서">멀티미디어/비도서</a>
+													</li>
+												<li>
+														<a href="/newarrival" target="_self"  title="새로 들어온 책">새로 들어온 책</a>
+													</li>
+												</ul>
+									</div>
+								</li>
+								<li>
+									<a href="/schosite/list/1" title="전자자료" target="_self"> 전자자료</a>
+									<div class="menuList">
+										<ul>
+											<li>
+														<a href="/schosite/list/1" target="_self"  title="데이터베이스">데이터베이스</a>
+													</li>
+												<li>
+														<a href="/search/joe" target="_self"  title="전자저널">전자저널</a>
+													</li>
+												<li>
+														<a href="/outlink?targetUrl=https://search.ebscohost.com/login.aspx?profile=pfi&moduleId=main&linkType=menu" target="_blank"  title="전자저널 통합검색">전자저널 통합검색</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/72" target="_self"  title="전자책/오디오북">전자책/오디오북</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/71" target="_self"  title="동영상 강좌">동영상 강좌</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/25" target="_self"  title="교외접속">교외접속</a>
+													</li>
+												</ul>
+									</div>
+								</li>
+								<li>
+									<a href="/newbook/list" title="컬렉션" target="_self"> 컬렉션</a>
+									<div class="menuList">
+										<ul>
+											<li>
+														<a href="/newbook/list" target="_self"  title="사서추천도서">사서추천도서</a>
+													</li>
+												<li>
+														<a href="/digicol/list/16" target="_self"  title="KMOU 권장도서">KMOU 권장도서</a>
+													</li>
+												<li>
+														<a href="/statistics/popularloanList" target="_self"  title="BEST 이용도서">BEST 이용도서</a>
+													</li>
+												<li>
+														<a href="/digicol/list/1" target="_self"  title="개인문고">개인문고</a>
+													</li>
+												<li>
+														<a href="http://repository.kmou.ac.kr/" target="_blank"  title="OAK">OAK</a>
+													</li>
+												</ul>
+									</div>
+								</li>
+								</ul>
+							</div>
+					</li>
+					<li class="topMenu">
+						<a href="/webcontent/info/8" title="도서관이용" target="_self">도서관이용</a>
+						<div>
+							<div class="menuTit">
+								<span>도서관이용</span>
+								<p>도서관 서비스와 시설에 대한 상세한 안내와  시설/좌석/예약/배정 메뉴를 이용할 수 있습니다.</p>
+							</div>
+							<ul>
+								<li>
+									<a href="/webcontent/info/8" title="서비스 신청" target="_self"> 서비스 신청</a>
+									<div class="menuList">
+										<ul>
+											<li>
+														<a href="/webcontent/info/8" target="_self"  title="강의지원서비스">강의지원서비스</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/45" target="_self"  title="이용자교육서비스">이용자교육서비스</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/13" target="_self"  title="희망도서신청">희망도서신청</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/10" target="_self"  title="연구비도서등록">연구비도서등록</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/11" target="_self"  title="원문복사신청">원문복사신청</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/9" target="_self"  title="상호대차신청">상호대차신청</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/12" target="_self"  title="타기관열람의뢰">타기관열람의뢰</a>
+													</li>
+												</ul>
+									</div>
+								</li>
+								<li>
+									<a href="/webcontent/info/20" title="자료 이용" target="_self"> 자료 이용</a>
+									<div class="menuList">
+										<ul>
+											<li>
+														<a href="/webcontent/info/20" target="_self"  title="자료대출/반납(예약,연장)">자료대출/반납(예약,연장)</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/22" target="_self"  title="간편대출/도서배달서비스">간편대출/도서배달서비스</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/23" target="_self"  title="해양자료실">해양자료실</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/75" target="_self"  title="해양 관련 SITE">해양 관련 SITE</a>
+													</li>
+												<li>
+														<a href="http://www.fric.kr/" target="_blank"  title="외국학술지지원센터">외국학술지지원센터</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/16" target="_self"  title="부경지역국립대학도서관 ">부경지역국립대학도서관 </a>
+													</li>
+												<li>
+														<a href="/webcontent/info/18" target="_self"  title="비소장자료">비소장자료</a>
+													</li>
+												</ul>
+									</div>
+								</li>
+								<li>
+									<a href="/webcontent/info/15" title="시설 이용" target="_self"> 시설 이용</a>
+									<div class="menuList">
+										<ul>
+											<li>
+														<a href="/webcontent/info/15" target="_self"  title="이용시간">이용시간</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/14" target="_self"  title="시설현황">시설현황</a>
+													</li>
+												<li>
+														<a href="/studyroom/groupReserveStat/1" target="_self"  title="시설예약">시설예약</a>
+													</li>
+												<li>
+														<a href="" target="_self"  onclick="javascript:alert('준비중입니다.');return false;" title="열람좌석">열람좌석</a>
+													</li>
+												<li>
+														<a href="/libsch/mixMonthlyCalendar/moviesch" target="_self"  title="영화상영">영화상영</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/48" target="_self"  title="편의시설">편의시설</a>
+													</li>
+												</ul>
+									</div>
+								</li>
+								<li>
+									<a href="/webcontent/info/53" title="이용자별 안내" target="_self"> 이용자별 안내</a>
+									<div class="menuList">
+										<ul>
+											<li>
+														<a href="/webcontent/info/53" target="_self"  title="학부생">학부생</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/51" target="_self"  title="대학원생">대학원생</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/49" target="_self"  title="교직원">교직원</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/52" target="_self"  title="졸업생,지역주민">졸업생,지역주민</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/54" target="_self"  title="협약기관">협약기관</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/50" target="_self"  title="기타이용자">기타이용자</a>
+													</li>
+												</ul>
+									</div>
+								</li>
+								</ul>
+							</div>
+					</li>
+					<li class="topMenu">
+						<a href="/webcontent/info/58" title="연구학습지원" target="_self">연구학습지원</a>
+						<div>
+							<div class="menuTit">
+								<span>연구학습지원</span>
+								<p>최신 학술연구정보를 제공하며 서지관리도구 및  표절 예방도구<br>연구윤리 등 연구지원도구를 제공합니다. </p>
+							</div>
+							<ul>
+								<li>
+									<a href="/webcontent/info/58" title="연구동향 및 연구조사" target="_self"> 연구동향 및 연구조사</a>
+									<div class="menuList">
+										<ul>
+											<li>
+														<a href="/webcontent/info/58" target="_self"  title="InCite연구동향분석">InCite연구동향분석</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/60" target="_self"  title="RISS SAM 학술관계분석서비스">RISS SAM 학술관계분석서비스</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/59" target="_self"  title="KCI분석정보서비스">KCI분석정보서비스</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/62" target="_self"  title="연구조사방법안내">연구조사방법안내</a>
+													</li>
+												<li>
+														<a href="" target="_self"  onclick="javascript:alert('준비중입니다.');return false;" title="학과별 주제 가이드">학과별 주제 가이드</a>
+													</li>
+												</ul>
+									</div>
+								</li>
+								<li>
+									<a href="/webcontent/info/66" title="인용정보분석" target="_self"> 인용정보분석</a>
+									<div class="menuList">
+										<ul>
+											<li>
+														<a href="/webcontent/info/66" target="_self"  title="인용색인소개">인용색인소개</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/61" target="_self"  title="Web of Science(SCIE)">Web of Science(SCIE)</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/65" target="_self"  title="Scopus">Scopus</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/63" target="_self"  title="KCI">KCI</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/64" target="_self"  title="KSCI/KOMCI">KSCI/KOMCI</a>
+													</li>
+												</ul>
+									</div>
+								</li>
+								<li>
+									<a href="/webcontent/info/68" title="저널평가" target="_self"> 저널평가</a>
+									<div class="menuList">
+										<ul>
+											<li>
+														<a href="/webcontent/info/68" target="_self"  title="JCR">JCR</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/69" target="_self"  title="KCI">KCI</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/67" target="_self"  title="S2Journal">S2Journal</a>
+													</li>
+												</ul>
+									</div>
+								</li>
+								<li>
+									<a href="/webcontent/info/56" title="논문작성가이드" target="_self"> 논문작성가이드</a>
+									<div class="menuList">
+										<ul>
+											<li>
+														<a href="/webcontent/info/56" target="_self"  title="연구윤리">연구윤리</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/57" target="_self"  title="표절예방">표절예방</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/55" target="_self"  title="서지관리프로그램">서지관리프로그램</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/24" target="_self"  title="학위논문 제출">학위논문 제출</a>
+													</li>
+												</ul>
+									</div>
+								</li>
+								</ul>
+							</div>
+					</li>
+					<li class="topMenu">
+						<a href="/webcontent/info/4" title="도서관안내" target="_self">도서관안내</a>
+						<div>
+							<div class="menuTit">
+								<span>도서관안내</span>
+								<p>도서관 공지사항 및 각종 통계, 도서관 조직과 규정,  자료기증 등을 안내합니다.</p>
+							</div>
+							<ul>
+								<li>
+									<a href="/webcontent/info/4" title="도서관 소개" target="_self"> 도서관 소개</a>
+									<div class="menuList">
+										<ul>
+											<li>
+														<a href="/webcontent/info/4" target="_self"  title="개요">개요</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/5" target="_self"  title="연혁">연혁</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/43" target="_self"  title="조직/부서">조직/부서</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/41" target="_self"  title="도서관 규정">도서관 규정</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/42" target="_self"  title="도서관 통계">도서관 통계</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/44" target="_self"  title="찾아오시는길">찾아오시는길</a>
+													</li>
+												</ul>
+									</div>
+								</li>
+								<li>
+									<a href="/bbs/list/1" title="커뮤니티" target="_self"> 커뮤니티</a>
+									<div class="menuList">
+										<ul>
+											<li>
+														<a href="/bbs/list/1" target="_self"  title="일반공지">일반공지</a>
+													</li>
+												<li>
+														<a href="/bbs/list/2" target="_self"  title="문의/건의">문의/건의</a>
+													</li>
+												<li>
+														<a href="/faqlib/faq" target="_self"  title="자주묻는 질문(FAQ)">자주묻는 질문(FAQ)</a>
+													</li>
+												<li>
+														<a href="https://kmoulib.tistory.com/" target="_blank"  title="도서관 웹진(해아람)">도서관 웹진(해아람)</a>
+													</li>
+												<li>
+														<a href="/bbs/list/10" target="_self"  title="서식/자료">서식/자료</a>
+													</li>
+												<li>
+														<a href="/poll/main" target="_self"  title="설문조사">설문조사</a>
+													</li>
+												<li>
+														<a href="/libsch/mixMonthlyCalendar/1" target="_self"  title="도서관 일정">도서관 일정</a>
+													</li>
+												</ul>
+									</div>
+								</li>
+								<li>
+									<a href="/webcontent/info/7" title="자료기증" target="_self"> 자료기증</a>
+									<div class="menuList">
+										<ul>
+											<li>
+														<a href="/webcontent/info/7" target="_self"  title="자료기증안내">자료기증안내</a>
+													</li>
+												<li>
+														<a href="/webcontent/info/6" target="_self"  title="기증절차">기증절차</a>
+													</li>
+												</ul>
+									</div>
+								</li>
+								<li>
+									<a href="" title="발전기금" target="_self"> 발전기금</a>
+									<div class="menuList">
+										<ul>
+											<li>
+														<a href="" target="_self"  onclick="javascript:alert('준비중입니다.');return false;" title="신축도서관소개">신축도서관소개</a>
+													</li>
+												<li>
+														<a href="" target="_self"  onclick="javascript:alert('준비중입니다.');return false;" title="공간구성계획">공간구성계획</a>
+													</li>
+												<li>
+														<a href="" target="_self"  onclick="javascript:alert('준비중입니다.');return false;" title="모금 캠페인">모금 캠페인</a>
+													</li>
+												<li>
+														<a href="" target="_self"  onclick="javascript:alert('준비중입니다.');return false;" title="네이밍소개">네이밍소개</a>
+													</li>
+												<li>
+														<a href="/donors/status" target="_self"  title="기부현황">기부현황</a>
+													</li>
+												<li>
+														<a href="/donors/list" target="_self"  title="기부자명단">기부자명단</a>
+													</li>
+												</ul>
+									</div>
+								</li>
+								</ul>
+							</div>
+					</li>
+					<li class="topMenu">
+						<a href="/myprofile/profile" title="나의 공간" target="_self">나의 공간</a>
+						<div>
+							<div class="menuTit">
+								<span>나의 공간</span>
+								<p>개인화 서비스 메뉴로 개인별 도서관 이용현황을 제공합니다. </p>
+							</div>
+							<ul>
+								<li>
+									<a href="/myprofile/profile" title="내정보" target="_self"> 내정보</a>
+									<div class="menuList">
+										<ul>
+											<li>
+														<a href="/myprofile/profile" target="_self"  title="개인정보관리">개인정보관리</a>
+													</li>
+												<li>
+														<a href="/mynotice/list" target="_self"  title="개인공지사항">개인공지사항</a>
+													</li>
+												<li>
+														<a href="/myprofile/barcode" target="_self"  title="모바일회원증">모바일회원증</a>
+													</li>
+												</ul>
+									</div>
+								</li>
+								<li>
+									<a href="/myloan/list" title="이용현황조회" target="_self"> 이용현황조회</a>
+									<div class="menuList">
+										<ul>
+											<li>
+														<a href="/myloan/list" target="_self"  title="대출현황">대출현황</a>
+													</li>
+												<li>
+														<a href="/myreserve/list" target="_self"  title="예약자료조회/취소">예약자료조회/취소</a>
+													</li>
+												<li>
+														<a href="/purchaserequest/list" target="_self"  title="희망도서신청현황">희망도서신청현황</a>
+													</li>
+												<li>
+														<a href="/ill/list" target="_self"  title="상호대차신청현황">상호대차신청현황</a>
+													</li>
+												<li>
+														<a href="/dds/list" target="_self"  title="원문복사신청현황">원문복사신청현황</a>
+													</li>
+												<li>
+														<a href="/mypreserve/list" target="_self"  title="간편대출신청현황">간편대출신청현황</a>
+													</li>
+												<li>
+														<a href="/delivery/list" target="_self"  title="도서배달서비스신청현황">도서배달서비스신청현황</a>
+													</li>
+												<li>
+														<a href="/missrepo/list" target="_self"  title="서가에 없는 책 찾기">서가에 없는 책 찾기</a>
+													</li>
+												</ul>
+									</div>
+								</li>
+								<li>
+									<a href="/mylist/list" title="내 서재" target="_self"> 내 서재</a>
+									<div class="menuList">
+										<ul>
+											<li>
+														<a href="/mylist/list" target="_self"  title="내서재">내서재</a>
+													</li>
+												<li>
+														<a href="/myreview/list" target="_self"  title="내서평/내태그">내서평/내태그</a>
+													</li>
+												<li>
+														<a href="/sdi/inputSer" target="_self"  title="신착자료알리미">신착자료알리미</a>
+													</li>
+												<li>
+														<a href="/myrecom/main" target="_self"  title="내독서취향">내독서취향</a>
+													</li>
+												<li>
+														<a href="/mypage/infographics" target="_self"  title="독서통계">독서통계</a>
+													</li>
+												</ul>
+									</div>
+								</li>
+								</ul>
+							</div>
+					</li>
+					</ul>
+				<a href="#" class="wholeMenuBtn" title="전체메뉴">
+					<div>
+						<span></span>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!--//header -->
+<!-- 전체메뉴 -->
+<div class="wholeMenu"> 
+	<div>
+		<div>
+			<!-- mobileTop 태블릿,모바일 메뉴에서 보이는 영역-->
+			<div class="mobileTop"> 
+				<div class="loginArea"> 
+					<div class="welcomeT">
+					<ul>
+							<li class="login"><a href="/login" title="LOGIN">LOGIN</a></li>
+						<li class="language">
+						<a href="#" title="KOR"><span>KOR</span></a>
+								<ul class="lang">
+									<li><a href="/en" title="ENG"><span>ENG</span></a></li>
+								</ul>
+							</li>
+					</ul>
+					<a href="#" class="wholeMenuClose">
+						<img src="/image/ko/local/wholeMenuCloseM.png" alt="전체메뉴 닫기">
+					</a>
+					</div>
+				</div>
+			</div>
+			<!-- //mobileTop --> 
+			<div class="menuArea"> 
+				<h2 class="skip">전체메뉴</h2>
+				<div class="menuList"> 
+					<div class="divMenuList">
+						<ul> 
+						<li>
+								<a class="wholeMenuTit" href="/searchTotal" title="자료검색" target="_self"><img src="/image/ko/local/wholeMenuMobileIcon.png" alt="">자료검색</a>
+									<div>
+										<a class="mobileSubTit" href="/searchTotal" title="자료검색" target="_self">자료검색</a><!--모바일에서만 보이는 타이틀-->
+										<ul>
+											<li>
+												<a href="/searchTotal" title="통합검색" target="_self" class="subTit"> 통합검색</a>
+												<ul>
+													<li>
+																<a href="/searchTotal"   target="_self"  title="통합검색">통합검색</a>
+															</li>
+														<li>
+																<a href="/search/tot"   target="_self"  title="소장자료">소장자료</a>
+															</li>
+														<li>
+																<a href="/eds/advanced"   target="_self"  title="전자자료">전자자료</a>
+															</li>
+														<li>
+																<a href="/searchWeb"   target="_self"  title="외부기관검색(Open-API)">외부기관검색(Open-API)</a>
+															</li>
+														</ul>
+											</li>
+											<li>
+												<a href="/search/caz" title="소장자료" target="_self" class="subTit"> 소장자료</a>
+												<ul>
+													<li>
+																<a href="/search/caz"   target="_self"  title="단행본">단행본</a>
+															</li>
+														<li>
+																<a href="/search/sez"  class="wholeMenuDown" target="_self"  title="연속간행물">연속간행물</a>
+															</li>
+														<li>
+																<a href="/search/arz"  class="wholeMenuDown" target="_self"  title="기사">기사</a>
+															</li>
+														<li>
+																<a href="/search/saz"  class="wholeMenuDown" target="_self"  title="학위논문">학위논문</a>
+															</li>
+														<li>
+																<a href="/search/maz"  class="wholeMenuDown" target="_self"  title="멀티미디어/비도서">멀티미디어/비도서</a>
+															</li>
+														<li>
+																<a href="/newarrival"   target="_self"  title="새로 들어온 책">새로 들어온 책</a>
+															</li>
+														</ul>
+											</li>
+											<li>
+												<a href="/schosite/list/1" title="전자자료" target="_self" class="subTit"> 전자자료</a>
+												<ul>
+													<li>
+																<a href="/schosite/list/1"  class="wholeMenuDown" target="_self"  title="데이터베이스">데이터베이스</a>
+															</li>
+														<li>
+																<a href="/search/joe"  class="wholeMenuDown" target="_self"  title="전자저널">전자저널</a>
+															</li>
+														<li>
+																<a href="/outlink?targetUrl=https://search.ebscohost.com/login.aspx?profile=pfi&moduleId=main&linkType=menu"   target="_blank"  title="전자저널 통합검색">전자저널 통합검색</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/72"   target="_self"  title="전자책/오디오북">전자책/오디오북</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/71"   target="_self"  title="동영상 강좌">동영상 강좌</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/25"  class="wholeMenuDown" target="_self"  title="교외접속">교외접속</a>
+															</li>
+														</ul>
+											</li>
+											<li>
+												<a href="/newbook/list" title="컬렉션" target="_self" class="subTit"> 컬렉션</a>
+												<ul>
+													<li>
+																<a href="/newbook/list"   target="_self"  title="사서추천도서">사서추천도서</a>
+															</li>
+														<li>
+																<a href="/digicol/list/16"   target="_self"  title="KMOU 권장도서">KMOU 권장도서</a>
+															</li>
+														<li>
+																<a href="/statistics/popularloanList"   target="_self"  title="BEST 이용도서">BEST 이용도서</a>
+															</li>
+														<li>
+																<a href="/digicol/list/1"   target="_self"  title="개인문고">개인문고</a>
+															</li>
+														<li>
+																<a href="http://repository.kmou.ac.kr/"   target="_blank"  title="OAK">OAK</a>
+															</li>
+														</ul>
+											</li>
+											</ul>
+									</div>
+								</li>
+							<li>
+								<a class="wholeMenuTit" href="/webcontent/info/8" title="도서관이용" target="_self"><img src="/image/ko/local/wholeMenuMobileIcon.png" alt="">도서관이용</a>
+									<div>
+										<a class="mobileSubTit" href="/webcontent/info/8" title="도서관이용" target="_self">도서관이용</a><!--모바일에서만 보이는 타이틀-->
+										<ul>
+											<li>
+												<a href="/webcontent/info/8" title="서비스 신청" target="_self" class="subTit"> 서비스 신청</a>
+												<ul>
+													<li>
+																<a href="/webcontent/info/8"  class="wholeMenuDown" target="_self"  title="강의지원서비스">강의지원서비스</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/45"  class="wholeMenuDown" target="_self"  title="이용자교육서비스">이용자교육서비스</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/13"  class="wholeMenuDown" target="_self"  title="희망도서신청">희망도서신청</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/10"  class="wholeMenuDown" target="_self"  title="연구비도서등록">연구비도서등록</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/11"  class="wholeMenuDown" target="_self"  title="원문복사신청">원문복사신청</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/9"  class="wholeMenuDown" target="_self"  title="상호대차신청">상호대차신청</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/12"  class="wholeMenuDown" target="_self"  title="타기관열람의뢰">타기관열람의뢰</a>
+															</li>
+														</ul>
+											</li>
+											<li>
+												<a href="/webcontent/info/20" title="자료 이용" target="_self" class="subTit"> 자료 이용</a>
+												<ul>
+													<li>
+																<a href="/webcontent/info/20"  class="wholeMenuDown" target="_self"  title="자료대출/반납(예약,연장)">자료대출/반납(예약,연장)</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/22"  class="wholeMenuDown" target="_self"  title="간편대출/도서배달서비스">간편대출/도서배달서비스</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/23"   target="_self"  title="해양자료실">해양자료실</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/75"  class="wholeMenuDown" target="_self"  title="해양 관련 SITE">해양 관련 SITE</a>
+															</li>
+														<li>
+																<a href="http://www.fric.kr/"   target="_blank"  title="외국학술지지원센터">외국학술지지원센터</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/16"   target="_self"  title="부경지역국립대학도서관 ">부경지역국립대학도서관 </a>
+															</li>
+														<li>
+																<a href="/webcontent/info/18"  class="wholeMenuDown" target="_self"  title="비소장자료">비소장자료</a>
+															</li>
+														</ul>
+											</li>
+											<li>
+												<a href="/webcontent/info/15" title="시설 이용" target="_self" class="subTit"> 시설 이용</a>
+												<ul>
+													<li>
+																<a href="/webcontent/info/15"   target="_self"  title="이용시간">이용시간</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/14"  class="wholeMenuDown" target="_self"  title="시설현황">시설현황</a>
+															</li>
+														<li>
+																<a href="/studyroom/groupReserveStat/1"  class="wholeMenuDown" target="_self"  title="시설예약">시설예약</a>
+															</li>
+														<li>
+																<a href=""   target="_self"  onclick="javascript:alert('준비중입니다.');return false;" title="열람좌석">열람좌석</a>
+															</li>
+														<li>
+																<a href="/libsch/mixMonthlyCalendar/moviesch"  class="wholeMenuDown" target="_self"  title="영화상영">영화상영</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/48"   target="_self"  title="편의시설">편의시설</a>
+															</li>
+														</ul>
+											</li>
+											<li>
+												<a href="/webcontent/info/53" title="이용자별 안내" target="_self" class="subTit"> 이용자별 안내</a>
+												<ul>
+													<li>
+																<a href="/webcontent/info/53"   target="_self"  title="학부생">학부생</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/51"   target="_self"  title="대학원생">대학원생</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/49"   target="_self"  title="교직원">교직원</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/52"   target="_self"  title="졸업생,지역주민">졸업생,지역주민</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/54"   target="_self"  title="협약기관">협약기관</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/50"   target="_self"  title="기타이용자">기타이용자</a>
+															</li>
+														</ul>
+											</li>
+											</ul>
+									</div>
+								</li>
+							<li>
+								<a class="wholeMenuTit" href="/webcontent/info/58" title="연구학습지원" target="_self"><img src="/image/ko/local/wholeMenuMobileIcon.png" alt="">연구학습지원</a>
+									<div>
+										<a class="mobileSubTit" href="/webcontent/info/58" title="연구학습지원" target="_self">연구학습지원</a><!--모바일에서만 보이는 타이틀-->
+										<ul>
+											<li>
+												<a href="/webcontent/info/58" title="연구동향 및 연구조사" target="_self" class="subTit"> 연구동향 및 연구조사</a>
+												<ul>
+													<li>
+																<a href="/webcontent/info/58"   target="_self"  title="InCite연구동향분석">InCite연구동향분석</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/60"   target="_self"  title="RISS SAM 학술관계분석서비스">RISS SAM 학술관계분석서비스</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/59"   target="_self"  title="KCI분석정보서비스">KCI분석정보서비스</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/62"   target="_self"  title="연구조사방법안내">연구조사방법안내</a>
+															</li>
+														<li>
+																<a href=""   target="_self"  onclick="javascript:alert('준비중입니다.');return false;" title="학과별 주제 가이드">학과별 주제 가이드</a>
+															</li>
+														</ul>
+											</li>
+											<li>
+												<a href="/webcontent/info/66" title="인용정보분석" target="_self" class="subTit"> 인용정보분석</a>
+												<ul>
+													<li>
+																<a href="/webcontent/info/66"   target="_self"  title="인용색인소개">인용색인소개</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/61"  class="wholeMenuDown" target="_self"  title="Web of Science(SCIE)">Web of Science(SCIE)</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/65"  class="wholeMenuDown" target="_self"  title="Scopus">Scopus</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/63"  class="wholeMenuDown" target="_self"  title="KCI">KCI</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/64"   target="_self"  title="KSCI/KOMCI">KSCI/KOMCI</a>
+															</li>
+														</ul>
+											</li>
+											<li>
+												<a href="/webcontent/info/68" title="저널평가" target="_self" class="subTit"> 저널평가</a>
+												<ul>
+													<li>
+																<a href="/webcontent/info/68"   target="_self"  title="JCR">JCR</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/69"   target="_self"  title="KCI">KCI</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/67"   target="_self"  title="S2Journal">S2Journal</a>
+															</li>
+														</ul>
+											</li>
+											<li>
+												<a href="/webcontent/info/56" title="논문작성가이드" target="_self" class="subTit"> 논문작성가이드</a>
+												<ul>
+													<li>
+																<a href="/webcontent/info/56"   target="_self"  title="연구윤리">연구윤리</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/57"   target="_self"  title="표절예방">표절예방</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/55"   target="_self"  title="서지관리프로그램">서지관리프로그램</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/24"  class="wholeMenuDown" target="_self"  title="학위논문 제출">학위논문 제출</a>
+															</li>
+														</ul>
+											</li>
+											</ul>
+									</div>
+								</li>
+							<li>
+								<a class="wholeMenuTit" href="/webcontent/info/4" title="도서관안내" target="_self"><img src="/image/ko/local/wholeMenuMobileIcon.png" alt="">도서관안내</a>
+									<div>
+										<a class="mobileSubTit" href="/webcontent/info/4" title="도서관안내" target="_self">도서관안내</a><!--모바일에서만 보이는 타이틀-->
+										<ul>
+											<li>
+												<a href="/webcontent/info/4" title="도서관 소개" target="_self" class="subTit"> 도서관 소개</a>
+												<ul>
+													<li>
+																<a href="/webcontent/info/4"   target="_self"  title="개요">개요</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/5"   target="_self"  title="연혁">연혁</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/43"   target="_self"  title="조직/부서">조직/부서</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/41"   target="_self"  title="도서관 규정">도서관 규정</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/42"   target="_self"  title="도서관 통계">도서관 통계</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/44"   target="_self"  title="찾아오시는길">찾아오시는길</a>
+															</li>
+														</ul>
+											</li>
+											<li>
+												<a href="/bbs/list/1" title="커뮤니티" target="_self" class="subTit"> 커뮤니티</a>
+												<ul>
+													<li>
+																<a href="/bbs/list/1"   target="_self"  title="일반공지">일반공지</a>
+															</li>
+														<li>
+																<a href="/bbs/list/2"   target="_self"  title="문의/건의">문의/건의</a>
+															</li>
+														<li>
+																<a href="/faqlib/faq"   target="_self"  title="자주묻는 질문(FAQ)">자주묻는 질문(FAQ)</a>
+															</li>
+														<li>
+																<a href="https://kmoulib.tistory.com/"   target="_blank"  title="도서관 웹진(해아람)">도서관 웹진(해아람)</a>
+															</li>
+														<li>
+																<a href="/bbs/list/10"   target="_self"  title="서식/자료">서식/자료</a>
+															</li>
+														<li>
+																<a href="/poll/main"   target="_self"  title="설문조사">설문조사</a>
+															</li>
+														<li>
+																<a href="/libsch/mixMonthlyCalendar/1"  class="wholeMenuDown" target="_self"  title="도서관 일정">도서관 일정</a>
+															</li>
+														</ul>
+											</li>
+											<li>
+												<a href="/webcontent/info/7" title="자료기증" target="_self" class="subTit"> 자료기증</a>
+												<ul>
+													<li>
+																<a href="/webcontent/info/7"   target="_self"  title="자료기증안내">자료기증안내</a>
+															</li>
+														<li>
+																<a href="/webcontent/info/6"   target="_self"  title="기증절차">기증절차</a>
+															</li>
+														</ul>
+											</li>
+											<li>
+												<a href="" title="발전기금" target="_self" class="subTit"> 발전기금</a>
+												<ul>
+													<li>
+																<a href=""   target="_self"  onclick="javascript:alert('준비중입니다.');return false;" title="신축도서관소개">신축도서관소개</a>
+															</li>
+														<li>
+																<a href=""   target="_self"  onclick="javascript:alert('준비중입니다.');return false;" title="공간구성계획">공간구성계획</a>
+															</li>
+														<li>
+																<a href=""   target="_self"  onclick="javascript:alert('준비중입니다.');return false;" title="모금 캠페인">모금 캠페인</a>
+															</li>
+														<li>
+																<a href=""   target="_self"  onclick="javascript:alert('준비중입니다.');return false;" title="네이밍소개">네이밍소개</a>
+															</li>
+														<li>
+																<a href="/donors/status"   target="_self"  title="기부현황">기부현황</a>
+															</li>
+														<li>
+																<a href="/donors/list"   target="_self"  title="기부자명단">기부자명단</a>
+															</li>
+														</ul>
+											</li>
+											</ul>
+									</div>
+								</li>
+							<li>
+								<a class="wholeMenuTit" href="/myprofile/profile" title="나의 공간" target="_self"><img src="/image/ko/local/wholeMenuMobileIcon.png" alt="">나의 공간</a>
+									<div>
+										<a class="mobileSubTit" href="/myprofile/profile" title="나의 공간" target="_self">나의 공간</a><!--모바일에서만 보이는 타이틀-->
+										<ul>
+											<li>
+												<a href="/myprofile/profile" title="내정보" target="_self" class="subTit"> 내정보</a>
+												<ul>
+													<li>
+																<a href="/myprofile/profile"   target="_self"  title="개인정보관리">개인정보관리</a>
+															</li>
+														<li>
+																<a href="/mynotice/list"   target="_self"  title="개인공지사항">개인공지사항</a>
+															</li>
+														<li>
+																<a href="/myprofile/barcode"   target="_self"  title="모바일회원증">모바일회원증</a>
+															</li>
+														</ul>
+											</li>
+											<li>
+												<a href="/myloan/list" title="이용현황조회" target="_self" class="subTit"> 이용현황조회</a>
+												<ul>
+													<li>
+																<a href="/myloan/list"  class="wholeMenuDown" target="_self"  title="대출현황">대출현황</a>
+															</li>
+														<li>
+																<a href="/myreserve/list"   target="_self"  title="예약자료조회/취소">예약자료조회/취소</a>
+															</li>
+														<li>
+																<a href="/purchaserequest/list"   target="_self"  title="희망도서신청현황">희망도서신청현황</a>
+															</li>
+														<li>
+																<a href="/ill/list"   target="_self"  title="상호대차신청현황">상호대차신청현황</a>
+															</li>
+														<li>
+																<a href="/dds/list"   target="_self"  title="원문복사신청현황">원문복사신청현황</a>
+															</li>
+														<li>
+																<a href="/mypreserve/list"   target="_self"  title="간편대출신청현황">간편대출신청현황</a>
+															</li>
+														<li>
+																<a href="/delivery/list"   target="_self"  title="도서배달서비스신청현황">도서배달서비스신청현황</a>
+															</li>
+														<li>
+																<a href="/missrepo/list"   target="_self"  title="서가에 없는 책 찾기">서가에 없는 책 찾기</a>
+															</li>
+														</ul>
+											</li>
+											<li>
+												<a href="/mylist/list" title="내 서재" target="_self" class="subTit"> 내 서재</a>
+												<ul>
+													<li>
+																<a href="/mylist/list"  class="wholeMenuDown" target="_self"  title="내서재">내서재</a>
+															</li>
+														<li>
+																<a href="/myreview/list"  class="wholeMenuDown" target="_self"  title="내서평/내태그">내서평/내태그</a>
+															</li>
+														<li>
+																<a href="/sdi/inputSer"  class="wholeMenuDown" target="_self"  title="신착자료알리미">신착자료알리미</a>
+															</li>
+														<li>
+																<a href="/myrecom/main"   target="_self"  title="내독서취향">내독서취향</a>
+															</li>
+														<li>
+																<a href="/mypage/infographics"   target="_self"  title="독서통계">독서통계</a>
+															</li>
+														</ul>
+											</li>
+											</ul>
+									</div>
+								</li>
+							</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //전체메뉴 --></div>
+	<!-- //divHeader -->
+    <div id="divContentsW">
+    <!-- divContents-->
+		<div id="divContents">
+			<div id="divSearch">
+				<form name="searchForm" action="/searchTotal/result" method="get">
+					<input type="hidden" name="st" value="KWRD">
+					<input type="hidden" name="si" value="TOTAL">
+					<fieldset>
+						<legend>검색</legend>
+						<input class="inputText" type="text" name="q" placeholder="검색어를 입력하세요." title="검색">
+						<input class="searchBtn" type="image" src="/image/ko/local/topSearchBtn.png" title="검색" alt="검색">
+					</fieldset>
+				</form>
+			</div>
+   
+           <h2 id="divTitle">
+				일반공지</h2>
+			
+			<div id="divLocation">
+				<ul>
+					<li><a href="/">home</a></li>
+					<li><a href="/webcontent/info/4">도서관안내</a></li><li><a href="/bbs/list/1">커뮤니티</a></li><li>일반공지</li></ul>
+			</div>
+			
+			<!-- divContent 시작-->
+            <!-- sns share기능 사용여부 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="divContent">
+    <!-- Content Header -->
+    <h3 class="skip">게시판 안내</h3>
+    
+
+    <!-- Content Search -->
+    <div class="searchArea">
+        <p class="limitSearchBtn"><a href="#">선택조건으로 조회</a></p>
+        <form name="searchFrm" id="searchFrm" method="get" action="/bbs/list/1">
+        <input type="hidden" value="" name="mId">
+        <fieldset>
+            <legend>검색</legend>
+
+            
+            <span class="bunch">
+                <label for="subject_code" class="skip">주제</label>
+                <select id="subject_code" name="subject_code" class="selectBox1">
+                    <option value="">전체</option>
+                    
+                        <option value="2" >일반</option>
+                    
+                        <option value="3" >학술</option>
+                    
+                        <option value="4" >행사</option>
+                    
+                </select>
+            </span>
+            
+            <span class="bunch">
+
+            
+
+            <label for="searchKind" class="skip">검색항목</label><select id="searchKind" name="searchKind" class="selectBox1">
+                <option value="title" >제목</option>
+                <option value="writer_Name" >작성자</option>
+                <option value="content" >내용</option>
+            </select>
+            <label for="searchKey" class="skip">검색어</label>
+            <input type="text" id="searchKey" name="searchKey" class="inputTextType3 sw" maxlength="100" title="검색어"  placeholder="검색어를 입력하세요"/>
+            </span>
+            <span class="bunch">
+                <label for="dateFrom" class="skip">작성일&nbsp;</label>
+                <input type="text" id="dateFrom" name="dateFrom" maxlength="8" class="datePicker" onkeyup="javascript:validate('dateFrom')" title="작성시작일" placeholder="작성시작일"/>&nbsp;~&nbsp;
+                <label for="dateTo" class="skip">작성일&nbsp;</label>
+                <input type="text" id="dateTo" name="dateTo" maxlength="8" class="datePicker" onkeyup="javascript:validate('dateTo')"  title="작성종료일" placeholder="작성종료일"/>
+            </span>
+            <span class="bunch">
+                <label for="oi" class="skip">정렬</label><select id="oi" name="oi" class="selectBox1" title="정렬">
+                    <option value="insert_date" >작성일</option>
+                    <option value="title" >제목</option>
+                    <option value="writer_name" >작성자</option>
+                </select>
+                <label for="os" class="skip">정렬</label><select id="os" name="os" class="selectBox1" title="정렬">
+                    <option value="desc">내림차순</option>
+                    <option value="asc">오름차순</option>
+                </select>
+            </span>
+            <span class="bunch">
+                
+                <label for="countPerPage" class="skip">쪽당</label><select id="countPerPage" name="countPerPage" class="selectBox1">
+                    <option value="10" >10건</option>
+                    <option value="15" >15건</option>
+                    <option value="20" >20건</option>
+                    <option value="30" >30건</option>
+                </select>
+            </span>
+            <input type="submit" class="btnType5" value="검색"/>
+        </fieldset>
+        </form>
+    </div>
+    <!-- Content Num Of Search Result -->
+    <div class="listInfo">
+        <div class="listInfo1">
+            <p class="totalCnt">총 <span class="totalcount">826</span> 건</p>
+            <p class="pageNum">,<span>1</span>/42페이지</p>
+        </div>
+        <div class="listInfo2">
+            <div class="fileSend">
+                <ul>
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    <form name="boardList" method="post" action="/bbs/boardMove/1" onsubmit="return checked(this);">
+        <!-- List -->
+        <div class="listTable">
+            <table class="mobileTable">
+                <caption>게시판 목록</caption>
+                <thead>
+                    <tr>
+                        
+                        <th scope="row" >No.</th>
+                        <th scope="row" data-hide="phone">주제</th>
+                        <th scope="row" data-class="expand">제목</th>
+                        
+                        <th scope="row" data-hide="phone">작성자</th>
+                        <th scope="row" data-hide="phone">작성일</th>
+                        <th scope="row" data-hide="phone">조회수</th>
+                        <th scope="row" data-hide="phone">첨부파일</th>
+                        
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    
+                    
+                    
+                    
+                    <tr class="always">
+                        
+                        
+                            <td class="alwaysNum"><span>공지</span></td>
+                        
+                        
+                        
+                        <td class="subject">
+                            
+                            일반
+                        </td>
+                        
+                        <td class="title">
+                            
+                                
+                                <a href="/bbs/content/1_69842"><strong>2021년 8월 대학원 졸업예정자 석박사 학위논문 제출 안내</strong></a>&nbsp;
+                            
+
+                            
+                            
+                            
+                                <img src="/image/ko/solution/common/ico/new.png" alt="새글" title="새글" >
+                            
+                            
+                        </td>
+                        <td class="writer">
+                        
+                            
+                            김*조
+                        
+                        </td>
+                        <td class="reportDate">
+                            
+                                
+                                2021-07-15
+                            
+                        </td>
+                        <td class="view_cnt">48</td>
+                        
+                        <td>
+                        
+                            
+                                <img class="addedFile" src="/image/ko/solution/common/ico/clip.png" title="첨부파일" alt="첨부파일" >
+                            
+                            
+                        
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr class="always">
+                        
+                        
+                            <td class="alwaysNum"><span>공지</span></td>
+                        
+                        
+                        
+                        <td class="subject">
+                            
+                            일반
+                        </td>
+                        
+                        <td class="title">
+                            
+                                
+                                <a href="/bbs/content/1_69834"><strong>2021 서평쓰기 이벤트 안내</strong></a>&nbsp;
+                            
+
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="writer">
+                        
+                            
+                            김*조
+                        
+                        </td>
+                        <td class="reportDate">
+                            
+                                
+                                2021-07-05
+                            
+                        </td>
+                        <td class="view_cnt">571</td>
+                        
+                        <td>
+                        
+                            
+                                <img class="addedFile" src="/image/ko/solution/common/ico/clip.png" title="첨부파일" alt="첨부파일" >
+                            
+                            
+                        
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr class="always">
+                        
+                        
+                            <td class="alwaysNum"><span>공지</span></td>
+                        
+                        
+                        
+                        <td class="subject">
+                            
+                            일반
+                        </td>
+                        
+                        <td class="title">
+                            
+                                
+                                <a href="/bbs/content/1_69823"><strong>전자책 읽기 이벤트 「전자책의 재발견」 시즌3 상세안내 </strong></a>&nbsp;
+                            
+
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="writer">
+                        
+                            
+                            윤*민
+                        
+                        </td>
+                        <td class="reportDate">
+                            
+                                
+                                2021-07-02
+                            
+                        </td>
+                        <td class="view_cnt">66</td>
+                        
+                        <td>
+                        
+                            
+                            &nbsp;
+                        
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr class="always">
+                        
+                        
+                            <td class="alwaysNum"><span>공지</span></td>
+                        
+                        
+                        
+                        <td class="subject">
+                            
+                            일반
+                        </td>
+                        
+                        <td class="title">
+                            
+                                
+                                <a href="/bbs/content/1_69804"><strong>하계방학 중 도서관 운영 안내</strong></a>&nbsp;
+                            
+
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="writer">
+                        
+                            
+                            한*준
+                        
+                        </td>
+                        <td class="reportDate">
+                            
+                                
+                                2021-06-17
+                            
+                        </td>
+                        <td class="view_cnt">263</td>
+                        
+                        <td>
+                        
+                            
+                            &nbsp;
+                        
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr >
+                        
+                        
+                        
+                            
+                                <td class="num">
+                                    
+                                        
+                                        
+                                        5
+                                    
+                                </td>
+                            
+                        
+                        
+                        <td class="subject">
+                            
+                            행사
+                        </td>
+                        
+                        <td class="title">
+                            
+                                
+                                <a href="/bbs/content/1_69840">[DBpia 여름방학이벤트]놀면 뭐하니? 연구하자!</a>&nbsp;
+                            
+
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="writer">
+                        
+                            
+                            김*영
+                        
+                        </td>
+                        <td class="reportDate">
+                            
+                                
+                                2021-07-12
+                            
+                        </td>
+                        <td class="view_cnt">42</td>
+                        
+                        <td>
+                        
+                            
+                            &nbsp;
+                        
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr >
+                        
+                        
+                        
+                            
+                                <td class="num">
+                                    
+                                        
+                                        
+                                        6
+                                    
+                                </td>
+                            
+                        
+                        
+                        <td class="subject">
+                            
+                            학술
+                        </td>
+                        
+                        <td class="title">
+                            
+                                
+                                <a href="/bbs/content/1_69838">2021년 외국학술지지원센터&#40;FRIC&#41; 무료 학술지 이용 안내&#40;전기·전자·컴퓨터·정보공학 분야&#41;</a>&nbsp;
+                            
+
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="writer">
+                        
+                            
+                            김*정
+                        
+                        </td>
+                        <td class="reportDate">
+                            
+                                
+                                2021-07-07
+                            
+                        </td>
+                        <td class="view_cnt">10</td>
+                        
+                        <td>
+                        
+                            
+                                <img class="addedFile" src="/image/ko/solution/common/ico/clip.png" title="첨부파일" alt="첨부파일" >
+                            
+                            
+                        
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr >
+                        
+                        
+                        
+                            
+                                <td class="num">
+                                    
+                                        
+                                        
+                                        7
+                                    
+                                </td>
+                            
+                        
+                        
+                        <td class="subject">
+                            
+                            일반
+                        </td>
+                        
+                        <td class="title">
+                            
+                                
+                                <a href="/bbs/content/1_69836">전자책 읽기 이벤트  「전자책의 재발견」 시즌2  당첨자 안내</a>&nbsp;
+                            
+
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="writer">
+                        
+                            
+                            윤*민
+                        
+                        </td>
+                        <td class="reportDate">
+                            
+                                
+                                2021-07-06
+                            
+                        </td>
+                        <td class="view_cnt">59</td>
+                        
+                        <td>
+                        
+                            
+                            &nbsp;
+                        
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr >
+                        
+                        
+                        
+                            
+                                <td class="num">
+                                    
+                                        
+                                        
+                                        8
+                                    
+                                </td>
+                            
+                        
+                        
+                        <td class="subject">
+                            
+                            일반
+                        </td>
+                        
+                        <td class="title">
+                            
+                                
+                                <a href="/bbs/content/1_69835">도서관 사물함 개인물품 폐기 안내</a>&nbsp;
+                            
+
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="writer">
+                        
+                            
+                            퓨쳐*리
+                        
+                        </td>
+                        <td class="reportDate">
+                            
+                                
+                                2021-07-05
+                            
+                        </td>
+                        <td class="view_cnt">16</td>
+                        
+                        <td>
+                        
+                            
+                            &nbsp;
+                        
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr >
+                        
+                        
+                        
+                            
+                                <td class="num">
+                                    
+                                        
+                                        
+                                        9
+                                    
+                                </td>
+                            
+                        
+                        
+                        <td class="subject">
+                            
+                            일반
+                        </td>
+                        
+                        <td class="title">
+                            
+                                
+                                <a href="/bbs/content/1_69821">JCR 접속 안내</a>&nbsp;
+                            
+
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="writer">
+                        
+                            
+                            김*영
+                        
+                        </td>
+                        <td class="reportDate">
+                            
+                                
+                                2021-07-01
+                            
+                        </td>
+                        <td class="view_cnt">12</td>
+                        
+                        <td>
+                        
+                            
+                            &nbsp;
+                        
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr >
+                        
+                        
+                        
+                            
+                                <td class="num">
+                                    
+                                        
+                                        
+                                        10
+                                    
+                                </td>
+                            
+                        
+                        
+                        <td class="subject">
+                            
+                            학술
+                        </td>
+                        
+                        <td class="title">
+                            
+                                
+                                <a href="/bbs/content/1_69820">2021년 외국학술지지원센터&#40;FRIC&#41; 무료 학술지 이용 안내&#40;환경·에너지 분야&#41;</a>&nbsp;
+                            
+
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="writer">
+                        
+                            
+                            김*정
+                        
+                        </td>
+                        <td class="reportDate">
+                            
+                                
+                                2021-07-01
+                            
+                        </td>
+                        <td class="view_cnt">8</td>
+                        
+                        <td>
+                        
+                            
+                                <img class="addedFile" src="/image/ko/solution/common/ico/clip.png" title="첨부파일" alt="첨부파일" >
+                            
+                            
+                        
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr >
+                        
+                        
+                        
+                            
+                                <td class="num">
+                                    
+                                        
+                                        
+                                        11
+                                    
+                                </td>
+                            
+                        
+                        
+                        <td class="subject">
+                            
+                            일반
+                        </td>
+                        
+                        <td class="title">
+                            
+                                
+                                <a href="/bbs/content/1_69819">&#40;학생상담센터&#41;'마음에 말을 거는 그림책'&#40;7월&#41;</a>&nbsp;
+                            
+
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="writer">
+                        
+                            
+                            황*원
+                        
+                        </td>
+                        <td class="reportDate">
+                            
+                                
+                                2021-06-30
+                            
+                        </td>
+                        <td class="view_cnt">6</td>
+                        
+                        <td>
+                        
+                            
+                            &nbsp;
+                        
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr >
+                        
+                        
+                        
+                            
+                                <td class="num">
+                                    
+                                        
+                                        
+                                        12
+                                    
+                                </td>
+                            
+                        
+                        
+                        <td class="subject">
+                            
+                            일반
+                        </td>
+                        
+                        <td class="title">
+                            
+                                
+                                <a href="/bbs/content/1_69815">도서관 홈페이지 서비스 일시 중단 안내</a>&nbsp;
+                            
+
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="writer">
+                        
+                            
+                            윤*민
+                        
+                        </td>
+                        <td class="reportDate">
+                            
+                                
+                                2021-06-29
+                            
+                        </td>
+                        <td class="view_cnt">68</td>
+                        
+                        <td>
+                        
+                            
+                            &nbsp;
+                        
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr >
+                        
+                        
+                        
+                            
+                                <td class="num">
+                                    
+                                        
+                                        
+                                        13
+                                    
+                                </td>
+                            
+                        
+                        
+                        <td class="subject">
+                            
+                            일반
+                        </td>
+                        
+                        <td class="title">
+                            
+                                
+                                <a href="/bbs/content/1_69814">국내 Web DB 『스콜라 』무료 서비스 안내</a>&nbsp;
+                            
+
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="writer">
+                        
+                            
+                            김*영
+                        
+                        </td>
+                        <td class="reportDate">
+                            
+                                
+                                2021-06-28
+                            
+                        </td>
+                        <td class="view_cnt">9</td>
+                        
+                        <td>
+                        
+                            
+                            &nbsp;
+                        
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr >
+                        
+                        
+                        
+                            
+                                <td class="num">
+                                    
+                                        
+                                        
+                                        14
+                                    
+                                </td>
+                            
+                        
+                        
+                        <td class="subject">
+                            
+                            일반
+                        </td>
+                        
+                        <td class="title">
+                            
+                                
+                                <a href="/bbs/content/1_69809">「2021 KMOU 독후감 공모전」 수상자 안내</a>&nbsp;
+                            
+
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="writer">
+                        
+                            
+                            김*조
+                        
+                        </td>
+                        <td class="reportDate">
+                            
+                                
+                                2021-06-23
+                            
+                        </td>
+                        <td class="view_cnt">77</td>
+                        
+                        <td>
+                        
+                            
+                            &nbsp;
+                        
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr >
+                        
+                        
+                        
+                            
+                                <td class="num">
+                                    
+                                        
+                                        
+                                        15
+                                    
+                                </td>
+                            
+                        
+                        
+                        <td class="subject">
+                            
+                            학술
+                        </td>
+                        
+                        <td class="title">
+                            
+                                
+                                <a href="/bbs/content/1_69808">2021 재학생 도서관 이용교육&#40;도서관 홈페이지 200% 활용하기-1&#41; 안내</a>&nbsp;
+                            
+
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="writer">
+                        
+                            
+                            김*정
+                        
+                        </td>
+                        <td class="reportDate">
+                            
+                                
+                                2021-06-17
+                            
+                        </td>
+                        <td class="view_cnt">26</td>
+                        
+                        <td>
+                        
+                            
+                            &nbsp;
+                        
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr >
+                        
+                        
+                        
+                            
+                                <td class="num">
+                                    
+                                        
+                                        
+                                        16
+                                    
+                                </td>
+                            
+                        
+                        
+                        <td class="subject">
+                            
+                            학술
+                        </td>
+                        
+                        <td class="title">
+                            
+                                
+                                <a href="/bbs/content/1_69803">2021년 외국학술지지원센터&#40;FRIC&#41; 무료 학술지 이용 안내&#40;인문학 분야&#41;</a>&nbsp;
+                            
+
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="writer">
+                        
+                            
+                            김*정
+                        
+                        </td>
+                        <td class="reportDate">
+                            
+                                
+                                2021-06-16
+                            
+                        </td>
+                        <td class="view_cnt">6</td>
+                        
+                        <td>
+                        
+                            
+                                <img class="addedFile" src="/image/ko/solution/common/ico/clip.png" title="첨부파일" alt="첨부파일" >
+                            
+                            
+                        
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr >
+                        
+                        
+                        
+                            
+                                <td class="num">
+                                    
+                                        
+                                        
+                                        17
+                                    
+                                </td>
+                            
+                        
+                        
+                        <td class="subject">
+                            
+                            일반
+                        </td>
+                        
+                        <td class="title">
+                            
+                                
+                                <a href="/bbs/content/1_69799">Lloyd's Law Reports &amp; Lloyd's Law Reports: Insurance and Reinsurance 이용 안내</a>&nbsp;
+                            
+
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="writer">
+                        
+                            
+                            김*영
+                        
+                        </td>
+                        <td class="reportDate">
+                            
+                                
+                                2021-06-10
+                            
+                        </td>
+                        <td class="view_cnt">13</td>
+                        
+                        <td>
+                        
+                            
+                                <img class="addedFile" src="/image/ko/solution/common/ico/clip.png" title="첨부파일" alt="첨부파일" >
+                            
+                            
+                        
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr >
+                        
+                        
+                        
+                            
+                                <td class="num">
+                                    
+                                        
+                                        
+                                        18
+                                    
+                                </td>
+                            
+                        
+                        
+                        <td class="subject">
+                            
+                            일반
+                        </td>
+                        
+                        <td class="title">
+                            
+                                
+                                <a href="/bbs/content/1_69797">DBpia 이용방법 교육 영상  시청 안내</a>&nbsp;
+                            
+
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="writer">
+                        
+                            
+                            윤*민
+                        
+                        </td>
+                        <td class="reportDate">
+                            
+                                
+                                2021-06-10
+                            
+                        </td>
+                        <td class="view_cnt">10</td>
+                        
+                        <td>
+                        
+                            
+                            &nbsp;
+                        
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr >
+                        
+                        
+                        
+                            
+                                <td class="num">
+                                    
+                                        
+                                        
+                                        19
+                                    
+                                </td>
+                            
+                        
+                        
+                        <td class="subject">
+                            
+                            일반
+                        </td>
+                        
+                        <td class="title">
+                            
+                                
+                                <a href="/bbs/content/1_69794">전자책 읽기 이벤트  「전자책의 재발견」 시즌1  당첨자 안내</a>&nbsp;
+                            
+
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="writer">
+                        
+                            
+                            윤*민
+                        
+                        </td>
+                        <td class="reportDate">
+                            
+                                
+                                2021-06-08
+                            
+                        </td>
+                        <td class="view_cnt">44</td>
+                        
+                        <td>
+                        
+                            
+                            &nbsp;
+                        
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    
+                    
+                    
+                    
+                    <tr >
+                        
+                        
+                        
+                            
+                                <td class="num">
+                                    
+                                        
+                                        
+                                        20
+                                    
+                                </td>
+                            
+                        
+                        
+                        <td class="subject">
+                            
+                            일반
+                        </td>
+                        
+                        <td class="title">
+                            
+                                
+                                <a href="/bbs/content/1_69778">사물함 사용자 자진 수거 안내</a>&nbsp;
+                            
+
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="writer">
+                        
+                            
+                            한*준
+                        
+                        </td>
+                        <td class="reportDate">
+                            
+                                
+                                2021-06-03
+                            
+                        </td>
+                        <td class="view_cnt">66</td>
+                        
+                        <td>
+                        
+                            
+                            &nbsp;
+                        
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 특정 게시판의 게시물 이동 -->
+        
+        <input type="submit" name="submit" value="submit" style="display:none;" />
+    </form>
+
+    <!-- Paging -->
+    <div class="paging">
+        
+        <div class="paging">
+<span><span>1</span><a href="?pn=2">2</a><a href="?pn=3">3</a><a href="?pn=4">4</a><a href="?pn=5">5</a></span><a href="?pn=6" class="page" title="다음"><img src="/image/ko/solution/common/btn/nextPage.gif" alt="다음" title="다음"></a><a href="?pn=42" class="page" title="맨뒤"><img src="/image/ko/solution/common/btn/lastPage.gif" alt="맨뒤" title="맨뒤"></a>
+
+</div>
+        
+    </div>
+    <!-- btn -->
+    <!-- 사서커뮤니티 게시판에 권한이 없는 사용자가 들어오면 못 들어오게 한다. -->
+    <!-- 사용자 등록 하기 종료 -->
+    <!-- 실명기능을 사용하는 게시판타입에서는 로그인을 사용하지 않은 사용자에게는 쓰기 버튼이 안보인다.-->
+    <div class="buttons">
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+<script >
+
+var year_jan = '년 1월';
+var year_feb = '년 2월';
+var year_mar = '년 3월';
+var year_apr = '년 4월';
+var year_may = '년 5월';
+var year_jun = '년 6월';
+var year_jul = '년 7월';
+var year_aug = '년 8월';
+var year_sep = '년 9월';
+var year_oct = '년 10월';
+var year_nov = '년 11월';
+var year_dec = '년 12월';
+
+var sun = '일';
+var mon = '월';
+var tue = '화';
+var wed = '수';
+var thu = '목';
+var fri = '금';
+var sat = '토';
+
+var policy_content = '1';
+
+$.datepicker.setDefaults({
+    monthNames: [year_jan,year_feb,year_mar,year_apr,year_may,year_jun,year_jul,year_aug,year_sep,year_oct,year_nov,year_dec],
+    dayNamesMin: [sun, mon, tue, wed, thu, fri, sat],
+    showMonthAfterYear:true,
+    dateFormat: 'yymmdd',
+    duration: 0
+    //buttonImageOnly: true,
+    //buttonText: "달력",
+    //buttonImage: "/ui/images/calendar.gif",
+});
+
+$(document).ready(function(){
+    //$("#dateFrom").val($.datepicker.formatDate('yymmdd', new Date(2009, 1 - 1, 18)));
+    // $("#dateFrom").datepicker({defaultDate: new Date(2009, 1 - 1, 18)});
+    //$("#dateTo").val($.datepicker.formatDate('yymmdd', new Date(2009, 1 - 1, 27)));
+    //$("#dateTo").datepicker({defaultDate: new Date(2009, 1 - 1, 27)});
+    $("#dateFrom").datepicker();
+    $("#dateTo").datepicker();
+
+    var subjectUse = 'Y';
+    if(subjectUse == 'Y') {
+        var subjectCode = '';
+        $("#subject_code > option[value=\"" + subjectCode + "\"]").attr("selected", "true");
+    }
+
+    $("#ui-datepicker-div").css('z-index','1000');
+    /*
+    var policyYn = 'N';
+    if (policyYn == 'Y' && policy_content){
+        //alert("게시판 이용 시 '주민등록번호'등과 같은 개인정보를 등록할 경우 제3자에 의해 피해를 입을 수 있습니다. 개인정보 등록 여부를 확인 하셨습니까?");
+        alert(policy_content);
+    }
+    */
+});
+
+//읽기 권한이 없는경우
+function cantReadContent(){
+    alert('읽을 권한이 없습니다.');
+    return;
+}
+
+//비공개글일 경우
+function getNoPublicContent(){
+    alert('이 글은 비공개로 설정되어 있습니다.');
+    return;
+}
+
+function checked(form) {
+    var ret = false;
+
+    if (isEverChecked(form.board_Checked)) {
+        ret = confirm('이동 하시겠습니까?');
+    } else {
+        alert('항목을 먼저 선택하세요.');
+    }
+
+    return ret;
+}
+
+function validate(fname){
+    var digits="0123456789";
+    var temp;
+
+    var tsc = eval("document.searchFrm."+fname);
+        for (var i=0;i<tsc.value.length;i++){
+            temp=tsc.value.substring(i,i+1);
+        if (digits.indexOf(temp)==-1){
+            alert("숫자만 입력 하세요");
+            tsc.value = "";
+            return false;
+            }
+         }
+        return true;
+}
+</script><!--// divContent 끝-->
+			</div>
+          <!--//divContents-->
+          <!-- sub quick Menu -->
+            <div id="divQuickMenu">
+			<!-- <h2><a href="#">QUICK MENU</a></h2> -->
+			 <div class="quickMenu">
+	<a href="" class="quickMenuOpen">
+		<img src="/image/ko/local/quickMenuBtn2.png" alt="quickMenuOpen">
+		<span>TOP</span>
+	</a>
+    <div class="quickListW">
+		<div class="quickMenuTit">
+			<h2>QUICK MENU</h2>
+			<a href="" class="quickMenuClose">
+				<img src="/image/ko/local/quickMenuClose.png" alt="QUICK MENU CLOSE">
+			</a>
+		</div>
+		<ul class="quickList">
+		<li class="quick1">
+				<a href="/searchTotal" title="통합검색">
+					<span>통합검색</span>
+				</a>
+			</li>
+		<li class="quick2">
+				<a href="/myloan/list" title="대출&#183;연장&#183;예약">
+					<span>대출&#183;연장&#183;예약</span>
+				</a>
+			</li>
+		<li class="quick3">
+				<a href="/myreserve/list" title="예약현황">
+					<span>예약현황</span>
+				</a>
+			</li>
+		<li class="quick4">
+				<a href="/webcontent/info/13" title="희망도서신청">
+					<span>희망도서신청</span>
+				</a>
+			</li>
+		<li class="quick5">
+				<a href="/webcontent/info/11" title="원문복사">
+					<span>원문복사</span>
+				</a>
+			</li>
+		</ul>
+		 </div>
+</div><!-- //sub quick Menu -->
+			 </div>
+			<!--//divContentsW-->
+			<!-- divFooter -->
+    		<div id="divFooter">
+	<div class="footer"> 
+		<div>
+			<div class="footerMenu"> 
+				<div>
+					<ul> 
+						<li class="privacy"><a href="http://www.kmou.ac.kr/kmou/cm/cntnts/cntntsView.do?mi=3613&cntntsId=1818" target="_blank" title="개인정보처리방침">개인정보처리방침</a></li>
+						<li><a href="/webcontent/info/70" title="이메일주소무단수집거부">이메일주소무단수집거부</a></li>
+						<li><a href="/webcontent/info/44" title="찾아오시는길">찾아오시는길</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="libraryInfo"> 
+				<div class="address">
+					<address>(49112) 부산광역시 영도구 태종로 727(동삼동) 한국해양대학교 도서관. 전화 : 051-410-4077 / 팩스 : 051-404-3989</address>
+					<p class="copyright">Copyright (c) Korea Maritime & Ocean University. All rights reserved.</p>
+				</div>
+				<div class="siteList">
+					<a href="#">관련사이트</a>
+					<ul>
+					<li>
+							<a href="https://www.kmou.ac.kr" target="_blank" title="한국해양대학교">
+								한국해양대학교</a>
+						</li>
+					<li>
+							<a href="https://cyberweb.kmou.ac.kr" target="_blank" title="KMOU-LMS">
+								KMOU-LMS</a>
+						</li>
+					<li>
+							<a href="https://ocean-cts.kmou.ac.kr" target="_blank" title="Ocean-CTS">
+								Ocean-CTS</a>
+						</li>
+					<li>
+							<a href="https://wtis.kmou.ac.kr" target="_blank" title="종합정보시스템">
+								종합정보시스템</a>
+						</li>
+					<li>
+							<a href="https://wmail.kmou.ac.kr/" target="_blank" title="WebMail">
+								WebMail</a>
+						</li>
+					<li>
+							<a href="https://www.kmou.ac.kr/kmou/cm/cntnts/cntntsView.do?mi=1962&cntntsId=386" target="_blank" title="증명서발급서비스">
+								증명서발급서비스</a>
+						</li>
+					<li>
+							<a href="https://www.kmou.ac.kr/kmou/ad/research/achievement.do?mi=1965&cntntsId=#sideContent" target="_blank" title="연구업적검색서비스">
+								연구업적검색서비스</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div><!-- //divFooter -->
+			<a href="" class="topBtn">
+				<img src="/image/ko/local/topBtn.png" alt="TopButton">
+			</a>
+		</div>
+	</div>
+</body>
+</html>
+
+
