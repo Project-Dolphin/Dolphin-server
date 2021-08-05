@@ -7,7 +7,7 @@ serverless offline start
 ```
 ## response 명세
 1. GET  `/dev/calendar`
-```json
+```typescript
 {
     term: { startedAt: '2021-8-2', endedAt: '2021-8-6' },
     mainPlan: true,
