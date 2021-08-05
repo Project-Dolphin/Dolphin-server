@@ -68,7 +68,7 @@ export const academicCalendar = [
   },
   {
     term: { startedAt: '2021-2-26', endedAt: '2021-2-26' },
-    mainPlan: true,
+    mainPlan: false,
     content: '신입생 오리엔테이션(해양과학기술대학,공과대학,국제대학)',
   },
   { term: { startedAt: '2021-3-2', endedAt: '2021-3-2' }, mainPlan: true, content: '제1학기 개강' },
@@ -84,7 +84,7 @@ export const academicCalendar = [
   },
   {
     term: { startedAt: '2021-3-5', endedAt: '2021-3-5' },
-    mainPlan: true,
+    mainPlan: false,
     content: '대학원 외국어시험',
   },
   {
@@ -94,7 +94,7 @@ export const academicCalendar = [
   },
   {
     term: { startedAt: '2021-4-5', endedAt: '2021-4-5' },
-    mainPlan: true,
+    mainPlan: false,
     content: '수업일수 1/3선',
   },
   {
@@ -114,7 +114,7 @@ export const academicCalendar = [
   },
   {
     term: { startedAt: '2021-4-22', endedAt: '2021-4-22' },
-    mainPlan: true,
+    mainPlan: false,
     content: '수업일수 1/2선',
   },
   {
@@ -124,7 +124,7 @@ export const academicCalendar = [
   },
   {
     term: { startedAt: '2021-5-11', endedAt: '2021-5-11' },
-    mainPlan: true,
+    mainPlan: false,
     content: '수업일수 2/3선',
   },
   {
@@ -135,7 +135,7 @@ export const academicCalendar = [
   { term: { startedAt: '2021-5-12', endedAt: '2021-5-14' }, mainPlan: true, content: '대학축제' },
   {
     term: { startedAt: '2021-6-8', endedAt: '2021-6-14' },
-    mainPlan: true,
+    mainPlan: false,
     content: '제1학기 휴업일 보강',
   },
   {
@@ -170,7 +170,7 @@ export const academicCalendar = [
   },
   {
     term: { startedAt: '2021-7-12', endedAt: '2021-7-23' },
-    mainPlan: true,
+    mainPlan: false,
     content: '해사대학 3학년 제1학기 성적 입력·열람 및 정정',
   },
   {
@@ -185,7 +185,7 @@ export const academicCalendar = [
   },
   {
     term: { startedAt: '2021-8-18', endedAt: '2021-8-18' },
-    mainPlan: true,
+    mainPlan: false,
     content: '2020학년도 후기 학위수여식',
   },
   {
@@ -210,7 +210,7 @@ export const academicCalendar = [
   },
   {
     term: { startedAt: '2021-9-3', endedAt: '2021-9-3' },
-    mainPlan: true,
+    mainPlan: false,
     content: '대학원 외국어시험',
   },
   {
@@ -220,7 +220,7 @@ export const academicCalendar = [
   },
   {
     term: { startedAt: '2021-10-6', endedAt: '2021-10-6' },
-    mainPlan: true,
+    mainPlan: false,
     content: '수업일수 1/3선',
   },
   {
@@ -240,7 +240,7 @@ export const academicCalendar = [
   },
   {
     term: { startedAt: '2021-10-25', endedAt: '2021-10-25' },
-    mainPlan: true,
+    mainPlan: false,
     content: '수업일수 1/2선',
   },
   {
@@ -261,12 +261,12 @@ export const academicCalendar = [
   },
   {
     term: { startedAt: '2021-11-11', endedAt: '2021-11-11' },
-    mainPlan: true,
+    mainPlan: false,
     content: '수업일수 2/3선',
   },
   {
     term: { startedAt: '2021-12-6', endedAt: '2021-12-10' },
-    mainPlan: true,
+    mainPlan: false,
     content: '제2학기 휴업일 보강',
   },
   {
@@ -299,10 +299,10 @@ export const academicCalendar = [
     mainPlan: true,
     content: '제2학기 성적 확정 및 조회 - 성적이의신청 및 정정',
   },
-  { term: { startedAt: '2022-1-3', endedAt: '2022-1-3' }, mainPlan: true, content: '시무식' },
+  { term: { startedAt: '2022-1-3', endedAt: '2022-1-3' }, mainPlan: false, content: '시무식' },
   {
     term: { startedAt: '2022-1-10', endedAt: '2022-1-14' },
-    mainPlan: true,
+    mainPlan: false,
     content: '해사대학 3학년 제2학기 성적 입력·열람 및 정정',
   },
   {
@@ -327,7 +327,7 @@ export const academicCalendar = [
   },
   {
     term: { startedAt: '2022-2-21', endedAt: '2022-2-27' },
-    mainPlan: true,
+    mainPlan: false,
     content: '해사대학 신입생 오리엔테이션',
   },
   {
@@ -342,7 +342,7 @@ export const academicCalendar = [
   },
   {
     term: { startedAt: '2022-2-28', endedAt: '2022-2-28' },
-    mainPlan: true,
+    mainPlan: false,
     content: '신입생 오리엔테이션(해양과학기술대학, 공과대학, 국제대학)',
   },
 ];
