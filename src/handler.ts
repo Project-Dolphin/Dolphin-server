@@ -18,9 +18,6 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
     };
   }
 
-<<<<<<< HEAD
-  if (path === '/shuttlenext') {
-=======
   if (path === '/notices') {
     // 학사 일정
     const noticeService = new NoticeService();
@@ -34,7 +31,6 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   }
 
   if (path === '/nextshuttle') {
->>>>>>> master
     // 학사 일정
     const shuttleService = new ShuttleService();
     return {
