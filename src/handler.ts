@@ -43,7 +43,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   }
 
   if (path === '/allshuttle') {
-    // 모든 셔ㄹ
+    // 모든 셔틀
     const shuttleService = new ShuttleService();
     return {
       statusCode: 200,
