@@ -1,7 +1,7 @@
 import { shuttleBus } from '../constants/shuttle';
 
 export class ShuttleService {
-  public getNextShuttle() {
+  public getShuttleNext() {
     const date = new Date();
     if(date.getDay() == 0 || date.getDay() == 6) return 0;
 
@@ -19,7 +19,7 @@ export class ShuttleService {
     return result;
   }
 
-  public getAllShuttle() {
+  public getShuttleAll() {
 
     return shuttleBus;
   }

@@ -30,4 +30,10 @@ functions:
       - http:
           path: calendar
           method: get
+      - http:
+          path: shuttlenext
+          method: get
+      - http:
+          path: shuttleall
+          method: get
       

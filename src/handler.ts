@@ -17,25 +17,25 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
     };
   }
 
-  if (path === '/nextshuttle') {
+  if (path === '/shuttlenext') {
     // 학사 일정
     const shuttleService = new ShuttleService();
     return {
       statusCode: 200,
       body: JSON.stringify({
-        data: shuttleService.getNextShuttle(),
+        data: shuttleService.getShuttleNext(),
         path: path,
       }),
     };
   }
 
-  if (path === '/allshuttle') {
+  if (path === '/shuttleall') {
     // 학사 일정
     const shuttleService = new ShuttleService();
     return {
       statusCode: 200,
       body: JSON.stringify({
-        data: shuttleService.getAllShuttle(),
+        data: shuttleService.getShuttleAll(),
         path: path,
       }),
     };
