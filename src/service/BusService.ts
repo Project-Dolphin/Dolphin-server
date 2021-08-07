@@ -55,7 +55,7 @@ export class BusService {
     const response = await got.get(url);
     if(response.headers['resultCode'] == '99') return Promise.reject('세션 종료');
 
-    const contents = parse(response.body['items']); // 내일 데이터 확인 이후 modeling 예정
+    // const contents = parse(response.body['items']); // 내일 데이터 확인 이후 modeling 예정
 
     const arriveInfo: BusStopInfo[] = [];
 

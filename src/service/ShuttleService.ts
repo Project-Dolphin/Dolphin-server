@@ -68,12 +68,14 @@ export class ShuttleService {
     const now = new Date();
     const today = now.getFullYear() + this.addPaddingNumber(now.getMonth() + 1) + this.addPaddingNumber(now.getDate());
 
+    let flag : boolean = false;
+
     testPeriod.forEach(function(period) {
       if (today >= period.term.startedAt && today <= period.term.endedAt) {
-        return true;
+        flag = true;
       }
     });
 
-    return false;
+    return flag;
   }    
 }
