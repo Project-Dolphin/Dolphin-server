@@ -31,7 +31,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   }
 
   if (path === '/nextshuttle') {
-    // 학사 일정
+    // 다음 셔틀
     const shuttleService = new ShuttleService();
     return {
       statusCode: 200,
@@ -43,7 +43,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   }
 
   if (path === '/allshuttle') {
-    // 학사 일정
+    // 모든 셔ㄹ
     const shuttleService = new ShuttleService();
     return {
       statusCode: 200,
