@@ -74,7 +74,7 @@ export const academicCalendar = [
   {
     term: { startedAt: '2021-3-2', endedAt: '2021-3-2' },
     mainPlan: true,
-    content: '제1학기 개강'
+    content: '제1학기 개강',
   },
   {
     term: { startedAt: '2021-3-2', endedAt: '2021-3-8' },
@@ -136,10 +136,7 @@ export const academicCalendar = [
     mainPlan: true,
     content: '여름계절학기 수강신청',
   },
-  { term: { startedAt: '2021-5-12', endedAt: '2021-5-14' },
-    mainPlan: true,
-    content: '대학축제'
-  },
+  { term: { startedAt: '2021-5-12', endedAt: '2021-5-14' }, mainPlan: true, content: '대학축제' },
   {
     term: { startedAt: '2021-6-8', endedAt: '2021-6-14' },
     mainPlan: false,
@@ -258,7 +255,7 @@ export const academicCalendar = [
   {
     term: { startedAt: '2021-11-4', endedAt: '2021-11-4' },
     mainPlan: true,
-    content: '개교기념식'
+    content: '개교기념식',
   },
   {
     term: { startedAt: '2021-11-5', endedAt: '2021-11-5' },
@@ -313,7 +310,7 @@ export const academicCalendar = [
   {
     term: { startedAt: '2022-1-3', endedAt: '2022-1-3' },
     mainPlan: false,
-    content: '시무식'
+    content: '시무식',
   },
   {
     term: { startedAt: '2022-1-10', endedAt: '2022-1-14' },
