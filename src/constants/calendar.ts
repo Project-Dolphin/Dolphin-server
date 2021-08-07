@@ -71,7 +71,11 @@ export const academicCalendar = [
     mainPlan: false,
     content: '신입생 오리엔테이션(해양과학기술대학,공과대학,국제대학)',
   },
-  { term: { startedAt: '2021-3-2', endedAt: '2021-3-2' }, mainPlan: true, content: '제1학기 개강' },
+  {
+    term: { startedAt: '2021-3-2', endedAt: '2021-3-2' },
+    mainPlan: true,
+    content: '제1학기 개강'
+  },
   {
     term: { startedAt: '2021-3-2', endedAt: '2021-3-8' },
     mainPlan: true,
@@ -132,7 +136,10 @@ export const academicCalendar = [
     mainPlan: true,
     content: '여름계절학기 수강신청',
   },
-  { term: { startedAt: '2021-5-12', endedAt: '2021-5-14' }, mainPlan: true, content: '대학축제' },
+  { term: { startedAt: '2021-5-12', endedAt: '2021-5-14' },
+    mainPlan: true,
+    content: '대학축제'
+  },
   {
     term: { startedAt: '2021-6-8', endedAt: '2021-6-14' },
     mainPlan: false,
@@ -248,7 +255,11 @@ export const academicCalendar = [
     mainPlan: true,
     content: '제2학기 중간고사 성적열람',
   },
-  { term: { startedAt: '2021-11-4', endedAt: '2021-11-4' }, mainPlan: true, content: '개교기념식' },
+  {
+    term: { startedAt: '2021-11-4', endedAt: '2021-11-4' },
+    mainPlan: true,
+    content: '개교기념식'
+  },
   {
     term: { startedAt: '2021-11-5', endedAt: '2021-11-5' },
     mainPlan: true,
@@ -299,7 +310,11 @@ export const academicCalendar = [
     mainPlan: true,
     content: '제2학기 성적 확정 및 조회 - 성적이의신청 및 정정',
   },
-  { term: { startedAt: '2022-1-3', endedAt: '2022-1-3' }, mainPlan: false, content: '시무식' },
+  {
+    term: { startedAt: '2022-1-3', endedAt: '2022-1-3' },
+    mainPlan: false,
+    content: '시무식'
+  },
   {
     term: { startedAt: '2022-1-10', endedAt: '2022-1-14' },
     mainPlan: false,
