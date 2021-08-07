@@ -4,8 +4,7 @@ const noticeService = new NoticeService();
 
 describe('library notice test', () => {
   it('getLibraryNotices test - 1', async (done) => {
-    const result = await noticeService.getLibraryNotices();
-    console.log(result);
+    const result = await noticeService.getMainNotice();
     expect(result).toBeTruthy();
     done();
   });

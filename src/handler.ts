@@ -1,5 +1,6 @@
 import { Handler, APIGatewayEvent } from 'aws-lambda';
 import { CalendarService } from './service/CalendarService';
+import { NoticeService } from './service/NoticeService';
 import { ShuttleService } from './service/ShuttleService';
 
 const dolphin: Handler = async (event: APIGatewayEvent) => {
@@ -12,6 +13,18 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
       statusCode: 200,
       body: JSON.stringify({
         data: calendarService.getAcademicCalendar(),
+        path: path,
+      }),
+    };
+  }
+
+  if (path === '/notices') {
+    // 학사 일정
+    const noticeService = new NoticeService();
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        data: await noticeService.getMainNotice(),
         path: path,
       }),
     };
