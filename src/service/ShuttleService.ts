@@ -1,4 +1,5 @@
 import { shuttleBus } from '../constants/shuttle';
+import { testPeriod } from '../constants/testperiod';
 
 interface ShuttleBus {
   type: string;
@@ -11,7 +12,7 @@ export class ShuttleService {
 
     const now = this.toKSTString();
 
-    const type = this.checkVacation() ? 'vacation' : 'normal';
+    const type = this.checkTestPeriod() ? 'test' : this.checkVacation() ? 'vacation' : 'normal';
 
     const tmp = shuttleBus.filter((schedule) => {
       schedule.time > now.substr(8, 12) && schedule.type === type;
@@ -61,4 +62,18 @@ export class ShuttleService {
     if (month == 7 || month == 8 || month == 1 || month == 2) return true;
     else return false;
   }
+
+  private checkTestPeriod(): boolean {
+
+    const now = new Date();
+    const today = now.getFullYear() + this.addPaddingNumber(now.getMonth() + 1) + this.addPaddingNumber(now.getDate());
+
+    testPeriod.forEach(function(period) {
+      if (today >= period.term.startedAt && today <= period.term.endedAt) {
+        return true;
+      }
+    });
+
+    return false;
+  }    
 }

@@ -1,18 +1,18 @@
 export const testPeriod = [
   {
-    term: { startedAt: '2021-04-19', endedAt: '2021-04-23' },
+    term: { startedAt: '20210419', endedAt: '20210423' },
     content: '1학기 중간고사',
   },
   {
-    term: { startedAt: '2021-06-15', endedAt: '2021-06-21' },
+    term: { startedAt: '20210615', endedAt: '20210621' },
     content: '1학기 기말고사',
   },
   {
-    term: { startedAt: '2021-10-18', endedAt: '2021-10-22' },
+    term: { startedAt: '20211018', endedAt: '20211022' },
     content: '2학기 중간고사',
   },
   {
-    term: { startedAt: '2021-12-13', endedAt: '2021-12-17' },
+    term: { startedAt: '20211213', endedAt: '20211217' },
     content: '2학기 기말고사',
   },
 ];
