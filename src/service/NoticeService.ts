@@ -20,7 +20,7 @@ export class NoticeService {
     const contents = list?.querySelectorAll('li'); // optional chaining
     const notices: Notice[] = [];
 
-    if (contents) { // contents가 null 일 경우도 생각
+    if (contents) {
       contents.forEach((content) => {
         const titleData = content.querySelector('a');
         const dateData = content.querySelector('span');
