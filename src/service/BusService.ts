@@ -67,15 +67,16 @@ export class BusService {
         var jsonObj = parser.convertToJson(tObj,options);
     
         var tmp = jsonObj.response.body.items.item;
-        tmp.forEach(function(value : BusInfo){
+        tmp.forEach(function(value: any){
             if(value.lat && value.lon) {
                 if(String(value.gpsTm).length!=6) value.gpsTm = "0"+value.gpsTm;
                 arriveInfo.push({carNo: value.carNo, nodeId: value.nodeId, lat: value.lat, lon: value.lon, gpsTm: value.gpsTm})
             }
-        })  
+        })
+        
+        console.log(arriveInfo)
     });
 
-    console.log(arriveInfo)
 
     return arriveInfo;
   }
