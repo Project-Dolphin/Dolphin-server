@@ -34,7 +34,7 @@ export class BusService {
     if (response.headers['resultCode'] == '99') return Promise.reject('세션 종료');
     console.log("jsonObj : ", jsonObj)
 
-    const item = jsonObj.response.body.items == undefined
+    const item = jsonObj.response.body.items == null
       ? { carNo1: "차량 없음", carNo2: "차량 없음", min1: 999, min2: 999, station1: 999, station2: 999, lowplate1: false, lowplate2: false } : jsonObj.response.body.items;
 
     console.log(item);
@@ -49,6 +49,9 @@ export class BusService {
       lowplate1: item['lowplate'],
       lowplate2: item['lowplate'],
     };
+
+    console.log(arriveInfo);
+
     return arriveInfo;
   }
 
