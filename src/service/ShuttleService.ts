@@ -1,7 +1,7 @@
 import { shuttleBus } from '../constants/shuttle';
 import { testPeriod } from '../constants/testperiod';
 
-import { toKSTString, makeKoreaDate } from '../constants/function/commonfunction';
+import { toKSTString } from '../constants/function/commonfunction';
 
 
 interface ShuttleBus {
@@ -10,7 +10,7 @@ interface ShuttleBus {
 }
 export class ShuttleService {
   public getNextShuttle(): ShuttleBus[] {
-    const date = makeKoreaDate();
+    const date = new Date();
     if (!this.checkTestPeriod() && (date.getDay() == 0 || date.getDay() == 6)) return [];
 
     const now = toKSTString();
@@ -39,7 +39,7 @@ export class ShuttleService {
   }
 
   private checkVacation(): boolean {
-    const month = makeKoreaDate().getMonth();
+    const month = new Date().getMonth();
     if (month == 7 || month == 8 || month == 1 || month == 2) return true;
     else return false;
   }
