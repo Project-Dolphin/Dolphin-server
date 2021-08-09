@@ -35,6 +35,8 @@ export class NoticeService {
       }
     }
 
+    console.log('notices : ', notices);
+
     return notices;
   }
 }
