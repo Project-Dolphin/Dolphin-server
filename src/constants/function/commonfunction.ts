@@ -41,7 +41,7 @@ export function checkHoliday(): boolean {
 }
 
 export function makeKoreaDate(): Date {
-    const newDate = new Date('2021/12/11/05:00:00');
+    const newDate = new Date();
     newDate.setTime(newDate.getTime() + 9 * 60 * 60 * 1000);
     return newDate;
 }
