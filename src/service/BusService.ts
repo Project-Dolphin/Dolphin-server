@@ -31,7 +31,9 @@ export class BusService {
     const response = await got.get(url);
     if (response.headers['resultCode'] == '99') return Promise.reject('세션 종료');
 
-    const item = JSON.stringify(response.body['items']['item']);
+    const item = JSON.stringify(response.body['items']);
+
+    console.log(item);
 
     var arriveInfo: BusArriveInfo = {
       carNo1: item['carNo1'],
@@ -74,7 +76,7 @@ export class BusService {
           }
         })
 
-        console.log(arriveInfo);
+        //console.log(arriveInfo);
       }
     });
 
