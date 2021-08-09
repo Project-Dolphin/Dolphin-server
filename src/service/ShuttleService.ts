@@ -1,5 +1,6 @@
 import { shuttleBus } from '../constants/shuttle';
 import { testPeriod } from '../constants/testperiod';
+import { toKSTString, addPaddingNumber } from '../constants/function/commonfunction';
 
 interface ShuttleBus {
   type: string;
@@ -10,11 +11,11 @@ export class ShuttleService {
     const date = new Date();
     if (date.getDay() == 0 || date.getDay() == 6) return [];
 
-    const now = this.toKSTString();
+    const now = toKSTString();
 
     const type = this.checkTestPeriod() ? 'test' : this.checkVacation() ? 'vacation' : 'normal';
 
-    const tmp = shuttleBus.filter(schedule =>  Number(schedule.time) > Number(now.substr(8, 4)) && schedule.type == type);
+    const tmp = shuttleBus.filter(schedule => Number(schedule.time) > Number(now.substr(8, 4)) && schedule.type == type);
 
     var result = [];
     result.push(tmp[0]);
@@ -26,27 +27,6 @@ export class ShuttleService {
     return shuttleBus;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private addPaddingNumber(number: any): string {
-    if (number < 10) {
-      return '0' + number;
-    }
-    return number;
-  }
-
-  private toKSTString(): string {
-    const now = new Date();
-
-    const result =
-      now.getFullYear() +
-      this.addPaddingNumber(now.getMonth() + 1) +
-      this.addPaddingNumber(now.getDate()) +
-      this.addPaddingNumber(now.getHours()) +
-      this.addPaddingNumber(now.getMinutes()) +
-      this.addPaddingNumber(now.getSeconds())
-    return result;
-  }
-
   private checkVacation(): boolean {
     const month = new Date().getMonth();
     if (month == 7 || month == 8 || month == 1 || month == 2) return true;
@@ -56,16 +36,16 @@ export class ShuttleService {
   private checkTestPeriod(): boolean {
 
     const now = new Date();
-    const today = now.getFullYear() + this.addPaddingNumber(now.getMonth() + 1) + this.addPaddingNumber(now.getDate());
+    const today = now.getFullYear() + addPaddingNumber(now.getMonth() + 1) + addPaddingNumber(now.getDate());
 
-    let flag : boolean = false;
+    let flag: boolean = false;
 
-    testPeriod.forEach(function(period) {
+    testPeriod.forEach(function (period) {
       if (today >= period.term.startedAt && today <= period.term.endedAt) {
         flag = true;
       }
     });
 
     return flag;
-  }    
+  }
 }
