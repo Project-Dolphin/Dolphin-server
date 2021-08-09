@@ -15,6 +15,13 @@ export function toKSTString(): string {
         addPaddingNumber(now.getHours()) +
         addPaddingNumber(now.getMinutes()) +
         addPaddingNumber(now.getSeconds());
+
+    console.log('year : ', now.getFullYear())
+    console.log('month : ', now.getMonth() + 1)
+    console.log('date : ', now.getDate())
+    console.log('hour  : ', now.getHours())
+    console.log('minute : ', now.getMinutes())
+    console.log('sec : ', now.getSeconds())
     console.log(result);
     return result;
 }
