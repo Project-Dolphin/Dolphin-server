@@ -42,14 +42,14 @@ export class BusService {
     console.log(item);
 
     var arriveInfo: BusArriveInfo = {
-      carNo1: item['carNo1'],
-      carNo2: item['carNo2'],
-      min1: item['min1'],
-      min2: item['min1'],
-      station1: item['station1'],
-      station2: item['station2'],
-      lowplate1: item['lowplate'],
-      lowplate2: item['lowplate'],
+      carNo1: item.carNo1,
+      carNo2: item.carNo2,
+      min1: item.min1,
+      min2: item.min2,
+      station1: item.station1,
+      station2: item.station2,
+      lowplate1: item.lowplate1,
+      lowplate2: item.lowplate2,
     };
 
     console.log(arriveInfo);
