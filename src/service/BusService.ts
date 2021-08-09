@@ -36,11 +36,7 @@ export class BusService {
     var jsonObj = parser.convertToJson(tObj, options);
     if (response.headers['resultCode'] == '99') return Promise.reject('세션 종료');
 
-    console.log(jsonObj.response.body.items.length)
-    console.log(JSON.stringify(jsonObj.response.body.items).length)
-
-
-    const item = jsonObj.response.body.items.length > 0
+    const item = JSON.stringify(jsonObj.response.body.items).length > 0
       ? jsonObj.response.body.items : { carNo1: "차량 없음", carNo2: "차량 없음", min1: 999, min2: 999, station1: 999, station2: 999, lowplate1: false, lowplate2: false };
 
     console.log(item);
