@@ -22,10 +22,10 @@ export class NoticeService {
     console.log('noticeHtmls : ', noticeHtmls);
     const list = noticeHtmls.querySelectorAll('li');
     console.log(list);
-    /*if (list != null) {
-      const contents = list.querySelectorAll('li');
+    if (list != null) {
+      //const contents = list.querySelectorAll('li');
 
-      contents.forEach((content) => {
+      list.forEach((content) => {
         const titleData = content.querySelector('a');
         const dateData = content.querySelector('span');
 
@@ -36,7 +36,7 @@ export class NoticeService {
         });
       });
 
-    }*/
+    }
 
     return notices;
   }
