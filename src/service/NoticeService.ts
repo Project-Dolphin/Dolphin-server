@@ -19,7 +19,7 @@ export class NoticeService {
     const root = parse(rawText.body);
 
     const noticeHtmls = root.querySelector(".notibox.on");
-    console.log('noticeHtmls[0] : ', noticeHtmls[0]);
+    console.log('noticeHtmls : ', noticeHtmls);
     const list = noticeHtmls.querySelector('.list_box');
     console.log(list);
     if (list != null) {
