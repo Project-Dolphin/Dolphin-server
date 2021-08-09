@@ -33,8 +33,6 @@ export class NoticeService {
       });
     }
 
-
-
     return notices;
   }
 }
