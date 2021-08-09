@@ -3,7 +3,6 @@ import parser = require('fast-xml-parser');
 import { options } from '../constants/option/xml_parser_option';
 import { depart190 } from '../constants/depart190';
 import { checkHoliday, makeKoreaDate, toKSTString } from '../constants/function/commonfunction';
-import { holiDay } from '../constants/holiday';
 
 interface BusArriveInfo {
   carNo1: Number;
