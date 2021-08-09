@@ -23,7 +23,7 @@ export class ShuttleService {
       else result.push({ type: "none", time: "2359" })
     }
 
-    console.log(result);
+    console.log('checkNextShuttle : ', result);
 
     return result;
   }
@@ -41,7 +41,7 @@ export class ShuttleService {
   private checkTestPeriod(): boolean {
 
     const today = toKSTString().substr(8, 4);
-    console.log(today);
+    console.log('checkTestPeriod: ', today);
 
     let flag: boolean = false;
 
