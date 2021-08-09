@@ -12,7 +12,7 @@ describe('All node test', () => {
 
 describe('Specific node test', () => {
   it('getSpecificNode test - 1', async (done) => {
-    const result = await busService.getSpecificNode(167720201);
+    const result = await busService.getSpecificNode('167720201');
     expect(result).toBeTruthy();
     done();
   });
