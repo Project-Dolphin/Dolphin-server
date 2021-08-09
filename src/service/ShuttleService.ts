@@ -15,12 +15,10 @@ export class ShuttleService {
     const type = this.checkTestPeriod() ? 'test' : this.checkVacation() ? 'vacation' : 'normal';
 
     const tmp = shuttleBus.filter(schedule =>  Number(schedule.time) > Number(now.substr(8, 4)) && schedule.type == type);
-    console.log(tmp)
 
     var result = [];
     result.push(tmp[0]);
     result.push(tmp[1]);
-    console.log('result: ', result);
     return result;
   }
 
