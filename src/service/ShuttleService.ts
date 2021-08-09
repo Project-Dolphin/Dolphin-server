@@ -20,7 +20,7 @@ export class ShuttleService {
     var result = [];
     for (let i = 0; i < 3; i++) {
       if (tmp[i]) result.push(tmp[i]);
-      else result.push({ type: "none", time: "23:59" })
+      else result.push({ type: "none", time: "2359" })
     }
 
     console.log(result);
