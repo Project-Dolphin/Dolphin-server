@@ -39,8 +39,7 @@ export class ShuttleService {
 
   private checkTestPeriod(): boolean {
 
-    const now = makeKoreaDate();
-    const today = now.getFullYear() + addPaddingNumber(now.getMonth() + 1) + addPaddingNumber(now.getDate());
+    const today = toKSTString().substr(0, 8);
 
     let flag: boolean = false;
 

@@ -1,3 +1,5 @@
+import { holiDay } from "../holiday";
+
 export function toKSTString(): string {
     const now = makeKoreaDate();
 
@@ -19,8 +21,17 @@ export function addPaddingNumber(number: any): string {
 }
 
 export function checkHoliday(): boolean {
-    //const today = toKSTString().substr(0, 8);
+
+    const now = toKSTString().substr(0, 8);
+
     var flag = false;
+
+    holiDay.forEach(function (period) {
+        if (now >= period.term.startedAt && now <= period.term.endedAt) {
+            flag = true;
+        }
+    });
+
     return flag;
 }
 

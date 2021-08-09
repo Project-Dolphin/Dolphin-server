@@ -2,7 +2,7 @@ import got from 'got';
 import parser = require('fast-xml-parser');
 import { options } from '../constants/option/xml_parser_option';
 import { depart190 } from '../constants/depart190';
-import { makeKoreaDate, toKSTString } from '../constants/function/commonfunction';
+import { checkHoliday, makeKoreaDate, toKSTString } from '../constants/function/commonfunction';
 import { holiDay } from '../constants/holiday';
 
 interface BusArriveInfo {
@@ -24,11 +24,6 @@ interface BusInfo {
   nodeId: Number;
 }
 
-interface DepartBus {
-  type: string;
-  time: string;
-}
-
 export class BusService {
   private readonly serviceKey = 'R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D';
 
@@ -39,13 +34,7 @@ export class BusService {
 
     const now = toKSTString().substr(8, 4);
 
-    let flag: boolean = false;
-
-    holiDay.forEach(function (period) {
-      if (now >= period.term.startedAt && now <= period.term.endedAt) {
-        flag = true;
-      }
-    });
+    let flag: boolean = checkHoliday();
 
     const type = flag ? 'holiday' : date.getDay() == 6 ? 'saturday' : 'normal'
 
