@@ -27,10 +27,12 @@ export class ShuttleService {
   }
 
   public getAllShuttle(): ShuttleBus[] {
+    return shuttleBus;
+  }
 
+  public getDayShuttle(): ShuttleBus[] {
     const type = this.checkTestPeriod() ? 'test' : this.checkVacation() ? 'vacation' : 'normal';
     const tmp = shuttleBus.filter(schedule => schedule.type == type);
-    console.log(tmp);
     return tmp;
   }
 

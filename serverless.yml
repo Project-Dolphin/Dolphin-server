@@ -33,4 +33,22 @@ functions:
       - http:
           path: notices
           method: get
+      - http:
+          path: dayshuttle
+          method: get
+      - http:
+          path: allshuttle
+          method: get
+      - http:
+          path: nextshuttle
+          method: get
+      - http:
+          path: allnode
+          method: get
+      - http:
+          path: specificnode/{bstopid}
+          method: get
+      - http:
+          path: depart190
+          method: get
       
