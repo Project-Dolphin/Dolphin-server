@@ -3,10 +3,9 @@ import { holiDay } from "../holiday";
 export function toKSTString(): string {
     const now = makeKoreaDate();
 
-    console.log('now: ', now);
-
     //const now = new Date('2021/08/09/22:38:10'); // 야간용 시간 코드
     //const now = new Date('2021/08/15/14:00:00'); // 공휴일용 시간 코드
+    //const now = new Date('2021/12/11/14:00:00'); // 시험기간용 시간 코드
 
     const result =
         now.getFullYear() +
@@ -16,13 +15,6 @@ export function toKSTString(): string {
         addPaddingNumber(now.getMinutes()) +
         addPaddingNumber(now.getSeconds());
 
-    console.log('year : ', now.getFullYear())
-    console.log('month : ', now.getMonth() + 1)
-    console.log('date : ', now.getDate())
-    console.log('hour  : ', now.getHours())
-    console.log('minute : ', now.getMinutes())
-    console.log('sec : ', now.getSeconds())
-    console.log(result);
     return result;
 }
 
@@ -49,8 +41,7 @@ export function checkHoliday(): boolean {
 }
 
 export function makeKoreaDate(): Date {
-    const newDate = new Date('2021/12/11/05:00:00');
+    const newDate = new Date();
     newDate.setTime(newDate.getTime() + 9 * 60 * 60 * 1000);
-    console.log('newDate: ', newDate);
     return newDate;
 }
