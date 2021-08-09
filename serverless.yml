@@ -33,7 +33,7 @@ functions:
       - http:
           path: notices
           method: get
-  dolphin_190:
+  dolphin:
     handler: src/bushandler.dolphin
     events:
       - http:
@@ -42,13 +42,13 @@ functions:
       - http:
           path: businfo/
           method: get
-  dolphin_190:
+  dolphin:
     handler: src/shuttlehandler.dolphin
     events:
       - http:
           path: shuttle/{type}
           method: get
-  dolphin_shuttle:
+  dolphin:
     handler: src/tablehandler.dolphin
     events:
       - http:
