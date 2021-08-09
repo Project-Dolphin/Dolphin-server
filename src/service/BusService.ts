@@ -26,7 +26,9 @@ export class BusService {
 
   public async getSpecificNode(bstopid: Number): Promise<BusArriveInfo> {
 
-    const url = `http://61.43.246.153/openapi-data/service/busanBIMS2/busStopArr?serviceKey=R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D&bstopid=${bstopid}&lineid=5200179000`;
+    var url = 'http://61.43.246.153/openapi-data/service/busanBIMS2/busInfoRoute';
+    var queryParams = '?' + encodeURIComponent('ServiceKey') + '=R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D'; /* Service Key*/
+    queryParams += '&' + encodeURIComponent('lineid') + '=' + encodeURIComponent('5200190000'); /* */
 
     const response = await got.get(url);
     var tObj = parser.getTraversalObj(response.body, options);
@@ -34,7 +36,7 @@ export class BusService {
     if (response.headers['resultCode'] == '99') return Promise.reject('세션 종료');
     console.log("jsonObj : ", jsonObj)
 
-    const item = jsonObj.response.body.items == null
+    const item = jsonObj.response.body.items == ''
       ? { carNo1: "차량 없음", carNo2: "차량 없음", min1: 999, min2: 999, station1: 999, station2: 999, lowplate1: false, lowplate2: false } : jsonObj.response.body.items;
 
     console.log(item);
