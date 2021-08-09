@@ -1,4 +1,4 @@
-var he = require('he')
+const he = require('he')
 
 export const options = {
     attributeNamePrefix: "@_",
