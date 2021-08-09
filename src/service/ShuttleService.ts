@@ -8,11 +8,10 @@ interface ShuttleBus {
 }
 export class ShuttleService {
   public getNextShuttle(): ShuttleBus[] {
-    //const date = makeKoreaDate();
-    //if (!this.checkTestPeriod() && (date.getDay() == 0 || date.getDay() == 6)) return [];
+    const date = makeKoreaDate();
+    if (!this.checkTestPeriod() && (date.getDay() == 0 || date.getDay() == 6)) return [];
 
     const now = toKSTString();
-    console.log('now : ', now)
 
     const type = this.checkTestPeriod() ? 'test' : this.checkVacation() ? 'vacation' : 'normal';
 
@@ -23,8 +22,6 @@ export class ShuttleService {
       if (tmp[i]) result.push(tmp[i]);
       else result.push({ type: "none", time: "2359" })
     }
-
-    console.log('next shuttle : ', result);
 
     return result;
   }
@@ -44,7 +41,6 @@ export class ShuttleService {
     const today = toKSTString().substr(0, 8);
 
     let flag: boolean = false;
-    console.log(today)
 
     testPeriod.forEach(function (period) {
       if (today >= period.term.startedAt && today <= period.term.endedAt) {

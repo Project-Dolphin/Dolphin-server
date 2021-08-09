@@ -44,8 +44,6 @@ export class BusService {
       else result.push({ type: "none", time: "2359" })
     }
 
-    console.log('depart 190 : ', result);
-
     return result;
   }
 
