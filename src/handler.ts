@@ -7,10 +7,11 @@ import { ShuttleService } from './service/ShuttleService';
 const dolphin: Handler = async (event: APIGatewayEvent) => {
   const path = event.path;
   const querystring = event.pathParameters ? event.pathParameters.bstopid : null
+  const busService = new BusService();
+  const shuttleService = new ShuttleService();
 
   if (querystring == null) {
     // 운행중인 모든 버스
-    const busService = new BusService();
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -22,7 +23,6 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
 
   if (querystring != null) {
     // 특정 정류장의 도착 정보
-    const busService = new BusService();
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -58,7 +58,6 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
 
   if (path === '/shuttle/next') {
     // 다음 셔틀
-    const shuttleService = new ShuttleService();
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -70,7 +69,6 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
 
   if (path === '/shuttle/today') {
     // 그 날의 모든 셔틀
-    const shuttleService = new ShuttleService();
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -82,7 +80,6 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
 
   if (path === '/timetable/190') {
     // 특정 정류장의 도착 정보
-    const busService = new BusService();
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -94,7 +91,6 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
 
   if (path === '/timetable/shuttle') {
     // 모든 셔틀
-    const shuttleService = new ShuttleService();
     return {
       statusCode: 200,
       body: JSON.stringify({
