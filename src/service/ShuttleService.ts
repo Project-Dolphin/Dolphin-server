@@ -1,6 +1,6 @@
 import { shuttleBus } from '../constants/shuttle';
 import { testPeriod } from '../constants/testperiod';
-import { toKSTString, makeKoreaDate, checkHoliday } from '../constants/function/commonfunction';
+import { toKSTString, makeKoreaDate } from '../constants/function/commonfunction';
 
 interface ShuttleBus {
   type: string;
