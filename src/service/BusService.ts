@@ -1,5 +1,7 @@
 import got from 'got';
-import { parse } from 'node-html-parser';
+import parser = require('fast-xml-parser');
+import request = require('request');
+import { options } from '../constants/option/xml_parser_option';
 
 interface BusArriveInfo {
   carNo1 : Number;
@@ -12,15 +14,12 @@ interface BusArriveInfo {
   lowplate2 : Boolean;
 }
 
-interface BusStopInfo {
-  carNo1 : Number;
-  carNo2 : Number;
-  min1 : Number;
-  min2 : Number;
-  station1 : Number;
-  station2 : Number;
-  lowplate1 : Boolean;
-  lowplate2 : Boolean;
+interface BusInfo {
+  carNo : String;
+  gpsTm : String;
+  lat : Number;
+  lon : Number;
+  nodeId : Number;
 }
 
 export class BusService {
@@ -32,7 +31,7 @@ export class BusService {
     const response = await got.get(url);
     if(response.headers['resultCode'] == '99') return Promise.reject('세션 종료');
 
-    const item = parse(response.body['items']['item']);
+    const item = JSON.stringify(response.body['items']['item']);
 
     var arriveInfo :BusArriveInfo = {
       carNo1: item['carNo1'],
@@ -44,20 +43,37 @@ export class BusService {
       lowplate1 : item['lowplate'],
       lowplate2 : item['lowplate'],
     };
-
     return arriveInfo;
   }
 
-  public async getAllNode(): Promise<BusStopInfo[]> {
+  public async getAllNode(): Promise<BusInfo[]> {
 
     const url = `http://61.43.246.153/openapi-data/service/busanBIMS2/busInfoRoute?serviceKey=R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D&lineid=5200190000`;
+    var arriveInfo: BusInfo[] = [];
 
-    const response = await got.get(url);
-    if(response.headers['resultCode'] == '99') return Promise.reject('세션 종료');
+    await request({
+      url: url,
+      method: 'GET'
+    }, function (error, response, body) {
+      //console.log('Status', response.statusCode);
+      //console.log('Headers', JSON.stringify(response.headers));
 
-    // const contents = parse(response.body['items']); // 내일 데이터 확인 이후 modeling 예정
-
-    const arriveInfo: BusStopInfo[] = [];
+  
+      if( parser.validate(body) === true) { 
+        var jsonObj = parser.parse(body,options);
+      }   
+      
+      var tObj = parser.getTraversalObj(body,options);
+      var jsonObj = parser.convertToJson(tObj,options);
+  
+      var tmp = jsonObj.response.body.items.item;
+      tmp.forEach(function(value : BusInfo){
+          if(value.lat && value.lon) {
+              if(String(value.gpsTm).length!=6) value.gpsTm = "0"+value.gpsTm;
+              arriveInfo.push({carNo: value.carNo, nodeId: value.nodeId, lat: value.lat, lon: value.lon, gpsTm: value.gpsTm})
+          }
+      })  
+  });
 
     return arriveInfo;
   }
