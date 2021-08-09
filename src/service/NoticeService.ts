@@ -16,9 +16,7 @@ export class NoticeService {
     const root = parse(rawText.body);
 
     const noticeHtmls = root.querySelectorAll('.notibox');
-    console.log('noticeHtmls : ', noticeHtmls)
     const list = noticeHtmls[1].querySelector('.list_box');
-    console.log('list : ', list)
     const notices: Notice[] = [];
     if (list != null) {
       const contents = list.querySelectorAll('li'); // optional chaining
@@ -36,8 +34,6 @@ export class NoticeService {
         });
       }
     }
-
-    console.log('notices : ', notices)
 
     return notices;
   }
