@@ -11,11 +11,11 @@ export class NoticeService {
   private readonly url = 'https://www.kmou.ac.kr/kmou/main.do#notice';
   private readonly kmouUrl = 'https://www.kmou.ac.kr';
 
+
   public async getMainNotice(): Promise<Notice[]> {
     const rawText = await got.get(this.url);
     const root = parse(rawText.body);
-
-    const noticeHtmls = root.querySelectorAll('notibox, on');
+    const noticeHtmls = root.querySelectorAll('notibox.on');
     console.log('noticeHtmls : ', noticeHtmls);
     console.log('noticeHtmls[0] :', noticeHtmls[0])
     const list = noticeHtmls[0].querySelector('.list_box');
