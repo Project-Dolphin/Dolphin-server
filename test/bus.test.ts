@@ -17,3 +17,11 @@ describe('Specific node test', () => {
     done();
   });
 });
+
+describe('190 depart test', () => {
+  it('getDepart190 test - 1', async (done) => {
+    const result = await busService.getDepart190();
+    expect(result).toBeTruthy();
+    done();
+  });
+});
