@@ -12,24 +12,30 @@ export class NoticeService {
   private readonly kmouUrl = 'https://www.kmou.ac.kr';
 
   public async getMainNotice(): Promise<Notice[]> {
+
+    const notices: Notice[] = [];
+
     const rawText = await got.get(this.url);
     const root = parse(rawText.body);
 
     const noticeHtmls = root.querySelectorAll('.notibox.on');
     const list = noticeHtmls[0].querySelector('.list_box');
-    const contents = list.querySelectorAll('li');
-    const notices: Notice[] = [];
+    if (list != null) {
+      const contents = list.querySelectorAll('li');
 
-    contents.forEach((content) => {
-      const titleData = content.querySelector('a');
-      const dateData = content.querySelector('span');
+      contents.forEach((content) => {
+        const titleData = content.querySelector('a');
+        const dateData = content.querySelector('span');
 
-      notices.push({
-        title: titleData.rawText.trim(),
-        date: dateData.rawText.replace(/\./g, '-'),
-        link: this.kmouUrl.concat(titleData.attributes.href),
+        notices.push({
+          title: titleData.rawText.trim(),
+          date: dateData.rawText.replace(/\./g, '-'),
+          link: this.kmouUrl.concat(titleData.attributes.href),
+        });
       });
-    });
+
+    }
+
 
     return notices;
   }
