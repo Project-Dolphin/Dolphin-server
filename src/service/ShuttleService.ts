@@ -1,6 +1,8 @@
 import { shuttleBus } from '../constants/shuttle';
 import { testPeriod } from '../constants/testperiod';
+
 import { toKSTString, makeKoreaDate } from '../constants/function/commonfunction';
+
 
 interface ShuttleBus {
   type: string;
@@ -56,4 +58,5 @@ export class ShuttleService {
 
     return flag;
   }
+
 }
