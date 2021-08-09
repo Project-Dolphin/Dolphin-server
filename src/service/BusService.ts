@@ -59,21 +59,23 @@ export class BusService {
       //console.log('Headers', JSON.stringify(response.headers));
 
   
-      if( parser.validate(body) === true) { 
-        var jsonObj = parser.parse(body,options);
-      }   
-      
-      var tObj = parser.getTraversalObj(body,options);
-      var jsonObj = parser.convertToJson(tObj,options);
-  
-      var tmp = jsonObj.response.body.items.item;
-      tmp.forEach(function(value : BusInfo){
-          if(value.lat && value.lon) {
-              if(String(value.gpsTm).length!=6) value.gpsTm = "0"+value.gpsTm;
-              arriveInfo.push({carNo: value.carNo, nodeId: value.nodeId, lat: value.lat, lon: value.lon, gpsTm: value.gpsTm})
-          }
-      })  
-  });
+        if( parser.validate(body) === true) { 
+          var jsonObj = parser.parse(body,options);
+        }   
+        
+        var tObj = parser.getTraversalObj(body,options);
+        var jsonObj = parser.convertToJson(tObj,options);
+    
+        var tmp = jsonObj.response.body.items.item;
+        tmp.forEach(function(value : BusInfo){
+            if(value.lat && value.lon) {
+                if(String(value.gpsTm).length!=6) value.gpsTm = "0"+value.gpsTm;
+                arriveInfo.push({carNo: value.carNo, nodeId: value.nodeId, lat: value.lat, lon: value.lon, gpsTm: value.gpsTm})
+            }
+        })  
+    });
+
+    console.log(arriveInfo)
 
     return arriveInfo;
   }
