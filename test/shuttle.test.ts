@@ -9,3 +9,11 @@ describe('next shuttle test', () => {
     done();
   });
 });
+
+describe('get all shuttle test', () => {
+  it('getAllShuttle test - 1', async (done) => {
+    const result = await shuttleService.getAllShuttle();
+    expect(result).toBeTruthy();
+    done();
+  });
+});

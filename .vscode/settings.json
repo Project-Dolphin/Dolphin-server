@@ -6,7 +6,7 @@
     // Set the default
     // Enable per-language
     "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.defaultFormatter": "vscode.typescript-language-features",
         "editor.formatOnSave": true
     },
     "eslint.validate": [

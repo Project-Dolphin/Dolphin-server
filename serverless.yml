@@ -33,4 +33,15 @@ functions:
       - http:
           path: notices
           method: get
-      
+      - http:
+          path: businfo/{bstopId}
+          method: get
+      - http:
+          path: businfo/
+          method: get
+      - http:
+          path: shuttle/{type}
+          method: get
+      - http:
+          path: timetable/{busType}
+          method: get
