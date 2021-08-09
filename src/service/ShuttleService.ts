@@ -41,6 +41,7 @@ export class ShuttleService {
   private checkTestPeriod(): boolean {
 
     const today = toKSTString().substr(0, 8);
+    console.log(today);
 
     let flag: boolean = false;
 
