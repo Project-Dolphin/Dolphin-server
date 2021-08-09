@@ -18,7 +18,7 @@ export class ShuttleService {
       schedule.time > now.substr(8, 12) && schedule.type === type;
     });
 
-    const result = [];
+    var result = [];
     result.push(tmp[0]);
     result.push(tmp[1]);
     console.log('result: ', result);
