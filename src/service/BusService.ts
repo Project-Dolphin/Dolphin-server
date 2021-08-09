@@ -29,6 +29,7 @@ export class BusService {
     var url = 'http://61.43.246.153/openapi-data/service/busanBIMS2/busStopArr';
     var queryParams = '?' + encodeURIComponent('ServiceKey') + '=R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D'; /* Service Key*/
     queryParams += '&' + encodeURIComponent('lineid') + '=' + encodeURIComponent('5200190000'); /* */
+    queryParams += '&' + encodeURIComponent('bstopid') + '=' + bstopid
 
     const response = await got.get(url);
     var tObj = parser.getTraversalObj(response.body, options);
@@ -66,7 +67,7 @@ export class BusService {
     var arriveInfo: BusInfo[] = [];
 
     request({
-      url: url + queryParams,
+      url: url,
       method: 'GET',
     }, function (error, response, body) {
       //console.log('Status', response.statusCode);
