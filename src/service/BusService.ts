@@ -2,7 +2,7 @@ import got from 'got';
 import parser = require('fast-xml-parser');
 import { options } from '../constants/option/xml_parser_option';
 import { depart190 } from '../constants/depart190';
-import { checkHoliday, makeKoreaDate, toKSTString } from '../constants/function/commonfunction';
+import { checkHoliday, toKSTString } from '../constants/function/commonfunction';
 
 interface BusArriveInfo {
   carNo1: Number;
@@ -28,7 +28,7 @@ export class BusService {
 
   public getDepart190() {
 
-    const date = makeKoreaDate();
+    const date = new Date();
     const now = toKSTString().substr(8, 4);
 
     let flag: boolean = checkHoliday();
