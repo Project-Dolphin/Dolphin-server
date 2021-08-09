@@ -29,15 +29,15 @@ export function checkHoliday(): boolean {
 
     const now = toKSTString().substr(0, 8);
 
-    var flag = false;
+    var isHoliday = false;
 
     holiDay.forEach(function (period) {
         if (now >= period.term.startedAt && now <= period.term.endedAt) {
-            flag = true;
+            isHoliday = true;
         }
     });
 
-    return flag;
+    return isHoliday;
 }
 
 export function makeKoreaDate(): Date {

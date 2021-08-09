@@ -19,7 +19,7 @@ export class ShuttleService {
 
     const tmp = shuttleBus.filter(schedule => Number(schedule.time) > Number(now.substr(8, 4)) && schedule.type == type);
 
-    var result = [];
+    const result = [];
     for (let i = 0; i < 3; i++) {
       if (tmp[i]) result.push(tmp[i]);
       else result.push({ type: "none", time: "2359" })
@@ -48,15 +48,15 @@ export class ShuttleService {
 
     const today = toKSTString().substr(0, 8);
 
-    let flag: boolean = false;
+    let isTestPeriod: boolean = false;
 
     testPeriod.forEach(function (period) {
       if (today >= period.term.startedAt && today <= period.term.endedAt) {
-        flag = true;
+        isTestPeriod = true;
       }
     });
 
-    return flag;
+    return isTestPeriod;
   }
 
 }

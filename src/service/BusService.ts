@@ -48,7 +48,7 @@ export class BusService {
   }
 
 
-  public async getSpecificNode(bstopid: Number): Promise<BusArriveInfo> {
+  public async getSpecificNode(bstopid: String): Promise<BusArriveInfo> {
 
     var url = 'http://61.43.246.153/openapi-data/service/busanBIMS2/busStopArr';
     var queryParams = '?' + 'ServiceKey' + '=' + this.serviceKey; /* Service Key*/

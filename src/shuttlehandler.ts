@@ -1,31 +1,28 @@
 import { Handler, APIGatewayEvent } from 'aws-lambda';
-import { BusService } from './service/BusService';
-import { CalendarService } from './service/CalendarService';
-import { NoticeService } from './service/NoticeService';
 import { ShuttleService } from './service/ShuttleService';
 
 const dolphin: Handler = async (event: APIGatewayEvent) => {
   const path = event.path;
 
-  if (path === '/calendar') {
-    // 학사 일정
-    const calendarService = new CalendarService();
+  if (path === '/shuttle/next') {
+    // 다음 셔틀
+    const shuttleService = new ShuttleService();
     return {
       statusCode: 200,
       body: JSON.stringify({
-        data: calendarService.getAcademicCalendar(),
+        data: shuttleService.getNextShuttle(),
         path: path,
       }),
     };
   }
 
-  if (path === '/notices') {
-    // 학사 일정
-    const noticeService = new NoticeService();
+  if (path === '/shuttle/today') {
+    // 그 날의 모든 셔틀
+    const shuttleService = new ShuttleService();
     return {
       statusCode: 200,
       body: JSON.stringify({
-        data: await noticeService.getMainNotice(),
+        data: shuttleService.getDayShuttle(),
         path: path,
       }),
     };
