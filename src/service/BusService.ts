@@ -44,6 +44,8 @@ export class BusService {
       else result.push({ type: "none", time: "2359" })
     }
 
+    console.log(result);
+
     return result;
   }
 
