@@ -17,6 +17,7 @@ export class NoticeService {
 
     const noticeHtmls = root.querySelectorAll('.notibox');
     const list = noticeHtmls[0].querySelector('.list_box');
+    console.log(list)
     const notices: Notice[] = [];
     if (list != null) {
       const contents = list.querySelectorAll('li'); // optional chaining
