@@ -27,8 +27,11 @@ export class ShuttleService {
   }
 
   public getAllShuttle(): ShuttleBus[] {
-    console.log(shuttleBus);
-    return shuttleBus;
+
+    const type = this.checkTestPeriod() ? 'test' : this.checkVacation() ? 'vacation' : 'normal';
+    const tmp = shuttleBus.filter(schedule => schedule.type == type);
+    console.log(tmp);
+    return tmp;
   }
 
   private checkVacation(): boolean {
