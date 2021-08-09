@@ -13,11 +13,12 @@ export class ShuttleService {
     const now = this.toKSTString();
 
     const type = this.checkTestPeriod() ? 'test' : this.checkVacation() ? 'vacation' : 'normal';
-    console.log(now);
 
     const tmp = shuttleBus.filter((schedule) => {
       schedule.time > now.substr(8, 12) && schedule.type === type;
     });
+
+    console.log(JSON.stringify(tmp))
 
     var result = [];
     result.push(tmp[0]);
