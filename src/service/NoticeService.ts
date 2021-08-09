@@ -20,7 +20,7 @@ export class NoticeService {
 
     const noticeHtmls = root.querySelector(".notibox");
     console.log('noticeHtmls : ', noticeHtmls);
-    const list = noticeHtmls.querySelector('.list_box');
+    const list = noticeHtmls.querySelector('list_box');
     console.log(list);
     if (list != null) {
       const contents = list.querySelectorAll('li');
