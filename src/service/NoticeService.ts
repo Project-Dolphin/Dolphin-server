@@ -36,6 +36,7 @@ export class NoticeService {
 
     }
 
+    console.log(notices);
 
     return notices;
   }
