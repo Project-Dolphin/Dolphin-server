@@ -1,6 +1,8 @@
 import got from 'got';
 import parser = require('fast-xml-parser');
 import { options } from '../constants/option/xml_parser_option';
+import { depart190 } from '../constants/depart190';
+import { toKSTString } from '../constants/function/commonfunction';
 
 interface BusArriveInfo {
   carNo1: Number;
@@ -21,8 +23,33 @@ interface BusInfo {
   nodeId: Number;
 }
 
+interface DepartBus {
+  type: string;
+  time: string;
+}
+
 export class BusService {
   private readonly serviceKey = 'R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D';
+
+  public async getDepart190(): Promise<DepartBus[]> {
+
+    const date = new Date();
+    if (date.getDay() == 0 || date.getDay() == 6) return [];
+
+    const now = toKSTString();
+
+    const type = date.getDay() == 6 ? 'saturday' : 'normal'
+
+    const tmp = depart190.filter(schedule => Number(schedule.time) > Number(now.substr(8, 4)) && schedule.type == type);
+
+    var result = [];
+    result.push(tmp[0]);
+    result.push(tmp[1]);
+    result.push(tmp[2]);
+
+    console.log(result);
+    return result;
+  }
 
 
   public async getSpecificNode(bstopid: Number): Promise<BusArriveInfo> {
@@ -75,8 +102,6 @@ export class BusService {
         arriveInfo.push({ carNo: value.carNo, nodeId: value.nodeId, lat: value.lat, lon: value.lon, gpsTm: value.gpsTm });
       }
     });
-
-    console.log(arriveInfo);
 
     return arriveInfo;
   }

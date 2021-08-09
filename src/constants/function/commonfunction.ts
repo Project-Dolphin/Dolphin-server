@@ -17,3 +17,9 @@ export function addPaddingNumber(number: any): string {
     }
     return number;
 }
+
+export function checkHoliday(): boolean {
+    //const today = toKSTString().substr(0, 8);
+    var flag = false;
+    return flag;
+}
