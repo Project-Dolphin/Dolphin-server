@@ -18,7 +18,7 @@ export class NoticeService {
     const rawText = await got.get(this.url);
     const root = parse(rawText.body);
 
-    const noticeHtmls = root.querySelector(".notibox.on");
+    const noticeHtmls = root.querySelector(".notibox");
     console.log('noticeHtmls : ', noticeHtmls);
     const list = noticeHtmls.querySelector('.list_box');
     console.log(list);
