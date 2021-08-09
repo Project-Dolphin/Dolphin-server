@@ -1,11 +1,10 @@
 import { holiDay } from "../holiday";
 
 export function toKSTString(): string {
-    //const now = makeKoreaDate();
+    const now = makeKoreaDate();
 
     //const now = new Date('2021/08/09/22:38:10'); // 야간용 시간 코드
     //const now = new Date('2021/08/15/14:00:00'); // 공휴일용 시간 코드
-    const now = new Date(2021, 11, 11, 14); // 시험기간용 시간 코드
 
     const result =
         now.getFullYear() +
