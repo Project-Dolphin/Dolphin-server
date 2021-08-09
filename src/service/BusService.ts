@@ -35,7 +35,8 @@ export class BusService {
     var tObj = parser.getTraversalObj(response.body, options);
     var jsonObj = parser.convertToJson(tObj, options);
     if (response.headers['resultCode'] == '99') return Promise.reject('세션 종료');
-    console.log("jsonObj : ", jsonObj)
+
+    console.log(jsonObj.response.body.items)
 
     const item = jsonObj.response.body.items.length > 0
       ? jsonObj.response.body.items : { carNo1: "차량 없음", carNo2: "차량 없음", min1: 999, min2: 999, station1: 999, station2: 999, lowplate1: false, lowplate2: false };
@@ -72,7 +73,6 @@ export class BusService {
     }, function (error, response, body) {
       //console.log('Status', response.statusCode);
       //console.log('Headers', JSON.stringify(response.headers));
-
       if (!error && response.statusCode === 200) {
         if (parser.validate(body) === true) {
           var jsonObj = parser.parse(body, options);
@@ -84,10 +84,11 @@ export class BusService {
         var tmp = jsonObj.response.body.items.item;
         tmp.forEach(function (value: any) {
           if (value.lat && value.lon) {
-            if (String(value.gpsTm).length != 6) value.gpsTm = "0" + value.gpsTm;
-            arriveInfo.push({ carNo: value.carNo, nodeId: value.nodeId, lat: value.lat, lon: value.lon, gpsTm: value.gpsTm })
+            if (String(value.gpsTm).length != 6)
+              value.gpsTm = "0" + value.gpsTm;
+            arriveInfo.push({ carNo: value.carNo, nodeId: value.nodeId, lat: value.lat, lon: value.lon, gpsTm: value.gpsTm });
           }
-        })
+        });
 
         //console.log(arriveInfo);
       }
