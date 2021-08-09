@@ -32,7 +32,7 @@ interface DepartBus {
 export class BusService {
   private readonly serviceKey = 'R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D';
 
-  public async getDepart190(): Promise<DepartBus[]> {
+  public getDepart190() {
 
     const date = makeKoreaDate();
     if (date.getDay() == 0 || date.getDay() == 6) return [];
@@ -95,7 +95,7 @@ export class BusService {
     var queryParams = '?' + encodeURIComponent('ServiceKey') + '=' + this.serviceKey; /* Service Key*/
     queryParams += '&' + encodeURIComponent('lineid') + '=' + encodeURIComponent('5200190000'); /* */
 
-    var arriveInfo: BusInfo[] = [];
+    const arriveInfo: BusInfo[] = [];
 
     const response = await got.get(url + queryParams);
     var tObj = parser.getTraversalObj(response.body, options);
@@ -110,6 +110,8 @@ export class BusService {
         arriveInfo.push({ carNo: value.carNo, nodeId: value.nodeId, lat: value.lat, lon: value.lon, gpsTm: value.gpsTm });
       }
     });
+
+    console.log(arriveInfo);
 
     return arriveInfo;
   }
