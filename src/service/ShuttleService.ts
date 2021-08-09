@@ -22,7 +22,7 @@ export class ShuttleService {
     result.push(tmp[1]);
     result.push(tmp[2]);
 
-    console.log(now);
+    console.log(result);
 
     return result;
   }

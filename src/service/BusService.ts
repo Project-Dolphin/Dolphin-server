@@ -39,10 +39,12 @@ export class BusService {
 
     const tmp = depart190.filter(schedule => Number(schedule.time) > Number(now) && schedule.type == type);
 
-    var result = [];
+    const result = [];
     result.push(tmp[0]);
     result.push(tmp[1]);
     result.push(tmp[2]);
+
+    console.log(result);
 
     return result;
   }
@@ -89,7 +91,7 @@ export class BusService {
     var tObj = parser.getTraversalObj(response.body, options);
     var jsonObj = parser.convertToJson(tObj, options);
 
-    var tmp = jsonObj.response.body.items.item;
+    const tmp = jsonObj.response.body.items.item;
 
     tmp.forEach(function (value: any) {
       if (value.lat && value.lon) {
@@ -98,8 +100,6 @@ export class BusService {
         arriveInfo.push({ carNo: value.carNo, nodeId: value.nodeId, lat: value.lat, lon: value.lon, gpsTm: value.gpsTm });
       }
     });
-
-    console.log(arriveInfo);
 
     return arriveInfo;
   }
