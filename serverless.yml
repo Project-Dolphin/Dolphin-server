@@ -33,4 +33,24 @@ functions:
       - http:
           path: notices
           method: get
-      
+  dolphin_190:
+    handler: src/bushandler.dolphin
+    events:
+      - http:
+          path: businfo/{bstopId}
+          method: get
+      - http:
+          path: businfo/
+          method: get
+  dolphin_190:
+    handler: src/shuttlehandler.dolphin
+    events:
+      - http:
+          path: shuttle/{type}
+          method: get
+  dolphin_shuttle:
+    handler: src/tablehandler.dolphin
+    events:
+      - http:
+          path: timetable/{busType}
+          method: get

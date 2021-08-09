@@ -17,19 +17,21 @@ export class NoticeService {
 
     const noticeHtmls = root.querySelectorAll('.notibox');
     const list = noticeHtmls[0].querySelector('.list_box');
-    const contents = list.querySelectorAll('li');
+    const contents = list?.querySelectorAll('li'); // optional chaining
     const notices: Notice[] = [];
 
-    contents.forEach((content) => {
-      const titleData = content.querySelector('a');
-      const dateData = content.querySelector('span');
+    if (contents) { // contents가 null 일 경우도 생각
+      contents.forEach((content) => {
+        const titleData = content.querySelector('a');
+        const dateData = content.querySelector('span');
 
-      notices.push({
-        title: titleData.rawText.trim(),
-        date: dateData.rawText.replace(/\./g, '-'),
-        link: this.kmouUrl.concat(titleData.attributes.href),
+        notices.push({
+          title: titleData.rawText.trim(),
+          date: dateData.rawText.replace(/\./g, '-'),
+          link: this.kmouUrl.concat(titleData.attributes.href),
+        });
       });
-    });
+    }
 
     return notices;
   }
