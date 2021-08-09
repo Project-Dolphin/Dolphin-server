@@ -31,7 +31,7 @@ export class BusService {
     queryParams += '&' + encodeURIComponent('lineid') + '=' + encodeURIComponent('5200190000'); /* */
     queryParams += '&' + encodeURIComponent('bstopid') + '=' + bstopid
 
-    const response = await got.get(url);
+    const response = await got.get(url + queryParams);
     var tObj = parser.getTraversalObj(response.body, options);
     var jsonObj = parser.convertToJson(tObj, options);
     if (response.headers['resultCode'] == '99') return Promise.reject('세션 종료');
@@ -67,7 +67,7 @@ export class BusService {
     var arriveInfo: BusInfo[] = [];
 
     request({
-      url: url,
+      url: url + queryParams,
       method: 'GET',
     }, function (error, response, body) {
       //console.log('Status', response.statusCode);
