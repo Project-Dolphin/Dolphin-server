@@ -13,6 +13,7 @@ export class ShuttleService {
     const now = this.toKSTString();
 
     const type = this.checkTestPeriod() ? 'test' : this.checkVacation() ? 'vacation' : 'normal';
+    console.log(type);
 
     const tmp = shuttleBus.filter((schedule) => {
       schedule.time > now.substr(8, 12) && schedule.type === type;
