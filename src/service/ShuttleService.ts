@@ -8,8 +8,8 @@ interface ShuttleBus {
 }
 export class ShuttleService {
   public getNextShuttle(): ShuttleBus[] {
-    /*const date = makeKoreaDate();
-    if (!this.checkTestPeriod() && (date.getDay() == 0 || date.getDay() == 6)) return [];*/
+    const date = makeKoreaDate();
+    if (!this.checkTestPeriod() && (date.getDay() == 0 || date.getDay() == 6)) return [];
 
     const now = toKSTString();
 
