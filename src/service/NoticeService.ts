@@ -16,12 +16,12 @@ export class NoticeService {
     const rawText = await got.get(this.url);
     const root = parse(rawText.body);
     const noticeHtmls = root.querySelectorAll('.notibox.on');
-    console.log('noticeHtmls : ', noticeHtmls);
-    console.log('noticeHtmls[0] :', noticeHtmls[0])
     const list = noticeHtmls[0].querySelector('.list_box');
+    console.log('list : ', list)
     const notices: Notice[] = [];
     if (list != null) {
       const contents = list.querySelectorAll('li'); // optional chaining
+
 
       if (contents != null) {
         contents.forEach((content) => {
