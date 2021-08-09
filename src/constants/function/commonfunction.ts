@@ -26,11 +26,11 @@ export function toKSTString(): string {
     return result;
 }
 
-export function addPaddingNumber(number: any): string {
+export function addPaddingNumber(number: number): string {
     if (number < 10) {
-        return '0' + number;
+        return '0' + String(number);
     }
-    return number;
+    return String(number);
 }
 
 export function checkHoliday(): boolean {
