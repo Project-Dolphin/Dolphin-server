@@ -20,16 +20,18 @@ export class NoticeService {
     const contents = list?.querySelectorAll('li');
     const notices: Notice[] = [];
 
-    contents.forEach((content) => {
-      const titleData = content.querySelector('a');
-      const dateData = content.querySelector('span');
+    if (contents) {
+      contents.forEach((content) => {
+        const titleData = content.querySelector('a');
+        const dateData = content.querySelector('span');
 
-      notices.push({
-        title: titleData.rawText.trim(),
-        date: dateData.rawText.replace(/\./g, '-'),
-        link: this.kmouUrl.concat(titleData.attributes.href),
+        notices.push({
+          title: titleData.rawText.trim(),
+          date: dateData.rawText.replace(/\./g, '-'),
+          link: this.kmouUrl.concat(titleData.attributes.href),
+        });
       });
-    });
+    }
 
     return notices;
   }
