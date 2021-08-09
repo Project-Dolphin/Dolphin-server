@@ -13,7 +13,8 @@ export function toKSTString(): string {
         addPaddingNumber(now.getDate()) +
         addPaddingNumber(now.getHours()) +
         addPaddingNumber(now.getMinutes()) +
-        addPaddingNumber(now.getSeconds())
+        addPaddingNumber(now.getSeconds());
+    console.log(result);
     return result;
 }
 

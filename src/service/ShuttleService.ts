@@ -1,6 +1,6 @@
 import { shuttleBus } from '../constants/shuttle';
 import { testPeriod } from '../constants/testperiod';
-import { toKSTString, makeKoreaDate } from '../constants/function/commonfunction';
+import { toKSTString, makeKoreaDate, checkHoliday } from '../constants/function/commonfunction';
 
 interface ShuttleBus {
   type: string;
@@ -8,8 +8,8 @@ interface ShuttleBus {
 }
 export class ShuttleService {
   public getNextShuttle(): ShuttleBus[] {
-    const date = makeKoreaDate();
-    if (date.getDay() == 0 || date.getDay() == 6) return [];
+    /*const date = makeKoreaDate();
+    if (!this.checkTestPeriod() && (date.getDay() == 0 || date.getDay() == 6)) return [];*/
 
     const now = toKSTString();
 

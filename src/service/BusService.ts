@@ -29,8 +29,6 @@ export class BusService {
   public getDepart190() {
 
     const date = makeKoreaDate();
-    if (date.getDay() == 0 || date.getDay() == 6) return [];
-
     const now = toKSTString().substr(8, 4);
 
     let flag: boolean = checkHoliday();
