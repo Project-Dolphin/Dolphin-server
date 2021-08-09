@@ -1,6 +1,5 @@
 import got from 'got';
 import parser = require('fast-xml-parser');
-import request = require('request');
 import { options } from '../constants/option/xml_parser_option';
 
 interface BusArriveInfo {
@@ -23,11 +22,13 @@ interface BusInfo {
 }
 
 export class BusService {
+  private readonly serviceKey = 'R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D';
+
 
   public async getSpecificNode(bstopid: Number): Promise<BusArriveInfo> {
 
     var url = 'http://61.43.246.153/openapi-data/service/busanBIMS2/busStopArr';
-    var queryParams = '?' + encodeURIComponent('ServiceKey') + '=R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D'; /* Service Key*/
+    var queryParams = '?' + encodeURIComponent('ServiceKey') + '=' + this.serviceKey; /* Service Key*/
     queryParams += '&' + encodeURIComponent('lineid') + '=' + encodeURIComponent('5200190000'); /* */
     queryParams += '&' + encodeURIComponent('bstopid') + '=' + bstopid
 
@@ -56,7 +57,7 @@ export class BusService {
   public async getAllNode(): Promise<BusInfo[]> {
 
     var url = 'http://61.43.246.153/openapi-data/service/busanBIMS2/busInfoRoute';
-    var queryParams = '?' + encodeURIComponent('ServiceKey') + '=R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D'; /* Service Key*/
+    var queryParams = '?' + encodeURIComponent('ServiceKey') + '=' + this.serviceKey; /* Service Key*/
     queryParams += '&' + encodeURIComponent('lineid') + '=' + encodeURIComponent('5200190000'); /* */
 
     var arriveInfo: BusInfo[] = [];
