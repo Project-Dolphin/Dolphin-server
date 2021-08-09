@@ -10,26 +10,28 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   const busService = new BusService();
   const shuttleService = new ShuttleService();
 
-  if (querystring == null) {
-    // 운행중인 모든 버스
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-        data: busService.getAllNode(),
-        path: path,
-      }),
-    };
-  }
+  if (path.includes('businfo')) {
+    if (querystring == null) {
+      // 운행중인 모든 버스
+      return {
+        statusCode: 200,
+        body: JSON.stringify({
+          data: busService.getAllNode(),
+          path: path,
+        }),
+      };
+    }
 
-  if (querystring != null) {
-    // 특정 정류장의 도착 정보
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-        data: busService.getSpecificNode(querystring),
-        path: path,
-      }),
-    };
+    if (querystring != null) {
+      // 특정 정류장의 도착 정보
+      return {
+        statusCode: 200,
+        body: JSON.stringify({
+          data: busService.getSpecificNode(querystring),
+          path: path,
+        }),
+      };
+    }
   }
 
   if (path === '/calendar') {
