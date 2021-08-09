@@ -40,9 +40,11 @@ export class BusService {
     const tmp = depart190.filter(schedule => Number(schedule.time) > Number(now) && schedule.type == type);
 
     const result = [];
-    result.push(tmp[0]);
-    result.push(tmp[1]);
-    result.push(tmp[2]);
+
+    for (let i = 0; i < 3; i++) {
+      if (tmp[i]) result.push(tmp[i]);
+      else result.push({ type: "none", time: "23:59" })
+    }
 
     console.log(result);
 
@@ -53,9 +55,9 @@ export class BusService {
   public async getSpecificNode(bstopid: Number): Promise<BusArriveInfo> {
 
     var url = 'http://61.43.246.153/openapi-data/service/busanBIMS2/busStopArr';
-    var queryParams = '?' + encodeURIComponent('ServiceKey') + '=' + this.serviceKey; /* Service Key*/
-    queryParams += '&' + encodeURIComponent('lineid') + '=' + encodeURIComponent('5200190000'); /* */
-    queryParams += '&' + encodeURIComponent('bstopid') + '=' + bstopid
+    var queryParams = '?' + 'ServiceKey' + '=' + this.serviceKey; /* Service Key*/
+    queryParams += '&' + 'lineid' + '=' + encodeURIComponent('5200190000'); /* */
+    queryParams += '&' + 'bstopid' + '=' + bstopid
 
     const response = await got.get(url + queryParams);
     var tObj = parser.getTraversalObj(response.body, options);
@@ -82,8 +84,8 @@ export class BusService {
   public async getAllNode(): Promise<BusInfo[]> {
 
     var url = 'http://61.43.246.153/openapi-data/service/busanBIMS2/busInfoRoute';
-    var queryParams = '?' + encodeURIComponent('ServiceKey') + '=' + this.serviceKey; /* Service Key*/
-    queryParams += '&' + encodeURIComponent('lineid') + '=' + encodeURIComponent('5200190000'); /* */
+    var queryParams = '?' + 'ServiceKey' + '=' + this.serviceKey; /* Service Key*/
+    queryParams += '&' + 'lineid' + '=' + encodeURIComponent('5200190000'); /* */
 
     const arriveInfo: BusInfo[] = [];
 

@@ -18,9 +18,10 @@ export class ShuttleService {
     const tmp = shuttleBus.filter(schedule => Number(schedule.time) > Number(now.substr(8, 4)) && schedule.type == type);
 
     var result = [];
-    result.push(tmp[0]);
-    result.push(tmp[1]);
-    result.push(tmp[2]);
+    for (let i = 0; i < 3; i++) {
+      if (tmp[i]) result.push(tmp[i]);
+      else result.push({ type: "none", time: "23:59" })
+    }
 
     console.log(result);
 
