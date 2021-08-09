@@ -27,6 +27,7 @@ export class ShuttleService {
   }
 
   public getAllShuttle(): ShuttleBus[] {
+    console.log(shuttleBus);
     return shuttleBus;
   }
 
