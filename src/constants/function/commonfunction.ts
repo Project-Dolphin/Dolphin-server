@@ -1,7 +1,9 @@
 import { holiDay } from "../holiday";
 
 export function toKSTString(): string {
-    const now = makeKoreaDate();
+    //const now = makeKoreaDate();
+
+    const now = new Date('2021/08/09/22:38:10'); // 테스트용 코드
 
     const result =
         now.getFullYear() +
