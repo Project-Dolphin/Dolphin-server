@@ -47,7 +47,6 @@ export class BusService {
     result.push(tmp[1]);
     result.push(tmp[2]);
 
-    console.log(result);
     return result;
   }
 
