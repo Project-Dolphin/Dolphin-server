@@ -15,8 +15,9 @@ export class NoticeService {
   public async getMainNotice(): Promise<Notice[]> {
     const rawText = await got.get(this.url);
     const root = parse(rawText.body);
-    const noticeHtmls = root.querySelectorAll('.notibox.on');
-    const list = noticeHtmls[0].querySelector('.list_box');
+    const noticeHtmls = root.querySelectorAll('.notibox');
+    const noticeOn = noticeHtmls[0].querySelectorAll('.on');
+    const list = noticeOn[0].querySelector('.list_box');
     console.log('list : ', list)
     const notices: Notice[] = [];
     if (list != null) {
