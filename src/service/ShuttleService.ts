@@ -12,6 +12,7 @@ export class ShuttleService {
     //if (!this.checkTestPeriod() && (date.getDay() == 0 || date.getDay() == 6)) return [];
 
     const now = toKSTString();
+    console.log('now : ', now)
 
     const type = this.checkTestPeriod() ? 'test' : this.checkVacation() ? 'vacation' : 'normal';
 
@@ -40,9 +41,10 @@ export class ShuttleService {
 
   private checkTestPeriod(): boolean {
 
-    const today = toKSTString().substr(8, 4);
+    const today = toKSTString().substr(0, 8);
 
     let flag: boolean = false;
+    console.log(today)
 
     testPeriod.forEach(function (period) {
       if (today >= period.term.startedAt && today <= period.term.endedAt) {
