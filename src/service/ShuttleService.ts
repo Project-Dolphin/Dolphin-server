@@ -1,6 +1,6 @@
 import { shuttleBus } from '../constants/shuttle';
 import { testPeriod } from '../constants/testperiod';
-import { toKSTString, addPaddingNumber } from '../constants/function/commonfunction';
+import { toKSTString, addPaddingNumber, makeKoreaDate } from '../constants/function/commonfunction';
 
 interface ShuttleBus {
   type: string;
@@ -8,7 +8,7 @@ interface ShuttleBus {
 }
 export class ShuttleService {
   public getNextShuttle(): ShuttleBus[] {
-    const date = new Date();
+    const date = makeKoreaDate();
     if (date.getDay() == 0 || date.getDay() == 6) return [];
 
     const now = toKSTString();
@@ -32,14 +32,14 @@ export class ShuttleService {
   }
 
   private checkVacation(): boolean {
-    const month = new Date().getMonth();
+    const month = makeKoreaDate().getMonth();
     if (month == 7 || month == 8 || month == 1 || month == 2) return true;
     else return false;
   }
 
   private checkTestPeriod(): boolean {
 
-    const now = new Date();
+    const now = makeKoreaDate();
     const today = now.getFullYear() + addPaddingNumber(now.getMonth() + 1) + addPaddingNumber(now.getDate());
 
     let flag: boolean = false;

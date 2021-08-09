@@ -2,7 +2,8 @@ import got from 'got';
 import parser = require('fast-xml-parser');
 import { options } from '../constants/option/xml_parser_option';
 import { depart190 } from '../constants/depart190';
-import { toKSTString } from '../constants/function/commonfunction';
+import { makeKoreaDate, toKSTString } from '../constants/function/commonfunction';
+import { holiDay } from '../constants/holiday';
 
 interface BusArriveInfo {
   carNo1: Number;
@@ -33,14 +34,22 @@ export class BusService {
 
   public async getDepart190(): Promise<DepartBus[]> {
 
-    const date = new Date();
+    const date = makeKoreaDate();
     if (date.getDay() == 0 || date.getDay() == 6) return [];
 
-    const now = toKSTString();
+    const now = toKSTString().substr(8, 4);
 
-    const type = date.getDay() == 6 ? 'saturday' : 'normal'
+    let flag: boolean = false;
 
-    const tmp = depart190.filter(schedule => Number(schedule.time) > Number(now.substr(8, 4)) && schedule.type == type);
+    holiDay.forEach(function (period) {
+      if (now >= period.term.startedAt && now <= period.term.endedAt) {
+        flag = true;
+      }
+    });
+
+    const type = flag ? 'holiday' : date.getDay() == 6 ? 'saturday' : 'normal'
+
+    const tmp = depart190.filter(schedule => Number(schedule.time) > Number(now) && schedule.type == type);
 
     var result = [];
     result.push(tmp[0]);
