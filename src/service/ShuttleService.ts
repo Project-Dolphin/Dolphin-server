@@ -43,18 +43,11 @@ export class ShuttleService {
 
     const result =
       now.getFullYear() +
-      '-' +
       this.addPaddingNumber(now.getMonth() + 1) +
-      '-' +
       this.addPaddingNumber(now.getDate()) +
-      ' ' +
       this.addPaddingNumber(now.getHours()) +
-      ':' +
       this.addPaddingNumber(now.getMinutes()) +
-      ':' +
-      this.addPaddingNumber(now.getSeconds()) +
-      '.' +
-      (now.getMilliseconds() / 1000).toFixed(3).slice(2, 5);
+      this.addPaddingNumber(now.getSeconds())
     return result;
   }
 
