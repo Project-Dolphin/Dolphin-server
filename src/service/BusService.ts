@@ -50,9 +50,7 @@ export class BusService {
       lowplate2: item.lowplate2,
     };
 
-    console.log(arriveInfo);
-
-    return arriveInfo;
+    return arriveInfo; // 정상 리턴 확인
   }
 
   public async getAllNode(): Promise<BusInfo[]> {
@@ -63,7 +61,20 @@ export class BusService {
 
     var arriveInfo: BusInfo[] = [];
 
-    request({
+    const response = await got.get(url + queryParams);
+    var tObj = parser.getTraversalObj(response.body, options);
+    var jsonObj = parser.convertToJson(tObj, options);
+
+    var tmp = jsonObj.response.body.items.item;
+    tmp.forEach(function (value: any) {
+      if (value.lat && value.lon) {
+        if (String(value.gpsTm).length != 6)
+          value.gpsTm = "0" + value.gpsTm;
+        arriveInfo.push({ carNo: value.carNo, nodeId: value.nodeId, lat: value.lat, lon: value.lon, gpsTm: value.gpsTm });
+      }
+    });
+
+    /*request({
       url: url + queryParams,
       method: 'GET',
     }, function (error, response, body) {
@@ -88,7 +99,7 @@ export class BusService {
 
         //console.log(arriveInfo);
       }
-    });
+    });*/
 
 
     return arriveInfo;
