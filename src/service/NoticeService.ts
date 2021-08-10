@@ -21,25 +21,23 @@ export class NoticeService {
     //#container > div.main_content > div.M_con2 > div.notice > div.notibox.on > div.list_box
 
     const noticeHtmls = root.querySelector("notice");
-    const notiBox0 = noticeHtmls.querySelector("notibox on")
+    const notiBox0 = noticeHtmls?.querySelector("notibox on")
     console.log('noticeHtmls : ', noticeHtmls)
-    const list = notiBox0.querySelector('list_box');
-    console.log(list);
-    if (list != null) {
-      const contents = list.querySelectorAll('li');
+    const list = notiBox0?.querySelector('list_box');
 
-      contents.forEach((content) => {
-        const titleData = content.querySelector('a');
-        const dateData = content.querySelector('span');
+    const contents = list?.querySelectorAll('li');
 
-        notices.push({
-          title: titleData.rawText.trim(),
-          date: dateData.rawText.replace(/\./g, '-'),
-          link: this.kmouUrl.concat(titleData.attributes.href),
-        });
+    contents.forEach((content) => {
+      const titleData = content.querySelector('a');
+      const dateData = content.querySelector('span');
+
+      notices.push({
+        title: titleData.rawText.trim(),
+        date: dateData.rawText.replace(/\./g, '-'),
+        link: this.kmouUrl.concat(titleData.attributes.href),
       });
+    });
 
-    }
 
     return notices;
   }
