@@ -34,18 +34,10 @@ functions:
           path: notices
           method: get
       - http:
-          path: holiday/
+          path: holiday
           method: get
       - http:
-          path: businfo/{bstopId}
-          method: get
-          cors: true
-          request:
-            parameters:
-              paths:
-                bstopId: true
-      - http:
-          path: businfo/
+          path: businfo
           method: get
       - http:
           path: shuttle/{type}

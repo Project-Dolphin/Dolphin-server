@@ -12,7 +12,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   const busService = new BusService();
   const shuttleService = new ShuttleService();
 
-  if (path.includes('businfo')) {
+  if (path === '/businfo') {
     if (bstopid == '') {
       // 운행중인 모든 버스
       return {
@@ -24,7 +24,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
       };
     }
 
-    if (querystring != null) {
+    else {
       // 특정 정류장의 도착 정보
       return {
         statusCode: 200,
@@ -95,7 +95,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   }
 
   if (path === '/timetable/190') {
-    // 특정 정류장의 도착 정보
+    // 190 시간표
     return {
       statusCode: 200,
       body: JSON.stringify({
