@@ -24,20 +24,22 @@ export class NoticeService {
     const notiBox0 = noticeHtmls?.querySelector("notibox on")
     console.log('noticeHtmls : ', noticeHtmls)
     const list = notiBox0?.querySelector('list_box');
+    console.log(list);
+    if (list != null) {
+      const contents = list.querySelectorAll('li');
 
-    const contents = list?.querySelectorAll('li');
+      contents.forEach((content) => {
+        const titleData = content.querySelector('a');
+        const dateData = content.querySelector('span');
 
-    contents.forEach((content) => {
-      const titleData = content.querySelector('a');
-      const dateData = content.querySelector('span');
-
-      notices.push({
-        title: titleData.rawText.trim(),
-        date: dateData.rawText.replace(/\./g, '-'),
-        link: this.kmouUrl.concat(titleData.attributes.href),
+        notices.push({
+          title: titleData.rawText.trim(),
+          date: dateData.rawText.replace(/\./g, '-'),
+          link: this.kmouUrl.concat(titleData.attributes.href),
+        });
       });
-    });
 
+    }
 
     return notices;
   }
