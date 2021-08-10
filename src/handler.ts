@@ -23,7 +23,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
     };
   }
 
-  if (bstopid && path === `/businfo/${value}`) {
+  if (bstopid) {
     return {
       statusCode: 200,
       body: JSON.stringify({
