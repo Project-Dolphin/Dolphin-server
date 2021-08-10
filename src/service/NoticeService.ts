@@ -18,10 +18,16 @@ export class NoticeService {
     const rawText = await got.get(this.url);
     const root = parse(rawText.body);
 
-    console.log(root.firstChild);
+    const wrap = root.querySelector("#wrap");
+    const box = wrap.querySelector("box_mot_1");
+    const container = box.querySelector("#container");
+    const mainContent = container.querySelector("main_content")
+    const con2 = mainContent.querySelector("M_con2")
+    const notice = con2.querySelector("notice")
+    const notibox = notice.querySelectorAll('notibox');
 
     //#container > div.main_content > div.M_con2 > div.notice > div.notibox.on > div.list_box
-    const list = root.querySelector('list_box')
+    const list = notibox[0].querySelector('list_box')
 
     /*const noticeHtmls = root.querySelector(".notice");
     console.log('noticeHtmls : ', noticeHtmls);
