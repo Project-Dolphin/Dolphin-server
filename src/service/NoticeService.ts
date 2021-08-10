@@ -29,7 +29,7 @@ export class NoticeService {
 
 
     //#container > div.main_content > div.M_con2 > div.notice > div.notibox.on > div.list_box
-    const list = notibox.querySelector("list_box > ul")
+    const list = notibox?.querySelector("list_box > ul")
 
     /*const noticeHtmls = root.querySelector(".notice");
     console.log('noticeHtmls : ', noticeHtmls);
