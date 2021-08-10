@@ -13,9 +13,11 @@ export class NoticeService {
 
   public async getMainNotice(): Promise<Notice[]> {
 
+    const infuncUrl = 'https://www.kmou.ac.kr/kmou/main.do'
+
     const notices: Notice[] = [];
 
-    const rawText = await got.get(this.url);
+    const rawText = await got.get(infuncUrl);
     const root = parse(rawText.body);
 
 
