@@ -6,12 +6,14 @@ import { ShuttleService } from './service/ShuttleService';
 
 const dolphin: Handler = async (event: APIGatewayEvent) => {
   const path = event.path;
-  const querystring = event.pathParameters ? event.pathParameters.bstopId : null
+
+  const querystring = event.queryStringParameters;
+  const bstopid = querystring?.bstopid || '';
   const busService = new BusService();
   const shuttleService = new ShuttleService();
 
   if (path.includes('businfo')) {
-    if (querystring == null) {
+    if (bstopid == '') {
       // 운행중인 모든 버스
       return {
         statusCode: 200,
@@ -27,7 +29,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
       return {
         statusCode: 200,
         body: JSON.stringify({
-          data: busService.getSpecificNode(querystring),
+          data: busService.getSpecificNode(bstopid),
           path: path,
         }),
       };
