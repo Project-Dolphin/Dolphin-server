@@ -80,13 +80,15 @@ export class BusService {
 
   public async getAllNode(): Promise<BusInfo[]> {
 
-    var url = 'http://61.43.246.153/openapi-data/service/busanBIMS2/busInfoRoute';
-    var queryParams = '?' + 'ServiceKey' + '=' + this.serviceKey; /* Service Key*/
-    queryParams += '&' + 'lineid' + '=' + encodeURIComponent('5200190000'); /* */
+    var url = 'http://61.43.246.153/openapi-data/service/busanBIMS2/busInfoRoute?ServiceKey=R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D&lineid=5200190000';
+    /*var queryParams = '?' + 'ServiceKey' + '=' + this.serviceKey;
+    queryParams += '&' + 'lineid' + '=' + encodeURIComponent('5200190000');  */
 
     const arriveInfo: BusInfo[] = [];
 
-    const response = await got.get(url + queryParams);
+    //const response = await got.get(url + queryParams);
+    const response = await got.get(url);
+
     var tObj = parser.getTraversalObj(response.body, options);
     var jsonObj = parser.convertToJson(tObj, options);
 
