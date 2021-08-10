@@ -29,16 +29,17 @@ export class NoticeService {
 
 
     //#container > div.main_content > div.M_con2 > div.notice > div.notibox.on > div.list_box
-    const list = notibox?.querySelector("list_box > ul")
+    const list = notibox?.querySelector("list_box")
+    const ul = list?.querySelector("ul")
 
     /*const noticeHtmls = root.querySelector(".notice");
     console.log('noticeHtmls : ', noticeHtmls);
     const notiBox0 = noticeHtmls?.querySelector(":notibox .list_box")
     console.log('notiBox0 : ', notiBox0)
     const list = notiBox0?.querySelector('.list_box');*/
-    console.log('list : ', list);
-    if (list != null) {
-      const contents = list.querySelectorAll('li');
+    console.log('ul : ', ul);
+    if (ul != null) {
+      const contents = ul.querySelectorAll('li');
 
       contents.forEach((content) => {
         const titleData = content.querySelector('a');
