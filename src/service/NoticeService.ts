@@ -20,12 +20,9 @@ export class NoticeService {
     const rawText = await got.get(infuncUrl);
     const root = parse(rawText.body);
 
+    //#container > div.main_content > div.M_con2 > div.notice > div.notibox.on > div.list_box > ul
 
-    //#container > div.main_content > div.M_con2 > div.notice > div.notibox.on > div.list_box > ul > li:nth-child(1)
-
-    const wrap = root.querySelector("#wrap");
-    const box = wrap.querySelector(".box_mot_1");
-    const container = box?.querySelector("#container");
+    const container = root?.querySelector("#container");
     const mainContent = container?.querySelector(".main_content")
     const con2 = mainContent?.querySelector(".M_con2")
     const notice = con2?.querySelector(".notice")
