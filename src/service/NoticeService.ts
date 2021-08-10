@@ -21,10 +21,10 @@ export class NoticeService {
 
     const noticeHtmls = root.querySelectorAll('.notibox');
     const list = noticeHtmls[0].querySelector('.list_box');
-    if (list != null) {
+    if (list) {
       const contents = list.querySelectorAll('li'); // optional chaining
 
-      if (contents != null) {
+      if (contents) {
         contents.forEach((content) => {
           const titleData = content.querySelector('a');
           const dateData = content.querySelector('span');
