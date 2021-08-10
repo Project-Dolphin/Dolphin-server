@@ -20,8 +20,8 @@ export class NoticeService {
 
     //#container > div.main_content > div.M_con2 > div.notice > div.notibox.on > div.list_box
 
-    const noticeHtmls = root.querySelector(".notice");
-    const notiBox0 = noticeHtmls?.querySelector(".notibox")
+    const noticeHtmls = root.querySelector("div.notice");
+    const notiBox0 = noticeHtmls?.querySelector("div.notibox.on")
     console.log('noticeHtmls : ', noticeHtmls)
     const list = notiBox0?.querySelector('.list_box');
     if (list != null) {
