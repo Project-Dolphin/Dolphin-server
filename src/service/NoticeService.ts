@@ -18,14 +18,16 @@ export class NoticeService {
     const rawText = await got.get(this.url);
     const root = parse(rawText.body);
 
+    console.log(root);
+
     //#container > div.main_content > div.M_con2 > div.notice > div.notibox.on > div.list_box
 
     const noticeHtmls = root.querySelector(".notice");
-    console.log('noticeHtmls : ', noticeHtmls);
+    //console.log('noticeHtmls : ', noticeHtmls);
     const notiBox0 = noticeHtmls?.querySelector(":notibox .list_box")
-    console.log('notiBox0 : ', notiBox0)
+    //console.log('notiBox0 : ', notiBox0)
     const list = notiBox0?.querySelector('.list_box');
-    console.log('list : ', list);
+    //console.log('list : ', list);
     if (list != null) {
       const contents = list.querySelectorAll('li');
 
@@ -42,7 +44,7 @@ export class NoticeService {
 
     }
 
-    console.log('notices : ', notices)
+    //console.log('notices : ', notices)
 
     return notices;
   }
