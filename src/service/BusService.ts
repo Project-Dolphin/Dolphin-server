@@ -21,6 +21,7 @@ interface BusInfo {
   lat: Number;
   lon: Number;
   nodeId: Number;
+  bstopnm: String;
 }
 
 export class BusService {
@@ -95,7 +96,7 @@ export class BusService {
       if (value.lat && value.lon) {
         if (String(value.gpsTm).length != 6)
           value.gpsTm = "0" + value.gpsTm;
-        arriveInfo.push({ carNo: value.carNo, nodeId: value.nodeId, lat: value.lat, lon: value.lon, gpsTm: value.gpsTm });
+        arriveInfo.push({ carNo: value.carNo, nodeId: value.nodeId, lat: value.lat, lon: value.lon, gpsTm: value.gpsTm, bstopnm: value.bstopnm });
       }
     });
 
