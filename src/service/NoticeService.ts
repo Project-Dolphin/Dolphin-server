@@ -8,7 +8,7 @@ interface Notice {
 }
 
 export class NoticeService {
-  private readonly url = 'http://www.kmou.ac.kr/kmou/main.do';
+  //private readonly url = 'http://www.kmou.ac.kr/kmou/main.do';
   private readonly kmouUrl = 'https://www.kmou.ac.kr';
 
   public async getMainNotice(): Promise<Notice[]> {
