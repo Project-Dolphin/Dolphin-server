@@ -39,10 +39,7 @@ functions:
       - http:
           path: businfo/{bstopId}
           method: get
-          request:
-            parameters:
-              paths:
-                bstopId: true
+          cors: true
       - http:
           path: businfo
           method: get
