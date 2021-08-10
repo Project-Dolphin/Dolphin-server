@@ -22,7 +22,7 @@ export class NoticeService {
 
       var $ = cheerio.load(html);
 
-      $('.notice .notibox.on .list_box. ul').each(function () {
+      $('.notice .notibox .list_box. ul').each(function () {
         console.log($(this).text());
       })
     })
