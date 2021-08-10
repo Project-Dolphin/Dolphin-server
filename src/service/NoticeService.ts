@@ -18,7 +18,7 @@ export class NoticeService {
     const rawText = await got.get(this.url);
     const root = parse(rawText.body);
 
-    console.log(root);
+    console.log(root.firstChild);
 
     //#container > div.main_content > div.M_con2 > div.notice > div.notibox.on > div.list_box
 
