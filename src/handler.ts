@@ -116,7 +116,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
     statusCode: 200,
     body: JSON.stringify({
       data: 'success',
-      path: path,
+      path: bstopid,
     }),
   };
 };
