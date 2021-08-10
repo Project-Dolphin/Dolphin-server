@@ -18,6 +18,9 @@ export class NoticeService {
     const rawText = await got.get(this.url);
     const root = parse(rawText.body);
 
+
+    //#container > div.main_content > div.M_con2 > div.notice > div.notibox.on > div.list_box > ul > li:nth-child(1)
+
     const wrap = root.querySelector("#wrap");
     const box = wrap.querySelector(".box_mot_1");
     const container = box?.querySelector("#container");
@@ -26,9 +29,6 @@ export class NoticeService {
     const notice = con2?.querySelector(".notice")
     const notibox = notice?.querySelector(".notibox");
 
-
-
-    //#container > div.main_content > div.M_con2 > div.notice > div.notibox.on > div.list_box > ul > li:nth-child(1)
     const list = notibox?.querySelector(".list_box")
     const ul = list?.querySelector("ul")
 
