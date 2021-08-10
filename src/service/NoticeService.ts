@@ -20,11 +20,11 @@ export class NoticeService {
 
     const wrap = root.querySelector("#wrap");
     const box = wrap.querySelector("box_mot_1");
-    const container = box.querySelector("#container");
-    const mainContent = container.querySelector("main_content")
-    const con2 = mainContent.querySelector("M_con2")
-    const notice = con2.querySelector("notice")
-    const notibox = notice.querySelectorAll("notibox");
+    const container = box?.querySelector("#container");
+    const mainContent = container?.querySelector("main_content")
+    const con2 = mainContent?.querySelector("M_con2")
+    const notice = con2?.querySelector("notice")
+    const notibox = notice?.querySelectorAll("notibox");
 
 
 
