@@ -8,6 +8,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
 
   const path = event.path;
   const bstopid = JSON.stringify(event, null, 2);
+  const value = bstopid[1];
 
   const busService = new BusService();
   const shuttleService = new ShuttleService();
@@ -26,7 +27,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
     return {
       statusCode: 200,
       body: JSON.stringify({
-        data: busService.getSpecificNode(bstopid),
+        data: busService.getSpecificNode(value),
         path: path,
       }),
     };
