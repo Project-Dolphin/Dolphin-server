@@ -24,12 +24,12 @@ export class NoticeService {
     const mainContent = container?.querySelector("main_content")
     const con2 = mainContent?.querySelector("M_con2")
     const notice = con2?.querySelector("notice")
-    const notibox = notice?.querySelectorAll("notibox");
+    const notibox = notice?.querySelector("notibox");
 
 
 
     //#container > div.main_content > div.M_con2 > div.notice > div.notibox.on > div.list_box
-    const list = notibox[0].querySelector("list_box > ul")
+    const list = notibox.querySelector("list_box > ul")
 
     /*const noticeHtmls = root.querySelector(".notice");
     console.log('noticeHtmls : ', noticeHtmls);
