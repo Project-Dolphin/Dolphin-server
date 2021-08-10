@@ -100,6 +100,8 @@ export class BusService {
       }
     });
 
+    console.log(arriveInfo);
+
     return arriveInfo;
   }
 }
