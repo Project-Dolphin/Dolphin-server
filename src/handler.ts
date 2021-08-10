@@ -7,33 +7,29 @@ import { ShuttleService } from './service/ShuttleService';
 const dolphin: Handler = async (event: APIGatewayEvent) => {
   const path = event.path;
 
-  const querystring = event.queryStringParameters;
-  const bstopid = querystring?.bstopid || '';
+  const bstopid = event.pathParameters?.id;
+
   const busService = new BusService();
   const shuttleService = new ShuttleService();
 
   if (path === '/businfo') {
-    if (bstopid == '') {
-      // 운행중인 모든 버스
-      return {
-        statusCode: 200,
-        body: JSON.stringify({
-          data: busService.getAllNode(),
-          path: path,
-        }),
-      };
-    }
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        data: busService.getAllNode(),
+        path: path,
+      }),
+    };
+  }
 
-    else {
-      // 특정 정류장의 도착 정보
-      return {
-        statusCode: 200,
-        body: JSON.stringify({
-          data: busService.getSpecificNode(bstopid),
-          path: path,
-        }),
-      };
-    }
+  if (bstopid != null && path === `/businfo/${bstopid}`) {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        data: busService.getSpecificNode(bstopid),
+        path: path,
+      }),
+    };
   }
 
   if (path === '/holiday') {
