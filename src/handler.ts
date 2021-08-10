@@ -34,6 +34,18 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
     }
   }
 
+  if (path === '/holiday') {
+    // 휴일
+    const calendarService = new CalendarService();
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        data: calendarService.getHoliday(),
+        path: path,
+      }),
+    };
+  }
+
   if (path === '/calendar') {
     // 학사 일정
     const calendarService = new CalendarService();
