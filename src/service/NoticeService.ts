@@ -8,7 +8,7 @@ interface Notice {
 }
 
 export class NoticeService {
-  private readonly url = 'https://www.kmou.ac.kr/kmou/main.do';
+  private readonly url = 'http://www.kmou.ac.kr/kmou/main.do';
   private readonly kmouUrl = 'https://www.kmou.ac.kr';
 
   public async getMainNotice(): Promise<Notice[]> {
@@ -28,7 +28,7 @@ export class NoticeService {
 
 
 
-    //#container > div.main_content > div.M_con2 > div.notice > div.notibox.on > div.list_box
+    //#container > div.main_content > div.M_con2 > div.notice > div.notibox.on > div.list_box > ul > li:nth-child(1)
     const list = notibox?.querySelector(".list_box")
     const ul = list?.querySelector("ul")
 
