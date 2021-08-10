@@ -6,7 +6,7 @@ import { ShuttleService } from './service/ShuttleService';
 
 const dolphin: Handler = async (event: APIGatewayEvent) => {
   const path = event.path;
-  const querystring = event.pathParameters ? event.pathParameters.bstopid : null
+  const querystring = event.pathParameters ? event.pathParameters.bstopId : null
   const busService = new BusService();
   const shuttleService = new ShuttleService();
 
