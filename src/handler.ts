@@ -12,7 +12,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   const busService = new BusService();
   const shuttleService = new ShuttleService();
 
-  if (path.includes('businfo')) {
+  if (path === '/businfo') {
     if (bstopid == '') {
       // 운행중인 모든 버스
       return {
