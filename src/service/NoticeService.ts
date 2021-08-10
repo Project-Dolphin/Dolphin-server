@@ -21,7 +21,7 @@ export class NoticeService {
     console.log(root.firstChild);
 
     //#container > div.main_content > div.M_con2 > div.notice > div.notibox.on > div.list_box
-    const list = root.querySelector('notibox').querySelector('list_box')
+    const list = root.querySelector('notibox')?.querySelector('list_box')
 
     /*const noticeHtmls = root.querySelector(".notice");
     console.log('noticeHtmls : ', noticeHtmls);
