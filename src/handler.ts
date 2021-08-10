@@ -23,7 +23,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
     };
   }
 
-  if (bstopid) {
+  /*if (bstopid) {
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -31,7 +31,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
         path: path,
       }),
     };
-  }
+  }*/
 
   if (path === '/holiday') {
     // 휴일
