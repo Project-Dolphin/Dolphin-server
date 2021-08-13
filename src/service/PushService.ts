@@ -60,6 +60,5 @@ export class PushService {
             }
 
         });
-        return true;
     }
 }
