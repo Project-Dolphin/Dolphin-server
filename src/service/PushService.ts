@@ -35,7 +35,7 @@ export class PushService {
         const db = this.init.firestore();  //위 설정대로 저장소에 접속합니다.
         const student = db.collection("Students");
         const snapshot = await student.get();
-        snapshot.forEach(async result => {
+        snapshot.forEach(async function (result) {
             let pushInfo = student.doc(`${result}`);
             let doc = await pushInfo.get();
             if (!doc.exists) {
