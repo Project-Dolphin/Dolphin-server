@@ -7,11 +7,20 @@ import { ShuttleService } from './service/ShuttleService';
 const dolphin: Handler = async (event: APIGatewayEvent) => {
 
   const path = event.path;
-  const bstopid = JSON.stringify(event, null, 2);
-  const value = bstopid['bstopId'];
+  const bstopid = event.pathParameters?.bstopid;
 
   const busService = new BusService();
   const shuttleService = new ShuttleService();
+
+  if (bstopid) {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        data: busService.getSpecificNode(bstopid),
+        path: path,
+      }),
+    };
+  }
 
   if (path === '/businfo') {
     return {
@@ -22,16 +31,6 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
       }),
     };
   }
-
-  /*if (bstopid) {
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-        data: busService.getSpecificNode(value),
-        path: path,
-      }),
-    };
-  }*/
 
   if (path === '/holiday') {
     // 휴일
