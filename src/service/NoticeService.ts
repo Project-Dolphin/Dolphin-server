@@ -8,20 +8,23 @@ interface Notice {
 }
 
 export class NoticeService {
-  private readonly url = 'https://www.kmou.ac.kr/kmou/main.do#notice';
+  private readonly url = 'http://www.kmou.ac.kr/kmou/main.do';
   private readonly kmouUrl = 'https://www.kmou.ac.kr';
 
   public async getMainNotice(): Promise<Notice[]> {
+
+
+    const notices: Notice[] = [];
+
     const rawText = await got.get(this.url);
     const root = parse(rawText.body);
 
     const noticeHtmls = root.querySelectorAll('.notibox');
     const list = noticeHtmls[0].querySelector('.list_box');
-    const notices: Notice[] = [];
-    if (list != null) {
+    if (list) {
       const contents = list.querySelectorAll('li'); // optional chaining
 
-      if (contents != null) {
+      if (contents) {
         contents.forEach((content) => {
           const titleData = content.querySelector('a');
           const dateData = content.querySelector('span');
@@ -32,9 +35,10 @@ export class NoticeService {
             link: this.kmouUrl.concat(titleData.attributes.href),
           });
         });
-      }
+      };
     }
 
     return notices;
+
   }
 }

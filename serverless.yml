@@ -34,10 +34,17 @@ functions:
           path: notices
           method: get
       - http:
-          path: businfo/{bstopId}
+          path: holiday
           method: get
       - http:
-          path: businfo/
+          path: businfo/{bstopId}
+          method: get
+          request: 
+          parameters: 
+             paths: 
+               bstopId: true
+      - http:
+          path: businfo
           method: get
       - http:
           path: shuttle/{type}

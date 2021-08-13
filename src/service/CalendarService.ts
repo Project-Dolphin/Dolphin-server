@@ -1,4 +1,5 @@
 import { academicCalendar, calendar } from '../constants/calendar';
+import { holiDay } from '../constants/holiday';
 
 interface Calendar {
   term: Term;
@@ -58,5 +59,8 @@ export class CalendarService {
   }
   public getAcademicCalendar(): Calendar[] {
     return academicCalendar;
+  }
+  public getHoliday(): Calendar[] {
+    return holiDay;
   }
 }

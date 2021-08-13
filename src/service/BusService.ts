@@ -2,7 +2,7 @@ import got from 'got';
 import parser = require('fast-xml-parser');
 import { options } from '../constants/option/xml_parser_option';
 import { depart190 } from '../constants/depart190';
-import { checkHoliday, makeKoreaDate, toKSTString } from '../constants/function/commonfunction';
+import { checkHoliday, toKSTString } from '../constants/function/commonfunction';
 
 interface BusArriveInfo {
   carNo1: Number;
@@ -21,6 +21,7 @@ interface BusInfo {
   lat: Number;
   lon: Number;
   nodeId: Number;
+  bstopnm: String;
 }
 
 export class BusService {
@@ -28,7 +29,7 @@ export class BusService {
 
   public getDepart190() {
 
-    const date = makeKoreaDate();
+    const date = new Date();
     const now = toKSTString().substr(8, 4);
 
     let flag: boolean = checkHoliday();
@@ -79,13 +80,15 @@ export class BusService {
 
   public async getAllNode(): Promise<BusInfo[]> {
 
-    var url = 'http://61.43.246.153/openapi-data/service/busanBIMS2/busInfoRoute';
-    var queryParams = '?' + 'ServiceKey' + '=' + this.serviceKey; /* Service Key*/
-    queryParams += '&' + 'lineid' + '=' + encodeURIComponent('5200190000'); /* */
+    var url = 'http://61.43.246.153/openapi-data/service/busanBIMS2/busInfoRoute?ServiceKey=R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D&lineid=5200190000';
+    /*var queryParams = '?' + 'ServiceKey' + '=' + this.serviceKey;
+    queryParams += '&' + 'lineid' + '=' + encodeURIComponent('5200190000');  */
 
     const arriveInfo: BusInfo[] = [];
 
-    const response = await got.get(url + queryParams);
+    //const response = await got.get(url + queryParams);
+    const response = await got.get(url);
+
     var tObj = parser.getTraversalObj(response.body, options);
     var jsonObj = parser.convertToJson(tObj, options);
 
@@ -95,9 +98,11 @@ export class BusService {
       if (value.lat && value.lon) {
         if (String(value.gpsTm).length != 6)
           value.gpsTm = "0" + value.gpsTm;
-        arriveInfo.push({ carNo: value.carNo, nodeId: value.nodeId, lat: value.lat, lon: value.lon, gpsTm: value.gpsTm });
+        arriveInfo.push({ carNo: value.carNo, nodeId: value.nodeId, lat: value.lat, lon: value.lon, gpsTm: value.gpsTm, bstopnm: value.bstopnm });
       }
     });
+
+    console.log(arriveInfo);
 
     return arriveInfo;
   }
