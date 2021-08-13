@@ -11,7 +11,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
 
   const shuttleService = new ShuttleService();
 
-  if (bstopid) {
+  if (bstopid && path === `/businfo/${bstopid}`) {
     const busService = new BusService();
     return {
       statusCode: 200,
