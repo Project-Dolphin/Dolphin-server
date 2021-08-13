@@ -37,7 +37,7 @@ export class PushService {
         const db = this.init.firestore();  //위 설정대로 저장소에 접속합니다.
         const student = db.collection("Students");
         const snapshot = await student.get();
-        snapshot.forEach(function (result) {
+        snapshot.forEach(async function (result) {
             let doc = result.data();
 
             if (!doc.exists) {
@@ -45,7 +45,7 @@ export class PushService {
             } else {
                 console.log(doc);
                 if (doc.deviceType == 'iOS') {
-                    fetch('https://fcm.googleapis.com/fcm/send', {
+                    await fetch('https://fcm.googleapis.com/fcm/send', {
                         method: 'POST',
                         headers: headers,
                         body: JSON.stringify({
