@@ -7,8 +7,8 @@ import { ShuttleService } from './service/ShuttleService';
 const dolphin: Handler = async (event: APIGatewayEvent) => {
 
   const path = event.path;
-  const params = JSON.stringify(event.pathParameters);
-  const bstopid = params['bstopId'];
+  const params = event.pathParameters;
+  const bstopid = params?.bstopId;
 
   const shuttleService = new ShuttleService();
 
@@ -121,6 +121,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
     body: JSON.stringify({
       data: 'success',
       path: path,
+      result: params,
     }),
   };
 };
