@@ -2,14 +2,6 @@ import firebase from 'firebase/app'
 import 'firebase/auth';
 import 'firebase/firestore';
 
-interface UserInfo {
-    deviceType: string;
-    deviceUuid: string;
-    fcmToken: string;
-    isAllowPush: boolean;
-}
-
-
 export class PushService {
 
     private readonly init = firebase.initializeApp({
@@ -22,18 +14,36 @@ export class PushService {
         measurementId: "G-4DP2T31XWP"
     });
 
-    public sendPushService() {
+    /*private readonly serverKey = 'AAAAN5dXGqg:APA91bELcxT-XIYUeLPmfWs9not4_1FKpbR_5oCQwzQmfmiL-Rn2flbAugNkYd2Sj4qS-uaDH7LJ8KieB9gUlzirjUbjTyyPr2ISxcmzPsD3W9f4J7nTOgsqZD1awcsUknlkfweEHH1j'
 
-        var db = this.init.firestore();  //위 설정대로 저장소에 접속합니다.
-        db.collection("Students")
-            .get()
-            .then(function (querySnapshot: any) {
-                querySnapshot.forEach(function (doc: UserInfo) {
-                    console.log(doc.fcmToken)
-                })
-            })
-            .catch(function (error) {
-                console.log("Error getting documents: ", error);
-            });
+    private readonly headers = {
+        "Authorization": "key=" + this.serverKey,
+        "Content-Type": "application/json"
+    }*/
+
+    public async sendPushService() {
+
+        /*const arrJsonAndroid = {
+            "title": "title",
+            "message": "message"
+        }
+        const arrJsonIOS = {
+            "title": "title",
+            "body": "message"
+        }*/
+
+        const db = this.init.firestore();  //위 설정대로 저장소에 접속합니다.
+        const student = db.collection("Students");
+        const snapshot = await student.get();
+        snapshot.forEach(async result => {
+            let pushInfo = student.doc(`${result}`);
+            let doc = await pushInfo.get();
+            if (!doc.exists) {
+                console.log('No such document!');
+            } else {
+                console.log('Document data:', doc.data());
+            }
+
+        });
     }
 }

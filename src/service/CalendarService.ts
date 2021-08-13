@@ -23,7 +23,6 @@ export class CalendarService {
           .replace(/.\(\W\)|\s/g, '')
           .replace(/\./g, '-')
           .split('~');
-        console.log(date[0], date[1]);
         const year =
           isNextYear && (date[0].split('-')[0] === '1' || date[0].split('-')[0] === '2')
             ? '2022'
