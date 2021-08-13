@@ -9,10 +9,10 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   const path = event.path;
   const bstopid = event.pathParameters?.bstopid;
 
-  const busService = new BusService();
   const shuttleService = new ShuttleService();
 
   if (bstopid) {
+    const busService = new BusService();
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -23,6 +23,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   }
 
   if (path === '/businfo') {
+    const busService = new BusService();
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -91,8 +92,10 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   }
 
   if (path === '/timetable/190') {
+    const busService = new BusService();
     // 190 시간표
     return {
+
       statusCode: 200,
       body: JSON.stringify({
         data: busService.getDepart190(),
