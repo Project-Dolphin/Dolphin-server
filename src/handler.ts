@@ -11,9 +11,10 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   const bstopid = params?.bstopId;
 
   const shuttleService = new ShuttleService();
+  const busService = new BusService();
+  const calendarService = new CalendarService();
 
   if (bstopid && path === '/businfo/' + bstopid) {
-    const busService = new BusService();
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -24,7 +25,6 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   }
 
   if (path === '/businfo') {
-    const busService = new BusService();
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -36,7 +36,6 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
 
   if (path === '/holiday') {
     // 휴일
-    const calendarService = new CalendarService();
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -48,7 +47,6 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
 
   if (path === '/calendar') {
     // 학사 일정
-    const calendarService = new CalendarService();
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -93,10 +91,8 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   }
 
   if (path === '/timetable/190') {
-    const busService = new BusService();
     // 190 시간표
     return {
-
       statusCode: 200,
       body: JSON.stringify({
         data: busService.getDepart190(),
