@@ -14,36 +14,50 @@ export class PushService {
         measurementId: "G-4DP2T31XWP"
     });
 
-    /*private readonly serverKey = 'AAAAN5dXGqg:APA91bELcxT-XIYUeLPmfWs9not4_1FKpbR_5oCQwzQmfmiL-Rn2flbAugNkYd2Sj4qS-uaDH7LJ8KieB9gUlzirjUbjTyyPr2ISxcmzPsD3W9f4J7nTOgsqZD1awcsUknlkfweEHH1j'
 
-    private readonly headers = {
-        "Authorization": "key=" + this.serverKey,
-        "Content-Type": "application/json"
-    }*/
 
     public async sendPushService() {
+
+        const serverKey = 'AAAAN5dXGqg:APA91bELcxT-XIYUeLPmfWs9not4_1FKpbR_5oCQwzQmfmiL-Rn2flbAugNkYd2Sj4qS-uaDH7LJ8KieB9gUlzirjUbjTyyPr2ISxcmzPsD3W9f4J7nTOgsqZD1awcsUknlkfweEHH1j'
+
+        const headers = {
+            "Authorization": "key=" + serverKey,
+            "Content-Type": "application/json"
+        }
 
         /*const arrJsonAndroid = {
             "title": "title",
             "message": "message"
-        }
+        }*/
         const arrJsonIOS = {
             "title": "title",
             "body": "message"
-        }*/
+        }
 
         const db = this.init.firestore();  //위 설정대로 저장소에 접속합니다.
         const student = db.collection("Students");
         const snapshot = await student.get();
         snapshot.forEach(function (result) {
-            console.log(result.data());
-            /*let pushInfo = student.doc(result);
-            let doc = await pushInfo.get();
+            let doc = result.data();
+
             if (!doc.exists) {
                 console.log('No such document!');
             } else {
-                console.log('Document data:', doc.data());
-            }*/
+
+                if (doc.deviceType == 'iOS') {
+                    fetch('https://fcm.googleapis.com/fcm/send', {
+                        method: 'POST',
+                        headers: headers,
+                        body: JSON.stringify({
+                            to: doc.fcmToken,
+                            priority: 'normal',
+                            data: arrJsonIOS,
+                        }),
+                    });
+                } else {
+
+                }
+            }
 
         });
     }
