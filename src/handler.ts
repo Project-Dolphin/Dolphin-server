@@ -121,6 +121,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
     body: JSON.stringify({
       data: 'success',
       path: path,
+      event: event,
     }),
   };
 };
