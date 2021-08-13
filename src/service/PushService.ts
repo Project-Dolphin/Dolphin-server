@@ -36,7 +36,7 @@ export class PushService {
         const student = db.collection("Students");
         const snapshot = await student.get();
         snapshot.forEach(function (result) {
-            console.log(result);
+            console.log(result.data());
             /*let pushInfo = student.doc(result);
             let doc = await pushInfo.get();
             if (!doc.exists) {
