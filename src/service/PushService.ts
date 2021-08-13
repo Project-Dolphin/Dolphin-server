@@ -22,7 +22,7 @@ export class PushService {
         measurementId: "G-4DP2T31XWP"
     });
 
-    public async sendPushService() {
+    public sendPushService() {
 
         var db = this.init.firestore();  //위 설정대로 저장소에 접속합니다.
         db.collection("Students")
