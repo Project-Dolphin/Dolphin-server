@@ -159,5 +159,5 @@ export const depart190 = [
   { type: 'holiday', time: '2044' },
   { type: 'holiday', time: '2106' },
   { type: 'holiday', time: '2128' },
-  { type: 'holiday', time: '2150' }
+  { type: 'holiday', time: '2150' },
 ];

@@ -12,10 +12,7 @@ export class NoticeService {
   private readonly kmouUrl = 'https://www.kmou.ac.kr';
 
   public async getMainNotice(): Promise<Notice[]> {
-
-
     const notices: Notice[] = [];
-
     const rawText = await got.get(this.url);
     const root = parse(rawText.body);
 
@@ -35,10 +32,9 @@ export class NoticeService {
             link: this.kmouUrl.concat(titleData.attributes.href),
           });
         });
-      };
+      }
     }
 
     return notices;
-
   }
 }

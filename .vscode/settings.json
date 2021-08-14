@@ -1,25 +1,21 @@
 {
-  
-    "editor.formatOnSave": false,
-    "eslint.format.enable": true,
-    "prettier.singleQuote": true,
-    // Set the default
-    // Enable per-language
-    "[typescript]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features",
-        "editor.formatOnSave": true
-    },
-    "eslint.validate": [
-        "typescript",
-      ],
-    "editor.codeActionsOnSave": {
-        "source.fixAll.prettier": true,
-        "source.fixAll.eslint": true
-    },
-    "eslint.probe": [
-        "javascript",
-        "typescript",
-        "html",
-        "markdown",
-    ],
+  "eslint.validate": ["javascript", "typescript"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "prettier.configPath": ".prettierrc.js"
 }
