@@ -2,11 +2,11 @@ import got from 'got';
 import parser = require('fast-xml-parser');
 import { options } from '../constants/option/xml_parser_option';
 import { depart190 } from '../constants/depart190';
-import { checkHoliday, makeKoreaDate, toKSTString } from '../constants/function/commonfunction';
+import { checkHoliday, toKSTString } from '../constants/function/commonfunction';
 
 interface BusArriveInfo {
-  carNo1: number;
-  carNo2: number;
+  carNo1: string;
+  carNo2: string;
   min1: number;
   min2: number;
   station1: number;
@@ -21,6 +21,7 @@ interface BusInfo {
   lat: number;
   lon: number;
   nodeId: number;
+  bstopnm: string;
 }
 
 export class BusService {
@@ -28,7 +29,7 @@ export class BusService {
     'R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D';
 
   public getDepart190() {
-    const date = makeKoreaDate();
+    const date = new Date();
     const now = toKSTString().substr(8, 4);
 
     const flag: boolean = checkHoliday();
@@ -89,13 +90,16 @@ export class BusService {
   }
 
   public async getAllNode(): Promise<BusInfo[]> {
-    const url = 'http://61.43.246.153/openapi-data/service/busanBIMS2/busInfoRoute';
-    let queryParams = '?' + 'ServiceKey' + '=' + this.serviceKey; /* Service Key*/
-    queryParams += '&' + 'lineid' + '=' + encodeURIComponent('5200190000'); /* */
+    const url =
+      'http://61.43.246.153/openapi-data/service/busanBIMS2/busInfoRoute?ServiceKey=R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D&lineid=5200190000';
+    /*var queryParams = '?' + 'ServiceKey' + '=' + this.serviceKey;
+    queryParams += '&' + 'lineid' + '=' + encodeURIComponent('5200190000');  */
 
     const arriveInfo: BusInfo[] = [];
 
-    const response = await got.get(url + queryParams);
+    //const response = await got.get(url + queryParams);
+    const response = await got.get(url);
+
     const tObj = parser.getTraversalObj(response.body, options);
     const jsonObj = parser.convertToJson(tObj, options);
 
@@ -110,9 +114,12 @@ export class BusService {
           lat: value.lat,
           lon: value.lon,
           gpsTm: value.gpsTm,
+          bstopnm: value.bstopnm,
         });
       }
     });
+
+    console.log(arriveInfo);
 
     return arriveInfo;
   }
