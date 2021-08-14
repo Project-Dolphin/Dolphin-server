@@ -1,4 +1,4 @@
-export const shuttleBus = [
+export const shuttleTimeList = [
   {
     type: 'normal',
     time: '0730',
@@ -340,87 +340,87 @@ export const shuttleBus = [
     time: '2240',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '1200',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '1230',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '1300',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '1330',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '1400',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '1430',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '1500',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '1600',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '1630',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '1700',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '1730',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '1900',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '1930',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '2000',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '2030',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '2130',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '2200',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '2230',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '2300',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '2330',
   },
   {
-    type: 'test',
+    type: 'exam',
     time: '2400',
   },
 ];
