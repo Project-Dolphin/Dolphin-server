@@ -5,63 +5,74 @@ import { depart190 } from '../constants/depart190';
 import { checkHoliday, makeKoreaDate, toKSTString } from '../constants/function/commonfunction';
 
 interface BusArriveInfo {
-  carNo1: Number;
-  carNo2: Number;
-  min1: Number;
-  min2: Number;
-  station1: Number;
-  station2: Number;
-  lowplate1: Boolean;
-  lowplate2: Boolean;
+  carNo1: number;
+  carNo2: number;
+  min1: number;
+  min2: number;
+  station1: number;
+  station2: number;
+  lowplate1: boolean;
+  lowplate2: boolean;
 }
 
 interface BusInfo {
-  carNo: String;
-  gpsTm: String;
-  lat: Number;
-  lon: Number;
-  nodeId: Number;
+  carNo: string;
+  gpsTm: string;
+  lat: number;
+  lon: number;
+  nodeId: number;
 }
 
 export class BusService {
-  private readonly serviceKey = 'R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D';
+  private readonly serviceKey =
+    'R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D';
 
   public getDepart190() {
-
     const date = makeKoreaDate();
     const now = toKSTString().substr(8, 4);
 
-    let flag: boolean = checkHoliday();
+    const flag: boolean = checkHoliday();
 
-    const type = flag ? 'holiday' : date.getDay() == 6 ? 'saturday' : 'normal'
+    const type = flag ? 'holiday' : date.getDay() == 6 ? 'saturday' : 'normal';
 
-    const tmp = depart190.filter(schedule => Number(schedule.time) > Number(now) && schedule.type == type);
+    const tmp = depart190.filter(
+      (schedule) => Number(schedule.time) > Number(now) && schedule.type == type,
+    );
 
     const result = [];
 
     for (let i = 0; i < 3; i++) {
       if (tmp[i]) result.push(tmp[i]);
-      else result.push({ type: "none", time: "2359" })
+      else result.push({ type: 'none', time: '2359' });
     }
 
     return result;
   }
 
-
-  public async getSpecificNode(bstopid: String): Promise<BusArriveInfo> {
-
-    var url = 'http://61.43.246.153/openapi-data/service/busanBIMS2/busStopArr';
-    var queryParams = '?' + 'ServiceKey' + '=' + this.serviceKey; /* Service Key*/
+  public async getSpecificNode(bstopid: string): Promise<BusArriveInfo> {
+    const url = 'http://61.43.246.153/openapi-data/service/busanBIMS2/busStopArr';
+    let queryParams = '?' + 'ServiceKey' + '=' + this.serviceKey; /* Service Key*/
     queryParams += '&' + 'lineid' + '=' + encodeURIComponent('5200190000'); /* */
-    queryParams += '&' + 'bstopid' + '=' + bstopid
+    queryParams += '&' + 'bstopid' + '=' + bstopid;
 
     const response = await got.get(url + queryParams);
-    var tObj = parser.getTraversalObj(response.body, options);
-    var jsonObj = parser.convertToJson(tObj, options);
+    const tObj = parser.getTraversalObj(response.body, options);
+    const jsonObj = parser.convertToJson(tObj, options);
     if (response.headers['resultCode'] == '99') return Promise.reject('세션 종료');
 
-    const item = JSON.stringify(jsonObj.response.body.items).length > 0
-      ? jsonObj.response.body.items.item : { carNo1: "차량 없음", carNo2: "차량 없음", min1: 999, min2: 999, station1: 999, station2: 999, lowplate1: false, lowplate2: false };
+    const item =
+      JSON.stringify(jsonObj.response.body.items).length > 0
+        ? jsonObj.response.body.items.item
+        : {
+          carNo1: '차량 없음',
+          carNo2: '차량 없음',
+          min1: 999,
+          min2: 999,
+          station1: 999,
+          station2: 999,
+          lowplate1: false,
+          lowplate2: false,
+        };
 
     const arriveInfo: BusArriveInfo = {
       carNo1: item.carNo1,
@@ -78,24 +89,28 @@ export class BusService {
   }
 
   public async getAllNode(): Promise<BusInfo[]> {
-
-    var url = 'http://61.43.246.153/openapi-data/service/busanBIMS2/busInfoRoute';
-    var queryParams = '?' + 'ServiceKey' + '=' + this.serviceKey; /* Service Key*/
+    const url = 'http://61.43.246.153/openapi-data/service/busanBIMS2/busInfoRoute';
+    let queryParams = '?' + 'ServiceKey' + '=' + this.serviceKey; /* Service Key*/
     queryParams += '&' + 'lineid' + '=' + encodeURIComponent('5200190000'); /* */
 
     const arriveInfo: BusInfo[] = [];
 
     const response = await got.get(url + queryParams);
-    var tObj = parser.getTraversalObj(response.body, options);
-    var jsonObj = parser.convertToJson(tObj, options);
+    const tObj = parser.getTraversalObj(response.body, options);
+    const jsonObj = parser.convertToJson(tObj, options);
 
     const tmp = jsonObj.response.body.items.item;
 
     tmp.forEach(function (value: any) {
       if (value.lat && value.lon) {
-        if (String(value.gpsTm).length != 6)
-          value.gpsTm = "0" + value.gpsTm;
-        arriveInfo.push({ carNo: value.carNo, nodeId: value.nodeId, lat: value.lat, lon: value.lon, gpsTm: value.gpsTm });
+        if (String(value.gpsTm).length != 6) value.gpsTm = '0' + value.gpsTm;
+        arriveInfo.push({
+          carNo: value.carNo,
+          nodeId: value.nodeId,
+          lat: value.lat,
+          lon: value.lon,
+          gpsTm: value.gpsTm,
+        });
       }
     });
 

@@ -3,11 +3,11 @@ import { testPeriod } from '../constants/testperiod';
 
 import { toKSTString, makeKoreaDate } from '../constants/function/commonfunction';
 
-
 interface ShuttleBus {
   type: string;
   time: string;
 }
+
 export class ShuttleService {
   public getNextShuttle(): ShuttleBus[] {
     const date = makeKoreaDate();
@@ -17,12 +17,14 @@ export class ShuttleService {
 
     const type = this.checkTestPeriod() ? 'test' : this.checkVacation() ? 'vacation' : 'normal';
 
-    const tmp = shuttleBus.filter(schedule => Number(schedule.time) > Number(now.substr(8, 4)) && schedule.type == type);
+    const tmp = shuttleBus.filter(
+      (schedule) => Number(schedule.time) > Number(now.substr(8, 4)) && schedule.type == type,
+    );
 
     const result = [];
     for (let i = 0; i < 3; i++) {
       if (tmp[i]) result.push(tmp[i]);
-      else result.push({ type: "none", time: "2359" })
+      else result.push({ type: 'none', time: '2359' });
     }
 
     return result;
@@ -34,7 +36,7 @@ export class ShuttleService {
 
   public getDayShuttle(): ShuttleBus[] {
     const type = this.checkTestPeriod() ? 'test' : this.checkVacation() ? 'vacation' : 'normal';
-    const tmp = shuttleBus.filter(schedule => schedule.type == type);
+    const tmp = shuttleBus.filter((schedule) => schedule.type == type);
     return tmp;
   }
 
@@ -45,10 +47,9 @@ export class ShuttleService {
   }
 
   private checkTestPeriod(): boolean {
-
     const today = toKSTString().substr(0, 8);
 
-    let isTestPeriod: boolean = false;
+    let isTestPeriod = false;
 
     testPeriod.forEach(function (period) {
       if (today >= period.term.startedAt && today <= period.term.endedAt) {
@@ -58,5 +59,4 @@ export class ShuttleService {
 
     return isTestPeriod;
   }
-
 }

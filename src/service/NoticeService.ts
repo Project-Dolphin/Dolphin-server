@@ -17,10 +17,11 @@ export class NoticeService {
 
     const noticeHtmls = root.querySelectorAll('.notibox');
     const list = noticeHtmls[0].querySelector('.list_box');
-    const contents = list?.querySelectorAll('li'); // optional chaining
+    const contents = list.querySelectorAll('li'); // optional chaining
     const notices: Notice[] = [];
 
-    if (contents) { // contents가 null 일 경우도 생각
+    if (contents) {
+      // contents가 null 일 경우도 생각
       contents.forEach((content) => {
         const titleData = content.querySelector('a');
         const dateData = content.querySelector('span');
