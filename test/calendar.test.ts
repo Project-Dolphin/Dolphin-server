@@ -7,4 +7,10 @@ describe('calendar test', () => {
     expect(result).toBeTruthy();
     done();
   });
+  it('getLatestPlan test - 1', async (done) => {
+    const result = await calendarService.getLatestPlans();
+    expect(result).toBeTruthy();
+    expect(result.length).toBeLessThanOrEqual(2);
+    done();
+  });
 });

@@ -46,6 +46,17 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
     };
   }
 
+  if (path === '/calendar/latest') {
+    // 학사 일정
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        data: calendarService.getLatestPlans(),
+        path: path,
+      }),
+    };
+  }
+
   if (path === '/calendar') {
     // 학사 일정
     return {
@@ -63,7 +74,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
     return {
       statusCode: 200,
       body: JSON.stringify({
-        data: await noticeService.getMainNotice(),
+        data: await noticeService.getAcademicNotice(),
         path: path,
       }),
     };
