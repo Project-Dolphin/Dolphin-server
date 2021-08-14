@@ -1,10 +1,11 @@
 import got from 'got';
-import { parse } from 'node-html-parser';
+// import { parse } from 'node-html-parser';
+import cheerio from 'cheerio';
 
 interface Notice {
   title: string;
   date: string;
-  link?: string;
+  link: string;
 }
 
 export class NoticeService {
@@ -14,27 +15,18 @@ export class NoticeService {
   public async getMainNotice(): Promise<Notice[]> {
     const notices: Notice[] = [];
     const rawText = await got.get(this.url);
-    const root = parse(rawText.body);
-
-    const noticeHtmls = root.querySelectorAll('.notibox');
-    const list = noticeHtmls[0].querySelector('.list_box');
-    if (list) {
-      const contents = list.querySelectorAll('li'); // optional chaining
-
-      if (contents) {
-        contents.forEach((content) => {
-          const titleData = content.querySelector('a');
-          const dateData = content.querySelector('span');
-
-          notices.push({
-            title: titleData.rawText.trim(),
-            date: dateData.rawText.replace(/\./g, '-'),
-            link: this.kmouUrl.concat(titleData.attributes.href),
-          });
-        });
-      }
-    }
-
+    const rawBody = cheerio.load(rawText.body);
+    // console.log(rawBody);
+    const parsedList = rawBody('.list_box > ul').eq(0);
+    parsedList.children('li').each((index, element) => {
+      const content = rawBody(element);
+      notices.push({
+        title: content.children('a').text().trim(),
+        link: this.kmouUrl.concat(content.children('a').attr('href') || ''),
+        date: content.children('span').text().replace(/\./g, '-'),
+      });
+    });
+    // console.log(notices);
     return notices;
   }
 }

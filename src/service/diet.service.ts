@@ -44,14 +44,14 @@ export class DietService {
     const results: SocietyResultType[] = [];
     const result = await got.get(this.societyUrl);
     const rawBody = cheerio.load(result.body);
-    rawBody(
-      'body > div > div > div > div > section > div > div > div > form > div > table > tbody > tr > td',
-    ).each((index, element) => {
-      results.push({
-        type: index,
-        value: removeSpecialCharacters(rawBody(element).html()),
-      });
-    });
+    rawBody('body > div > div > div > div > section > div > div > div > form > div > table > tbody > tr > td').each(
+      (index, element) => {
+        results.push({
+          type: index,
+          value: removeSpecialCharacters(rawBody(element).html()),
+        });
+      },
+    );
 
     if (results.length === 3 && results[0].value.includes('년')) {
       return 'DietService.getSocietyDietAsync: There are no any diet';
@@ -96,16 +96,14 @@ export class DietService {
     let resultUrl = '';
     const result = await got.get(`${this.navalBaseUrl}/food`);
     const rawBody = cheerio.load(result.body);
-    rawBody('div > section > section > div > div > div > table > tbody > tr > td > a').each(
-      (index, element) => {
-        if (index === 0) {
-          resultUrl = `${this.navalBaseUrl}${rawBody(element).attr('href')}`;
-          return false;
-        }
+    rawBody('div > section > section > div > div > div > table > tbody > tr > td > a').each((index, element) => {
+      if (index === 0) {
+        resultUrl = `${this.navalBaseUrl}${rawBody(element).attr('href')}`;
+        return false;
+      }
 
-        return true;
-      },
-    );
+      return true;
+    });
 
     return resultUrl;
   }
