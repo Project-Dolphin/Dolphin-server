@@ -40,7 +40,7 @@ export class DietService {
   private readonly societyUrl = 'https://www.kmou.ac.kr/coop/dv/dietView/selectDietDateView.do';
   private readonly navalBaseUrl = 'http://badaro.kmou.ac.kr';
 
-  async getSocietyDietAsync(): Promise<SocietyResultType[]> {
+  async getSocietyDietAsync(): Promise<SocietyResultType[] | string> {
     const results: SocietyResultType[] = [];
     const result = await got.get(this.societyUrl);
     const rawBody = cheerio.load(result.body);
@@ -53,16 +53,14 @@ export class DietService {
       });
     });
 
-    /*
     if (results.length === 3 && results[0].value.includes('년')) {
-      throw new Error('DietService.getSocietyDietAsync: There are no any diet');
+      return 'DietService.getSocietyDietAsync: There are no any diet';
     }
-    */
 
     return results;
   }
 
-  async getNavalDietAsync(): Promise<NavalResultType> {
+  async getNavalDietAsync(): Promise<NavalResultType | string> {
     const results: string[] = [];
     let foundToday = false;
     const fisrtItemUrl = await this.getFirstItemPathFromNaval();
@@ -83,13 +81,9 @@ export class DietService {
       },
     );
 
-    console.log(results);
-
-    /*
     if (!foundToday) {
-      throw new Error('DietService.getNavalDietAsync: There are no any diet');
+      return 'DietService.getNavalDietAsync: There are no any diet';
     }
-    */
 
     return {
       lunch: results.filter((_, index) => index % 2 === 0),

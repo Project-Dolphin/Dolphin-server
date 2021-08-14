@@ -115,10 +115,11 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
 
   if (path === '/diet/society/today') {
     // MARK: 오늘의 어울림관 식단 (2층, 5층)
+    const res = await dietService.getSocietyDietAsync();
     return {
-      statusCode: 200,
+      statusCode: typeof res === 'string' ? 404 : 200,
       body: JSON.stringify({
-        data: await dietService.getSocietyDietAsync(),
+        data: res,
         path: path,
       }),
     };
@@ -126,10 +127,11 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
 
   if (path === '/diet/naval/today') {
     // MARK: 오늘의 해사대 식단
+    const res = await dietService.getNavalDietAsync();
     return {
-      statusCode: 200,
+      statusCode: typeof res === 'string' ? 404 : 200,
       body: JSON.stringify({
-        data: await dietService.getNavalDietAsync(),
+        data: res,
         path: path,
       }),
     };
