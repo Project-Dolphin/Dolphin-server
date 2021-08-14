@@ -1,5 +1,5 @@
 import got from 'got';
-import parser = require('fast-xml-parser');
+import * as parser from 'fast-xml-parser';
 import { options } from '../constants/option/xml_parser_option';
 import { depart190 } from '../constants/depart190';
 import { checkHoliday, toKSTString } from '../constants/function/commonfunction';
