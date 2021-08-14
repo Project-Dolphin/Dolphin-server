@@ -52,3 +52,9 @@ functions:
       - http:
           path: timetable/{busType}
           method: get
+      - http:
+          path: diet/society/today
+          method: get
+      - http:
+          path: diet/naval/today
+          method: get

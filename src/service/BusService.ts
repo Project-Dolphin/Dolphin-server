@@ -6,8 +6,8 @@ import { depart190 } from '../constants/depart190';
 import { checkHoliday, toKSTString } from '../constants/function/commonfunction';
 
 interface BusArriveInfo {
-  carNo1: string;
-  carNo2: string;
+  carNo1: number;
+  carNo2: number;
   min1: number;
   min2: number;
   station1: number;
@@ -62,20 +62,20 @@ export class BusService {
     const jsonObj = parser.convertToJson(tObj, options);
     if (response.headers['resultCode'] == '99') return Promise.reject('세션 종료');
 
-    const simpleResponse = {
-      carNo1: '차량 없음',
-      carNo2: '차량 없음',
-      min1: 999,
-      min2: 999,
-      station1: 999,
-      station2: 999,
-      lowplate1: false,
-      lowplate2: false,
-    };
     const item =
       JSON.stringify(jsonObj.response.body.items).length > 0
         ? jsonObj.response.body.items.item
-        : simpleResponse;
+        : {
+          carNo1: '차량 없음',
+          carNo2: '차량 없음',
+          min1: 999,
+          min2: 999,
+          station1: 999,
+          station2: 999,
+          lowplate1: false,
+          lowplate2: false,
+        };
+
     const arriveInfo: BusArriveInfo = {
       carNo1: item.carNo1,
       carNo2: item.carNo2,
