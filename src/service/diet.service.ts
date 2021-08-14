@@ -1,5 +1,5 @@
 import cheerio from 'cheerio';
-import * as DayJS from 'dayjs';
+import DayJS from 'dayjs';
 import got from 'got';
 
 const enum DietType {
@@ -68,7 +68,6 @@ export class DietService {
     const rawBody = cheerio.load(result.body);
     const todayMMddFormat = DayJS().format('MM/DD').replace('0', '').replace('/0', '/');
     rawBody('div > section > section > div > div > div > div > div > table > tbody > tr > td').each(
-      // @ts-ignore
       (index, element) => {
         if (foundToday && rawBody(element).html()?.startsWith('<strong>')) {
           return false;
@@ -79,6 +78,8 @@ export class DietService {
         if (rawBody(element).html()?.includes(todayMMddFormat)) {
           foundToday = true;
         }
+
+        return true;
       },
     );
 

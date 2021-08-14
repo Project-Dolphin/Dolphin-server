@@ -3,7 +3,7 @@ import { BusService } from './service/BusService';
 import { CalendarService } from './service/CalendarService';
 import { DietService } from './service/diet.service';
 import { NoticeService } from './service/NoticeService';
-import { ShuttleService } from './service/ShuttleService';
+import { ShuttleService } from './service/shuttle.service';
 
 const dolphin: Handler = async (event: APIGatewayEvent) => {
   const path = event.path;
@@ -70,7 +70,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   }
 
   if (path === '/shuttle/next') {
-    // 다음 셔틀
+    // MARK: 현재시각 기준 다음 셔틀 리스트
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -81,11 +81,11 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   }
 
   if (path === '/shuttle/today') {
-    // 그 날의 모든 셔틀
+    // 오늘의 모든 셔틀
     return {
       statusCode: 200,
       body: JSON.stringify({
-        data: shuttleService.getDayShuttle(),
+        data: shuttleService.getTodayShuttle(),
         path: path,
       }),
     };

@@ -1,4 +1,4 @@
-export const testPeriod = [
+export const examPeriodList = [
   {
     term: { startedAt: '20210417', endedAt: '20210423' },
     content: '1학기 중간고사',
