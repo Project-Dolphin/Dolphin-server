@@ -13,7 +13,6 @@ export class NoticeService {
 
   public async getMainNotice(): Promise<Notice[]> {
     const notices: Notice[] = [];
-
     const rawText = await got.get(this.url);
     const root = parse(rawText.body);
 

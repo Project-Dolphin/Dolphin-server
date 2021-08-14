@@ -22,6 +22,7 @@
     "@types/axios": "^0.14.0",
     "@types/form-data": "^2.5.0",
     "@types/got": "^9.6.11",
+    "@types/he": "^1.1.2",
     "@types/jest": "^26.0.24",
     "@types/request-promise": "^4.1.48",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
