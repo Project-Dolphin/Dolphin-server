@@ -7,13 +7,18 @@ import { shuttleTimeList } from '../constants/shuttle';
 DayJS.extend(PluginUtc);
 DayJS.extend(PluginTimezone);
 
+interface NextShuttleResultType {
+  previous: ShuttleResultType | undefined;
+  next: ShuttleResultType[];
+}
+
 interface ShuttleResultType {
   type: string;
   time: string;
 }
 
 export class ShuttleService {
-  getNextShuttle(): ShuttleResultType[] | string {
+  getNextShuttle(): NextShuttleResultType | string {
     const seoulToday = DayJS().tz('Asia/Seoul');
     // MARK: 시험기간이 아닌 날에는 주말에 셔틀운행x
     if (this.checkWeekend(seoulToday)) {
@@ -21,9 +26,14 @@ export class ShuttleService {
     }
 
     const type = this.checkType(seoulToday);
-    return shuttleTimeList.filter(
-      (shuttle) => shuttle.type === type && +shuttle.time > +seoulToday.format('HHmm'),
-    );
+    return {
+      previous: shuttleTimeList
+        .filter((shuttle) => shuttle.type === type && +shuttle.time <= +seoulToday.format('HHmm'))
+        .pop(),
+      next: shuttleTimeList.filter(
+        (shuttle) => shuttle.type === type && +shuttle.time > +seoulToday.format('HHmm'),
+      ),
+    };
   }
 
   getAllShuttle(): ShuttleResultType[] {
