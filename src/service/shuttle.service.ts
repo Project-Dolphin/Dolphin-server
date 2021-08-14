@@ -8,7 +8,7 @@ DayJS.extend(PluginUtc);
 DayJS.extend(PluginTimezone);
 
 interface NextShuttleResultType {
-  previous: ShuttleResultType | undefined;
+  previous?: ShuttleResultType;
   next: ShuttleResultType[];
 }
 
