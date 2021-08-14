@@ -12,12 +12,12 @@ export class NoticeService {
   private readonly url = 'http://www.kmou.ac.kr/kmou/main.do';
   private readonly kmouUrl = 'https://www.kmou.ac.kr';
 
-  public async getMainNotice(): Promise<Notice[]> {
+  public async getAcademicNotice(): Promise<Notice[]> {
     const notices: Notice[] = [];
     const rawText = await got.get(this.url);
     const rawBody = cheerio.load(rawText.body);
     // console.log(rawBody);
-    const parsedList = rawBody('.list_box > ul').eq(0);
+    const parsedList = rawBody('.list_box > ul').eq(1);
     parsedList.children('li').each((index, element) => {
       const content = rawBody(element);
       notices.push({

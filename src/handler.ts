@@ -63,7 +63,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
     return {
       statusCode: 200,
       body: JSON.stringify({
-        data: await noticeService.getMainNotice(),
+        data: await noticeService.getAcademicNotice(),
         path: path,
       }),
     };
