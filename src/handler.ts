@@ -1,11 +1,11 @@
 import { Handler, APIGatewayEvent } from 'aws-lambda';
 import { BusService } from './service/BusService';
 import { CalendarService } from './service/CalendarService';
+import { DietService } from './service/diet.service';
 import { NoticeService } from './service/NoticeService';
 import { ShuttleService } from './service/ShuttleService';
 
 const dolphin: Handler = async (event: APIGatewayEvent) => {
-
   const path = event.path;
   const params = event.pathParameters;
   const bstopid = params?.bstopId;
@@ -13,6 +13,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   const shuttleService = new ShuttleService();
   const busService = new BusService();
   const calendarService = new CalendarService();
+  const dietService = new DietService();
 
   if (bstopid && path === '/businfo/' + bstopid) {
     return {
@@ -107,6 +108,30 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
       statusCode: 200,
       body: JSON.stringify({
         data: shuttleService.getAllShuttle(),
+        path: path,
+      }),
+    };
+  }
+
+  if (path === '/diet/society/today') {
+    // MARK: 오늘의 어울림관 식단 (2층, 5층)
+    const res = await dietService.getSocietyDietAsync();
+    return {
+      statusCode: typeof res === 'string' ? 404 : 200,
+      body: JSON.stringify({
+        data: res,
+        path: path,
+      }),
+    };
+  }
+
+  if (path === '/diet/naval/today') {
+    // MARK: 오늘의 해사대 식단
+    const res = await dietService.getNavalDietAsync();
+    return {
+      statusCode: typeof res === 'string' ? 404 : 200,
+      body: JSON.stringify({
+        data: res,
         path: path,
       }),
     };
