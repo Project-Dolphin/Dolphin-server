@@ -14,11 +14,16 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
+  settings: {
+    'import/resolver': {
+      typescript: {},
+    },
+  },
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
-    '@typescript-eslint/ban-ts-comment': 0,
-    '@typescript-eslint/no-explicit-any': 2,
-    '@typescript-eslint/explicit-function-return-type': 0,
-    'prettier/prettier': 2,
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    'prettier/prettier': 'error',
   },
 };

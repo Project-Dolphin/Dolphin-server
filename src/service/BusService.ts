@@ -65,15 +65,15 @@ export class BusService {
       JSON.stringify(jsonObj.response.body.items).length > 0
         ? jsonObj.response.body.items.item
         : {
-          carNo1: '차량 없음',
-          carNo2: '차량 없음',
-          min1: 999,
-          min2: 999,
-          station1: 999,
-          station2: 999,
-          lowplate1: false,
-          lowplate2: false,
-        };
+            carNo1: '차량 없음',
+            carNo2: '차량 없음',
+            min1: 999,
+            min2: 999,
+            station1: 999,
+            station2: 999,
+            lowplate1: false,
+            lowplate2: false,
+          };
 
     const arriveInfo: BusArriveInfo = {
       carNo1: item.carNo1,
