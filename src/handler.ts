@@ -71,10 +71,11 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
 
   if (path === '/shuttle/next') {
     // MARK: 현재시각 기준 다음 셔틀 리스트
+    const res = shuttleService.getNextShuttle();
     return {
-      statusCode: 200,
+      statusCode: typeof res === 'string' ? 404 : 200,
       body: JSON.stringify({
-        data: shuttleService.getNextShuttle(),
+        data: res,
         path: path,
       }),
     };
