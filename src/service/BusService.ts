@@ -24,11 +24,16 @@ interface BusInfo {
   bstopnm: string;
 }
 
+interface DepartmentInfo {
+  type: string;
+  time: string;
+}
+
 export class BusService {
   private readonly serviceKey =
     'R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D';
 
-  public getDepart190() {
+  public getDepart190(): DepartmentInfo[] {
     const date = new Date();
     const now = toKSTString().substr(8, 4);
 
@@ -36,9 +41,7 @@ export class BusService {
 
     const type = flag ? 'holiday' : date.getDay() == 6 ? 'saturday' : 'normal';
 
-    const tmp = depart190.filter(
-      (schedule) => Number(schedule.time) > Number(now) && schedule.type == type,
-    );
+    const tmp = depart190.filter((schedule) => Number(schedule.time) > Number(now) && schedule.type == type);
 
     const result = [];
 

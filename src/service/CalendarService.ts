@@ -5,6 +5,7 @@ interface Calendar {
   term: Term;
   mainPlan?: boolean;
   content: string;
+  dDay?: number;
 }
 
 interface Term {
@@ -24,10 +25,7 @@ export class CalendarService {
           .replace(/\./g, '-')
           .split('~');
         console.log(date[0], date[1]);
-        const year =
-          isNextYear && (date[0].split('-')[0] === '1' || date[0].split('-')[0] === '2')
-            ? '2022'
-            : '2021';
+        const year = isNextYear && (date[0].split('-')[0] === '1' || date[0].split('-')[0] === '2') ? '2022' : '2021';
         let startedAt = date[0];
         let endedAt = date[1] ? date[1] : date[0];
         if (startedAt && startedAt.includes('’22')) {
@@ -62,5 +60,23 @@ export class CalendarService {
   }
   public getHoliday(): Calendar[] {
     return holiDay;
+  }
+  public getLatestPlans(): Calendar[] {
+    const calendar = this.getAcademicCalendar();
+    const now = new Date();
+    const plans = calendar.filter((plan) => {
+      const startedAt = new Date(plan.term.startedAt);
+      return startedAt.getTime() - now.getTime() > 0;
+    });
+    const latestPlans = plans.slice(0, 2).map((plan: Calendar) => {
+      return {
+        ...plan,
+        dDay: this.getDay(new Date(plan.term.startedAt).getTime() - now.getTime()),
+      };
+    });
+    return latestPlans;
+  }
+  private getDay(duration: number) {
+    return Math.ceil(duration / (60 * 60 * 24 * 1000));
   }
 }
