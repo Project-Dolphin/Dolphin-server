@@ -61,3 +61,6 @@ functions:
       - http:
           path: diet/naval/today
           method: get
+      - http:
+          path: weather/now
+          method: get

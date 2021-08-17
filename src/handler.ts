@@ -4,6 +4,7 @@ import { CalendarService } from './service/CalendarService';
 import { DietService } from './service/diet.service';
 import { NoticeService } from './service/NoticeService';
 import { ShuttleService } from './service/shuttle.service';
+import { WeatherService } from './service/weather.service';
 
 const dolphin: Handler = async (event: APIGatewayEvent) => {
   const path = event.path;
@@ -14,6 +15,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   const busService = new BusService();
   const calendarService = new CalendarService();
   const dietService = new DietService();
+  const weatherService = new WeatherService();
 
   if (bstopid && path === '/businfo/' + bstopid) {
     return {
@@ -140,6 +142,18 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   if (path === '/diet/naval/today') {
     // MARK: 오늘의 해사대 식단
     const res = await dietService.getNavalDietAsync();
+    return {
+      statusCode: typeof res === 'string' ? 404 : 200,
+      body: JSON.stringify({
+        data: res,
+        path: path,
+      }),
+    };
+  }
+
+  if (path === '/weather/now') {
+    // MARK: 오늘의 해사대 식단
+    const res = await weatherService.getCurrentWeatherAsync();
     return {
       statusCode: typeof res === 'string' ? 404 : 200,
       body: JSON.stringify({
