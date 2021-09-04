@@ -30,9 +30,7 @@ export class ShuttleService {
       previous: shuttleTimeList
         .filter((shuttle) => shuttle.type === type && +shuttle.time <= +seoulToday.format('HHmm'))
         .pop(),
-      next: shuttleTimeList.filter(
-        (shuttle) => shuttle.type === type && +shuttle.time > +seoulToday.format('HHmm'),
-      ),
+      next: shuttleTimeList.filter((shuttle) => shuttle.type === type && +shuttle.time > +seoulToday.format('HHmm')),
     };
   }
 
@@ -58,9 +56,7 @@ export class ShuttleService {
   }
 
   private checkWeekend(today: DayJS.Dayjs): boolean {
-    return (
-      !this.checkExamPeriod(today.format('YYYYMMDD')) && (today.day() == 0 || today.day() == 6)
-    );
+    return !this.checkExamPeriod(today.format('YYYYMMDD')) && (today.day() == 0 || today.day() == 6);
   }
 
   private checkVacation(month: number): boolean {

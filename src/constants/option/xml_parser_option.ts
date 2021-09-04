@@ -14,10 +14,12 @@ export const options = {
   cdataPositionChar: '\\c',
   parseTrueNumberOnly: false,
   arrayMode: false,
-  attrValueProcessor: (val: any, attrName: any): string => {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  attrValueProcessor: (val: any): string => {
     return he.decode(val, { isAttributeValue: true });
   },
-  tagValueProcessor: (val: any, tagName: any): string => {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  tagValueProcessor: (val: any): string => {
     return he.decode(val);
   },
   stopNodes: ['parse-me-as-string'],

@@ -1,23 +1,23 @@
 {
-    "compilerOptions": {
-      "module": "commonjs",
-      "target": "es6",
-      "lib": ["es6", "dom"],
-      "moduleResolution": "node",
-      "outDir": "./build/",
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "lib": ["es6", "dom"],
+    "moduleResolution": "node",
+    "outDir": "./build/",
     "rootDir": "./",
-      "sourceMap": true,
-      "esModuleInterop": true,
-      "allowJs": true,
-      "noImplicitAny": true,
-      "noUnusedLocals": true,
-      "noImplicitThis": true,
-      "strictNullChecks": true,
-      "noImplicitReturns": true,
-      "preserveConstEnums": true,
-      "suppressImplicitAnyIndexErrors": true,
-      "forceConsistentCasingInFileNames": true
-    },
-    "exclude": ["node_modules", "build", "webpack"],
-    "types": ["typePatches"]
-  }
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "noImplicitReturns": true,
+    "preserveConstEnums": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "exclude": ["node_modules", "build", "webpack"],
+  "types": ["typePatches"]
+}

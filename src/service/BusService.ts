@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import got from 'got';
 import * as parser from 'fast-xml-parser';
 import { options } from '../constants/option/xml_parser_option';
@@ -5,8 +6,8 @@ import { depart190 } from '../constants/depart190';
 import { checkHoliday, toKSTString } from '../constants/function/commonfunction';
 
 interface BusArriveInfo {
-  carNo1: number;
-  carNo2: number;
+  carNo1: number | string;
+  carNo2: number | string;
   min1: number;
   min2: number;
   station1: number;
@@ -59,37 +60,58 @@ export class BusService {
     queryParams += '&' + 'lineid' + '=' + encodeURIComponent('5200190000'); /* */
     queryParams += '&' + 'bstopid' + '=' + bstopid;
 
-    const response = await got.get(url + queryParams);
-    const tObj = parser.getTraversalObj(response.body, options);
-    const jsonObj = parser.convertToJson(tObj, options);
-    if (response.headers['resultCode'] == '99') return Promise.reject('세션 종료');
+    try {
+      const response = await got.get(url + queryParams);
+      const tObj = parser.getTraversalObj(response.body, options);
+      const jsonObj = parser.convertToJson(tObj, options);
+      if (response.headers['resultCode'] == '99') {
+        throw new Error('세션 종료');
+      }
 
-    const item =
-      JSON.stringify(jsonObj.response.body.items).length > 0
-        ? jsonObj.response.body.items.item
-        : {
-            carNo1: '차량 없음',
-            carNo2: '차량 없음',
-            min1: 999,
-            min2: 999,
-            station1: 999,
-            station2: 999,
-            lowplate1: false,
-            lowplate2: false,
-          };
+      if (jsonObj.response.body.items === '') {
+        return {
+          carNo1: '차량 없음',
+          carNo2: '차량 없음',
+          min1: 999,
+          min2: 999,
+          station1: 999,
+          station2: 999,
+          lowplate1: false,
+          lowplate2: false,
+        };
+      }
 
-    const arriveInfo: BusArriveInfo = {
-      carNo1: item.carNo1,
-      carNo2: item.carNo2,
-      min1: item.min1,
-      min2: item.min2,
-      station1: item.station1,
-      station2: item.station2,
-      lowplate1: item.lowplate1,
-      lowplate2: item.lowplate2,
-    };
+      const item =
+        JSON.stringify(jsonObj.response.body.items).length > 0
+          ? jsonObj.response.body.items.item
+          : {
+              carNo1: '차량 없음',
+              carNo2: '차량 없음',
+              min1: 999,
+              min2: 999,
+              station1: 999,
+              station2: 999,
+              lowplate1: false,
+              lowplate2: false,
+            };
 
-    return arriveInfo; // 정상 리턴 확인
+      console.log('item: ', item);
+
+      const arriveInfo: BusArriveInfo = {
+        carNo1: item.carNo1 || '차량 없음',
+        carNo2: item.carNo2 || '차량 없음',
+        min1: item.min1 || 999,
+        min2: item.min2 || 999,
+        station1: item.station1 || 99,
+        station2: item.station2 || 999,
+        lowplate1: item.lowplate1 || false,
+        lowplate2: item.lowplate2 || false,
+      };
+
+      return arriveInfo; // 정상 리턴 확인
+    } catch (error) {
+      throw new Error(error.message);
+    }
   }
 
   public async getAllNode(): Promise<BusInfo[]> {
