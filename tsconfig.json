@@ -6,8 +6,8 @@
       "moduleResolution": "node",
       "outDir": "./build/",
     "rootDir": "./",
-
       "sourceMap": true,
+      "esModuleInterop": true,
       "allowJs": true,
       "noImplicitAny": true,
       "noUnusedLocals": true,

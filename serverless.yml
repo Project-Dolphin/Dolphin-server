@@ -31,6 +31,9 @@ functions:
           path: calendar
           method: get
       - http:
+          path: calendar/latest
+          method: get
+      - http:
           path: notices
           method: get
       - http:
@@ -39,10 +42,10 @@ functions:
       - http:
           path: businfo/{bstopId}
           method: get
-          request: 
-          parameters: 
-             paths: 
-               bstopId: true
+          request:
+          parameters:
+            paths:
+              bstopId: true
       - http:
           path: businfo
           method: get
@@ -57,4 +60,7 @@ functions:
           method: get
       - http:
           path: diet/naval/today
+          method: get
+      - http:
+          path: weather/now
           method: get

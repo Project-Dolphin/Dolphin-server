@@ -3,7 +3,8 @@ import { BusService } from './service/BusService';
 import { CalendarService } from './service/CalendarService';
 import { DietService } from './service/diet.service';
 import { NoticeService } from './service/NoticeService';
-import { ShuttleService } from './service/ShuttleService';
+import { ShuttleService } from './service/shuttle.service';
+import { WeatherService } from './service/weather.service';
 
 const dolphin: Handler = async (event: APIGatewayEvent) => {
   const path = event.path;
@@ -14,6 +15,7 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   const busService = new BusService();
   const calendarService = new CalendarService();
   const dietService = new DietService();
+  const weatherService = new WeatherService();
 
   if (bstopid && path === '/businfo/' + bstopid) {
     return {
@@ -46,6 +48,17 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
     };
   }
 
+  if (path === '/calendar/latest') {
+    // 학사 일정
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        data: calendarService.getLatestPlans(),
+        path: path,
+      }),
+    };
+  }
+
   if (path === '/calendar') {
     // 학사 일정
     return {
@@ -63,29 +76,30 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
     return {
       statusCode: 200,
       body: JSON.stringify({
-        data: await noticeService.getMainNotice(),
+        data: await noticeService.getAcademicNotice(),
         path: path,
       }),
     };
   }
 
   if (path === '/shuttle/next') {
-    // 다음 셔틀
+    // MARK: 현재시각 기준 다음 셔틀 리스트
+    const res = shuttleService.getNextShuttle();
     return {
-      statusCode: 200,
+      statusCode: typeof res === 'string' ? 404 : 200,
       body: JSON.stringify({
-        data: shuttleService.getNextShuttle(),
+        data: res,
         path: path,
       }),
     };
   }
 
   if (path === '/shuttle/today') {
-    // 그 날의 모든 셔틀
+    // 오늘의 모든 셔틀
     return {
       statusCode: 200,
       body: JSON.stringify({
-        data: shuttleService.getDayShuttle(),
+        data: shuttleService.getTodayShuttle(),
         path: path,
       }),
     };
@@ -128,6 +142,18 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   if (path === '/diet/naval/today') {
     // MARK: 오늘의 해사대 식단
     const res = await dietService.getNavalDietAsync();
+    return {
+      statusCode: typeof res === 'string' ? 404 : 200,
+      body: JSON.stringify({
+        data: res,
+        path: path,
+      }),
+    };
+  }
+
+  if (path === '/weather/now') {
+    // MARK: 현재 영도구 날씨
+    const res = await weatherService.getCurrentWeatherAsync();
     return {
       statusCode: typeof res === 'string' ? 404 : 200,
       body: JSON.stringify({
