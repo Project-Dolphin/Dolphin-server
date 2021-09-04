@@ -22,4 +22,4 @@ jobs:
       - name: Serverless
         uses: serverless/github-action@master
         with:
-          args: deploy --stage prod
+          args: deploy --stage dev
