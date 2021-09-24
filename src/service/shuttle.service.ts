@@ -60,7 +60,7 @@ export class ShuttleService {
   }
 
   private checkVacation(month: number): boolean {
-    return month == 1 || month == 2 || month == 7 || month == 8;
+    return month == 0 || month == 1 || month == 6 || month == 7;
   }
 
   private checkExamPeriod(today: string): boolean {
