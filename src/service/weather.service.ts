@@ -15,14 +15,18 @@ export class WeatherService {
   private readonly weatherSubUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${this.geoPoint.lat}&lon=${this.geoPoint.lon}&appid=${this.API_KEY}&lang=kr`;
   
   async getCurrentWeather(): Promise<WeatherResult> {
-    const weatherResult = await this.getCurrentWeatherData();
-    if (weatherResult.status !== '') {
-      return weatherResult;
-    } else {
-      const weather = await this.getCurrenWeatherSubData();
-      console.log(weather);
-      return weather;
-   }
+    try {
+      const weatherResult = await this.getCurrentWeatherData();
+      if (weatherResult.status !== '') {
+        return weatherResult;
+      } else {
+        const weather = await this.getCurrenWeatherSubData();
+        console.log(weather);
+        return weather;
+      }
+    } catch (error) {
+      throw new Error(error);
+    }
   }
   
   async getCurrentWeatherData(): Promise<WeatherResult> {
@@ -44,7 +48,7 @@ export class WeatherService {
     const weather = JSON.parse(result.body);
     
     return {
-      status: weather.weather.length > 0 ? weather.weather[0].description.toString('utf-8'): '',
+      status: weather.weather.length > 0 ? weather.weather[0].description: '',
       temparature: weather.main.temp - 273.15,  // 켈빈 온도라서 섭씨로 변환
       windSpeed: weather.wind.speed,
       humidity: weather.main.humidity,
