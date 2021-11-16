@@ -42,9 +42,9 @@ export class WeatherService {
   async getCurrenWeatherSubData(): Promise<WeatherResult> {
     const result = await got.get(this.weatherSubUrl);
     const weather = JSON.parse(result.body);
-
+    
     return {
-      status: weather.weather[0].description,
+      status: weather.weather.length > 0 ? weather.weather[0].description.toString('utf-8'): '',
       temparature: weather.main.temp - 273.15,  // 켈빈 온도라서 섭씨로 변환
       windSpeed: weather.wind.speed,
       humidity: weather.main.humidity,
