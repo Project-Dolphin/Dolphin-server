@@ -49,9 +49,9 @@ export class WeatherService {
     
     return {
       status: weather.weather.length > 0 ? weather.weather[0].description: '',
-      temparature: `${Math.round(weather.main.temp - 273.15).toString()}°C`,  // 켈빈 온도라서 섭씨로 변환
-      windSpeed: `${weather.wind.speed.toString()}m/s`,
-      humidity: `${weather.main.humidity.toString()}%`,
+      temparature: `${Math.round(weather.main.temp - 273.15)}°C`,  // 켈빈 온도라서 섭씨로 변환
+      windSpeed: `${weather.wind.speed}m/s`,
+      humidity: `${weather.main.humidity}%`,
     }
   }
 }
