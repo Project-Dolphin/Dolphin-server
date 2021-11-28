@@ -34,6 +34,12 @@ export interface NavalResultType {
   dinner: string[];
 }
 
+export interface DormResultType {
+  morning: string[];
+  lunch: string[];
+  dinner: string[];
+}
+
 // 어울림관: https://www.kmou.ac.kr/coop/dv/dietView/selectDietDateView.do
 // 해사대: http://badaro.kmou.ac.kr/food
 export class DietService {
@@ -59,6 +65,25 @@ export class DietService {
 
     return results;
   }
+  async getDormDiet(): Promise<DormResultType> {
+    const url = 'https://www.kmou.ac.kr/dorm/main.do';
+    const result = await got.get(url);
+    const rawBody = cheerio.load(result.body);
+    const diets: string[][] = [];
+    rawBody('.widget64_meal_menu_st_box > table > tbody > tr > td').each((index, element) => {
+      const tdHtml = rawBody(element).html()
+      const diet = tdHtml?.split('<br>').filter(menu => menu !== '').map(menu => menu.replace(/\t|\n/g, ''));
+      if (diet) {
+        diets.push(diet);
+      }
+    });
+   
+    return {
+      morning: diets.length > 0 ? diets[0] : [],
+      lunch: diets.length > 1 ? diets[1] : [],
+      dinner: diets.length > 2 ? diets[2] : [],
+    };
+  }
 
   async getNavalDietAsync(): Promise<NavalResultType | string> {
     const results: string[] = [];
@@ -67,6 +92,7 @@ export class DietService {
     const result = await got.get(fisrtItemUrl);
     const rawBody = cheerio.load(result.body);
     const todayMMddFormat = DayJS().format('MM/DD').replace('0', '').replace('/0', '/');
+    console.log('today: ', todayMMddFormat);
     rawBody('div > section > section > div > div > div > div > div > table > tbody > tr > td').each(
       (index, element) => {
         if (foundToday && rawBody(element).html()?.startsWith('<strong>')) {
@@ -83,14 +109,27 @@ export class DietService {
       },
     );
 
+    console.log('results: ', results);
     if (!foundToday) {
       return 'DietService.getNavalDietAsync: There are no any diet';
     }
-
+    
     return {
       lunch: results.filter((_, index) => index % 2 === 0),
       dinner: results.filter((_, index) => index % 2 !== 0),
     };
+  }
+  public async getNavalDayDiet() {
+    const navelUrl = 'http://badaro.kmou.ac.kr/food/3179';
+    const result = await got.get(navelUrl);
+    const rawBody = cheerio.load(result.body);
+    const tableSelector = 'div > section > section > div > div > div > div > div > table > tbody > tr';
+    console.log(rawBody);
+
+    rawBody(tableSelector).map((index, element) => {
+      console.log("elemnt: ",  rawBody(element).html());
+      
+    })
   }
 
   private async getFirstItemPathFromNaval(): Promise<string> {
@@ -105,7 +144,7 @@ export class DietService {
 
       return true;
     });
-
+    console.log("resultUrl: ", resultUrl);
     return resultUrl;
   }
 }
