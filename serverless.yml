@@ -59,6 +59,9 @@ functions:
           path: diet/society/today
           method: get
       - http:
+          path: diet/dorm/today
+          method: get
+      - http:
           path: diet/naval/today
           method: get
       - http:

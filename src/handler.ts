@@ -139,6 +139,17 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
     };
   }
 
+  if (path === '/diet/dorm/today') {
+    const res = await dietService.getDormDiet();
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        data: res,
+        path: path,
+      }),
+    };
+  }
+
   if (path === '/diet/naval/today') {
     // MARK: 오늘의 해사대 식단
     const res = await dietService.getNavalDietAsync();
