@@ -117,6 +117,7 @@ export class DietService {
         });
         
       });
+      
       rawBody('.detail_tb').find('tbody > tr > td').each((index, element) => {
         console.log(rawBody(element).html());
         if (rawBody(element).html()) {

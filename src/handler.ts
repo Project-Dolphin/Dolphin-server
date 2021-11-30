@@ -139,6 +139,17 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
     };
   }
 
+  if (path === '/diet/v2/society/today') {
+    const result = await dietService.getSocietyDiet();
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        data: result,
+        path: path,
+      }),
+    };
+  }
+
   if (path === '/diet/dorm/today') {
     const res = await dietService.getDormDiet();
     return {
