@@ -40,6 +40,23 @@ export interface DormResultType {
   dinner: string[];
 }
 
+export interface SocietyDietType {
+  index: number;
+  type: string;
+  data: string[];
+}
+
+export interface SocietyDiet {
+  type: string;
+  menus: string[];
+}
+
+export interface SocietyDietResult {
+  student: SocietyDiet[],
+  snack: SocietyDiet[],
+  staff: SocietyDiet[],
+}
+
 // 어울림관: https://www.kmou.ac.kr/coop/dv/dietView/selectDietDateView.do
 // 해사대: http://badaro.kmou.ac.kr/food
 export class DietService {
@@ -64,6 +81,58 @@ export class DietService {
     }
 
     return results;
+  }
+
+  private getConvertedtMenus(html: string): string[] {
+    return html.split('<br>').filter(menu => menu !== '').map(menu => menu.replace(/\t|\n/g, ''));
+  }
+
+  private getDietsByIndex(index: number, dietTypes: SocietyDietType[]) {
+    return dietTypes.filter((diet) => diet.index === index).map(diet => {
+      return {
+        type: diet.type,
+        menus: diet.data,
+      };
+    });
+  }
+
+  public async getSocietyDiet(): Promise<SocietyDietResult> {
+    const result = await got.get(this.societyUrl);
+    const rawBody = cheerio.load(result.body);
+    const dietTypes: SocietyDietType[] = [];
+    const societyDiet: SocietyDietResult = {
+      student: [],
+      snack: [],
+      staff: [],
+    }
+    if (rawBody('.detail_tb').length === 3) {
+      rawBody('.detail_tb').each((tableIndex, element) =>{
+        rawBody(element).find('thead > tr > th').each((index, element) => {
+          console.log(rawBody(element).html());
+          dietTypes.push( {
+            index: tableIndex,
+            type:rawBody(element).html()?.toString() || '',
+            data: []
+          });
+        });
+        
+      });
+      
+      rawBody('.detail_tb').find('tbody > tr > td').each((index, element) => {
+        console.log(rawBody(element).html());
+        if (rawBody(element).html()) {
+          const html = rawBody(element).html() || '';
+          dietTypes[index].data = this.getConvertedtMenus(html.toString());
+        }
+      })
+
+      societyDiet.student = this.getDietsByIndex(0, dietTypes);
+      societyDiet.snack = this.getDietsByIndex(1, dietTypes);
+      societyDiet.staff = this.getDietsByIndex(2, dietTypes);
+    
+    }
+    console.log(societyDiet);
+    return societyDiet;
   }
   async getDormDiet(): Promise<DormResultType> {
     const url = 'https://www.kmou.ac.kr/dorm/main.do';
