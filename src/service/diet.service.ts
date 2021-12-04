@@ -63,6 +63,7 @@ export class DietService {
   private readonly societyUrl = 'https://www.kmou.ac.kr/coop/dv/dietView/selectDietDateView.do';
   private readonly navalBaseUrl = 'http://badaro.kmou.ac.kr';
 
+
   async getSocietyDietAsync(): Promise<SocietyResultType[] | string> {
     const results: SocietyResultType[] = [];
     const result = await got.get(this.societyUrl);
@@ -82,9 +83,20 @@ export class DietService {
 
     return results;
   }
+  
+  private isDateString(menu: string): boolean {
+    const dateRegEx = /^(19|20)\d{2}년 (0[1-9]|1[012])월 (0[1-9]|[12][0-9]|3[0-1])일$/g;
+    if (menu.match(dateRegEx)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   private getConvertedtMenus(html: string): string[] {
-    return html.split('<br>').filter(menu => menu !== '').map(menu => menu.replace(/\t|\n/g, ''));
+    return html.split('<br>').filter(menu => menu !== '')
+              .map(menu => menu.replace(/\t|\n/g, ''))
+              .filter(menu => !this.isDateString);
   }
 
   private getDietsByIndex(index: number, dietTypes: SocietyDietType[]) {
