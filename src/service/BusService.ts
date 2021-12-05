@@ -127,11 +127,11 @@ export class BusService {
     const tObj = parser.getTraversalObj(response.body, options);
     const jsonObj = parser.convertToJson(tObj, options);
 
-    const tmp = jsonObj.response.body.items || [];
+    const tmp = jsonObj.response.body.items.item || [];
 
 
     tmp.forEach(function (value: any) {
-      if (value.lat && value.lon) {
+      if (value.lat && value.lin) {
         if (String(value.gpsTm).length != 6) value.gpsTm = '0' + value.gpsTm;
         arriveInfo.push({
           carNo: value.carNo,
