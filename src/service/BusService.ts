@@ -127,7 +127,7 @@ export class BusService {
     const tObj = parser.getTraversalObj(response.body, options);
     const jsonObj = parser.convertToJson(tObj, options);
 
-    const tmp = jsonObj.response.body.items.item || [];
+    const tmp = jsonObj.response.body.items || [];
 
 
     tmp.forEach(function (value: any) {
