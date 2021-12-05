@@ -114,16 +114,15 @@ export class BusService {
   }
 
   public async getAllNode(): Promise<BusInfo[]> {
-    const url = 'http://apis.data.go.kr/6260000/BusanBIMS/busInfoByRouteId';
-    let queryParams = '?' + 'ServiceKey' + '=' + this.serviceKey; /* Service Key*/
-    queryParams += '&' + 'lineid' + '=' + encodeURIComponent('5200190000');
+    const url = 'http://apis.data.go.kr/6260000/BusanBIMS/busInfoByRouteId?servicekey=R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D&lineid=5200190000';
+
 
     // var queryParams = '?' + 'ServiceKey' + '=' + this.serviceKey;
     // queryParams += '&' + 'lineid' + '=' + encodeURIComponent('5200190000');  */
 
     const arriveInfo: BusInfo[] = [];
 
-    const response = await got.get(url + queryParams);
+    const response = await got.get(url);
 
     const tObj = parser.getTraversalObj(response.body, options);
     const jsonObj = parser.convertToJson(tObj, options);
