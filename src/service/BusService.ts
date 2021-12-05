@@ -17,11 +17,11 @@ interface BusArriveInfo {
 }
 
 interface BusInfo {
-  carNo: string;
-  gpsTm: string;
+  carno: string;
+  gpsym: string;
   lat: number;
-  lon: number;
-  nodeId: number;
+  lin: number;
+  nodeid: number;
   bstopnm: string;
 }
 
@@ -131,14 +131,14 @@ export class BusService {
 
 
     tmp.forEach(function (value: any) {
-      if (value.lat && value.lon) {
-        if (String(value.gpsTm).length != 6) value.gpsTm = '0' + value.gpsTm;
+      if (value.lat && value.lin) {
+        if (String(value.gpsym).length != 6) value.gpsym = '0' + value.gpsym;
         arriveInfo.push({
-          carNo: value.carNo,
-          nodeId: value.nodeId,
+          carno: value.carno,
+          nodeid: value.nodeid,
           lat: value.lat,
-          lon: value.lon,
-          gpsTm: value.gpsTm,
+          lin: value.lin,
+          gpsym: value.gpsym,
           bstopnm: value.bstopnm,
         });
       }
