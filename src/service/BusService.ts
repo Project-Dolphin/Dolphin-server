@@ -54,7 +54,7 @@ export class BusService {
   }
 
   public async getSpecificNode(bstopid: string): Promise<BusArriveInfo> {
-    const url = 'http://apis.data.go.kr/6260000/BusanBIMS/ByBstopidLineid';
+    const url = 'http://apis.data.go.kr/6260000/BusanBIMS/busStopArrByBstopidLineid';
     let queryParams = '?' + 'ServiceKey' + '=' + this.serviceKey; /* Service Key*/
     queryParams += '&' + 'lineid' + '=' + encodeURIComponent('5200190000'); /* */
     queryParams += '&' + 'bstopid' + '=' + bstopid;
