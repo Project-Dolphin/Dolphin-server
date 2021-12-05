@@ -132,13 +132,13 @@ export class BusService {
 
     tmp.forEach(function (value: any) {
       if (value.lat && value.lin) {
-        if (String(value.gpsTm).length != 6) value.gpsTm = '0' + value.gpsTm;
+        if (String(value.gpsym).length != 6) value.gpsym = '0' + value.gpsym;
         arriveInfo.push({
-          carNo: value.carNo,
-          nodeId: value.nodeId,
+          carNo: value.carno,
+          nodeId: value.nodeid,
           lat: value.lat,
           lon: value.lon,
-          gpsTm: value.gpsTm,
+          gpsTm: value.gpsym,
           bstopnm: value.bstopnm,
         });
       }
