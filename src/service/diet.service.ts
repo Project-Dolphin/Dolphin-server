@@ -12,17 +12,7 @@ const enum DietType {
   StaffPremium = 6, // 교직원 일품식
 }
 
-const removeSpecialCharacters = (content: string | null): string => {
-  if (!content) {
-    return '';
-  }
 
-  return content
-    .replace(/<br>/g, '\n')
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&amp;/g, '&')
-    .trim();
-};
 
 export interface SocietyResultType {
   type: DietType;
@@ -72,7 +62,7 @@ export class DietService {
       (index, element) => {
         results.push({
           type: index,
-          value: removeSpecialCharacters(rawBody(element).html()),
+          value: rawBody(element).html()?.toString() || '',
         });
       },
     );
@@ -84,6 +74,13 @@ export class DietService {
     return results;
   }
   
+  private replaceSpecialCharacters(content: string): string  {
+    return content
+      .replace(/<br>/g, '\n')
+      .replace(/&nbsp;/g, ' ')
+      .replace(/&amp;/g, '&');
+  };
+
   private isDateString(menu: string): boolean {
     const dateRegEx = /^(19|20)\d{2}년 (0[1-9]|1[012])월 (0[1-9]|[12][0-9]|3[0-1])일$/g;
     if (menu.match(dateRegEx)) {
@@ -95,8 +92,8 @@ export class DietService {
 
   private getConvertedtMenus(html: string): string[] {
     return html.split('<br>').filter(menu => menu !== '')
-              .map(menu => menu.replace(/\t|\n/g, ''))
-              .filter(menu => !this.isDateString);
+              .map(menu => this.replaceSpecialCharacters(menu.replace(/\t|\n/g, '')))
+              .filter(menu => !this.isDateString(menu));
   }
 
   private getDietsByIndex(index: number, dietTypes: SocietyDietType[]) {
@@ -120,7 +117,6 @@ export class DietService {
     if (rawBody('.detail_tb').length === 3) {
       rawBody('.detail_tb').each((tableIndex, element) =>{
         rawBody(element).find('thead > tr > th').each((index, element) => {
-          console.log(rawBody(element).html());
           dietTypes.push( {
             index: tableIndex,
             type:rawBody(element).html()?.toString() || '',
@@ -131,7 +127,6 @@ export class DietService {
       });
       
       rawBody('.detail_tb').find('tbody > tr > td').each((index, element) => {
-        console.log(rawBody(element).html());
         if (rawBody(element).html()) {
           const html = rawBody(element).html() || '';
           dietTypes[index].data = this.getConvertedtMenus(html.toString());
@@ -190,7 +185,6 @@ export class DietService {
       },
     );
 
-    console.log('results: ', results);
     if (!foundToday) {
       return 'DietService.getNavalDietAsync: There are no any diet';
     }
