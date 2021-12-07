@@ -61,11 +61,15 @@ export class DietService {
     rawBody('body > div > div > div > div > section > div > div > div > form > div > table > tbody > tr > td').each(
       (index, element) => {
         results.push({
-          type: index,
-          value: rawBody(element).html()?.toString() || '',
+          type: index + 2,
+          value: this.replaceSpecialCharacters(rawBody(element).html()?.toString() || ''),
         });
       },
     );
+    // 에러 수정
+    results[0].type = 0;
+    results.splice(1, 0, { type: 1, value: '' });
+    results.splice(2, 0, { type: 2, value: '' });
 
     if (results.length === 3 && results[0].value.includes('년')) {
       return 'DietService.getSocietyDietAsync: There are no any diet';
@@ -74,11 +78,13 @@ export class DietService {
     return results;
   }
   
-  private replaceSpecialCharacters(content: string): string  {
-    return content
-      .replace(/<br>/g, '\n')
+  private replaceSpecialCharacters(content: string | null): string  {
+    return content ?
+      content.replace(/<br>/g, '\n')
       .replace(/&nbsp;/g, ' ')
-      .replace(/&amp;/g, '&');
+      .replace(/&amp;/g, '&')
+      .trim()
+      : '';
   };
 
   private isDateString(menu: string): boolean {
@@ -119,7 +125,7 @@ export class DietService {
         rawBody(element).find('thead > tr > th').each((index, element) => {
           dietTypes.push( {
             index: tableIndex,
-            type:rawBody(element).html()?.toString() || '',
+            type: rawBody(element).html()?.toString() || '',
             data: []
           });
         });
@@ -147,7 +153,7 @@ export class DietService {
     const rawBody = cheerio.load(result.body);
     const diets: string[][] = [];
     rawBody('.widget64_meal_menu_st_box > table > tbody > tr > td').each((index, element) => {
-      const tdHtml = rawBody(element).html()
+      const tdHtml = this.replaceSpecialCharacters(rawBody(element).html());
       const diet = tdHtml?.split('<br>').filter(menu => menu !== '').map(menu => menu.replace(/\t|\n/g, ''));
       if (diet) {
         diets.push(diet);
