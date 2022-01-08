@@ -96,7 +96,7 @@ export class DietService {
     }
   }
 
-  private getConvertedtMenus(html: string): string[] {
+  private getConvertedMenus(html: string): string[] {
     return html.split('<br>').filter(menu => menu !== '')
               .map(menu => this.replaceSpecialCharacters(menu.replace(/\t|\n/g, '')))
               .filter(menu => !this.isDateString(menu));
@@ -113,13 +113,16 @@ export class DietService {
 
   public async getSocietyDiet(): Promise<SocietyDietResult> {
     const result = await got.get(this.societyUrl);
+    
     const rawBody = cheerio.load(result.body);
     const dietTypes: SocietyDietType[] = [];
+    const menus: string[][] = [];
     const societyDiet: SocietyDietResult = {
       student: [],
       snack: [],
       staff: [],
     }
+    
     if (rawBody('.detail_tb').length === 3) {
       rawBody('.detail_tb').each((tableIndex, element) =>{
         rawBody(element).find('thead > tr > th').each((index, element) => {
@@ -129,14 +132,24 @@ export class DietService {
             data: []
           });
         });
-        
       });
       
       rawBody('.detail_tb').find('tbody > tr > td').each((index, element) => {
         if (rawBody(element).html()) {
           const html = rawBody(element).html() || '';
-          dietTypes[index].data = this.getConvertedtMenus(html.toString());
+          menus.push(this.getConvertedMenus(html.toString()));
         }
+      })
+      
+      /**
+       * 중식이 없을 경우 빈 배열을 넣어준다.
+       */
+      if (dietTypes.length !== menus.length) {
+        menus.unshift([]);
+      }
+      
+      menus.forEach((menu, index) => {
+        dietTypes[index].data = menu;
       })
 
       societyDiet.student = this.getDietsByIndex(0, dietTypes);
@@ -144,7 +157,6 @@ export class DietService {
       societyDiet.staff = this.getDietsByIndex(2, dietTypes);
     
     }
-    console.log(societyDiet);
     return societyDiet;
   }
   async getDormDiet(): Promise<DormResultType> {

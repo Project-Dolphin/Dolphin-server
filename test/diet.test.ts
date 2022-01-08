@@ -16,7 +16,6 @@ describe('diet test', () => {
   // });
   it('getSocietyDiet test - 1', async (done) => {
     const result = await dietService.getSocietyDiet();
-    console.log("result: ", result);
     expect(result).toBeTruthy();
     done();
   })
