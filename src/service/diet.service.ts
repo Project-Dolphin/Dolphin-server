@@ -12,8 +12,6 @@ const enum DietType {
   StaffPremium = 6, // 교직원 일품식
 }
 
-
-
 export interface SocietyResultType {
   type: DietType;
   value: string;
@@ -42,9 +40,9 @@ export interface SocietyDiet {
 }
 
 export interface SocietyDietResult {
-  student: SocietyDiet[],
-  snack: SocietyDiet[],
-  staff: SocietyDiet[],
+  student: SocietyDiet[];
+  snack: SocietyDiet[];
+  staff: SocietyDiet[];
 }
 
 // 어울림관: https://www.kmou.ac.kr/coop/dv/dietView/selectDietDateView.do
@@ -52,7 +50,6 @@ export interface SocietyDietResult {
 export class DietService {
   private readonly societyUrl = 'https://www.kmou.ac.kr/coop/dv/dietView/selectDietDateView.do';
   private readonly navalBaseUrl = 'http://badaro.kmou.ac.kr';
-
 
   async getSocietyDietAsync(): Promise<SocietyResultType[] | string> {
     const results: SocietyResultType[] = [];
@@ -77,15 +74,16 @@ export class DietService {
 
     return results;
   }
-  
-  private replaceSpecialCharacters(content: string | null): string  {
-    return content ?
-      content.replace(/<br>/g, '\n')
-      .replace(/&nbsp;/g, ' ')
-      .replace(/&amp;/g, '&')
-      .trim()
+
+  private replaceSpecialCharacters(content: string | null): string {
+    return content
+      ? content
+          .replace(/<br>/g, '\n')
+          .replace(/&nbsp;/g, ' ')
+          .replace(/&amp;/g, '&')
+          .trim()
       : '';
-  };
+  }
 
   private isDateString(menu: string): boolean {
     const dateRegEx = /^(19|20)\d{2}년 (0[1-9]|1[012])월 (0[1-9]|[12][0-9]|3[0-1])일$/g;
@@ -97,23 +95,27 @@ export class DietService {
   }
 
   private getConvertedMenus(html: string): string[] {
-    return html.split('<br>').filter(menu => menu !== '')
-              .map(menu => this.replaceSpecialCharacters(menu.replace(/\t|\n/g, '')))
-              .filter(menu => !this.isDateString(menu));
+    return html
+      .split('<br>')
+      .filter((menu) => menu !== '')
+      .map((menu) => this.replaceSpecialCharacters(menu.replace(/\t|\n/g, '')))
+      .filter((menu) => !this.isDateString(menu));
   }
 
   private getDietsByIndex(index: number, dietTypes: SocietyDietType[]) {
-    return dietTypes.filter((diet) => diet.index === index).map(diet => {
-      return {
-        type: diet.type,
-        menus: diet.data,
-      };
-    });
+    return dietTypes
+      .filter((diet) => diet.index === index)
+      .map((diet) => {
+        return {
+          type: diet.type,
+          menus: diet.data,
+        };
+      });
   }
 
   public async getSocietyDiet(): Promise<SocietyDietResult> {
     const result = await got.get(this.societyUrl);
-    
+
     const rawBody = cheerio.load(result.body);
     const dietTypes: SocietyDietType[] = [];
     const menus: string[][] = [];
@@ -121,41 +123,44 @@ export class DietService {
       student: [],
       snack: [],
       staff: [],
-    }
-    
+    };
+
     if (rawBody('.detail_tb').length === 3) {
-      rawBody('.detail_tb').each((tableIndex, element) =>{
-        rawBody(element).find('thead > tr > th').each((index, element) => {
-          dietTypes.push( {
-            index: tableIndex,
-            type: rawBody(element).html()?.toString() || '',
-            data: []
+      rawBody('.detail_tb').each((tableIndex, element) => {
+        rawBody(element)
+          .find('thead > tr > th')
+          .each((index, element) => {
+            dietTypes.push({
+              index: tableIndex,
+              type: rawBody(element).html()?.toString() || '',
+              data: [],
+            });
           });
-        });
       });
-      
-      rawBody('.detail_tb').find('tbody > tr > td').each((index, element) => {
-        if (rawBody(element).html()) {
-          const html = rawBody(element).html() || '';
-          menus.push(this.getConvertedMenus(html.toString()));
-        }
-      })
-      
+
+      rawBody('.detail_tb')
+        .find('tbody > tr > td')
+        .each((index, element) => {
+          if (rawBody(element).html()) {
+            const html = rawBody(element).html() || '';
+            menus.push(this.getConvertedMenus(html.toString()));
+          }
+        });
+
       /**
        * 중식이 없을 경우 빈 배열을 넣어준다.
        */
       if (dietTypes.length !== menus.length) {
         menus.unshift([]);
       }
-      
+
       menus.forEach((menu, index) => {
         dietTypes[index].data = menu;
-      })
+      });
 
       societyDiet.student = this.getDietsByIndex(0, dietTypes);
       societyDiet.snack = this.getDietsByIndex(1, dietTypes);
       societyDiet.staff = this.getDietsByIndex(2, dietTypes);
-    
     }
     return societyDiet;
   }
@@ -166,12 +171,15 @@ export class DietService {
     const diets: string[][] = [];
     rawBody('.widget64_meal_menu_st_box > table > tbody > tr > td').each((index, element) => {
       const tdHtml = this.replaceSpecialCharacters(rawBody(element).html());
-      const diet = tdHtml?.split('<br>').filter(menu => menu !== '').map(menu => menu.replace(/\t|\n/g, ''));
+      const diet = tdHtml
+        ?.split('<br>')
+        .filter((menu) => menu !== '')
+        .map((menu) => menu.replace(/\t|\n/g, ''));
       if (diet) {
         diets.push(diet);
       }
     });
-   
+
     return {
       morning: diets.length > 0 ? diets[0] : [],
       lunch: diets.length > 1 ? diets[1] : [],
@@ -206,7 +214,7 @@ export class DietService {
     if (!foundToday) {
       return 'DietService.getNavalDietAsync: There are no any diet';
     }
-    
+
     return {
       lunch: results.filter((_, index) => index % 2 === 0),
       dinner: results.filter((_, index) => index % 2 !== 0),
@@ -220,9 +228,8 @@ export class DietService {
     console.log(rawBody);
 
     rawBody(tableSelector).map((index, element) => {
-      console.log("elemnt: ",  rawBody(element).html());
-      
-    })
+      console.log('elemnt: ', rawBody(element).html());
+    });
   }
 
   private async getFirstItemPathFromNaval(): Promise<string> {
@@ -237,7 +244,7 @@ export class DietService {
 
       return true;
     });
-    console.log("resultUrl: ", resultUrl);
+    console.log('resultUrl: ', resultUrl);
     return resultUrl;
   }
 }
