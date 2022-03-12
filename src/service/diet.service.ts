@@ -168,23 +168,37 @@ export class DietService {
     const url = 'https://www.kmou.ac.kr/dorm/main.do';
     const result = await got.get(url);
     const rawBody = cheerio.load(result.body);
-    const diets: string[][] = [];
-    rawBody('.widget64_meal_menu_st_box > table > tbody > tr > td').each((index, element) => {
-      const tdHtml = this.replaceSpecialCharacters(rawBody(element).html());
-      const diet = tdHtml
-        ?.split('<br>')
-        .filter((menu) => menu !== '')
-        .map((menu) => menu.replace(/\t|\n/g, ''));
-      if (diet) {
-        diets.push(diet);
+    const dormDiet: DormResultType = { morning: [], lunch: [], dinner: [] };
+    const dietType: Array<'morning' | 'lunch' | 'dinner' | 'none'> = ['none', 'none', 'none'];
+
+    rawBody('.widget64_meal_menu_st_box > table > thead > tr > th').each((index, element) => {
+      const thHtml = this.replaceSpecialCharacters(rawBody(element).html());
+      switch (thHtml) {
+        case '조식':
+          dietType[index] = 'morning';
+          break;
+        case '중식':
+          dietType[index] = 'lunch';
+          break;
+        case '석식':
+          dietType[index] = 'dinner';
+          break;
+        default:
+          break;
       }
     });
 
-    return {
-      morning: diets.length > 0 ? diets[0] : [],
-      lunch: diets.length > 1 ? diets[1] : [],
-      dinner: diets.length > 2 ? diets[2] : [],
-    };
+    rawBody('.widget64_meal_menu_st_box > table > tbody > tr > td').each((index, element) => {
+      const tdHtml = this.replaceSpecialCharacters(rawBody(element).html());
+      const diet = tdHtml?.split('\n').filter((menu) => menu !== '');
+      if (diet && index < dietType.length) {
+        if (dietType[index] !== 'none') {
+          dormDiet[dietType[index]] = diet;
+        }
+      }
+    });
+
+    return dormDiet;
   }
 
   async getNavalDietAsync(): Promise<NavalResultType | string> {
