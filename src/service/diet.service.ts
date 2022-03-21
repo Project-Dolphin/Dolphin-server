@@ -201,13 +201,19 @@ export class DietService {
             .each((i, el) => {
               switch (index) {
                 case 0:
-                  societyDiet.student[i].menus = this.replaceSpecialCharacters(rawBody(el).html()?.toString() || '').split('\n');
+                  if (societyDiet.student?.length > i) {
+                    societyDiet.student[i].menus = this.replaceSpecialCharacters(rawBody(el).html()?.toString() || '').split('\n');
+                  }
                   break;
                 case 1:
-                  societyDiet.snack[i].menus = this.replaceSpecialCharacters(rawBody(el).html()?.toString() || '').split('\n');
+                  if (societyDiet.snack?.length > i) {
+                    societyDiet.snack[i].menus = this.replaceSpecialCharacters(rawBody(el).html()?.toString() || '').split('\n');
+                  }
                   break;
                 case 2:
-                  societyDiet.staff[i].menus = this.replaceSpecialCharacters(rawBody(el).html()?.toString() || '').split('\n');
+                  if (societyDiet.staff?.length > i) {
+                    societyDiet.staff[i].menus = this.replaceSpecialCharacters(rawBody(el).html()?.toString() || '').split('\n');
+                  }
                   break;
                 default:
                   break;
