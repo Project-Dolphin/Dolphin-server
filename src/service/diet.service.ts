@@ -114,7 +114,7 @@ export class DietService {
                   break;
                 case 2:
                   results[i + 7] = {
-                    type: i + 2,
+                    type: i + 7,
                     value: this.replaceSpecialCharacters(rawBody(el).html()?.toString() || ''),
                   };
                   break;
@@ -152,84 +152,70 @@ export class DietService {
       : '';
   }
 
-  private isDateString(menu: string): boolean {
-    const dateRegEx = /^(19|20)\d{2}년 (0[1-9]|1[012])월 (0[1-9]|[12][0-9]|3[0-1])일$/g;
-    if (menu.match(dateRegEx)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  private getConvertedMenus(html: string): string[] {
-    return html
-      .split('<br>')
-      .filter((menu) => menu !== '')
-      .map((menu) => this.replaceSpecialCharacters(menu.replace(/\t|\n/g, '')))
-      .filter((menu) => !this.isDateString(menu));
-  }
-
-  private getDietsByIndex(index: number, dietTypes: SocietyDietType[]) {
-    return dietTypes
-      .filter((diet) => diet.index === index)
-      .map((diet) => {
-        return {
-          type: diet.type,
-          menus: diet.data,
-        };
-      });
-  }
-
   public async getSocietyDiet(): Promise<SocietyDietResult> {
     const result = await got.get(this.societyUrl);
 
     const rawBody = cheerio.load(result.body);
-    const dietTypes: SocietyDietType[] = [];
-    const menus: string[][] = [];
     const societyDiet: SocietyDietResult = {
       student: [],
       snack: [],
       staff: [],
     };
 
-    if (rawBody('.detail_tb').length === 3) {
-      rawBody('.detail_tb').each((tableIndex, element) => {
-        rawBody(element)
-          .find('thead > tr > th')
-          .each((index, element) => {
-            dietTypes.push({
-              index: tableIndex,
-              type: rawBody(element).html()?.toString() || '',
-              data: [],
+    rawBody('.detail_tb').each((index, element) => {
+      rawBody(element)
+        .find('thead')
+        .each((ii, e) => {
+          rawBody(e)
+            .find('tr > th')
+            .each((i, el) => {
+              switch (index) {
+                case 0:
+                  societyDiet.student.push({
+                    type: rawBody(el).html()?.toString() || '',
+                    menus: [],
+                  });
+                  break;
+                case 1:
+                  societyDiet.snack.push({
+                    type: rawBody(el).html()?.toString() || '',
+                    menus: [],
+                  });
+                  break;
+                case 2:
+                  societyDiet.staff.push({
+                    type: rawBody(el).html()?.toString() || '',
+                    menus: [],
+                  });
+                  break;
+                default:
+                  break;
+              }
             });
-          });
-      });
-
-      rawBody('.detail_tb')
-        .find('tbody > tr > td')
-        .each((index, element) => {
-          console.log(index, element);
-          if (rawBody(element).html()) {
-            const html = rawBody(element).html() || '';
-            menus.push(this.getConvertedMenus(html.toString()));
-          }
         });
+      rawBody(element)
+        .find('tbody')
+        .each((ii, e) => {
+          rawBody(e)
+            .find('tr > td')
+            .each((i, el) => {
+              switch (index) {
+                case 0:
+                  societyDiet.student[i].menus = this.replaceSpecialCharacters(rawBody(el).html()?.toString() || '').split('\n');
+                  break;
+                case 1:
+                  societyDiet.snack[i].menus = this.replaceSpecialCharacters(rawBody(el).html()?.toString() || '').split('\n');
+                  break;
+                case 2:
+                  societyDiet.staff[i].menus = this.replaceSpecialCharacters(rawBody(el).html()?.toString() || '').split('\n');
+                  break;
+                default:
+                  break;
+              }
+            });
+        });
+    });
 
-      /**
-       * 중식이 없을 경우 빈 배열을 넣어준다.
-       */
-      if (dietTypes.length !== menus.length) {
-        menus.unshift([]);
-      }
-
-      menus.forEach((menu, index) => {
-        dietTypes[index].data = menu;
-      });
-
-      societyDiet.student = this.getDietsByIndex(0, dietTypes);
-      societyDiet.snack = this.getDietsByIndex(1, dietTypes);
-      societyDiet.staff = this.getDietsByIndex(2, dietTypes);
-    }
     return societyDiet;
   }
   async getDormDiet(): Promise<DormResultType> {
