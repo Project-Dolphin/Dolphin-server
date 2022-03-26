@@ -1,10 +1,10 @@
 import { Handler, APIGatewayEvent } from 'aws-lambda';
 import { BusService } from './service/BusService';
 import { CalendarService } from './service/CalendarService';
-import { DietService } from './service/diet.service';
+import { DietService } from './service/dietService';
 import { NoticeService } from './service/NoticeService';
-import { ShuttleService } from './service/shuttle.service';
-import { WeatherService } from './service/weather.service';
+import { ShuttleService } from './service/ShuttleService';
+import { WeatherService } from './service/weatherService';
 
 const dolphin: Handler = async (event: APIGatewayEvent) => {
   const path = event.path;

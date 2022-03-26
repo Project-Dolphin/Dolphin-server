@@ -148,3 +148,5 @@ export class BusService {
     return arriveInfo;
   }
 }
+
+export const busService = new BusService();
