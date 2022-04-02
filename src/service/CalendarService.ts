@@ -80,3 +80,5 @@ export class CalendarService {
     return Math.ceil(duration / (60 * 60 * 24 * 1000));
   }
 }
+
+export const calendarService = new CalendarService();

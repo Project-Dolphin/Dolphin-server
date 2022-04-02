@@ -202,17 +202,23 @@ export class DietService {
               switch (index) {
                 case 0:
                   if (societyDiet.student?.length > i) {
-                    societyDiet.student[i].menus = this.replaceSpecialCharacters(rawBody(el).html()?.toString() || '').split('\n');
+                    societyDiet.student[i].menus = this.replaceSpecialCharacters(
+                      rawBody(el).html()?.toString() || '',
+                    ).split('\n');
                   }
                   break;
                 case 1:
                   if (societyDiet.snack?.length > i) {
-                    societyDiet.snack[i].menus = this.replaceSpecialCharacters(rawBody(el).html()?.toString() || '').split('\n');
+                    societyDiet.snack[i].menus = this.replaceSpecialCharacters(
+                      rawBody(el).html()?.toString() || '',
+                    ).split('\n');
                   }
                   break;
                 case 2:
                   if (societyDiet.staff?.length > i) {
-                    societyDiet.staff[i].menus = this.replaceSpecialCharacters(rawBody(el).html()?.toString() || '').split('\n');
+                    societyDiet.staff[i].menus = this.replaceSpecialCharacters(
+                      rawBody(el).html()?.toString() || '',
+                    ).split('\n');
                   }
                   break;
                 default:
@@ -269,19 +275,21 @@ export class DietService {
     const rawBody = cheerio.load(result.body);
     const todayMMddFormat = DayJS().format('MM/DD').replace('0', '').replace('/0', '/');
     console.log('today: ', todayMMddFormat);
-    rawBody('div > section > section > div > div > div > div > div > table > tbody > tr > td').each((index, element) => {
-      if (foundToday && rawBody(element).html()?.startsWith('<strong>')) {
-        return false;
-      }
-      if (foundToday) {
-        results.push(rawBody(element).text());
-      }
-      if (rawBody(element).html()?.includes(todayMMddFormat)) {
-        foundToday = true;
-      }
+    rawBody('div > section > section > div > div > div > div > div > table > tbody > tr > td').each(
+      (index, element) => {
+        if (foundToday && rawBody(element).html()?.startsWith('<strong>')) {
+          return false;
+        }
+        if (foundToday) {
+          results.push(rawBody(element).text());
+        }
+        if (rawBody(element).html()?.includes(todayMMddFormat)) {
+          foundToday = true;
+        }
 
-      return true;
-    });
+        return true;
+      },
+    );
 
     if (!foundToday) {
       return 'DietService.getNavalDietAsync: There are no any diet';
@@ -316,7 +324,9 @@ export class DietService {
 
       return true;
     });
-    console.log('resultUrl: ', resultUrl);
+
     return resultUrl;
   }
 }
+
+export const dietService = new DietService();

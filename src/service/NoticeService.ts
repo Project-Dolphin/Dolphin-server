@@ -29,3 +29,5 @@ export class NoticeService {
     return notices;
   }
 }
+
+export const noticeService = new NoticeService();

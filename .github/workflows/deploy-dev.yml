@@ -1,4 +1,4 @@
-name: Serverless Deploy
+name: deploy-dev
 
 # Triggers the action everty time there is a code push to the master branch
 on:
