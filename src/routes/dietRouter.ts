@@ -1,5 +1,5 @@
 import express from 'express';
-import { dietService } from '../service/dietService';
+import { dietService } from '../service/dietService2';
 
 const router = express.Router();
 

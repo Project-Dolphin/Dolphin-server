@@ -324,7 +324,9 @@ export class DietService {
 
       return true;
     });
-    console.log('resultUrl: ', resultUrl);
+
     return resultUrl;
   }
 }
+
+export const dietService = new DietService();
