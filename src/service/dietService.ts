@@ -320,3 +320,5 @@ export class DietService {
     return resultUrl;
   }
 }
+
+export const dietService = new DietService();

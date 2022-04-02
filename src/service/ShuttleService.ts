@@ -77,3 +77,5 @@ export class ShuttleService {
     return isExamPeriod;
   }
 }
+
+export const shuttleService = new ShuttleService();
