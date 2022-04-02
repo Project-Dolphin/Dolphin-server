@@ -1,7 +1,7 @@
 import { Handler, APIGatewayEvent } from 'aws-lambda';
 import { BusService } from './service/BusService';
 import { CalendarService } from './service/CalendarService';
-import { DietService } from './service/dietService';
+import { DietService } from './service/DietService';
 import { NoticeService } from './service/NoticeService';
 import { ShuttleService } from './service/ShuttleService';
 import { WeatherService } from './service/weatherService';

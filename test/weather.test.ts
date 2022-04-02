@@ -1,4 +1,4 @@
-import { WeatherService } from '../src/service/weather.service';
+import { WeatherService } from '../src/service/weatherService';
 
 const weatherService = new WeatherService();
 

@@ -1,4 +1,4 @@
-import { ShuttleService } from '../src/service/shuttle.service';
+import { ShuttleService } from '../src/service/ShuttleService';
 
 const shuttleService = new ShuttleService();
 
