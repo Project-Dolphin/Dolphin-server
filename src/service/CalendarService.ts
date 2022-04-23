@@ -55,14 +55,25 @@ export class CalendarService {
 
     return schedules;
   }
-  public getAcademicCalendar(): Calendar[] {
-    return academicCalendar;
+  public getAcademicCalendar(year: number | null, month: number | null): Calendar[] {
+    if (year && month) {
+      return this.getAcademicCalendarByYearMonth(year, month);
+    } else {
+      return academicCalendar;
+    }
+  }
+  private getAcademicCalendarByYearMonth(year: number, month: number): Calendar[] {
+    return academicCalendar.filter(calendar => this.getYearMonth(calendar.term.startedAt) === `${year}-${month}`);
+  }
+  private getYearMonth(at: string): string {
+    return at.substring(0, 7);
   }
   public getHoliday(): Calendar[] {
     return holiDay;
   }
+
   public getLatestPlans(): Calendar[] {
-    const calendar = this.getAcademicCalendar();
+    const calendar = academicCalendar;
     const now = new Date();
     const plans = calendar.filter((plan) => {
       const startedAt = new Date(plan.term.startedAt);
