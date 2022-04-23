@@ -1,7 +1,7 @@
 import { academicCalendar, calendar } from '../constants/calendar';
 import { holiDay } from '../constants/holiday';
 
-interface Calendar {
+export interface Calendar {
   term: Term;
   mainPlan?: boolean;
   content: string;

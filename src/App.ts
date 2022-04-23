@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import { busRouter } from './routes/busRouter';
 import { calendarRouter } from './routes/calendarRouter';
 import { dietRouter } from './routes/dietRouter';
+import { homeRouter } from './routes/homeRouter';
 import { noticeRouter } from './routes/noticeRouter';
 import { shuttleRouter } from './routes/shuttleRouter';
 import { weatherRouter } from './routes/weatherRouter';
@@ -16,12 +17,13 @@ export class App {
     this.express = express();
   }
 
-  public initialize(): void {
+  public initialize() {
     this.express.use(morgan('dev'));
     this.setRouters();
   }
 
-  private setRouters(): void {
+  private setRouters() {
+    this.express.use('/', homeRouter);
     this.express.use('/bus', busRouter);
     this.express.use('/calendar', calendarRouter);
     this.express.use('/notices', noticeRouter);
