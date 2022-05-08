@@ -25,7 +25,7 @@ export class App {
   }
 
   private setLogs() {
-    this.express.use(morgan(process.env.NODE_ENV === 'prod' ? 'combined' : 'dev', { stream: stream }));
+    this.express.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev', { stream: stream }));
   }
 
   private setRouters() {

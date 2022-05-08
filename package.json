@@ -5,7 +5,8 @@
   "main": "handler.js",
   "scripts": {
     "dev": "NODE_ENV=dev ts-node src/server.ts",
-    "prod": "NODE_ENV=prod ts-node src/server.ts",
+    "prod": "NODE_ENV=production node build/src/server.js",
+    "pm2": "tsc && NODE_ENV=production pm2 start build/src/server.js --name=ocean-view --watch",
     "test": "NODE_ENV=test jest --detectOpenHandles --env=node",
     "build": "rm -rf build/* && tsc"
   },
