@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import http from 'http';
 import morgan from 'morgan';
-import { stream } from './logger';
+import { logger, stream } from './logger';
 import { busRouter } from './routes/busRouter';
 import { calendarRouter } from './routes/calendarRouter';
 import { dietRouter } from './routes/dietRouter';
@@ -45,6 +45,7 @@ export class App {
   }
 
   private errorHandler(err: Error, req: Request, res: Response, next: NextFunction) { // TODO: 분리 필요
+    logger.error(err.message);
     return res.status(500).json({
       message: err.message
     });
