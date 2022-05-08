@@ -21,7 +21,6 @@ export class WeatherService {
         return weatherResult;
       } else {
         const weather = await this.getCurrenWeatherSubData();
-        console.log(weather);
         return weather;
       }
     } catch (error) {

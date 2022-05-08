@@ -24,7 +24,7 @@ export class CalendarService {
           .replace(/.\(\W\)|\s/g, '')
           .replace(/\./g, '-')
           .split('~');
-        console.log(date[0], date[1]);
+      
         const year = isNextYear && (date[0].split('-')[0] === '1' || date[0].split('-')[0] === '2') ? '2022' : '2021';
         let startedAt = date[0];
         let endedAt = date[1] ? date[1] : date[0];
@@ -55,7 +55,7 @@ export class CalendarService {
 
     return schedules;
   }
-  public getAcademicCalendar(year: number | null, month: number | null): Calendar[] {
+  public getAcademicCalendar(year?: number | null, month?: number | null): Calendar[] {
     if (year && month) {
       return this.getAcademicCalendarByYearMonth(year, month);
     } else {

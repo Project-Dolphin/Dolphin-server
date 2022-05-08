@@ -12,6 +12,7 @@ interface Home {
     notices: Notice[];
     diets: SocietyDietResult | null;
 }
+
 router.get('/', async (req: Request, res: Response) => {
   const homeData: Home = {
       schedules: [],

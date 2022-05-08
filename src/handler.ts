@@ -162,7 +162,6 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   }
 
   if (path === '/diet/naval/today') {
-    // MARK: 오늘의 해사대 식단
     const res = await dietService.getNavalDietAsync();
     return {
       statusCode: typeof res === 'string' ? 404 : 200,
@@ -174,7 +173,6 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   }
 
   if (path === '/weather/now') {
-    // MARK: 현재 영도구 날씨
     const res = await weatherService.getCurrentWeather();
     return {
       statusCode: typeof res === 'string' ? 404 : 200,

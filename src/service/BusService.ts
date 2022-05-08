@@ -94,7 +94,6 @@ export class BusService {
               lowplate2: false,
             };
 
-      console.log('item: ', item);
 
       const arriveInfo: BusArriveInfo = {
         carNo1: item.carNo1 || '차량 없음',

@@ -1,6 +1,7 @@
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import http from 'http';
 import morgan from 'morgan';
+import { stream } from './logger';
 import { busRouter } from './routes/busRouter';
 import { calendarRouter } from './routes/calendarRouter';
 import { dietRouter } from './routes/dietRouter';
@@ -18,8 +19,13 @@ export class App {
   }
 
   public initialize() {
-    this.express.use(morgan('dev'));
+    this.setLogs();
     this.setRouters();
+    this.setErrorHandlers();
+  }
+
+  private setLogs() {
+    this.express.use(morgan(process.env.NODE_ENV === 'prod' ? 'combined' : 'dev', { stream: stream }));
   }
 
   private setRouters() {
@@ -30,6 +36,18 @@ export class App {
     this.express.use('/diet', dietRouter);
     this.express.use('/weather', weatherRouter);
     this.express.use('/shuttle', shuttleRouter);
+  }
+
+ 
+
+  private setErrorHandlers() {
+    this.express.use(this.errorHandler);
+  }
+
+  private errorHandler(err: Error, req: Request, res: Response, next: NextFunction) { // TODO: 분리 필요
+    return res.status(500).json({
+      message: err.message
+    });
   }
 
   public async run(port: number): Promise<void> {

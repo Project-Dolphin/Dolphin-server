@@ -4,8 +4,8 @@
   "description": "",
   "main": "handler.js",
   "scripts": {
-    "local": "NODE_ENV=local ts-node src/server.ts",
-    "dev": "serverless offline start",
+    "dev": "NODE_ENV=dev ts-node src/server.ts",
+    "prod": "NODE_ENV=prod ts-node src/server.ts",
     "test": "NODE_ENV=test jest --detectOpenHandles --env=node",
     "build": "rm -rf build/* && tsc"
   },
@@ -58,6 +58,8 @@
     "he": "^1.2.0",
     "morgan": "^1.10.0",
     "node-html-parser": "^4.1.3",
-    "pm2": "^5.2.0"
+    "pm2": "^5.2.0",
+    "winston": "^3.7.2",
+    "winston-daily-rotate-file": "^4.6.1"
   }
 }
