@@ -1,4 +1,5 @@
 import { App } from './App';
+import { logger } from './logger';
 
 const port = 8080;
 
@@ -12,6 +13,6 @@ app
     console.log(`This Server is running at ${port}`);
   })
   .catch((e) => {
-    console.error('Server error: ', e);
+    logger.error(e);
     process.exit(9);
   });
