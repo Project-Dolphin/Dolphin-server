@@ -1,11 +1,13 @@
-import express, { Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 
 const router = express.Router();
 
-router.get('/', async (req: Request, res: Response) => {
-  return res.status(200).json({
-    message: 'hello',
-  });
+router.get('/', (req: Request, res: Response, next: NextFunction) => {
+  try {
+    throw new Error("bus error");
+  } catch(err) {
+    next(err);
+  }
 });
 
 export const busRouter = router;

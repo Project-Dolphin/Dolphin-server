@@ -1,7 +1,7 @@
 import got from 'got';
 import cheerio from 'cheerio';
 
-interface Notice {
+export interface Notice {
   title: string;
   date: string;
   link: string;

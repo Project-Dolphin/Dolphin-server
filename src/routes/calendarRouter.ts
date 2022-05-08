@@ -4,7 +4,10 @@ import { calendarService } from '../service/CalendarService';
 const router = express.Router();
 
 router.get('/', async (req: Request, res: Response) => {
-  const schedules = await calendarService.getAcademicCalendar();
+  const year = Number(req.query.year) || null;
+  const month = Number(req.query.month) || null;
+ 
+  const schedules = await calendarService.getAcademicCalendar(year, month);
   return res.status(200).json(schedules);
 });
 
