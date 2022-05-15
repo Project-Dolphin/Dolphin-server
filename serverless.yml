@@ -1,6 +1,6 @@
 service: dolphin-server
 
-frameworkVersion: '2'
+frameworkVersion: '^3'
 
 plugins:
   - serverless-plugin-typescript

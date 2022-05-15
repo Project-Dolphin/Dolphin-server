@@ -2,10 +2,10 @@ import { Handler, APIGatewayEvent } from 'aws-lambda';
 import { BusService } from './service/BusService';
 import { BusServiceNew } from './service/BusServiceNew';
 import { CalendarService } from './service/CalendarService';
-import { DietService } from './service/diet.service';
+import { DietService } from './service/DietService';
 import { NoticeService } from './service/NoticeService';
-import { ShuttleService } from './service/shuttle.service';
-import { WeatherService } from './service/weather.service';
+import { ShuttleService } from './service/ShuttleService';
+import { WeatherService } from './service/weatherService';
 
 const dolphin: Handler = async (event: APIGatewayEvent) => {
   const path = event.path;
@@ -188,7 +188,6 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   }
 
   if (path === '/diet/naval/today') {
-    // MARK: 오늘의 해사대 식단
     const res = await dietService.getNavalDietAsync();
     return {
       statusCode: typeof res === 'string' ? 404 : 200,
@@ -200,7 +199,6 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
   }
 
   if (path === '/weather/now') {
-    // MARK: 현재 영도구 날씨
     const res = await weatherService.getCurrentWeather();
     return {
       statusCode: typeof res === 'string' ? 404 : 200,

@@ -145,12 +145,14 @@ export class DietService {
   private replaceSpecialCharacters(content: string | null): string {
     return content
       ? content
-          .replace(/<br>/g, '\n')
-          .replace(/&nbsp;/g, ' ')
-          .replace(/&amp;/g, '&')
-          .trim()
+        .replace(/<br>/g, '\n')
+        .replace(/&nbsp;/g, ' ')
+        .replace(/&amp;/g, '&')
+        .replace(/-/g, '')
+        .trim()
       : '';
   }
+  private splitItems = (contents: string) => contents.split('\n').filter(item => item);
 
   public async getSocietyDiet(): Promise<SocietyDietResult> {
     const result = await got.get(this.societyUrl);
@@ -202,17 +204,23 @@ export class DietService {
               switch (index) {
                 case 0:
                   if (societyDiet.student?.length > i) {
-                    societyDiet.student[i].menus = this.replaceSpecialCharacters(rawBody(el).html()?.toString() || '').split('\n');
+                    societyDiet.student[i].menus = this.splitItems(this.replaceSpecialCharacters(
+                      rawBody(el).html()?.toString() || '',
+                    ))
                   }
                   break;
                 case 1:
                   if (societyDiet.snack?.length > i) {
-                    societyDiet.snack[i].menus = this.replaceSpecialCharacters(rawBody(el).html()?.toString() || '').split('\n');
+                    societyDiet.snack[i].menus = this.splitItems(this.replaceSpecialCharacters(
+                      rawBody(el).html()?.toString() || '',
+                    ))
                   }
                   break;
                 case 2:
                   if (societyDiet.staff?.length > i) {
-                    societyDiet.staff[i].menus = this.replaceSpecialCharacters(rawBody(el).html()?.toString() || '').split('\n');
+                    societyDiet.staff[i].menus = this.splitItems(this.replaceSpecialCharacters(
+                      rawBody(el).html()?.toString() || '',
+                    ))
                   }
                   break;
                 default:
@@ -269,19 +277,21 @@ export class DietService {
     const rawBody = cheerio.load(result.body);
     const todayMMddFormat = DayJS().format('MM/DD').replace('0', '').replace('/0', '/');
     console.log('today: ', todayMMddFormat);
-    rawBody('div > section > section > div > div > div > div > div > table > tbody > tr > td').each((index, element) => {
-      if (foundToday && rawBody(element).html()?.startsWith('<strong>')) {
-        return false;
-      }
-      if (foundToday) {
-        results.push(rawBody(element).text());
-      }
-      if (rawBody(element).html()?.includes(todayMMddFormat)) {
-        foundToday = true;
-      }
+    rawBody('div > section > section > div > div > div > div > div > table > tbody > tr > td').each(
+      (index, element) => {
+        if (foundToday && rawBody(element).html()?.startsWith('<strong>')) {
+          return false;
+        }
+        if (foundToday) {
+          results.push(rawBody(element).text());
+        }
+        if (rawBody(element).html()?.includes(todayMMddFormat)) {
+          foundToday = true;
+        }
 
-      return true;
-    });
+        return true;
+      },
+    );
 
     if (!foundToday) {
       return 'DietService.getNavalDietAsync: There are no any diet';
@@ -293,15 +303,15 @@ export class DietService {
     };
   }
   public async getNavalDayDiet() {
-    const navelUrl = 'http://badaro.kmou.ac.kr/food/3179';
-    const result = await got.get(navelUrl);
-    const rawBody = cheerio.load(result.body);
-    const tableSelector = 'div > section > section > div > div > div > div > div > table > tbody > tr';
-    console.log(rawBody);
+    // const navelUrl = 'http://badaro.kmou.ac.kr/food/3179';
+    // const result = await got.get(navelUrl);
+    // const rawBody = cheerio.load(result.body);
+    // const tableSelector = 'div > section > section > div > div > div > div > div > table > tbody > tr';
 
-    rawBody(tableSelector).map((index, element) => {
-      console.log('elemnt: ', rawBody(element).html());
-    });
+
+    // rawBody(tableSelector).map((index, element) => {
+    //   console.log('elemnt: ', rawBody(element).html());
+    // });
   }
 
   private async getFirstItemPathFromNaval(): Promise<string> {
@@ -316,7 +326,9 @@ export class DietService {
 
       return true;
     });
-    console.log('resultUrl: ', resultUrl);
+
     return resultUrl;
   }
 }
+
+export const dietService = new DietService();

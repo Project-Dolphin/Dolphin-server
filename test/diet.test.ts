@@ -1,4 +1,4 @@
-import { DietService } from '../src/service/diet.service';
+import { DietService } from '../src/service/DietService';
 
 const dietService = new DietService();
 
@@ -18,5 +18,5 @@ describe('diet test', () => {
     const result = await dietService.getSocietyDiet();
     expect(result).toBeTruthy();
     done();
-  })
+  });
 });
