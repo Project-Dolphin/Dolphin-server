@@ -6,6 +6,23 @@ type busNumberTypes = keyof typeof BUS_STOP_ID;
 
 type busStopNames = 'busan_station' | 'yeongdo_bridge' | 'kmou_entrance'
 
+interface IBusInfo {
+    "bstopidx": number,
+    "bstopnm": string,
+    "nodeid": number,
+    "lineno": number,
+    "direction": number,
+    "gpsym": number,
+    "carno": string,
+    "lat": number,
+    "lin": number,
+    "nodekn": number,
+    "arsno": number,
+    "avgym": number,
+    "rpoint": number,
+    "lowplate": number,
+}
+
 function parseBodyItem(body: string) {
     return parser?.parse(body)?.response?.body?.items;
 }
@@ -23,7 +40,8 @@ export class BusServiceNew {
         try {
             if (lineId && bstopId) {
                 const { body } = await got.get(`${this.baseUrl}/busStopArrByBstopidLineid?servicekey=${this.serviceKey}&bstopid=${bstopId}&lineid=${lineId}`);
-                return parseBodyItem(body)
+                const { lineno, min1, min2 } = parseBodyItem(body)?.item
+                return { busStopName, lineno, min1, min2 }
             }
         } catch (e) {
             console.log(e)
@@ -37,7 +55,22 @@ export class BusServiceNew {
         try {
             if (lineId) {
                 const { body } = await got.get(`${this.baseUrl}/busInfoByRouteId?servicekey=${this.serviceKey}&lineid=${lineId}`);
-                return parseBodyItem(body)
+                const busInfo = parseBodyItem(body)?.item?.map((item: IBusInfo) => {
+                    const { bstopnm, rpoint, carno, lowplate } = item;
+                    if (carno) {
+                        return {
+                            bstopnm, rpoint, carno, lowplate
+                        }
+                    } else {
+                        return {
+                            bstopnm, rpoint
+                        }
+                    }
+                })
+                return {
+                    busNumber,
+                    busStopInfo: busInfo
+                }
             }
         } catch (e) {
             console.log(e)
