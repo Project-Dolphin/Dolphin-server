@@ -31,8 +31,7 @@ interface DepartmentInfo {
 }
 
 export class BusService {
-  private readonly serviceKey =
-    'R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D';
+  private readonly serviceKey = 'R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D';
   public getDepart190(): DepartmentInfo[] {
     const date = new Date();
     const now = toKSTString().substr(8, 4);
@@ -93,8 +92,6 @@ export class BusService {
               lowplate1: false,
               lowplate2: false,
             };
-
-
       const arriveInfo: BusArriveInfo = {
         carNo1: item.carNo1 || '차량 없음',
         carNo2: item.carNo2 || '차량 없음',
@@ -113,6 +110,7 @@ export class BusService {
   }
 
   public async getAllNode(): Promise<BusInfo[]> {
+
     const url =
       'http://apis.data.go.kr/6260000/BusanBIMS/busInfoByRouteId?servicekey=R3BdsX99pQj7YTLiUWzWoPMqBWqfOMg9alf9pGA88lx3tknpA5uE04cl0nMrXiCt3X%2BlUzTJ1Mwa8qZAxO6eZA%3D%3D&lineid=5200190000';
 

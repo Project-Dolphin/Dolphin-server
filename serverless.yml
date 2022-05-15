@@ -40,6 +40,21 @@ functions:
           path: holiday
           method: get
       - http:
+          path: bustime
+          method: get
+          request:
+          parameters:
+            paths:
+              busNumber: true
+              busStopName: true
+      - http:
+          path: busstopinfo
+          method: get
+          request:
+          parameters:
+            paths:
+              busNumber: true
+      - http:
           path: businfo/{bstopId}
           method: get
           request:

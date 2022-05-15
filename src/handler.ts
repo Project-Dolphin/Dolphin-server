@@ -1,5 +1,6 @@
 import { Handler, APIGatewayEvent } from 'aws-lambda';
 import { BusService } from './service/BusService';
+import { BusServiceNew } from './service/BusServiceNew';
 import { CalendarService } from './service/CalendarService';
 import { DietService } from './service/DietService';
 import { NoticeService } from './service/NoticeService';
@@ -9,10 +10,14 @@ import { WeatherService } from './service/weatherService';
 const dolphin: Handler = async (event: APIGatewayEvent) => {
   const path = event.path;
   const params = event.pathParameters;
+  const { queryStringParameters } = event;
   const bstopid = params?.bstopId;
+  const busStopName = queryStringParameters?.busStopName;
+  const busNumber = queryStringParameters?.busNumber;
 
   const shuttleService = new ShuttleService();
   const busService = new BusService();
+  const busServiceNew = new BusServiceNew();
   const calendarService = new CalendarService();
   const dietService = new DietService();
   const weatherService = new WeatherService();
@@ -25,6 +30,27 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
         path: path,
       }),
     };
+  }
+
+  if (busNumber && busStopName && path === '/bustime') {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        data: await busServiceNew.getSpecificNode(busStopName, busNumber),
+        path: path,
+      }),
+    };
+  }
+
+  if (busNumber && path === '/busstopinfo') {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        data: await busServiceNew.getBusInfoByRouteId(busNumber),
+        path: path,
+      }),
+    };
+
   }
 
   if (path === '/businfo') {
