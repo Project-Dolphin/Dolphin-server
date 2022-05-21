@@ -2,9 +2,9 @@ import got from "got";
 import parser from "fast-xml-parser";
 import { BUS_STOP_ID } from "../constants/busService";
 
-type busNumberTypes = keyof typeof BUS_STOP_ID;
+// type busNumberTypes = keyof typeof BUS_STOP_ID;
 
-type busStopNames = 'busan_station' | 'yeongdo_bridge' | 'kmou_entrance'
+// type busStopNames = 'busan_station' | 'yeongdo_bridge' | 'kmou_entrance'
 
 interface IBusInfo {
     "bstopidx": number,
@@ -42,6 +42,8 @@ export class BusServiceNew {
                 const { body } = await got.get(`${this.baseUrl}/busStopArrByBstopidLineid?servicekey=${this.serviceKey}&bstopid=${bstopId}&lineid=${lineId}`);
                 const { lineno, min1, min2 } = parseBodyItem(body)?.item
                 return { busStopName, lineno, min1, min2 }
+            } else {
+                throw new Error('busStopName or busNumber is invalid')
             }
         } catch (e) {
             console.log(e)
@@ -71,6 +73,8 @@ export class BusServiceNew {
                     busNumber,
                     busStopInfo: busInfo
                 }
+            } else {
+                throw new Error('busNumber is invalid')
             }
         } catch (e) {
             console.log(e)
