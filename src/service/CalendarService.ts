@@ -96,7 +96,7 @@ export class CalendarService {
   public async getHolidays(
     startDate?: string,
     endDate?: string,
-  ): Promise<{ holiday: { summary: string; date: string } }> {
+  ): Promise<{ holiday: { summary: string; date: string }[] }> {
     if (startDate && !dayjs(startDate, 'YYYY-MM-DD', true).isValid()) {
       throw new Error('startDate is invalid.');
     }

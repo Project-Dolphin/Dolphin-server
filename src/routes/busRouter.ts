@@ -52,7 +52,7 @@ router.get('/businfo', async (req: Request, res: Response) => {
 
 router.get('/departbus', async (req: Request, res: Response) => {
   try {
-    const busTime = await busServiceNew.getDepartBusTime();
+    const busTime = await busServiceNew.getNextDepartBus();
     return res.status(200).json(busTime);
   } catch (err) {
     return res.status(402).send(err);

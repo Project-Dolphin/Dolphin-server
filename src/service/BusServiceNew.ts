@@ -9,6 +9,7 @@ import { examPeriodList } from '../constants/testperiod';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import 'dayjs/locale/ko';
+import { calendarService } from './CalendarService';
 
 DayJS.extend(customParseFormat);
 DayJS.extend(utc);
@@ -157,22 +158,37 @@ export class BusServiceNew {
         }
     }
 
-    // public async getNextDepartBus() {
+    public async getNextDepartBus(): Promise<{
+        nextDepartBus: {
+            bus: string;
+            remainMinutes: number;
+        }[];
+    }> {
 
-    //         const today = DayJS().tz('Asia/Seoul');
+        const today = DayJS().tz('Asia/Seoul');
 
-    //         const {weekday, saturday, holiday} = await this.getDepartBusTime();
-    //         let departBusList;
+        const { weekday, saturday, holiday } = await this.getDepartBusTime();
+        let departBusList;
+        const holidays = await calendarService.getHolidays();
+        const isHoliday = holidays.holiday.map(item => item.date).includes(today.format('YYYY-MM-DD'))
+        if (today.day() === 6) {
+            departBusList = saturday;
+        } else if (today.day() === 0 || isHoliday) {
+            departBusList = holiday;
+        } else {
+            departBusList = weekday;
+        }
 
-    //         if ([0, 1, 6, 7].includes(today.month())) {
-    //             departBusList = VACATION_SHUTTLE_TIME;
-    //         } else if (this.checkExamPeriod(today.format('YYYYMMDD'))) {
-    //             departBusList = EXAM_SHUTTLE_TIME;
-    //         } else {
-    //             departBusList = NORMAL_SHUTTLE_TIME;
-    //         }
+        const afterBus = departBusList.filter((item) => DayJS(`${item}`, 'HH:mm').isAfter(today));
+        const response = afterBus.map((bus) => ({
+            bus,
+            remainMinutes: DayJS(bus, 'HH:mm').diff(today, 'minute'),
+        }));
 
-    //     }
+        return { nextDepartBus: response }
+
+
+    }
 
     public async getNextShuttle(): Promise<
         {
