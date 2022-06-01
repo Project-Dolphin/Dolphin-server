@@ -32,6 +32,17 @@ const dolphin: Handler = async (event: APIGatewayEvent) => {
     };
   }
 
+  if (path === '/departbus') {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        data: await busServiceNew.getDepartBusTime(),
+        path: path,
+      }),
+    };
+
+  }
+
   if (busNumber && busStopName && path === '/bustime') {
     return {
       statusCode: 200,
