@@ -36,17 +36,9 @@ serverless offline start
 ```json
 {"morning":["밥/잡곡밥","깍두기","소고기두부국","떡갈비","계란말이","무말랭이지","우유"],"lunch":["짜장밥","장국","양배추샐러드","꿔바로우탕수육","김치","농후발효유"],"dinner":["밥/잡곡밥","깍두기","콩나물국","훈제오리불고기","부추생채","메밀묵무침"]}
 ```
-### 셔틃버스 시간표
-1. `/shuttle/next`
-```json
-{"previous":{"type":"normal","time":"2040"},"next":[{"type":"normal","time":"2120"},{"type":"normal","time":"2140"},{"type":"normal","time":"2200"},{"type":"normal","time":"2220"},{"type":"normal","time":"2240"}]}
-```
-2. `/shuttle/today`
-```json
-[{"type":"normal","time":"0730"},{"type":"normal","time":"0745"},{"type":"normal","time":"0800"},{"type":"normal","time":"0810"},{"type":"normal","time":"0820"},{"type":"normal","time":"0830"},{"type":"normal","time":"0840"},{"type":"normal","time":"0850"},{"type":"normal","time":"0900"},{"type":"normal","time":"0910"},...]
-```
 ### 날씨
 1. `/weather/now`
 ```json
 {"status":"구름조금","temparature":"19°","windSpeed":"7.2m/s","humidity":"63%"}
 ```
+
