@@ -276,7 +276,6 @@ export class DietService {
     const result = await got.get(fisrtItemUrl);
     const rawBody = cheerio.load(result.body);
     const todayMMddFormat = DayJS().format('MM/DD').replace('0', '').replace('/0', '/');
-    console.log('today: ', todayMMddFormat);
     rawBody('div > section > section > div > div > div > div > div > table > tbody > tr > td').each(
       (index, element) => {
         if (foundToday && rawBody(element).html()?.startsWith('<strong>')) {
