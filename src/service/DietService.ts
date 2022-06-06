@@ -135,12 +135,14 @@ export class DietService {
   private replaceSpecialCharacters(content: string | null): string {
     return content
       ? content
-          .replace(/<br>/g, '\n')
-          .replace(/&nbsp;/g, ' ')
-          .replace(/&amp;/g, '&')
-          .trim()
+        .replace(/<br>/g, '\n')
+        .replace(/&nbsp;/g, ' ')
+        .replace(/&amp;/g, '&')
+        .replace(/-/g, '')
+        .trim()
       : '';
   }
+  private splitItems = (contents: string) => contents.split('\n').filter(item => item);
 
   public async getSocietyDiet(): Promise<SocietyDietResult> {
     const result = await got.get(this.societyUrl);
@@ -192,23 +194,23 @@ export class DietService {
               switch (index) {
                 case 0:
                   if (societyDiet.student?.length > i) {
-                    societyDiet.student[i].menus = this.replaceSpecialCharacters(
+                    societyDiet.student[i].menus = this.splitItems(this.replaceSpecialCharacters(
                       rawBody(el).html()?.toString() || '',
-                    ).split('\n');
+                    ))
                   }
                   break;
                 case 1:
                   if (societyDiet.snack?.length > i) {
-                    societyDiet.snack[i].menus = this.replaceSpecialCharacters(
+                    societyDiet.snack[i].menus = this.splitItems(this.replaceSpecialCharacters(
                       rawBody(el).html()?.toString() || '',
-                    ).split('\n');
+                    ))
                   }
                   break;
                 case 2:
                   if (societyDiet.staff?.length > i) {
-                    societyDiet.staff[i].menus = this.replaceSpecialCharacters(
+                    societyDiet.staff[i].menus = this.splitItems(this.replaceSpecialCharacters(
                       rawBody(el).html()?.toString() || '',
-                    ).split('\n');
+                    ))
                   }
                   break;
                 default:
@@ -264,7 +266,6 @@ export class DietService {
     const result = await got.get(fisrtItemUrl);
     const rawBody = cheerio.load(result.body);
     const todayMMddFormat = DayJS().format('MM/DD').replace('0', '').replace('/0', '/');
-    console.log('today: ', todayMMddFormat);
     rawBody('div > section > section > div > div > div > div > div > table > tbody > tr > td').each(
       (index, element) => {
         if (foundToday && rawBody(element).html()?.startsWith('<strong>')) {
@@ -298,7 +299,7 @@ export class DietService {
     // const result = await got.get(navelUrl);
     // const rawBody = cheerio.load(result.body);
     // const tableSelector = 'div > section > section > div > div > div > div > div > table > tbody > tr';
-   
+
 
     // rawBody(tableSelector).map((index, element) => {
     //   console.log('elemnt: ', rawBody(element).html());
