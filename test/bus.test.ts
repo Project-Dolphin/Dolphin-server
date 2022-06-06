@@ -10,13 +10,13 @@ describe('All node test', () => {
   });
 });
 
-describe('Specific node test', () => {
-  it('getSpecificNode test - 1', async (done) => {
-    const result = await busService.getSpecificNode('busan_station', '190');
-    expect(result).toBeTruthy();
-    done();
-  });
-});
+// describe('Specific node test', () => {
+//   it('getSpecificNode test - 1', async (done) => {
+//     const result = await busService.getSpecificNode('busan_station', '190');
+//     expect(result).toBeTruthy();
+//     done();
+//   });
+// });
 
 describe('190 depart test', () => {
   it('getDepart190 test - 1', (done) => {

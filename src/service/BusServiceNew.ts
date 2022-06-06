@@ -14,6 +14,7 @@ import { calendarService } from './CalendarService';
 DayJS.extend(customParseFormat);
 DayJS.extend(utc);
 DayJS.extend(timezone);
+
 interface BusInfo {
     bstopidx: number;
     bstopnm: string;
@@ -49,62 +50,55 @@ export class BusServiceNew {
         min1: any;
         min2: any;
     }> {
-        const lineId = BUS_STOP_ID[busNumber]?.lineId;
-        const bstopId = BUS_STOP_ID[busNumber]?.bstopId[busStopName];
+        const lineId = BUS_STOP_ID[busNumber]?.lineId || '';
+        const bstopId = BUS_STOP_ID[busNumber]?.bstopId[busStopName] || '';
 
-        try {
-            if (lineId && bstopId) {
-                const { body } = await got.get(
-                    `${this.baseUrl}/busStopArrByBstopidLineid?servicekey=${this.serviceKey}&bstopid=${bstopId}&lineid=${lineId}`,
-                );
-                const { lineno, min1, min2 } = parseBodyItem(body)?.item;
-                return { busStopName, lineno, min1, min2 };
-            } else {
-                throw new Error('busStopName or busNumber is invalid');
-            }
-        } catch (e) {
-            console.log(e);
-            throw new Error(e);
+        if (lineId && bstopId) {
+            const { body } = await got.get(
+                `${this.baseUrl}/busStopArrByBstopidLineid?servicekey=${this.serviceKey}&bstopid=${bstopId}&lineid=${lineId}`,
+            );
+            const { lineno, min1, min2 } = parseBodyItem(body)?.item ?? { lineno: '', min1: '', min2: '' };
+            return { busStopName, lineno, min1, min2 };
+        } else {
+            throw new Error('busStopName or busNumber is invalid');
         }
+
     }
 
     public async getBusInfoByRouteId(busNumber: string): Promise<{
         busNumber: string;
         busStopInfo: any;
     }> {
-        const lineId = BUS_STOP_ID[busNumber]?.lineId;
+        const lineId = BUS_STOP_ID[busNumber]?.lineId || '';
 
-        try {
-            if (lineId) {
-                const { body } = await got.get(
-                    `${this.baseUrl}/busInfoByRouteId?servicekey=${this.serviceKey}&lineid=${lineId}`,
-                );
-                const busInfo = parseBodyItem(body)?.item?.map((item: BusInfo) => {
-                    const { bstopnm, rpoint, carno, lowplate } = item;
-                    if (carno) {
-                        return {
-                            bstopnm,
-                            rpoint,
-                            carno,
-                            lowplate,
-                        };
-                    } else {
-                        return {
-                            bstopnm,
-                            rpoint,
-                        };
-                    }
-                });
-                return {
-                    busNumber,
-                    busStopInfo: busInfo,
-                };
-            } else {
-                throw new Error('busNumber is invalid');
-            }
-        } catch (e) {
-            throw new Error(e);
+        if (lineId) {
+            const { body } = await got.get(
+                `${this.baseUrl}/busInfoByRouteId?servicekey=${this.serviceKey}&lineid=${lineId}`,
+            );
+            const busInfo = parseBodyItem(body)?.item?.map((item: BusInfo) => {
+                const { bstopnm, rpoint, carno, lowplate } = item;
+                if (carno) {
+                    return {
+                        bstopnm,
+                        rpoint,
+                        carno,
+                        lowplate,
+                    };
+                } else {
+                    return {
+                        bstopnm,
+                        rpoint,
+                    };
+                }
+            });
+            return {
+                busNumber,
+                busStopInfo: busInfo,
+            };
+        } else {
+            throw new Error('busNumber is invalid');
         }
+
     }
 
     public async getDepartBusTime(): Promise<{
@@ -112,50 +106,46 @@ export class BusServiceNew {
         saturday: string[];
         holiday: string[];
     }> {
-        try {
-            const body = await got.get('https://www.kmou.ac.kr/kmou/cm/cntnts/cntntsView.do?mi=1418&cntntsId=327', {
-                headers: {
-                    Referer: 'https://www.kmou.ac.kr/kmou/cm/cntnts/cntntsView.do?mi=1418&cntntsId=327',
-                },
-                resolveBodyOnly: true,
-            });
+        const body = await got.get('https://www.kmou.ac.kr/kmou/cm/cntnts/cntntsView.do?mi=1418&cntntsId=327', {
+            headers: {
+                Referer: 'https://www.kmou.ac.kr/kmou/cm/cntnts/cntntsView.do?mi=1418&cntntsId=327',
+            },
+            resolveBodyOnly: true,
+        });
 
-            const rawBody = cheerio.load(body);
-            const response: {
-                weekday: string[];
-                saturday: string[];
-                holiday: string[];
-            } = {
-                weekday: [],
-                saturday: [],
-                holiday: [],
-            };
-            rawBody('.table_st_box')
-                .find('tr')
-                .each((index, element) => {
-                    rawBody(element)
-                        .find('td')
-                        .each((li, el) => {
-                            const departTime = rawBody(el).html()?.toString()?.trim() ?? '';
-                            if (departTime !== '') {
-                                if (li < 4) {
-                                    response.weekday.push(departTime);
-                                } else if (li < 8) {
-                                    response.saturday.push(departTime);
-                                } else {
-                                    response.holiday.push(departTime);
-                                }
+        const rawBody = cheerio.load(body);
+        const response: {
+            weekday: string[];
+            saturday: string[];
+            holiday: string[];
+        } = {
+            weekday: [],
+            saturday: [],
+            holiday: [],
+        };
+        rawBody('.table_st_box')
+            .find('tr')
+            .each((index, element) => {
+                rawBody(element)
+                    .find('td')
+                    .each((li, el) => {
+                        const departTime = rawBody(el).html()?.toString()?.trim() ?? '';
+                        if (departTime !== '') {
+                            if (li < 4) {
+                                response.weekday.push(departTime);
+                            } else if (li < 8) {
+                                response.saturday.push(departTime);
+                            } else {
+                                response.holiday.push(departTime);
                             }
-                        });
-                });
-            response.weekday.sort();
-            response.saturday.sort();
-            response.holiday.sort();
-            return response;
-        } catch (error) {
-            console.log(error);
-            throw new Error(error);
-        }
+                        }
+                    });
+            });
+        response.weekday.sort();
+        response.saturday.sort();
+        response.holiday.sort();
+        return response;
+
     }
 
     public async getNextDepartBus(): Promise<{
