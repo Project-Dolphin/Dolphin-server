@@ -8,6 +8,7 @@ import { dietRouter } from './routes/dietRouter';
 import { homeRouter } from './routes/homeRouter';
 import { noticeRouter } from './routes/noticeRouter';
 import { shuttleRouter } from './routes/shuttleRouter';
+import { timeTableRouter } from './routes/timeTableRouter';
 import { weatherRouter } from './routes/weatherRouter';
 
 export class App {
@@ -36,6 +37,7 @@ export class App {
     this.express.use('/diet', dietRouter);
     this.express.use('/weather', weatherRouter);
     this.express.use('/shuttle', shuttleRouter);
+    this.express.use('/timetable', timeTableRouter);
   }
 
  
