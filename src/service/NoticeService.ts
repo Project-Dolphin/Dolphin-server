@@ -12,10 +12,10 @@ export class NoticeService {
   private readonly kmouUrl = 'https://www.kmou.ac.kr';
 
   public async getAcademicNotice(): Promise<Notice[]> {
+    try {
     const notices: Notice[] = [];
     const rawText = await got.get(this.url);
     const rawBody = cheerio.load(rawText.body);
-    // console.log(rawBody);
     const parsedList = rawBody('.list_box > ul').eq(1);
     parsedList.children('li').each((index, element) => {
       const content = rawBody(element);
@@ -25,8 +25,11 @@ export class NoticeService {
         date: content.children('span').text().replace(/\./g, '-'),
       });
     });
-    // console.log(notices);
+   
     return notices;
+  } catch(error) {
+    throw new Error("학사정보를 불러오는데 실패하였습니다.");
+  }
   }
 }
 

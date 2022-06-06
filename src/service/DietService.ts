@@ -124,16 +124,6 @@ export class DietService {
             });
         });
     });
-    // rawBody('body > div > div > div > div > section > div > div > div > form > div > table > tbody > tr > td').each((index, element) => {
-    //   results.push({
-    //     type: index + 2,
-    //     value: this.replaceSpecialCharacters(rawBody(element).html()?.toString() || ''),
-    //   });
-    // });
-    // // 에러 수정
-    // results[0].type = 0;
-    // results.splice(1, 0, { type: 1, value: '' });
-    // results.splice(2, 0, { type: 2, value: '' });
 
     if (results.length === 3 && results[0].value.includes('년')) {
       return 'DietService.getSocietyDietAsync: There are no any diet';
@@ -301,6 +291,9 @@ export class DietService {
       dinner: results.filter((_, index) => index % 2 !== 0),
     };
   }
+  /**
+   * 더이상 사용하지 않음
+   */
   public async getNavalDayDiet() {
     // const navelUrl = 'http://badaro.kmou.ac.kr/food/3179';
     // const result = await got.get(navelUrl);

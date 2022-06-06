@@ -1,7 +1,6 @@
 import dayjs from 'dayjs';
 import got from 'got';
 import { academicCalendar, calendar } from '../constants/calendar';
-import { holiDay } from '../constants/holiday';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 dayjs.extend(customParseFormat);
@@ -73,10 +72,6 @@ export class CalendarService {
   private getYearMonth(at: string): string {
     return at.substring(0, 7);
   }
-  public getHoliday(): Calendar[] {
-    return holiDay;
-  }
-
   public getLatestPlans(): Calendar[] {
     const calendar = academicCalendar;
     const now = new Date();
