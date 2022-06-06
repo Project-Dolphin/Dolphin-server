@@ -1,10 +1,10 @@
-import { BusService } from '../src/service/BusService';
+import { BusServiceNew } from '../src/service/BusServiceNew';
 
-const busService = new BusService();
+const busService = new BusServiceNew();
 
 describe('All node test', () => {
   it('getAllNode test - 1', async (done) => {
-    const result = await busService.getAllNode();
+    const result = await busService.getBusInfoByRouteId('190');
     expect(result).toBeTruthy();
     done();
   });
@@ -12,7 +12,7 @@ describe('All node test', () => {
 
 describe('Specific node test', () => {
   it('getSpecificNode test - 1', async (done) => {
-    const result = await busService.getSpecificNode('167720201');
+    const result = await busService.getSpecificNode('busan_station', '190');
     expect(result).toBeTruthy();
     done();
   });
@@ -20,7 +20,15 @@ describe('Specific node test', () => {
 
 describe('190 depart test', () => {
   it('getDepart190 test - 1', (done) => {
-    const result = busService.getDepart190();
+    const result = busService.getNextDepartBus();
+    expect(result).toBeTruthy();
+    done();
+  });
+});
+
+describe('shuttle depart test', () => {
+  it('getNextShuttle test - 1', (done) => {
+    const result = busService.getNextShuttle();
     expect(result).toBeTruthy();
     done();
   });
