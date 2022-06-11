@@ -3,6 +3,7 @@ import { dietService } from '../service/DietService';
 
 const router = express.Router();
 
+
 router.get('/v2/society/today', async (req: Request, res: Response) => {
   const diet = await dietService.getSocietyDiet();
   return res.status(200).json(diet);
