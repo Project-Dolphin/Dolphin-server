@@ -7,28 +7,28 @@ import { WeatherResult, weatherService } from '../service/weatherService';
 const router = express.Router();
 
 interface Home {
-    schedules: Calendar[];
-    weather: WeatherResult | null;
-    notices: Notice[];
-    diets: SocietyDietResult | null;
+  schedules: Calendar | null;
+  weather: WeatherResult | null;
+  notices: Notice[];
+  diets: SocietyDietResult | null;
 }
 
 router.get('/', async (req: Request, res: Response) => {
   const homeData: Home = {
-      schedules: [],
-      weather: null,
-      notices: [],
-      diets: null,
+    schedules: null,
+    weather: null,
+    notices: [],
+    diets: null,
   }
 
-    const schedules = await calendarService.getLatestPlans();
-    homeData.schedules.push(...schedules);
-    homeData.weather = await weatherService.getCurrentWeather();
-    const notices = await noticeService.getAcademicNotice();
-    homeData.notices.push(...notices);
-    homeData.diets = await dietService.getSocietyDiet();
-    
-   
+  const schedules = await calendarService.getAnnualCalendar();
+  homeData.schedules = schedules;
+  homeData.weather = await weatherService.getCurrentWeather();
+  const notices = await noticeService.getAcademicNotice();
+  homeData.notices.push(...notices);
+  homeData.diets = await dietService.getSocietyDiet();
+
+
   return res.status(200).json(homeData);
 });
 
