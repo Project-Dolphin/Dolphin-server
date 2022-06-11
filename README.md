@@ -41,4 +41,9 @@ serverless offline start
 ```json
 {"status":"구름조금","temparature":"19°","windSpeed":"7.2m/s","humidity":"63%"}
 ```
+### 버스
+1. `/bus/time?busStopName={버스 정류장}&busNumber={버스번호}`
 
+```json
+{"busStopName":"busan_station","lineno":"","min1":"","min2":""}
+```
