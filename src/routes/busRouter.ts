@@ -1,18 +1,10 @@
-import express, { NextFunction, Request, Response } from 'express';
+import express, { Request, Response } from 'express';
 import { BUS_STOP_ID, BUS_STOP_NAME } from '../constants/busService';
 import { busServiceNew } from '../service/BusServiceNew';
 
 const router = express.Router();
 
-router.get('/', (req: Request, res: Response, next: NextFunction) => {
-  try {
-    throw new Error('bus error');
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.get('/bustime', async (req: Request, res: Response) => {
+router.get('/time', async (req: Request, res: Response) => {
   const busStopName = req.query.busStopName?.toString() ?? '';
   const busNumber = req.query.busNumber?.toString() ?? '';
 
