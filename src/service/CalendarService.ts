@@ -7,12 +7,19 @@ import { extractNumber } from '../util/parseNumber';
 
 dayjs.extend(customParseFormat);
 
-export interface AnnualCalendar {
+interface AnnualCalendar {
   title: string;
   calendar: Calendar[];
 }
-
-export interface Calendar { term: Term; content: string };
+interface MonthlyCalendar {
+  year: number;
+  month: number;
+  calendar: Calendar[];
+}
+export interface Calendar {
+  term: Term;
+  content: string;
+}
 
 export interface Term {
   startedAt: string;
@@ -66,16 +73,39 @@ export class CalendarService {
     return response;
   }
 
-  public async getLatestPlans(): Promise<LatestPlans> {
+  public async getMonthlyCalendar(year: number, month: number): Promise<MonthlyCalendar> {
     const { calendar } = await this.getAnnualCalendar();
-    const latestCalendar = calendar.filter(item => dayjs(item.term.startedAt, 'YYYY-M-D').isAfter(dayjs())).splice(0, 3).map(filteredItem => ({ ...filteredItem, dDay: dayjs(filteredItem.term.startedAt, 'YYYY.M.D.').diff(dayjs(), 'day') + 1 }))
+    const monthlyCalendar = calendar.filter(
+      (item) =>
+        (dayjs(item.term.startedAt, 'YYYY-M-D').month() === month - 1 ||
+          dayjs(item.term.endedAt, 'YYYY-M-D').month() === month - 1) &&
+        (dayjs(item.term.startedAt, 'YYYY-M-D').year() === year ||
+          dayjs(item.term.endedAt, 'YYYY-M-D').year() === year),
+    );
     const response = {
-      today: dayjs().format('YYYY-M-D'),
-      calendar: latestCalendar
-    }
+      year,
+      month,
+      calendar: monthlyCalendar,
+    };
 
     return response;
+  }
 
+  public async getLatestPlans(): Promise<LatestPlans> {
+    const { calendar } = await this.getAnnualCalendar();
+    const latestCalendar = calendar
+      .filter((item) => dayjs(item.term.startedAt, 'YYYY-M-D').isAfter(dayjs()))
+      .splice(0, 3)
+      .map((filteredItem) => ({
+        ...filteredItem,
+        dDay: dayjs(filteredItem.term.startedAt, 'YYYY.M.D.').diff(dayjs(), 'day') + 1,
+      }));
+    const response = {
+      today: dayjs().format('YYYY-M-D'),
+      calendar: latestCalendar,
+    };
+
+    return response;
   }
 
   public async getHolidays(
@@ -105,8 +135,6 @@ export class CalendarService {
       .map((item: { summary: string; start: { date: string } }) => ({ summary: item.summary, date: item.start.date }));
     return { holiday: response };
   }
-
-
 }
 
 export const calendarService = new CalendarService();
