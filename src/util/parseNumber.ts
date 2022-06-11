@@ -1,0 +1,1 @@
+export function extractNumber(string: string): number { return Number(string.replace(/[^0-9]/g, '')) }
