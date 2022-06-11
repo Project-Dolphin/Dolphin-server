@@ -7,21 +7,27 @@ import { extractNumber } from '../util/parseNumber';
 
 dayjs.extend(customParseFormat);
 
-export interface Calendar {
+export interface AnnualCalendar {
   title: string;
-  calendar: {
-    first: { date: Term; event: string }[];
-    second: { date: Term; event: string }[];
-  };
+  calendar: Calendar[];
 }
+
+export interface Calendar { term: Term; content: string };
 
 export interface Term {
   startedAt: string;
   endedAt: string;
 }
 
+export interface LatestPlans {
+  today: string;
+  calendar: ({
+    dDay: number;
+  } & Calendar)[];
+}
+
 export class CalendarService {
-  public async getAnnualCalendar(): Promise<Calendar> {
+  public async getAnnualCalendar(): Promise<AnnualCalendar> {
     const body = await got.get('https://www.kmou.ac.kr/onestop/cm/cntnts/cntntsView.do?mi=74&cntntsId=1755', {
       headers: {
         Referer: 'https://www.kmou.ac.kr/onestop/cm/cntnts/cntntsView.do?mi=74&cntntsId=1755',
@@ -30,12 +36,9 @@ export class CalendarService {
     });
 
     const rawBody = cheerio.load(body);
-    const response: Calendar = {
+    const response: AnnualCalendar = {
       title: '',
-      calendar: {
-        first: [],
-        second: [],
-      },
+      calendar: [],
     };
     response.title = rawBody('.tit1').html()?.toString()?.trim() ?? '';
     const calendarYear = extractNumber(response.title) || dayjs().year();
@@ -45,26 +48,34 @@ export class CalendarService {
         .find('tbody')
         .find('tr')
         .each((index, element) => {
-          const calendarEvent: { date: Term; event: string } = { date: { startedAt: '', endedAt: '' }, event: '' };
+          const calendarEvent: Calendar = { term: { startedAt: '', endedAt: '' }, content: '' };
           rawBody(element)
             .find('td')
             .each((li, el) => {
               const result = rawBody(el).html()?.toString()?.trim() ?? '';
               if (li === 0) {
-                calendarEvent.date = handleCalendarDate(result, divIndex, calendarYear);
+                calendarEvent.term = handleCalendarDate(result, divIndex, calendarYear);
               } else if (li === 1) {
-                calendarEvent.event = result;
+                calendarEvent.content = result;
               }
             });
-          if (divIndex === 0) {
-            response.calendar.first.push(calendarEvent);
-          } else if (divIndex === 1) {
-            response.calendar.second.push(calendarEvent);
-          }
+          response.calendar.push(calendarEvent);
         });
     });
 
     return response;
+  }
+
+  public async getLatestPlans(): Promise<LatestPlans> {
+    const { calendar } = await this.getAnnualCalendar();
+    const latestCalendar = calendar.filter(item => dayjs(item.term.startedAt, 'YYYY-M-D').isAfter(dayjs())).splice(0, 3).map(filteredItem => ({ ...filteredItem, dDay: dayjs(filteredItem.term.startedAt, 'YYYY.M.D.').diff(dayjs(), 'day') + 1 }))
+    const response = {
+      today: dayjs().format('YYYY-M-D'),
+      calendar: latestCalendar
+    }
+
+    return response;
+
   }
 
   public async getHolidays(

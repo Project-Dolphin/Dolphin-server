@@ -1,5 +1,6 @@
 import { Term } from "../service/CalendarService";
 import dayjs from 'dayjs';
+
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 dayjs.extend(customParseFormat);
@@ -18,7 +19,7 @@ export function handleCalendarDate(date: string, divIndex: number, year: number)
     if (divIndex === 1 && fullDate.month() < 6) {
       fullDate = fullDate.add(1, 'year');
     }
-    return fullDate.format('YYYY.M.D.');
+    return fullDate.format('YYYY-M-D');
   };
   if (splitDate.length === 1) {
     response.startedAt = stringToDate(splitDate[0]);

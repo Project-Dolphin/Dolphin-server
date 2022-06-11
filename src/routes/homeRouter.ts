@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { Calendar, calendarService } from '../service/CalendarService';
+import { calendarService, LatestPlans } from '../service/CalendarService';
 import { dietService, SocietyDietResult } from '../service/DietService';
 import { Notice, noticeService } from '../service/NoticeService';
 import { WeatherResult, weatherService } from '../service/weatherService';
@@ -7,7 +7,7 @@ import { WeatherResult, weatherService } from '../service/weatherService';
 const router = express.Router();
 
 interface Home {
-  schedules: Calendar | null;
+  schedules: LatestPlans | null;
   weather: WeatherResult | null;
   notices: Notice[];
   diets: SocietyDietResult | null;
@@ -21,7 +21,7 @@ router.get('/', async (req: Request, res: Response) => {
     diets: null,
   }
 
-  const schedules = await calendarService.getAnnualCalendar();
+  const schedules = await calendarService.getLatestPlans();
   homeData.schedules = schedules;
   homeData.weather = await weatherService.getCurrentWeather();
   const notices = await noticeService.getAcademicNotice();
