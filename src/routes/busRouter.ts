@@ -25,7 +25,7 @@ router.get('/time', async (req: Request, res: Response) => {
   }
 });
 
-router.get('/businfo', async (req: Request, res: Response) => {
+router.get('/info', async (req: Request, res: Response) => {
   const busNumber = req.query.busNumber?.toString() ?? '';
 
   try {
