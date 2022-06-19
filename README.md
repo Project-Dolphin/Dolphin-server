@@ -330,7 +330,17 @@ npm run dev
 2. `/bus/info?busNumber={busNumber}`
 전체 정류장이랑 현재 버스 위치
 ```json
-{"busNumber":"190","busStopInfo":[{"bstopnm":"해양대구본관","rpoint":0,"carno":"70자3724","lowplate":0},...]}
+{
+  "busNumber":"190",
+  "busStopInfo":[
+    {
+      "bstopnm":"해양대구본관",
+      "rpoint":0,
+      "carno":"70자3724",
+      "lowplate":0
+    }
+  ]
+}
 ```
 3. `/bus/departbus`
 ```json

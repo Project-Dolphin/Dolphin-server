@@ -291,20 +291,7 @@ export class DietService {
       dinner: results.filter((_, index) => index % 2 !== 0),
     };
   }
-  /**
-   * 더이상 사용하지 않음
-   */
-  public async getNavalDayDiet() {
-    // const navelUrl = 'http://badaro.kmou.ac.kr/food/3179';
-    // const result = await got.get(navelUrl);
-    // const rawBody = cheerio.load(result.body);
-    // const tableSelector = 'div > section > section > div > div > div > div > div > table > tbody > tr';
 
-
-    // rawBody(tableSelector).map((index, element) => {
-    //   console.log('elemnt: ', rawBody(element).html());
-    // });
-  }
 
   private async getFirstItemPathFromNaval(): Promise<string> {
     let resultUrl = '';
