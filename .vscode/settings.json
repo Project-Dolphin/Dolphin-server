@@ -1,5 +1,8 @@
 {
-  "eslint.validate": ["javascript", "typescript"],
+  "eslint.validate": [
+    "javascript",
+    "typescript"
+  ],
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
@@ -17,5 +20,6 @@
   },
   "javascript.preferences.importModuleSpecifier": "relative",
   "typescript.preferences.importModuleSpecifier": "relative",
-  "prettier.configPath": ".prettierrc.js"
+  "prettier.configPath": ".prettierrc.js",
+  "editor.formatOnSave": true
 }

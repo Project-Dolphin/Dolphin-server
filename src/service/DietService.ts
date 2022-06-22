@@ -73,23 +73,23 @@ export class DietService {
     const dorm = await this.getDormDiet();
     const type = at ? at : this.judgeTimeZone();
     const diet = this.getAllTypeDiet(society, dorm);
-    
-   switch(type) {
+
+    switch (type) {
       case DietTimeType.MORNING:
-       return diet.morning;
+        return diet.morning;
       case DietTimeType.LUNCH:
         return diet.lunch;
       case DietTimeType.DINNER:
         return diet.dinner;
-        default: 
-          return [];
-   }
+      default:
+        return [];
+    }
   }
 
   private judgeTimeZone() {
     const requestAt = new Date();
     const hour = requestAt.getHours();
-    
+
     if (hour >= 0 && hour < 10) {
       return DietTimeType.MORNING;
     } else if (hour >= 10 && hour < 16) {
@@ -119,7 +119,7 @@ export class DietService {
     })
 
     const morningDiet = [...dormMorning, ...studentMorning];
-    
+
     const dormLunch = [{
       title: '기숙사 점심',
       subtitle: '',
