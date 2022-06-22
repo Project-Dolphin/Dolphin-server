@@ -3,6 +3,13 @@ import { dietService } from '../service/DietService';
 
 const router = express.Router();
 
+router.get('/', async (req: Request, res: Response) => {
+  const at = req.query.at as string;
+  const where = req.query.where as string;
+  
+  const diet = await dietService.getAllDiet(at, where);
+  return res.status(200).json(diet);
+});
 
 router.get('/v2/society/today', async (req: Request, res: Response) => {
   const diet = await dietService.getSocietyDiet();

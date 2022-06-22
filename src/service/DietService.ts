@@ -45,11 +45,119 @@ export interface SocietyDietResult {
   staff: SocietyDiet[];
 }
 
+export interface DietFilter {
+  at?: string;
+  where?: string;
+}
+
+export interface DietResult {
+  title: string;
+  subtitle: string;
+  menus: string[];
+}
+
+enum DietTimeType {
+  MORNING = 'morning',
+  LUNCH = 'lunch',
+  DINNER = 'dinner'
+}
+
 // 어울림관: https://www.kmou.ac.kr/coop/dv/dietView/selectDietDateView.do
 // 해사대: http://badaro.kmou.ac.kr/food
 export class DietService {
   private readonly societyUrl = 'https://www.kmou.ac.kr/coop/dv/dietView/selectDietDateView.do';
   private readonly navalBaseUrl = 'http://badaro.kmou.ac.kr';
+
+  async getAllDiet(at?: string, where?: string): Promise<DietResult[]> {
+    const society = await this.getSocietyDiet();
+    const dorm = await this.getDormDiet();
+    const type = at ? at : this.judgeTimeZone();
+    const diet = this.getAllTypeDiet(society, dorm);
+
+    switch (type) {
+      case DietTimeType.MORNING:
+        return diet.morning;
+      case DietTimeType.LUNCH:
+        return diet.lunch;
+      case DietTimeType.DINNER:
+        return diet.dinner;
+      default:
+        return [];
+    }
+  }
+
+  private judgeTimeZone() {
+    const requestAt = new Date();
+    const hour = requestAt.getHours();
+
+    if (hour >= 0 && hour < 10) {
+      return DietTimeType.MORNING;
+    } else if (hour >= 10 && hour < 16) {
+      return DietTimeType.LUNCH;
+    } else {
+      return DietTimeType.DINNER;
+    }
+  }
+
+  private getAllTypeDiet(society: SocietyDietResult, dorm: DormResultType) {
+    const student = society.student;
+    const snack = society.snack;
+    const staff = society.staff;
+
+    const dormMorning = [{
+      title: '기숙사 아침',
+      subtitle: '',
+      menus: dorm.morning
+    }];
+
+    const studentMorning = student.map((s) => {
+      return {
+        title: '3층 아침',
+        subtitle: s.type,
+        menus: s.menus
+      }
+    })
+
+    const morningDiet = [...dormMorning, ...studentMorning];
+
+    const dormLunch = [{
+      title: '기숙사 점심',
+      subtitle: '',
+      menus: dorm.lunch
+    }];
+
+    const snackLunch = snack.map((s) => {
+      return {
+        title: '3층 스낵코너',
+        subtitle: s.type,
+        menus: s.menus
+      }
+    });
+
+    const staffLunch = staff.map((s) => {
+      return {
+        title: '5층 교직원 식당',
+        subtitle: s.type,
+        menus: s.menus
+      }
+    });
+
+    const lunchDiet = [...dormLunch, ...snackLunch, ...staffLunch];
+
+    const dormDinner = [{
+      title: '기숙사 저녁',
+      subtitle: '',
+      menus: dorm.dinner
+    }];
+
+    const dinnerDiet = [...dormDinner];
+
+    return {
+      morning: morningDiet,
+      lunch: lunchDiet,
+      dinner: dinnerDiet
+    }
+  }
 
   async getSocietyDietAsync(): Promise<SocietyResultType[] | string> {
     const results: SocietyResultType[] = [
@@ -291,20 +399,7 @@ export class DietService {
       dinner: results.filter((_, index) => index % 2 !== 0),
     };
   }
-  /**
-   * 더이상 사용하지 않음
-   */
-  public async getNavalDayDiet() {
-    // const navelUrl = 'http://badaro.kmou.ac.kr/food/3179';
-    // const result = await got.get(navelUrl);
-    // const rawBody = cheerio.load(result.body);
-    // const tableSelector = 'div > section > section > div > div > div > div > div > table > tbody > tr';
 
-
-    // rawBody(tableSelector).map((index, element) => {
-    //   console.log('elemnt: ', rawBody(element).html());
-    // });
-  }
 
   private async getFirstItemPathFromNaval(): Promise<string> {
     let resultUrl = '';
