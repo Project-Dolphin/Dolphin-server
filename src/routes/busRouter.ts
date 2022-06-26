@@ -1,10 +1,11 @@
-import express, { Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import { BUS_STOP_ID, BUS_STOP_NAME } from '../constants/busService';
 import { busServiceNew } from '../service/BusServiceNew';
 
 const router = express.Router();
 
-router.get('/time', async (req: Request, res: Response) => {
+router.get('/time', async (req: Request, res: Response, next: NextFunction) => {
+  console.log('bus request: ', req);
   const busStopName = req.query.busStopName?.toString() ?? '';
   const busNumber = req.query.busNumber?.toString() ?? '';
 
@@ -21,7 +22,7 @@ router.get('/time', async (req: Request, res: Response) => {
     }
     return res.status(401).send('busStopName and busNumber is required.');
   } catch (err) {
-    return res.status(402).send(err);
+    next(err);
   }
 });
 
