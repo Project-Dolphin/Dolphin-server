@@ -2,13 +2,13 @@ import { BusServiceNew } from '../src/service/BusServiceNew';
 
 const busService = new BusServiceNew();
 
-describe('All node test', () => {
-  it('getAllNode test - 1', async (done) => {
-    const result = await busService.getBusInfoByRouteId('190');
-    expect(result).toBeTruthy();
-    done();
-  });
-});
+// describe('All node test', () => {
+//   it('getAllNode test - 1', async (done) => {
+//     const result = await busService.getBusInfoByRouteId('190');
+//     expect(result).toBeTruthy();
+//     done();
+//   });
+// });
 
 // describe('Specific node test', () => {
 //   it('getSpecificNode test - 1', async (done) => {
