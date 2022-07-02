@@ -58,7 +58,7 @@ export class BusServiceNew {
                 `${this.baseUrl}/busStopArrByBstopidLineid?servicekey=${this.serviceKey}&bstopid=${bstopId}&lineid=${lineId}`,
             );
             const { lineno, min1, min2 } = parseBodyItem(body)?.item ?? { lineno: '', min1: '', min2: '' };
-            return { busStopName, lineno, min1, min2 };
+            return { busStopName, lineno: lineno.toString(), min1, min2 };
         } else {
             throw new Error('busStopName or busNumber is invalid');
         }
