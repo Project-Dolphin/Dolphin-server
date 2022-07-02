@@ -79,9 +79,9 @@ export class BusServiceNew {
                 const { bstopnm, rpoint, carno, lowplate } = item;
                 if (carno) {
                     return {
-                        bstopnm,
+                        bstopnm: bstopnm,
                         rpoint,
-                        carno,
+                        carno: carno.toString(),
                         lowplate,
                     };
                 } else {
