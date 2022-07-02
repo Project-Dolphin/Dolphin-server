@@ -5,7 +5,7 @@ import { busServiceNew } from '../service/BusServiceNew';
 const router = express.Router();
 
 router.get('/time', async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  console.log('bus request: ', req);
+  // console.log('bus request: ', req);
   const busStopName = req.query.busStopName?.toString() ?? '';
   const busNumber = req.query.busNumber?.toString() ?? '';
 
