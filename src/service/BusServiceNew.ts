@@ -46,19 +46,19 @@ export class BusServiceNew {
         busNumber: string,
     ): Promise<{
         busStopName: string;
-        lineno: any;
-        min1: any;
-        min2: any;
+        lineno: string;
+        min1: number | null;
+        min2: number | null;
     }> {
-        const lineId = BUS_STOP_ID[busNumber]?.lineId || '';
-        const bstopId = BUS_STOP_ID[busNumber]?.bstopId[busStopName] || '';
+        const lineId = BUS_STOP_ID[busNumber]?.lineId || null;
+        const bstopId = BUS_STOP_ID[busNumber]?.bstopId[busStopName] || null;
 
         if (lineId && bstopId) {
             const { body } = await got.get(
                 `${this.baseUrl}/busStopArrByBstopidLineid?servicekey=${this.serviceKey}&bstopid=${bstopId}&lineid=${lineId}`,
             );
-            const { lineno, min1, min2 } = parseBodyItem(body)?.item ?? { lineno: '', min1: '', min2: '' };
-            return { busStopName, lineno: lineno.toString(), min1, min2 };
+            const { min1, min2 } = parseBodyItem(body)?.item ?? { lineno: null, min1: null, min2: null };
+            return { busStopName, lineno: busNumber, min1, min2 };
         } else {
             throw new Error('busStopName or busNumber is invalid');
         }
@@ -81,7 +81,7 @@ export class BusServiceNew {
                     return {
                         bstopnm,
                         rpoint,
-                        carno: carno.toString(),
+                        carno: carno,
                         lowplate,
                     };
                 } else {
