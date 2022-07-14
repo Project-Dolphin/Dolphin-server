@@ -4,8 +4,21 @@ import { busServiceNew } from '../service/BusServiceNew';
 
 const router = express.Router();
 
+router.get('/timegps', async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const { gpsx, gpsy } = req.query ?? {};
+
+  try {
+    if (gpsx && gpsy) {
+      const busTime = await busServiceNew.getNearest190(Number(gpsx), Number(gpsy));
+      return res.status(200).json(busTime);
+    }
+    return res.status(401).send('gpsx and gpsy is required.');
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get('/time', async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  // console.log('bus request: ', req);
   const busStopName = req.query.busStopName?.toString() ?? '';
   const busNumber = req.query.busNumber?.toString() ?? '';
 
