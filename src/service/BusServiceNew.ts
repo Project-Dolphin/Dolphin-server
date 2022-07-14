@@ -191,7 +191,7 @@ export class BusServiceNew {
     > {
 
 
-        const today = DayJS().tz('Asia/Seoul');
+        const today = DayJS();
         let shuttleList;
 
         if ([0, 1, 6, 7].includes(today.month())) {
@@ -202,10 +202,10 @@ export class BusServiceNew {
             shuttleList = NORMAL_SHUTTLE_TIME;
         }
 
-        const afterShuttle = shuttleList.filter((item) => DayJS(`${item.time}`, 'HH:mm').isAfter(today));
+        const afterShuttle = shuttleList.filter((item) => DayJS(`${item.time}`, 'HH:mm').tz('Asia/Seoul').isAfter(today));
         const response = afterShuttle.map((shuttle) => ({
             ...shuttle,
-            remainMinutes: DayJS(`${shuttle.time}`, 'HH:mm').diff(today, 'minute'),
+            remainMinutes: DayJS(`${shuttle.time}`, 'HH:mm').tz('Asia/Seoul').diff(today, 'minute'),
         }));
 
         return { nextShuttle: response };
