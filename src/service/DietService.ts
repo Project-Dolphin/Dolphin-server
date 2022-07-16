@@ -62,18 +62,31 @@ enum DietTimeType {
   DINNER = 'dinner'
 }
 
+export interface Diet {
+  morning: DietResult[],
+  lunch: DietResult[],
+  dinner: DietResult[]
+}
+
 // 어울림관: https://www.kmou.ac.kr/coop/dv/dietView/selectDietDateView.do
 // 해사대: http://badaro.kmou.ac.kr/food
 export class DietService {
   private readonly societyUrl = 'https://www.kmou.ac.kr/coop/dv/dietView/selectDietDateView.do';
   private readonly navalBaseUrl = 'http://badaro.kmou.ac.kr';
 
-  async getAllDiet(at?: string, where?: string): Promise<DietResult[]> {
+  async getAllDiet(at?: string, where?: string[]): Promise<DietResult[]> {
     const society = await this.getSocietyDiet();
     const dorm = await this.getDormDiet();
     const type = at ? at : this.judgeTimeZone();
     const diet = this.getAllTypeDiet(society, dorm);
+    const isDorm = where?.includes('dorm') || false;
 
+    const dietResults = this.getDietsByTimeType(diet, type);
+
+    return isDorm ? dietResults.filter((diet) => diet.title.includes("기숙사")) : dietResults;
+  }
+
+  private getDietsByTimeType(diet: Diet, type: string): DietResult[] {
     switch (type) {
       case DietTimeType.MORNING:
         return diet.morning;

@@ -37,12 +37,12 @@ function parseBodyItem(body: string) {
     return parser?.parse(body)?.response?.body?.items;
 }
 
-function getNearestStation(gpsx: number, gpsy: number) {
+function getNearestStation(latitude: number, longitude: number) {
     let station: BusStationGps | null = null;
     let distance = 100;
 
     BUS_STATION_190_GPS.forEach((item: BusStationGps) => {
-        const dist = (item.gpsx - gpsx) ** 2 + (item.gpsy - gpsy) ** 2;
+        const dist = (item.gpsx - latitude) ** 2 + (item.gpsy - longitude) ** 2;
         if (distance > dist) {
             station = item;
             distance = dist;
@@ -79,8 +79,8 @@ export class BusServiceNew {
         }
     }
 
-    public async getNearest190(gpsx: number, gpsy: number) {
-        const station = getNearestStation(gpsx, gpsy);
+    public async getNearest190(latitude: number, longitude: number) {
+        const station = getNearestStation(latitude, longitude);
         console.log(station);
         if (station) {
             const { bstopnm, nodeid } = station as BusStationGps;
