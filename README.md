@@ -544,3 +544,12 @@ npm run dev
   ]
 }
 ```
+4. `/bus/nearest-station?latitude=129.0756416&longitude=35.1795543`
+```json
+{
+  "busStopName":"수정1동공영주차장",
+  "lineno":190,
+  "min1":6,
+  "min2":24
+}
+```
