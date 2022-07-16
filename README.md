@@ -8,6 +8,7 @@ npm run dev
 1. `/`
 ```json
 {
+  "dayType": "WEEK",
   "schedules":[
     {
       "term":{
@@ -130,6 +131,11 @@ npm run dev
   }
 }
 ```
+| dayType  |
+|----------|
+| WEEK     |
+| WEEKEND  |
+| EXAMTERM |
 
 ### 학사일정
 1. `/calendar`
@@ -390,13 +396,20 @@ npm run dev
   }
 ]
 ```
-- type
+- 시간 필터
 
 | at      | decription |                                                            |
 |---------|------------|------------------------------------------------------------|
 | morning |     조식   | 기숙사 조식, 학생식당                                      |
 | lunch   |     중식   | 기숙사 중식, 학생식당, 스낵코너, 직원식당, 직원식당 일품식 |
 | dinner  |     석식   | 기숙사 저녁                                                |
+
+- 장소 필터
+
+| where   | decription |
+|---------|------------|
+| dorm    |   기숙사   | 
+
 ### 날씨
 1. `/weather/now`
 ```json
