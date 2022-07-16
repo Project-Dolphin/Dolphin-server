@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import { getTodayType } from '../constants/function/commonfunction';
 import { calendarService, LatestPlans } from '../service/CalendarService';
 import { dietService, SocietyDietResult } from '../service/DietService';
 import { Notice, noticeService } from '../service/NoticeService';
@@ -7,14 +8,22 @@ import { WeatherResult, weatherService } from '../service/weatherService';
 const router = express.Router();
 
 interface Home {
+  dayType: DayType;
   schedules: LatestPlans | null;
   weather: WeatherResult | null;
   notices: Notice[];
   diets: SocietyDietResult | null;
 }
 
+export enum DayType {
+  WEEK = 'WEEK',
+  WEEKEND = 'WEEKEND',
+  // TODO: 시험기간 추가
+}
+
 router.get('/', async (req: Request, res: Response) => {
   const homeData: Home = {
+    dayType: getTodayType(),
     schedules: null,
     weather: null,
     notices: [],
@@ -31,5 +40,7 @@ router.get('/', async (req: Request, res: Response) => {
 
   return res.status(200).json(homeData);
 });
+
+
 
 export const homeRouter = router;
