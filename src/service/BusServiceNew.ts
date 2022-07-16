@@ -10,6 +10,7 @@ import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import 'dayjs/locale/ko';
 import { calendarService } from './CalendarService';
+import { BusStationGps, BUS_STATION_190_GPS } from '../constants/busStationGps';
 
 DayJS.extend(customParseFormat);
 DayJS.extend(utc);
@@ -34,6 +35,20 @@ interface BusInfo {
 
 function parseBodyItem(body: string) {
     return parser?.parse(body)?.response?.body?.items;
+}
+
+function getNearestStation(gpsx: number, gpsy: number) {
+    let station: BusStationGps | null = null;
+    let distance = 100;
+
+    BUS_STATION_190_GPS.forEach((item: BusStationGps) => {
+        const dist = (item.gpsx - gpsx) ** 2 + (item.gpsy - gpsy) ** 2;
+        if (distance > dist) {
+            station = item;
+            distance = dist;
+        }
+    });
+    return station;
 }
 
 export class BusServiceNew {
@@ -62,7 +77,62 @@ export class BusServiceNew {
         } else {
             throw new Error('busStopName or busNumber is invalid');
         }
+    }
 
+    public async getNearest190(gpsx: number, gpsy: number) {
+        const station = getNearestStation(gpsx, gpsy);
+        console.log(station);
+        if (station) {
+            const { bstopnm, nodeid } = station as BusStationGps;
+
+            const { body } = await got.get(
+                `${this.baseUrl}/busStopArrByBstopidLineid?servicekey=${this.serviceKey}&bstopid=${nodeid}&lineid=5200190000`,
+            );
+
+            const { min1, min2 } = parseBodyItem(body)?.item ?? { lineno: null, min1: null, min2: null };
+
+            return { busStopName: bstopnm, lineno: 190, min1, min2 };
+        } else {
+            throw new Error('Get nearest station is failed');
+        }
+    }
+
+    public async getBusStationByRouteId(busNumber: string) {
+        const lineId = BUS_STOP_ID[busNumber]?.lineId || '';
+
+        if (lineId) {
+            const { body } = await got.get(`${this.baseUrl}/busInfoByRouteId?servicekey=${this.serviceKey}&lineid=${lineId}`);
+            const rPointIndex = parseBodyItem(body)?.item?.findIndex((item: BusInfo) => item.rpoint);
+            const busInfo = parseBodyItem(body)
+                ?.item?.slice(rPointIndex)
+                .map(async (item: BusInfo) => {
+                    if (item.arsno) {
+                        const response = await got.get(
+                            `${this.baseUrl}/busStopList?servicekey=${this.serviceKey}&arsno=${item.arsno}`,
+                        );
+
+                        if (parseBodyItem(response.body)?.item[0]) {
+                            const { gpsx, gpsy } = parseBodyItem(response.body)?.item[0];
+                            return {
+                                ...item,
+                                gpsx,
+                                gpsy,
+                            };
+                        } else {
+                            const { gpsx, gpsy } = parseBodyItem(response.body)?.item;
+                            return {
+                                ...item,
+                                gpsx,
+                                gpsy,
+                            };
+                        }
+                    }
+                    return { ...item, gpsx: null, gpsy: null };
+                });
+
+            return Promise.all(await busInfo);
+        }
+        return {};
     }
 
     public async getBusInfoByRouteId(busNumber: string): Promise<{
@@ -72,22 +142,22 @@ export class BusServiceNew {
         const lineId = BUS_STOP_ID[busNumber]?.lineId || '';
 
         if (lineId) {
-            const { body } = await got.get(
-                `${this.baseUrl}/busInfoByRouteId?servicekey=${this.serviceKey}&lineid=${lineId}`,
-            );
+            const { body } = await got.get(`${this.baseUrl}/busInfoByRouteId?servicekey=${this.serviceKey}&lineid=${lineId}`);
             const busInfo = parseBodyItem(body)?.item?.map((item: BusInfo) => {
-                const { bstopnm, rpoint, carno, lowplate } = item;
+                const { bstopnm, rpoint, carno, lowplate, arsno } = item;
                 if (carno) {
                     return {
                         bstopnm,
                         rpoint,
                         carno: carno,
                         lowplate,
+                        arsno,
                     };
                 } else {
                     return {
                         bstopnm,
                         rpoint,
+                        arsno,
                     };
                 }
             });
@@ -98,7 +168,6 @@ export class BusServiceNew {
         } else {
             throw new Error('busNumber is invalid');
         }
-
     }
 
     public async getDepartBusTime(): Promise<{
@@ -145,7 +214,6 @@ export class BusServiceNew {
         response.saturday.sort();
         response.holiday.sort();
         return response;
-
     }
 
     public async getNextDepartBus(): Promise<{
@@ -154,13 +222,12 @@ export class BusServiceNew {
             remainMinutes: number;
         }[];
     }> {
-
         const today = DayJS().tz('Asia/Seoul');
 
         const { weekday, saturday, holiday } = await this.getDepartBusTime();
         let departBusList;
         const holidays = await calendarService.getHolidays();
-        const isHoliday = holidays.holiday.map(item => item.date).includes(today.format('YYYY-MM-DD'))
+        const isHoliday = holidays.holiday.map((item) => item.date).includes(today.format('YYYY-MM-DD'));
         if (today.day() === 6) {
             departBusList = saturday;
         } else if (today.day() === 0 || isHoliday) {
@@ -175,23 +242,17 @@ export class BusServiceNew {
             remainMinutes: DayJS(bus, 'HH:mm').diff(today, 'minute'),
         }));
 
-        return { nextDepartBus: response }
-
-
+        return { nextDepartBus: response };
     }
 
-    public async getNextShuttle(): Promise<
-        {
-            nextShuttle: {
-                destination: string;
-                time: string;
-                remainMinutes: number;
-            }[]
-        }
-    > {
-
-
-        const today = DayJS().tz('Asia/Seoul');
+    public async getNextShuttle(): Promise<{
+        nextShuttle: {
+            destination: string;
+            time: string;
+            remainMinutes: number;
+        }[];
+    }> {
+        const today = DayJS();
         let shuttleList;
 
         if ([0, 1, 6, 7].includes(today.month())) {
@@ -202,10 +263,10 @@ export class BusServiceNew {
             shuttleList = NORMAL_SHUTTLE_TIME;
         }
 
-        const afterShuttle = shuttleList.filter((item) => DayJS(`${item.time}`, 'HH:mm').isAfter(today));
+        const afterShuttle = shuttleList.filter((item) => DayJS(`${item.time}`, 'HH:mm').tz('Asia/Seoul').isAfter(today));
         const response = afterShuttle.map((shuttle) => ({
             ...shuttle,
-            remainMinutes: DayJS(`${shuttle.time}`, 'HH:mm').diff(today, 'minute'),
+            remainMinutes: DayJS(`${shuttle.time}`, 'HH:mm').tz('Asia/Seoul').diff(today, 'minute'),
         }));
 
         return { nextShuttle: response };
