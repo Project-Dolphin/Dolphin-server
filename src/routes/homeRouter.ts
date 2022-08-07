@@ -1,35 +1,32 @@
 import express, { Request, Response } from 'express';
-import { getTodayType } from '../constants/function/commonfunction';
 import { calendarService, LatestPlans } from '../service/CalendarService';
 import { dietService, SocietyDietResult } from '../service/DietService';
+import { DateType, mainService } from '../service/mainService';
 import { Notice, noticeService } from '../service/NoticeService';
 import { WeatherResult, weatherService } from '../service/weatherService';
 
 const router = express.Router();
 
 interface Home {
-  dayType: DayType;
+  dayType: DateType;
   schedules: LatestPlans | null;
   weather: WeatherResult | null;
   notices: Notice[];
   diets: SocietyDietResult | null;
 }
 
-export enum DayType {
-  WEEK = 'WEEK',
-  WEEKEND = 'WEEKEND',
-  // TODO: 시험기간 추가
-}
 
 router.get('/', async (req: Request, res: Response) => {
   const homeData: Home = {
-    dayType: getTodayType(),
+    dayType: '평일',
     schedules: null,
     weather: null,
     notices: [],
     diets: null,
   }
 
+  const dateType = await mainService.getTodayDateType();
+  homeData.dayType = dateType;
   const schedules = await calendarService.getLatestPlans();
   homeData.schedules = schedules;
   homeData.weather = await weatherService.getCurrentWeather();

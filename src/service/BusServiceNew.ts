@@ -236,10 +236,10 @@ export class BusServiceNew {
             departBusList = weekday;
         }
 
-        const afterBus = departBusList.filter((item) => DayJS(`${item}`, 'HH:mm').isAfter(today));
-        const response = afterBus.map((bus) => ({
+        const afterBus = departBusList.filter((item) => DayJS(`${item}`, 'HH:mm').tz('Asia/Seoul').isAfter(today));
+        const response = afterBus.slice(0, 2).map((bus) => ({
             bus,
-            remainMinutes: DayJS(bus, 'HH:mm').diff(today, 'minute'),
+            remainMinutes: DayJS(bus, 'HH:mm').tz('Asia/Seoul').diff(today, 'minute'),
         }));
 
         return { nextDepartBus: response };
