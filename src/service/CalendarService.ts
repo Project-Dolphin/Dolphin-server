@@ -4,6 +4,7 @@ import cheerio from 'cheerio';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { handleCalendarDate } from '../util/parseCalendarRawText';
 import { extractNumber } from '../util/parseNumber';
+import { cacheClient } from './cachingService';
 
 dayjs.extend(customParseFormat);
 
@@ -33,8 +34,28 @@ export interface LatestPlans {
   } & Calendar)[];
 }
 
+interface HolidayResult {
+  holiday: Holiday[];
+}
+
+interface Holiday {
+  summary: string;
+  date: string;
+}
+
 export class CalendarService {
+  private readonly baseKey = 'calendar';
+  private readonly cacheTTL = 60 * 60 * 24 * 7; // 일주일
+
   public async getAnnualCalendar(): Promise<AnnualCalendar> {
+
+    const cachedAnnualCalendar = cacheClient.getCache<AnnualCalendar>(this.baseKey + '/annual');
+
+    if (cachedAnnualCalendar) {
+      return cachedAnnualCalendar;
+    }
+
+
     const body = await got.get('https://www.kmou.ac.kr/onestop/cm/cntnts/cntntsView.do?mi=74&cntntsId=1755', {
       headers: {
         Referer: 'https://www.kmou.ac.kr/onestop/cm/cntnts/cntntsView.do?mi=74&cntntsId=1755',
@@ -69,6 +90,7 @@ export class CalendarService {
           response.calendar.push(calendarEvent);
         });
     });
+    cacheClient.setCache(this.baseKey + '/annual', response, this.cacheTTL);
 
     return response;
   }
@@ -91,6 +113,7 @@ export class CalendarService {
     return response;
   }
 
+
   public async getLatestPlans(): Promise<LatestPlans> {
     const { calendar } = await this.getAnnualCalendar();
     const latestCalendar = calendar
@@ -111,7 +134,12 @@ export class CalendarService {
   public async getHolidays(
     startDate?: string,
     endDate?: string,
-  ): Promise<{ holiday: { summary: string; date: string }[] }> {
+  ): Promise<HolidayResult> {
+
+    const cacheKey = this.baseKey + '/holiday';
+    const cachedHoliday = cacheClient.getCache<HolidayResult>(cacheKey);
+    if (cachedHoliday) return cachedHoliday;
+
     if (startDate && !dayjs(startDate, 'YYYY-MM-DD', true).isValid()) {
       throw new Error('startDate is invalid.');
     }
@@ -133,6 +161,8 @@ export class CalendarService {
     const response = body?.items
       ?.filter((item: { description: string }) => item.description === '공휴일')
       .map((item: { summary: string; start: { date: string } }) => ({ summary: item.summary, date: item.start.date }));
+
+    cacheClient.setCache(cacheKey, { holiday: response }, this.cacheTTL);
     return { holiday: response };
   }
 }
