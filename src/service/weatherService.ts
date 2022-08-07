@@ -1,6 +1,6 @@
 import cheerio from 'cheerio';
 import got from 'got';
-import { cacheClient } from './CachingService';
+import { cacheClient } from './cachingService';
 
 export interface WeatherResult {
   status: string;

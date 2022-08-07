@@ -1,7 +1,7 @@
 import cheerio from 'cheerio';
 import DayJS from 'dayjs';
 import got from 'got';
-import { cacheClient } from './CachingService';
+import { cacheClient } from './cachingService';
 
 const enum DietType {
   English = 0, // 양식코너

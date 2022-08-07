@@ -4,7 +4,7 @@ import cheerio from 'cheerio';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { handleCalendarDate } from '../util/parseCalendarRawText';
 import { extractNumber } from '../util/parseNumber';
-import { cacheClient } from './CachingService';
+import { cacheClient } from './cachingService';
 
 dayjs.extend(customParseFormat);
 

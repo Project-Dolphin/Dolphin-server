@@ -1,6 +1,6 @@
 import got from 'got';
 import cheerio from 'cheerio';
-import { cacheClient } from './CachingService';
+import { cacheClient } from './cachingService';
 
 export interface Notice {
   title: string;
