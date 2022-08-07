@@ -4,6 +4,7 @@ import cheerio from 'cheerio';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { handleCalendarDate } from '../util/parseCalendarRawText';
 import { extractNumber } from '../util/parseNumber';
+import { cacheClient } from './CachingService';
 
 dayjs.extend(customParseFormat);
 
@@ -34,7 +35,18 @@ export interface LatestPlans {
 }
 
 export class CalendarService {
+  private readonly baseKey = 'calendar';
+  private readonly cacheTTL = 60 * 60 * 24 * 7; // 일주일
+
   public async getAnnualCalendar(): Promise<AnnualCalendar> {
+
+    const result = cacheClient.getCache(this.baseKey + '/annual');
+
+    if (result) {
+      return result as AnnualCalendar;
+    }
+
+
     const body = await got.get('https://www.kmou.ac.kr/onestop/cm/cntnts/cntntsView.do?mi=74&cntntsId=1755', {
       headers: {
         Referer: 'https://www.kmou.ac.kr/onestop/cm/cntnts/cntntsView.do?mi=74&cntntsId=1755',
@@ -69,6 +81,7 @@ export class CalendarService {
           response.calendar.push(calendarEvent);
         });
     });
+    cacheClient.setCache(this.baseKey + '/annual', response, this.cacheTTL);
 
     return response;
   }
@@ -91,6 +104,7 @@ export class CalendarService {
     return response;
   }
 
+
   public async getLatestPlans(): Promise<LatestPlans> {
     const { calendar } = await this.getAnnualCalendar();
     const latestCalendar = calendar
@@ -112,6 +126,11 @@ export class CalendarService {
     startDate?: string,
     endDate?: string,
   ): Promise<{ holiday: { summary: string; date: string }[] }> {
+
+    const cacheKey = this.baseKey + '/holiday';
+    const cachedResult = cacheClient.getCache(cacheKey);
+    if (cachedResult) return cachedResult as any; // TODO: 수정 필요  
+
     if (startDate && !dayjs(startDate, 'YYYY-MM-DD', true).isValid()) {
       throw new Error('startDate is invalid.');
     }
@@ -133,6 +152,8 @@ export class CalendarService {
     const response = body?.items
       ?.filter((item: { description: string }) => item.description === '공휴일')
       .map((item: { summary: string; start: { date: string } }) => ({ summary: item.summary, date: item.start.date }));
+
+    cacheClient.setCache(cacheKey, { holiday: response }, this.cacheTTL);
     return { holiday: response };
   }
 }

@@ -1,6 +1,7 @@
 import cheerio from 'cheerio';
 import DayJS from 'dayjs';
 import got from 'got';
+import { cacheClient } from './CachingService';
 
 const enum DietType {
   English = 0, // 양식코너
@@ -73,6 +74,7 @@ export interface Diet {
 export class DietService {
   private readonly societyUrl = 'https://www.kmou.ac.kr/coop/dv/dietView/selectDietDateView.do';
   private readonly navalBaseUrl = 'http://badaro.kmou.ac.kr';
+  private readonly baseKey = 'diet';
 
   async getAllDiet(at?: string, where?: string[]): Promise<DietResult[]> {
     const society = await this.getSocietyDiet();
@@ -266,6 +268,13 @@ export class DietService {
   private splitItems = (contents: string) => contents.split('\n').filter(item => item);
 
   public async getSocietyDiet(): Promise<SocietyDietResult> {
+    const cacheKey = this.baseKey + '/society';
+    const cachedSocietyDiet = cacheClient.getCache<SocietyDietResult>(cacheKey);
+    if (cachedSocietyDiet) {
+      console.log('get cached diet!: ', cachedSocietyDiet);
+      return cachedSocietyDiet;
+    }
+
     const result = await got.get(this.societyUrl);
 
     const rawBody = cheerio.load(result.body);
@@ -341,9 +350,18 @@ export class DietService {
         });
     });
 
+    cacheClient.setCache(cacheKey, societyDiet);
+
     return societyDiet;
   }
   async getDormDiet(): Promise<DormResultType> {
+    const cacheKey = this.baseKey + '/dorm';
+    const cachedDormDiet = cacheClient.getCache<DormResultType>(cacheKey);
+    if (cachedDormDiet) {
+      console.log('get cached diet!: ', cachedDormDiet);
+      return cachedDormDiet;
+    }
+
     const url = 'https://www.kmou.ac.kr/dorm/main.do';
     const result = await got.get(url);
     const rawBody = cheerio.load(result.body);
@@ -377,10 +395,15 @@ export class DietService {
       }
     });
 
+    cacheClient.setCache(cacheKey, dormDiet);
     return dormDiet;
   }
 
   async getNavalDietAsync(): Promise<NavalResultType | string> {
+    const cacheKey = this.baseKey + '/naval';
+    const cachedNavalDiet = cacheClient.getCache<NavalResultType>(cacheKey);
+    if (cachedNavalDiet) return cachedNavalDiet;
+
     const results: string[] = [];
     let foundToday = false;
     const fisrtItemUrl = await this.getFirstItemPathFromNaval();
@@ -402,10 +425,6 @@ export class DietService {
         return true;
       },
     );
-
-    if (!foundToday) {
-      return 'DietService.getNavalDietAsync: There are no any diet';
-    }
 
     return {
       lunch: results.filter((_, index) => index % 2 === 0),
