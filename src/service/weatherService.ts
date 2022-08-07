@@ -25,7 +25,6 @@ export class WeatherService {
     try {
       const weatherResult = await this.getCurrentWeatherData();
       if (weatherResult.status !== '') {
-        cacheClient.setCache(cacheKey, weatherResult, 10 * 60);
         return weatherResult;
       } else {
         const weather = await this.getCurrenWeatherSubData();
