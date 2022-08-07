@@ -1,4 +1,4 @@
-import { DayType } from '../../routes/homeRouter';
+
 import { holiDay } from '../holiday';
 
 export function toKSTString(): string {
@@ -46,15 +46,3 @@ export function makeKoreaDate(): Date {
   return newDate;
 }
 
-export function getTodayType(): DayType { // TODO: 시험기간 계산 필요함
-  const today = new Date();
-  const day = today.getDay();
-
-  switch (day) {
-    case 5:
-    case 6:
-      return DayType.WEEKEND;
-    default:
-      return DayType.WEEK;
-  }
-}
