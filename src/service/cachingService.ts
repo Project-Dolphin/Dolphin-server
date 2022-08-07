@@ -11,7 +11,11 @@ class CacheClient {
     }
 
     public setCache<T>(key: string, value: T, ttl?: number) {
-        this.client.set<T>(key, value, { ttl: ttl });
+        if (ttl) {
+            this.client.set<T>(key, value, ttl);
+        } else {
+            this.client.set<T>(key, value);
+        }
     }
 }
 

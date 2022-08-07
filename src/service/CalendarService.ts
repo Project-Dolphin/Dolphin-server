@@ -36,7 +36,7 @@ export interface LatestPlans {
 
 export class CalendarService {
   private readonly baseKey = 'calendar';
-  private readonly cacheTTL = 10000;
+  private readonly cacheTTL = 60 * 60 * 24 * 7; // 일주일
 
   public async getAnnualCalendar(): Promise<AnnualCalendar> {
 
@@ -81,7 +81,7 @@ export class CalendarService {
           response.calendar.push(calendarEvent);
         });
     });
-    cacheClient.setCache(this.baseKey + '/annual', response);
+    cacheClient.setCache(this.baseKey + '/annual', response, this.cacheTTL);
 
     return response;
   }
@@ -153,7 +153,7 @@ export class CalendarService {
       ?.filter((item: { description: string }) => item.description === '공휴일')
       .map((item: { summary: string; start: { date: string } }) => ({ summary: item.summary, date: item.start.date }));
 
-    cacheClient.setCache(cacheKey, { holiday: response });
+    cacheClient.setCache(cacheKey, { holiday: response }, this.cacheTTL);
     return { holiday: response };
   }
 }
