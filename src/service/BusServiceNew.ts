@@ -64,6 +64,8 @@ export class BusServiceNew {
         lineno: string;
         min1: number | null;
         min2: number | null;
+        carno1: string | null;
+        carno2: string | null;
     }> {
         const lineId = BUS_STOP_ID[busNumber]?.lineId || null;
         const bstopId = BUS_STOP_ID[busNumber]?.bstopId[busStopName] || null;
@@ -72,8 +74,10 @@ export class BusServiceNew {
             const { body } = await got.get(
                 `${this.baseUrl}/busStopArrByBstopidLineid?servicekey=${this.serviceKey}&bstopid=${bstopId}&lineid=${lineId}`,
             );
-            const { min1, min2 } = parseBodyItem(body)?.item ?? { lineno: null, min1: null, min2: null };
-            return { busStopName, lineno: busNumber, min1, min2 };
+            const { min1, min2, carno1, carno2 } = parseBodyItem(body)?.item ?? { lineno: null, min1: null, min2: null, carno1: null, carno2: null };
+            const carno1String = carno1 && carno1.toString();
+            const carno2String = carno2 && carno2.toString();
+            return { busStopName, lineno: busNumber, min1, min2, carno1: carno1String, carno2: carno2String };
         } else {
             throw new Error('busStopName or busNumber is invalid');
         }
@@ -264,7 +268,7 @@ export class BusServiceNew {
         }
 
         const afterShuttle = shuttleList.filter((item) => DayJS(`${item.time}`, 'HH:mm').tz('Asia/Seoul').isAfter(today));
-        const response = afterShuttle.map((shuttle) => ({
+        const response = afterShuttle.slice(0, 2).map((shuttle) => ({
             ...shuttle,
             remainMinutes: DayJS(`${shuttle.time}`, 'HH:mm').tz('Asia/Seoul').diff(today, 'minute'),
         }));
