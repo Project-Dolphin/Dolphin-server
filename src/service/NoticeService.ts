@@ -16,7 +16,6 @@ export class NoticeService {
   public async getAcademicNotice(): Promise<Notice[]> {
     const cachedAcademicNotices = cacheClient.getCache<Notice[]>(this.baseKey + '/academic');
     if (cachedAcademicNotices) {
-      console.log('get cache! : ', cachedAcademicNotices);
       return cachedAcademicNotices;
     }
 

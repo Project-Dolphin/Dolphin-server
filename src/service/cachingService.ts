@@ -6,7 +6,6 @@ class CacheClient {
     private readonly client = new cache();
 
     public getCache<T>(key: string): CacheResult<T> {
-        console.log('get cache!');
         return this.client.get<T>(key);
     }
 

@@ -271,7 +271,6 @@ export class DietService {
     const cacheKey = this.baseKey + '/society';
     const cachedSocietyDiet = cacheClient.getCache<SocietyDietResult>(cacheKey);
     if (cachedSocietyDiet) {
-      console.log('get cached diet!: ', cachedSocietyDiet);
       return cachedSocietyDiet;
     }
 
@@ -358,7 +357,6 @@ export class DietService {
     const cacheKey = this.baseKey + '/dorm';
     const cachedDormDiet = cacheClient.getCache<DormResultType>(cacheKey);
     if (cachedDormDiet) {
-      console.log('get cached diet!: ', cachedDormDiet);
       return cachedDormDiet;
     }
 

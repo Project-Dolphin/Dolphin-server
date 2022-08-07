@@ -34,16 +34,25 @@ export interface LatestPlans {
   } & Calendar)[];
 }
 
+interface HolidayResult {
+  holiday: Holiday[];
+}
+
+interface Holiday {
+  summary: string;
+  date: string;
+}
+
 export class CalendarService {
   private readonly baseKey = 'calendar';
   private readonly cacheTTL = 60 * 60 * 24 * 7; // 일주일
 
   public async getAnnualCalendar(): Promise<AnnualCalendar> {
 
-    const result = cacheClient.getCache(this.baseKey + '/annual');
+    const cachedAnnualCalendar = cacheClient.getCache<AnnualCalendar>(this.baseKey + '/annual');
 
-    if (result) {
-      return result as AnnualCalendar;
+    if (cachedAnnualCalendar) {
+      return cachedAnnualCalendar;
     }
 
 
@@ -125,11 +134,11 @@ export class CalendarService {
   public async getHolidays(
     startDate?: string,
     endDate?: string,
-  ): Promise<{ holiday: { summary: string; date: string }[] }> {
+  ): Promise<HolidayResult> {
 
     const cacheKey = this.baseKey + '/holiday';
-    const cachedResult = cacheClient.getCache(cacheKey);
-    if (cachedResult) return cachedResult as any; // TODO: 수정 필요  
+    const cachedHoliday = cacheClient.getCache<HolidayResult>(cacheKey);
+    if (cachedHoliday) return cachedHoliday;
 
     if (startDate && !dayjs(startDate, 'YYYY-MM-DD', true).isValid()) {
       throw new Error('startDate is invalid.');
