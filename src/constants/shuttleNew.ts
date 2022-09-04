@@ -89,10 +89,6 @@ export const NORMAL_SHUTTLE_TIME = [
     time: '08:40',
   },
   {
-    destination: '하리',
-    time: '08:50',
-  },
-  {
     destination: '부산역 출발',
     time: '09:00',
   },
