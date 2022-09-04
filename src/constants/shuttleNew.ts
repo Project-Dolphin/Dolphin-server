@@ -253,11 +253,7 @@ export const NORMAL_SHUTTLE_TIME = [
   {
     destination: '하리',
     time: '21:30',
-  },
-  {
-    destination: '붓나역',
-    time: '23:30',
-  },
+  }
 ];
 
 export const EXAM_SHUTTLE_TIME = [
