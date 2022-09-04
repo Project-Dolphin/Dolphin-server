@@ -2,7 +2,7 @@ import got from 'got';
 import parser from 'fast-xml-parser';
 import { BUS_STOP_ID } from '../constants/busService';
 import cheerio from 'cheerio';
-import DayJS from 'dayjs';
+import DayJS, { Dayjs } from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { EXAM_SHUTTLE_TIME, NORMAL_SHUTTLE_TIME, VACATION_SHUTTLE_TIME } from '../constants/shuttleNew';
 import { examPeriodList } from '../constants/testperiod';
@@ -85,7 +85,6 @@ export class BusServiceNew {
 
     public async getNearest190(latitude: number, longitude: number) {
         const station = getNearestStation(latitude, longitude);
-        console.log(station);
         if (station) {
             const { bstopnm, nodeid } = station as BusStationGps;
 
@@ -230,8 +229,7 @@ export class BusServiceNew {
 
         const { weekday, saturday, holiday } = await this.getDepartBusTime();
         let departBusList;
-        const holidays = await calendarService.getHolidays();
-        const isHoliday = holidays.holiday.map((item) => item.date).includes(today.format('YYYY-MM-DD'));
+        const isHoliday = await this.getIsHoliday(today)
         if (today.day() === 6) {
             departBusList = saturday;
         } else if (today.day() === 0 || isHoliday) {
@@ -256,7 +254,13 @@ export class BusServiceNew {
             remainMinutes: number;
         }[];
     }> {
-        const today = DayJS();
+        const today = DayJS().tz('Asia/Seoul');
+        const isHoliday = await this.getIsHoliday(today)
+        if ([6, 0].includes(today.get('day')) || isHoliday) {
+            return {
+                nextShuttle: []
+            }
+        }
         let shuttleList;
 
         if ([0, 1, 6, 7].includes(today.month())) {
@@ -268,7 +272,7 @@ export class BusServiceNew {
         }
 
         const afterShuttle = shuttleList.filter((item) => DayJS(`${item.time}`, 'HH:mm').tz('Asia/Seoul').isAfter(today));
-        const response = afterShuttle.slice(0, 2).map((shuttle) => ({
+        const response = afterShuttle.slice(0, 3).map((shuttle) => ({
             ...shuttle,
             remainMinutes: DayJS(`${shuttle.time}`, 'HH:mm').tz('Asia/Seoul').diff(today, 'minute'),
         }));
@@ -278,7 +282,7 @@ export class BusServiceNew {
 
     private checkExamPeriod(today: string): boolean {
         // TODO : 홈페이지 크롤링 한 최신 일정 참조하도록 수정 필요
-        let isExamPeriod = false;
+        let isExamPeriod = false
         examPeriodList.forEach((period) => {
             if (today >= period.term.startedAt && today <= period.term.endedAt) {
                 isExamPeriod = true;
@@ -289,6 +293,11 @@ export class BusServiceNew {
         });
 
         return isExamPeriod;
+    }
+
+    private async getIsHoliday(date: Dayjs): Promise<boolean> {
+        const holidays = await calendarService.getHolidays();
+        return holidays.holiday.some((item) => item.date === date.format('YYYY-MM-DD'));
     }
 }
 
