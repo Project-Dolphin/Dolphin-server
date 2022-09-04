@@ -255,12 +255,12 @@ export class BusServiceNew {
         }[];
     }> {
         const today = DayJS().tz('Asia/Seoul');
-        // const isHoliday = await this.getIsHoliday(today)
-        // if ([6, 0].includes(today.get('day')) || isHoliday) {
-        //     return {
-        //         nextShuttle: []
-        //     }
-        // }
+        const isHoliday = await this.getIsHoliday(today)
+        if ([6, 0].includes(today.get('day')) || isHoliday) {
+            return {
+                nextShuttle: []
+            }
+        }
         let shuttleList;
 
         if ([0, 1, 6, 7].includes(today.month())) {
