@@ -238,10 +238,10 @@ export class BusServiceNew {
             departBusList = weekday;
         }
 
-        const afterBus = departBusList.filter((item) => DayJS(`${item}`, 'HH:mm').tz('Asia/Seoul').isAfter(today));
+        const afterBus = departBusList.filter((item) => DayJS.tz(`${item}`, 'HH:mm', 'Asia/Seoul').isAfter(today));
         const response = afterBus.slice(0, 2).map((bus) => ({
             bus,
-            remainMinutes: DayJS(bus, 'HH:mm').tz('Asia/Seoul').diff(today, 'minute'),
+            remainMinutes: DayJS.tz(bus, 'HH:mm', 'Asia/Seoul').diff(today, 'minute'),
         }));
 
         return { nextDepartBus: response };
@@ -255,12 +255,12 @@ export class BusServiceNew {
         }[];
     }> {
         const today = DayJS().tz('Asia/Seoul');
-        const isHoliday = await this.getIsHoliday(today)
-        if ([6, 0].includes(today.get('day')) || isHoliday) {
-            return {
-                nextShuttle: []
-            }
-        }
+        // const isHoliday = await this.getIsHoliday(today)
+        // if ([6, 0].includes(today.get('day')) || isHoliday) {
+        //     return {
+        //         nextShuttle: []
+        //     }
+        // }
         let shuttleList;
 
         if ([0, 1, 6, 7].includes(today.month())) {
@@ -271,10 +271,10 @@ export class BusServiceNew {
             shuttleList = NORMAL_SHUTTLE_TIME;
         }
 
-        const afterShuttle = shuttleList.filter((item) => DayJS(`${item.time}`, 'HH:mm').tz('Asia/Seoul').isAfter(today));
+        const afterShuttle = shuttleList.filter((item) => DayJS.tz(`${item.time}`, 'HH:mm', 'Asia/Seoul').isAfter(today));
         const response = afterShuttle.slice(0, 3).map((shuttle) => ({
             ...shuttle,
-            remainMinutes: DayJS(`${shuttle.time}`, 'HH:mm').tz('Asia/Seoul').diff(today, 'minute'),
+            remainMinutes: DayJS.tz(`${shuttle.time}`, 'HH:mm', 'Asia/Seoul').diff(today, 'minute'),
         }));
 
         return { nextShuttle: response };
