@@ -239,7 +239,7 @@ export class BusServiceNew {
         }
 
         const afterBus = departBusList.filter((item) => DayJS.tz(`${item}`, 'HH:mm', 'Asia/Seoul').isAfter(today));
-        const response = afterBus.slice(0, 2).map((bus) => ({
+        const response = afterBus.slice(0, 3).map((bus) => ({
             bus,
             remainMinutes: DayJS.tz(bus, 'HH:mm', 'Asia/Seoul').diff(today, 'minute'),
         }));
