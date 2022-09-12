@@ -2,15 +2,15 @@ import got from 'got';
 import parser from 'fast-xml-parser';
 import { BUS_STOP_ID } from '../constants/busService';
 import cheerio from 'cheerio';
-import DayJS, { Dayjs } from 'dayjs';
+import DayJS from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { EXAM_SHUTTLE_TIME, NORMAL_SHUTTLE_TIME, VACATION_SHUTTLE_TIME } from '../constants/shuttleNew';
 import { examPeriodList } from '../constants/testperiod';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import 'dayjs/locale/ko';
-import { calendarService } from './CalendarService';
 import { BusStationGps, BUS_STATION_190_GPS } from '../constants/busStationGps';
+import { mainService } from './mainService';
 
 DayJS.extend(customParseFormat);
 DayJS.extend(utc);
@@ -229,7 +229,7 @@ export class BusServiceNew {
 
         const { weekday, saturday, holiday } = await this.getDepartBusTime();
         let departBusList;
-        const isHoliday = await this.getIsHoliday(today)
+        const isHoliday = await mainService.getTodayDateType() === '공휴일';
         if (today.day() === 6) {
             departBusList = saturday;
         } else if (today.day() === 0 || isHoliday) {
@@ -239,7 +239,7 @@ export class BusServiceNew {
         }
 
         const afterBus = departBusList.filter((item) => DayJS.tz(`${item}`, 'HH:mm', 'Asia/Seoul').isAfter(today));
-        const response = afterBus.slice(0, 2).map((bus) => ({
+        const response = afterBus.slice(0, 3).map((bus) => ({
             bus,
             remainMinutes: DayJS.tz(bus, 'HH:mm', 'Asia/Seoul').diff(today, 'minute'),
         }));
@@ -255,7 +255,7 @@ export class BusServiceNew {
         }[];
     }> {
         const today = DayJS().tz('Asia/Seoul');
-        const isHoliday = await this.getIsHoliday(today)
+        const isHoliday = await mainService.getTodayDateType() === '공휴일';
         if ([6, 0].includes(today.get('day')) || isHoliday) {
             return {
                 nextShuttle: []
@@ -293,11 +293,6 @@ export class BusServiceNew {
         });
 
         return isExamPeriod;
-    }
-
-    private async getIsHoliday(date: Dayjs): Promise<boolean> {
-        const holidays = await calendarService.getHolidays();
-        return holidays.holiday.some((item) => item.date === date.format('YYYY-MM-DD'));
     }
 }
 

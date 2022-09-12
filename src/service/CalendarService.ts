@@ -2,11 +2,13 @@ import dayjs from 'dayjs';
 import got from 'got';
 import cheerio from 'cheerio';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+import utc from 'dayjs/plugin/utc';
 import { handleCalendarDate } from '../util/parseCalendarRawText';
 import { extractNumber } from '../util/parseNumber';
 import { cacheClient } from './cachingService';
 
 dayjs.extend(customParseFormat);
+dayjs.extend(utc);
 
 interface AnnualCalendar {
   title: string;
@@ -150,7 +152,7 @@ export class CalendarService {
     const startDateParam = startDate || `${dayjs().format('YYYY')}-01-01`;
     const endDateParam = endDate || `${dayjs().add(1, 'year').format('YYYY')}-01-01`;
 
-    const getHolidayUrl = `https://www.googleapis.com/calendar/v3/calendars/ko.south_korea%23holiday%40group.v.calendar.google.com/events?key=AIzaSyD9kai-_CPPRv5-Si-s46tMetYIVM5idOc&orderBy=startTime&singleEvents=true&timeMin=${startDateParam}T00:00:00Z&timeMax=${endDateParam}T00:00:00Z`;
+    const getHolidayUrl = `https://www.googleapis.com/calendar/v3/calendars/blffot637do35g8hc1hf9a046s%40group.calendar.google.com/events?key=AIzaSyD9kai-_CPPRv5-Si-s46tMetYIVM5idOc&orderBy=startTime&singleEvents=true&timeMin=${startDateParam}T00:00:00Z&timeMax=${endDateParam}T00:00:00Z`;
     const body: any = await got
       .get(getHolidayUrl, {
         headers: {
@@ -159,11 +161,17 @@ export class CalendarService {
       })
       .json();
     const response = body?.items
-      ?.filter((item: { description: string }) => item.description === '공휴일')
-      .map((item: { summary: string; start: { date: string } }) => ({ summary: item.summary, date: item.start.date }));
+      .map((item: { summary: string; start: { date: string }, end: { date: string } }) => {
+        const holidayArray = [];
+        for (let i = 0; dayjs.utc(item.start.date, 'YYYY-MM-DD').add(i, 'day').isBefore(dayjs.utc(item.end.date, 'YYYY-MM-DD')); i++) {
+          holidayArray.push({ summary: item.summary, date: dayjs.utc(item.start.date, 'YYYY-MM-DD').add(i, 'day').format('YYYY-MM-DD') })
+        }
+        return holidayArray
+      });
 
-    cacheClient.setCache(cacheKey, { holiday: response }, this.cacheTTL);
-    return { holiday: response };
+    cacheClient.setCache(cacheKey, { holiday: response.flat() }, this.cacheTTL);
+
+    return { holiday: response.flat() };
   }
 }
 
