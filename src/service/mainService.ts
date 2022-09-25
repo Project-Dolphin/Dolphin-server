@@ -9,9 +9,9 @@ const toDayJs = (date: string | null, dateFormat: string) => dayjs.tz(date, date
 
 export class MainService {
 
-    private today = dayjs();
 
     public async getTodayDateType(): Promise<DateType> {
+        const today = dayjs().tz('Asia/Seoul')
         const calendarService = new CalendarService();
         const { holiday } = await calendarService.getHolidays();
         const { calendar } = await calendarService.getAnnualCalendar();
@@ -56,15 +56,14 @@ export class MainService {
                 vacationDate[Object.keys(vacationDate)[index]].term = term
             }
         })
-
         const isTestPeriod = testPeriod.some(({ term }) =>
-            this.today.isAfter(toDayJs(term.startedAt, 'YYYY-M-D').startOf('day')) && this.today.isBefore(toDayJs(term.endedAt, 'YYYY-M-D').endOf('day')));
-        const isWeekend = [0, 6].includes(this.today.day());
-        const isHoliday = holiday.some(({ date }) => toDayJs(date, 'YYYY-MM-DD').isSame(this.today, 'day'));
-        const isAfterSummerStart = this.today.isAfter(toDayJs(vacationDate.summerStart.term.startedAt, 'YYYY-M-D').startOf('day'));
-        const isBeforeSummerEnd = this.today.isBefore(toDayJs(vacationDate.summerEnd.term.startedAt, 'YYYY-M-D').startOf('day'));
-        const isAfterWinterStart = this.today.isAfter(toDayJs(vacationDate.winterStart.term.startedAt, 'YYYY-M-D').startOf('day'));
-        const isBeforeWinterEnd = this.today.isBefore(toDayJs(vacationDate.winterEnd.term.startedAt, 'YYYY-M-D').startOf('day'));
+            today.isAfter(toDayJs(term.startedAt, 'YYYY-M-D').startOf('day')) && today.isBefore(toDayJs(term.endedAt, 'YYYY-M-D').endOf('day')));
+        const isWeekend = [0, 6].includes(today.day());
+        const isHoliday = holiday.some(({ date }) => toDayJs(date, 'YYYY-MM-DD').isSame(today, 'day'));
+        const isAfterSummerStart = today.isAfter(toDayJs(vacationDate.summerStart.term.startedAt, 'YYYY-M-D').startOf('day'));
+        const isBeforeSummerEnd = today.isBefore(toDayJs(vacationDate.summerEnd.term.startedAt, 'YYYY-M-D').startOf('day'));
+        const isAfterWinterStart = today.isAfter(toDayJs(vacationDate.winterStart.term.startedAt, 'YYYY-M-D').startOf('day'));
+        const isBeforeWinterEnd = today.isBefore(toDayJs(vacationDate.winterEnd.term.startedAt, 'YYYY-M-D').startOf('day'));
 
         if (isTestPeriod) {
             return '시험기간'
