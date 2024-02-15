@@ -5,7 +5,15 @@ export const BUS_STOP_NAME = {
     KMOU_KMOH: 'kmou_kmoh'
 }
 
-export const BUS_STOP_ID = {
+interface BusStopInfo {
+    [lineNo: number]: {
+        lineId: number;
+        bstopId: {
+            [busStopName: string]: number
+        }
+    }
+}
+export const BUS_STOP_ID: BusStopInfo = {
     190: {
         lineId: 5200190000,
         bstopId: {

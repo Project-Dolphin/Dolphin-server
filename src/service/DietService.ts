@@ -11,6 +11,8 @@ const enum DietType {
   Bowl = 4, // 덮밥
   StaffNoraml = 5, // 교직원 중식
   StaffPremium = 6, // 교직원 일품식
+  ExtraDiet1 = 7, // 교직원 일품식
+  ExtraDiet2 = 8, // 교직원 일품식
 }
 
 export interface SocietyResultType {
@@ -24,9 +26,7 @@ export interface NavalResultType {
 }
 
 export interface DormResultType {
-  morning: string[];
-  lunch: string[];
-  dinner: string[];
+  [key: string]: string[];
 }
 
 export interface SocietyDietType {

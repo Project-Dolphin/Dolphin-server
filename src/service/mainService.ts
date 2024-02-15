@@ -50,12 +50,12 @@ export class MainService {
 
 
         const testPeriod = calendar.filter(({ content }) => TEST_PERIOD_CONTENT.includes(content));
-        calendar.forEach(({ content, term }) => {
-            const index = Object.values(vacationDate).map(value => value.content).findIndex(element => element === content)
-            if (index !== -1) {
-                vacationDate[Object.keys(vacationDate)[index]].term = term
-            }
-        })
+        // calendar.forEach(({ content, term }) => {
+        //     const index = Object.values(vacationDate).map(value => value.content).findIndex(element => element === content)
+        //     if (index !== -1) {
+        //         vacationDate[Object.keys(vacationDate as any)[index]].term = term
+        //     }
+        // })
         const isTestPeriod = testPeriod.some(({ term }) =>
             today.isAfter(toDayJs(term.startedAt, 'YYYY-M-D').startOf('day')) && today.isBefore(toDayJs(term.endedAt, 'YYYY-M-D').endOf('day')));
         const isWeekend = [0, 6].includes(today.day());

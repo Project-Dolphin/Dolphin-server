@@ -34,7 +34,7 @@ interface BusInfo {
 }
 
 function parseBodyItem(body: string) {
-    return parser?.parse(body)?.response?.body?.items;
+    return (parser as any)?.parse(body)?.response?.body?.items;
 }
 
 function getNearestStation(latitude: number, longitude: number) {
@@ -67,8 +67,8 @@ export class BusServiceNew {
         carno1: string | null;
         carno2: string | null;
     }> {
-        const lineId = BUS_STOP_ID[busNumber]?.lineId || null;
-        const bstopId = BUS_STOP_ID[busNumber]?.bstopId[busStopName] || null;
+        const lineId = BUS_STOP_ID[Number(busNumber)]?.lineId || null;
+        const bstopId = BUS_STOP_ID[Number(busNumber)]?.bstopId[busStopName] || null;
 
         if (lineId && bstopId) {
             const { body } = await got.get(
@@ -101,7 +101,7 @@ export class BusServiceNew {
     }
 
     public async getBusStationByRouteId(busNumber: string) {
-        const lineId = BUS_STOP_ID[busNumber]?.lineId || '';
+        const lineId = BUS_STOP_ID[Number(busNumber)]?.lineId || '';
 
         if (lineId) {
             const { body } = await got.get(`${this.baseUrl}/busInfoByRouteId?servicekey=${this.serviceKey}&lineid=${lineId}`);
@@ -142,7 +142,7 @@ export class BusServiceNew {
         busNumber: string;
         busStopInfo: any;
     }> {
-        const lineId = BUS_STOP_ID[busNumber]?.lineId || '';
+        const lineId = BUS_STOP_ID[Number(busNumber)]?.lineId || '';
 
         if (lineId) {
             const { body } = await got.get(`${this.baseUrl}/busInfoByRouteId?servicekey=${this.serviceKey}&lineid=${lineId}`);
