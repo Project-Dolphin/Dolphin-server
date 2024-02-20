@@ -1,4 +1,5 @@
 import axios from 'axios';
+import cheerio from 'cheerio';
 
 enum BusType {
     UNIV = 'UNIV',
@@ -31,37 +32,39 @@ export class BusServiceV3 {
 
         console.log(result);
 
-        // const rawBody = cheerio.load(body);
-        // const response: {
-        //     weekday: string[];
-        //     saturday: string[];
-        //     holiday: string[];
-        // } = {
-        //     weekday: [],
-        //     saturday: [],
-        //     holiday: [],
-        // };
-        // rawBody('.table_st_box')
-        //     .find('tr')
-        //     .each((index, element) => {
-        //         rawBody(element)
-        //             .find('td')
-        //             .each((li, el) => {
-        //                 const departTime = rawBody(el).html()?.toString()?.trim() ?? '';
-        //                 if (departTime !== '') {
-        //                     if (li < 4) {
-        //                         response.weekday.push(departTime);
-        //                     } else if (li < 8) {
-        //                         response.saturday.push(departTime);
-        //                     } else {
-        //                         response.holiday.push(departTime);
-        //                     }
-        //                 }
-        //             });
-        //     });
-        // response.weekday.sort();
-        // response.saturday.sort();
-        // response.holiday.sort();
+        const rawBody = cheerio.load(result.data);
+        const response: {
+            weekday: string[];
+            saturday: string[];
+            holiday: string[];
+        } = {
+            weekday: [],
+            saturday: [],
+            holiday: [],
+        };
+        rawBody('.table_st_box')
+            .find('tr')
+            .each((index, element) => {
+                rawBody(element)
+                    .find('td')
+                    .each((li, el) => {
+                        const departTime = rawBody(el).html()?.toString()?.trim() ?? '';
+                        if (departTime !== '') {
+                            if (li < 4) {
+                                response.weekday.push(departTime);
+                            } else if (li < 8) {
+                                response.saturday.push(departTime);
+                            } else {
+                                response.holiday.push(departTime);
+                            }
+                        }
+                    });
+            });
+        response.weekday.sort();
+        response.saturday.sort();
+        response.holiday.sort();
+        console.log(response);
+
         return [];
     }
 
