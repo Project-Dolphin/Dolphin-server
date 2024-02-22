@@ -1,1157 +1,1133 @@
 {
-    "test": {
-        "test": [],
-        "time": 10
-    },
-    "time": 10,
-    "bus": [
-        {
-            "time": "21:51",
-            "busType": "UNIV",
-            "operationType": "NORMAL",
-            "from": "해양대",
-            "to": "하리"
-        },
-        {
-            "time": "21:53",
-            "busType": "UNIV",
-            "operationType": "NORMAL",
-            "from": "해양대",
-            "to": "하리"
-        },
-        {
-            "time": "21:55",
-            "busType": "UNIV",
-            "operationType": "NORMAL",
-            "from": "해양대",
-            "to": "하리"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "04:55"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "05:14"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "05:33"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "05:52"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "06:11"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "06:30"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "06:49"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "07:08"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "07:27"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "07:46"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "08:05"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "08:26"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "08:47"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "09:08"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "09:29"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "09:50"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "10:11"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "10:32"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "10:53"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "11:14"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "11:36"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "11:57"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "12:18"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "12:39"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "13:00"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "13:21"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "13:42"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "14:03"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "14:24"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "14:45"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "15:07"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "15:28"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "15:49"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "16:10"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "16:31"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "16:52"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "17:13"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "17:34"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "17:55"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "18:16"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "18:37"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "18:58"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "19:19"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "19:40"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "20:01"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "20:22"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "20:44"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "21:06"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "21:28"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "HOLIDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "21:50"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "04:55"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "05:12"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "05:29"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "05:46"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "06:03"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "06:20"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "06:37"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "06:54"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "07:11"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "07:28"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "07:45"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "07:56"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "08:17"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "08:38"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "08:59"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "09:20"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "09:41"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "10:02"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "10:22"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "10:44"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "11:05"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "11:26"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "11:46"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "12:06"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "12:26"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "12:46"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "13:06"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "13:26"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "13:46"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "14:06"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "14:26"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "14:46"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "15:00"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "15:20"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "15:40"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "16:00"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "16:20"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "16:40"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "17:00"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "17:20"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "17:40"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "18:00"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "18:20"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "18:35"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "18:54"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "19:13"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "19:32"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "19:51"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "20:10"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "20:30"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "20:50"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "21:10"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "21:30"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "SATURDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "21:50"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "04:55"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "05:10"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "05:25"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "05:40"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "05:55"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "06:10"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "06:25"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "06:40"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "06:56"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "07:12"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "07:29"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "07:47"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "08:06"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "08:25"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "08:44"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "09:03"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "09:22"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "09:41"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "10:00"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "10:20"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "10:40"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "11:00"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "11:20"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "11:40"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "11:59"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "12:18"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "12:37"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "12:56"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "13:15"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "13:34"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "13:53"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "14:12"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "14:31"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "14:50"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "15:09"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "15:19"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "15:38"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "15:57"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "16:16"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "16:35"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "16:54"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "17:13"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "17:32"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "17:51"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "18:10"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "18:29"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "18:48"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "19:00"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "19:18"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "19:37"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "19:56"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "20:15"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "20:34"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "20:53"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "21:12"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "21:31"
-        },
-        {
-            "busType": "UNIV",
-            "operationType": "WEEKDAY",
-            "from": "UNIV",
-            "to": "",
-            "time": "21:50"
-        }
-    ]
+    "bus": {
+        "shuttle": [
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "04:55"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "05:14"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "05:33"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "05:52"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "06:11"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "06:30"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "06:49"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "07:08"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "07:27"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "07:46"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "08:05"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "08:26"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "08:47"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "09:08"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "09:29"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "09:50"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "10:11"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "10:32"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "10:53"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "11:14"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "11:36"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "11:57"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "12:18"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "12:39"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "13:00"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "13:21"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "13:42"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "14:03"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "14:24"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "14:45"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "15:07"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "15:28"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "15:49"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "16:10"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "16:31"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "16:52"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "17:13"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "17:34"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "17:55"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "18:16"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "18:37"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "18:58"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "19:19"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "19:40"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "20:01"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "20:22"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "20:44"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "21:06"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "21:28"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "HOLIDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "21:50"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "04:55"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "05:12"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "05:29"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "05:46"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "06:03"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "06:20"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "06:37"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "06:54"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "07:11"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "07:28"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "07:45"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "07:56"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "08:17"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "08:38"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "08:59"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "09:20"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "09:41"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "10:02"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "10:22"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "10:44"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "11:05"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "11:26"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "11:46"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "12:06"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "12:26"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "12:46"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "13:06"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "13:26"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "13:46"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "14:06"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "14:26"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "14:46"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "15:00"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "15:20"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "15:40"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "16:00"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "16:20"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "16:40"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "17:00"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "17:20"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "17:40"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "18:00"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "18:20"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "18:35"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "18:54"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "19:13"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "19:32"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "19:51"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "20:10"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "20:30"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "20:50"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "21:10"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "21:30"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "SATURDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "21:50"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "04:55"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "05:10"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "05:25"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "05:40"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "05:55"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "06:10"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "06:25"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "06:40"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "06:56"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "07:12"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "07:29"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "07:47"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "08:06"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "08:25"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "08:44"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "09:03"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "09:22"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "09:41"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "10:00"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "10:20"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "10:40"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "11:00"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "11:20"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "11:40"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "11:59"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "12:18"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "12:37"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "12:56"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "13:15"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "13:34"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "13:53"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "14:12"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "14:31"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "14:50"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "15:09"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "15:19"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "15:38"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "15:57"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "16:16"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "16:35"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "16:54"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "17:13"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "17:32"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "17:51"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "18:10"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "18:29"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "18:48"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "19:00"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "19:18"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "19:37"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "19:56"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "20:15"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "20:34"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "20:53"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "21:12"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "21:31"
+            },
+            {
+                "busType": "UNIV",
+                "operationType": "WEEKDAY",
+                "from": "UNIV",
+                "to": "",
+                "time": "21:50"
+            }
+        ]
+    }
 }

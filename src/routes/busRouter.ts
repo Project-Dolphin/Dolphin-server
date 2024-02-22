@@ -1,7 +1,7 @@
 import express, { NextFunction, Request, Response } from 'express';
 import { BUS_STOP_ID, BUS_STOP_NAME } from '../constants/busService';
 import { busServiceNew } from '../service/BusServiceNew';
-import { BusServiceV3 } from '../service/BusServiceV3';
+import { BusType, busService } from '../service/BusServiceV3';
 
 const router = express.Router();
 
@@ -89,7 +89,7 @@ router.get('/nextshuttle', async (req: Request, res: Response) => {
 
 router.get('/local-test', async (req: Request, res: Response) => {
   try {
-    const busTime = await new BusServiceV3().getDepartBusTime();
+    const busTime = await busService.findAllBus(BusType.UNIV, '');
     return res.status(200).json(busTime);
   } catch (err) {
     return res.status(402).send(err);

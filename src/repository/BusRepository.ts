@@ -8,6 +8,6 @@ export interface BusTime {
 }
 
 export interface BusTimeTableRepository {
-    findAll(): Promise<BusTime[]>
-    save(busTime: BusTime): Promise<BusTime>
+    findAll<T>(path: string): Promise<T[]>
+    save<T>(path: string, busTime: T): Promise<T>
 }

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BusTimeTableRepository } from '../repository/BusRepository';
+import { BusTime, BusTimeTableRepository } from '../repository/BusRepository';
 import cheerio from 'cheerio';
 
 export class UnivBusParsingTask {
@@ -46,7 +46,7 @@ export class UnivBusParsingTask {
         const busInfos = [...busTimeTableAtHoliday, ...busTimeTableAtSaturday, ...busTimeTableAtWeekday];
 
         for (const busTime of busInfos) {
-            await this.repository.save(busTime);
+            await this.repository.save<BusTime>('/shuttle[]', busTime);
         }
     }
 

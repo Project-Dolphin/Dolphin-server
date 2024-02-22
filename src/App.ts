@@ -8,6 +8,7 @@ import { dietRouter } from './routes/dietRouter';
 import { homeRouter } from './routes/homeRouter';
 import { noticeRouter } from './routes/noticeRouter';
 import { weatherRouter } from './routes/weatherRouter';
+import { busRouterV2 } from './routes/busRouterV2';
 
 export class App {
   private express: express.Application;
@@ -30,6 +31,7 @@ export class App {
   private setRouters() {
     this.express.use('/', homeRouter);
     this.express.use('/bus', busRouter);
+    this.express.use('/v2/bus', busRouterV2);
     this.express.use('/calendar', calendarRouter);
     this.express.use('/notices', noticeRouter);
     this.express.use('/diet', dietRouter);

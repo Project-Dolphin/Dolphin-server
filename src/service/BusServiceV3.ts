@@ -1,81 +1,67 @@
-import axios from 'axios';
-import cheerio from 'cheerio';
+import dayjs from 'dayjs';
+import { BusTimeTableRepositoryImpl } from '../infrastructure/BusTimeTableRepositoryImpl';
+import { BusTime, BusTimeTableRepository } from '../repository/BusRepository';
 
-enum BusType {
+export enum BusType {
     UNIV = 'UNIV',
     CITY = 'CITY'
 }
 
 interface ArriavalInfo {
-    remain: string;
-    arriavalTime: string;
+    remain: number;
 }
 
 interface BusInfoV3 {
-    busName: string;
+    name: string;
     arrivalInfos: ArriavalInfo[];
 }
 
 export class BusServiceV3 {
-    async findAllBus(type: BusType, from: string, at: Date = new Date()): Promise<BusInfoV3[]> { // type: UNIV, CITY
+    private readonly repository: BusTimeTableRepository;
+
+    constructor(repository: BusTimeTableRepository) {
+        this.repository = repository;
+    }
+
+
+    async findAllBus(type: BusType, busStop: string, at: Date = new Date()): Promise<BusInfoV3[]> { // type: UNIV, CITY
+
+        switch (type) {
+            case BusType.CITY:
+                // 190이고 from이 해양대구본관인 경우
+                // 그 외
+                return await this.getCityBusTime();
+            case BusType.UNIV:
+                return await this.getShuttleBusTime();
+            default:
+                return [];
+        }
+    }
+    private async getShuttleBusTime(): Promise<BusInfoV3[]> {
+        const shuttleBusTimeTable = await this.repository.findAll<BusTime>('/shuttle');
+        // console.log(shuttleBusTimeTable);
+        const now = dayjs();
+        const arrivalInfos: ArriavalInfo[] = shuttleBusTimeTable.slice(0, 3).map((busTime) => {
+            return {
+                remain: 10,
+            }
+        })
+
+        console.log(now);
+        return [{ name: '순환버스', arrivalInfos: arrivalInfos }];
+    }
+    private async getCityBusTime(): Promise<BusInfoV3[]> {
         return [{
-            busName: '순환버스',
-            arrivalInfos: []
+            name: '190',
+            arrivalInfos: [{ remain: 120 }, { remain: 210 }, { remain: 240 }]
+        }, {
+            name: '101',
+            arrivalInfos: [{ remain: 120 }, { remain: 210 }, { remain: 240 }]
+        }, {
+            name: '66',
+            arrivalInfos: [{ remain: 120 }, { remain: 210 }, { remain: 240 }]
         }];
     }
-    public async getDepartBusTime(): Promise<any[]> {
-        const result = await axios.get('https://www.kmou.ac.kr/kmou/cm/cntnts/cntntsView.do?mi=1418&cntntsId=327', {
-            headers: {
-                Referer: 'https://www.kmou.ac.kr/kmou/cm/cntnts/cntntsView.do?mi=1418&cntntsId=327',
-            },
-        });
-
-        console.log(result);
-
-        const rawBody = cheerio.load(result.data);
-        const response: {
-            weekday: string[];
-            saturday: string[];
-            holiday: string[];
-        } = {
-            weekday: [],
-            saturday: [],
-            holiday: [],
-        };
-        rawBody('.table_st_box')
-            .find('tr')
-            .each((index, element) => {
-                rawBody(element)
-                    .find('td')
-                    .each((li, el) => {
-                        const departTime = rawBody(el).html()?.toString()?.trim() ?? '';
-                        if (departTime !== '') {
-                            if (li < 4) {
-                                response.weekday.push(departTime);
-                            } else if (li < 8) {
-                                response.saturday.push(departTime);
-                            } else {
-                                response.holiday.push(departTime);
-                            }
-                        }
-                    });
-            });
-        response.weekday.sort();
-        response.saturday.sort();
-        response.holiday.sort();
-        console.log(response);
-
-        return [];
-    }
-
-
-    public async getNextDepartBus(): Promise<{
-        nextDepartBus: {
-            bus: string;
-            remainMinutes: number;
-        }[];
-    }> {
-
-        return { nextDepartBus: [{ bus: '', remainMinutes: 10 }] };
-    }
 }
+
+export const busService = new BusServiceV3(new BusTimeTableRepositoryImpl());
