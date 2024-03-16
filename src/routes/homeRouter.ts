@@ -4,6 +4,7 @@ import { dietService, SocietyDietResult } from '../service/DietService';
 import { DateType, mainService } from '../service/mainService';
 import { Notice, noticeService } from '../service/NoticeService';
 import { WeatherResult, weatherService } from '../service/weatherService';
+import { logger } from '../logger';
 
 const router = express.Router();
 
@@ -17,6 +18,7 @@ interface Home {
 
 
 router.get('/', async (req: Request, res: Response) => {
+  logger.info(`[${req.socket?.remoteAddress}] | ${req.method} ${req.url} `);
   const homeData: Home = {
     dayType: '평일',
     schedules: null,
