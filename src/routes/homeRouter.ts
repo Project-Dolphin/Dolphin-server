@@ -25,25 +25,19 @@ router.get('/', async (req: Request, res: Response, next: NextFunction) => {
     notices: [],
     diets: null,
   }
-  try {
-    logger.info(`[${req.socket?.remoteAddress}] | ${req.method} ${req.url} `);
 
-    // const dateType = await mainService.getTodayDateType();
-    // homeData.dayType = dateType;
-    // const schedules = await calendarService.getLatestPlans();
-    // homeData.schedules = schedules;
-    // homeData.weather = await weatherService.getCurrentWeather();
-    // const notices = await noticeService.getAcademicNotice();
-    // homeData.notices.push(...notices);
-    // homeData.diets = await dietService.getSocietyDiet();
-    console.log(homeData);
-    return res.status(200).json(homeData);
+  logger.info(`[${req.socket?.remoteAddress}] | ${req.method} ${req.url} `);
 
-
-  } catch (e) {
-    console.error(e);
-    next(e);
-  }
+  // const dateType = await mainService.getTodayDateType();
+  // homeData.dayType = dateType;
+  // const schedules = await calendarService.getLatestPlans();
+  // homeData.schedules = schedules;
+  // homeData.weather = await weatherService.getCurrentWeather();
+  // const notices = await noticeService.getAcademicNotice();
+  // homeData.notices.push(...notices);
+  // homeData.diets = await dietService.getSocietyDiet();
+  console.log(homeData);
+  return res.status(200).json(homeData);
 
 });
 
