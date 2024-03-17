@@ -5,13 +5,14 @@ import "dayjs/plugin/timezone"
 
 export type DateType = "시험기간" | '공휴일' | '주말' | '방학' | '평일';
 
-const toDayJs = (date: string | null, dateFormat: string) => dayjs.tz(date, dateFormat, 'Asia/Seoul')
+const toDayJs = (date: string | null, dateFormat: string) => dayjs(date).add(9, 'hours').clone()
+// dayjs.tz(date, dateFormat, 'Asia/Seoul')
 
 export class MainService {
 
 
     public async getTodayDateType(): Promise<DateType> {
-        const today = dayjs().tz('Asia/Seoul')
+        const today = dayjs().add(9, 'hours').clone();
         const { holiday } = await calendarService.getHolidays();
         const { calendar } = await calendarService.getAnnualCalendar();
 

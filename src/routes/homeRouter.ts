@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from 'express';
-import { LatestPlans, calendarService } from '../service/CalendarService';
+import { LatestPlans } from '../service/CalendarService';
 import { SocietyDietResult } from '../service/DietService';
 import { DateType, mainService } from '../service/mainService';
 import { Notice } from '../service/NoticeService';
@@ -20,7 +20,7 @@ interface Home {
 router.get('/', async (req: Request, res: Response, next: NextFunction) => {
   const homeData: Home = {
     dayType: '평일',
-    schedules: null,
+    schedules: { today: '2024-3-17', calendar: [] },
     weather: null,
     notices: [],
     diets: null,
@@ -30,8 +30,8 @@ router.get('/', async (req: Request, res: Response, next: NextFunction) => {
 
     const dateType = await mainService.getTodayDateType();
     homeData.dayType = dateType;
-    const schedules = await calendarService.getLatestPlans();
-    homeData.schedules = schedules;
+    // const schedules = await calendarService.getLatestPlans();
+    // homeData.schedules = schedules;
     // homeData.weather = await weatherService.getCurrentWeather();
     // const notices = await noticeService.getAcademicNotice();
     // homeData.notices.push(...notices);
