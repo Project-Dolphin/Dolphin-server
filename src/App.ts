@@ -38,14 +38,13 @@ export class App {
     this.express.use('/weather', weatherRouter);
   }
 
-
-
   private setErrorHandlers() {
     this.express.use(this.errorHandler);
   }
 
   private errorHandler(err: Error, req: Request, res: Response, next: NextFunction) { // TODO: 분리 필요
     logger.error(err.message);
+    console.error(err.stack);
     return res.status(500).json({
       message: err.message
     });

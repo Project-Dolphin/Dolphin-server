@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { CalendarService } from "./CalendarService";
+import { calendarService } from "./CalendarService";
 import "dayjs/plugin/utc"
 import "dayjs/plugin/timezone"
 
@@ -12,7 +12,6 @@ export class MainService {
 
     public async getTodayDateType(): Promise<DateType> {
         const today = dayjs().tz('Asia/Seoul')
-        const calendarService = new CalendarService();
         const { holiday } = await calendarService.getHolidays();
         const { calendar } = await calendarService.getAnnualCalendar();
 
