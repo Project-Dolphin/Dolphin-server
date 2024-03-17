@@ -17,3 +17,7 @@ app
     logger.error(e);
     process.exit(9);
   });
+
+process.on('exit', function () {
+  console.log('서버가 종료됩니다!')
+});
