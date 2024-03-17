@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
-import { LatestPlans } from '../service/CalendarService';
+import { LatestPlans, calendarService } from '../service/CalendarService';
 import { SocietyDietResult } from '../service/DietService';
-import { DateType } from '../service/mainService';
+import { DateType, mainService } from '../service/mainService';
 import { Notice } from '../service/NoticeService';
 import { WeatherResult } from '../service/weatherService';
 import { logger } from '../logger';
@@ -27,10 +27,10 @@ router.get('/', async (req: Request, res: Response) => {
     diets: null,
   }
 
-  // const dateType = await mainService.getTodayDateType();
-  // homeData.dayType = dateType;
-  // const schedules = await calendarService.getLatestPlans();
-  // homeData.schedules = schedules;
+  const dateType = await mainService.getTodayDateType();
+  homeData.dayType = dateType;
+  const schedules = await calendarService.getLatestPlans();
+  homeData.schedules = schedules;
   // homeData.weather = await weatherService.getCurrentWeather();
   // const notices = await noticeService.getAcademicNotice();
   // homeData.notices.push(...notices);
