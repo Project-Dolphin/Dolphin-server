@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import { LatestPlans, calendarService } from '../service/CalendarService';
 import { SocietyDietResult } from '../service/DietService';
 import { DateType, mainService } from '../service/mainService';
@@ -17,8 +17,7 @@ interface Home {
 }
 
 
-router.get('/', async (req: Request, res: Response) => {
-  logger.info(`[${req.socket?.remoteAddress}] | ${req.method} ${req.url} `);
+router.get('/', async (req: Request, res: Response, next: NextFunction) => {
   const homeData: Home = {
     dayType: '평일',
     schedules: null,
@@ -26,19 +25,25 @@ router.get('/', async (req: Request, res: Response) => {
     notices: [],
     diets: null,
   }
+  try {
+    logger.info(`[${req.socket?.remoteAddress}] | ${req.method} ${req.url} `);
 
-  const dateType = await mainService.getTodayDateType();
-  homeData.dayType = dateType;
-  const schedules = await calendarService.getLatestPlans();
-  homeData.schedules = schedules;
-  // homeData.weather = await weatherService.getCurrentWeather();
-  // const notices = await noticeService.getAcademicNotice();
-  // homeData.notices.push(...notices);
-  // homeData.diets = await dietService.getSocietyDiet();
+    const dateType = await mainService.getTodayDateType();
+    homeData.dayType = dateType;
+    const schedules = await calendarService.getLatestPlans();
+    homeData.schedules = schedules;
+    // homeData.weather = await weatherService.getCurrentWeather();
+    // const notices = await noticeService.getAcademicNotice();
+    // homeData.notices.push(...notices);
+    // homeData.diets = await dietService.getSocietyDiet();
+    console.log(homeData);
 
-  console.log(homeData);
 
 
+  } catch (e) {
+    console.error(e);
+    next(e);
+  }
   return res.status(200).json(homeData);
 });
 
