@@ -1,9 +1,9 @@
 import express, { Request, Response } from 'express';
-import { calendarService, LatestPlans } from '../service/CalendarService';
-import { dietService, SocietyDietResult } from '../service/DietService';
-import { DateType, mainService } from '../service/mainService';
-import { Notice, noticeService } from '../service/NoticeService';
-import { WeatherResult, weatherService } from '../service/weatherService';
+import { LatestPlans } from '../service/CalendarService';
+import { SocietyDietResult } from '../service/DietService';
+import { DateType } from '../service/mainService';
+import { Notice } from '../service/NoticeService';
+import { WeatherResult } from '../service/weatherService';
 import { logger } from '../logger';
 
 const router = express.Router();
