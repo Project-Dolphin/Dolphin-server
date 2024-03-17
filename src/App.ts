@@ -30,6 +30,7 @@ export class App {
 
   private setRouters() {
     this.express.use('/', homeRouter);
+    this.express.use('/home', homeRouter);
     this.express.use('/bus', busRouter);
     this.express.use('/v2/bus', busRouterV2);
     this.express.use('/calendar', calendarRouter);
