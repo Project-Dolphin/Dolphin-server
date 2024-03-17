@@ -13,6 +13,7 @@ app
     console.log(`This Server is running at ${port}`);
   })
   .catch((e) => {
+    console.error(e.stack || e);
     logger.error(e);
     process.exit(9);
   });

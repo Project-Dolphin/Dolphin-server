@@ -27,14 +27,16 @@ router.get('/', async (req: Request, res: Response) => {
     diets: null,
   }
 
-  const dateType = await mainService.getTodayDateType();
-  homeData.dayType = dateType;
-  const schedules = await calendarService.getLatestPlans();
-  homeData.schedules = schedules;
-  homeData.weather = await weatherService.getCurrentWeather();
-  const notices = await noticeService.getAcademicNotice();
-  homeData.notices.push(...notices);
-  homeData.diets = await dietService.getSocietyDiet();
+  // const dateType = await mainService.getTodayDateType();
+  // homeData.dayType = dateType;
+  // const schedules = await calendarService.getLatestPlans();
+  // homeData.schedules = schedules;
+  // homeData.weather = await weatherService.getCurrentWeather();
+  // const notices = await noticeService.getAcademicNotice();
+  // homeData.notices.push(...notices);
+  // homeData.diets = await dietService.getSocietyDiet();
+
+  console.log(homeData);
 
 
   return res.status(200).json(homeData);
